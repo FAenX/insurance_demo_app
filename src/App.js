@@ -10,6 +10,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      email:"",
       premium:"",
       reg: "",
       value: "",
@@ -27,7 +28,8 @@ class App extends React.Component {
       premium: data.premium,
       reg: data.registration,
       value: data.value,
-      cover: data.cover
+      cover: data.cover,
+      email: data.email
     })
 
   }
