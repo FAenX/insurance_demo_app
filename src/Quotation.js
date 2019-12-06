@@ -14,7 +14,7 @@ class Quotation extends React.Component {
     render(){
         return(
             <div className="quotation">
-            <Card style={{ width: '30rem' }}>
+            <Card >
                 <h1>{this.props.data.cover}</h1>
             <ListGroup variant="flush">
                 <ListGroup.Item>Email <h2>{this.props.data.email} </h2></ListGroup.Item>
