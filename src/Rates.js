@@ -110,33 +110,19 @@ class Rates extends React.Component {
     }
     render(){
 
-        let form;
+        let tones;
         let quoteAlert;
         
-        if (this.state.cover === "" || this.state.cover === "privatethirdpartyonly" || this.state.cover === "commercialthirdpartyonly"){
-            form = <Alert variant="primary"> Select product above or click submit to get quote for default product</Alert>
-        } else if (this.state.product === "commercialthirdpartyfireandtheft"){
-            form = <div className="quote-form">
-                    <Alert variant="primary"> Fill below and click submit</Alert>
-                    <Form.Label>Vehicle registration</Form.Label>
-                    <Form.Control size="lg" type="text" placeholder="Reg Number" />
-                    <Form.Label>Vehicle value</Form.Label>
-                    <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder="Value" />
+        if (this.state.cover.startsWith("commercial") ){
+            tones = <div className="quote-form">
+                    
                     <Form.Label>Load size</Form.Label>
                     <Form.Control as="select">
                         <option>3 tones</option>
                     </Form.Control>
                     </div>
             
-        } else {
-            form = <div className="quote-form">
-                    <Alert variant="primary"> Fill below and click submit</Alert>
-                    <Form.Label>Vehicle registration</Form.Label>
-                    <Form.Control onChange= {this.onRegChangeHandler} size="lg" type="text" placeholder="Reg Number" />
-                    <Form.Label >Vehicle value</Form.Label>
-                    <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder="Value" />
-                    </div>
-        }
+        } 
 
         if (this.state.responseData && this.state.responseData !== "something went wrong" && this.state.responseData !== "Working on it" && this.state.responseData !== 404){
             quoteAlert = <Alert variant="success"> Successfull. Redirecting to quotation</Alert>
@@ -169,10 +155,15 @@ class Rates extends React.Component {
                     <option value="">For hire Third party fire and theft</option>
                     <option value="">For hire Comprehensive</option>
                 </Form.Control>
+                <Form.Label>Vehicle registration</Form.Label>
+                <Form.Control size="lg" type="text" placeholder="Reg Number" />
+                <Form.Label>Vehicle value</Form.Label>
+                <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder="Value" />
+                {tones}
             </Form.Group>
             </Form>
             
-                {form}
+                
                 <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} disabled={!this.validateForm()} onClick={this.onSubmitHandler}>
                         Submit
                 </LoaderButton>
