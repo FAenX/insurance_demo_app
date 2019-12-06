@@ -161,8 +161,9 @@ class Rates extends React.Component {
                     <option value="commercialthirdpartyonly">Commercial Third party only</option>
                     <option value="commercialthirdpartyfireandtheft">Commercial third party fire and theft</option>
                     <option value="commercialcomprehensive">Commercial comprehensive</option>
+                    <option value="forhirethirdpirtyonly">Commercial comprehensive</option>
                     <option value="forhirethirdpirtyfireandtheft">For hire Third party only</option>
-                    <option value="forhirethirdpartycomprehensive">For hire Third party fire and theft</option>
+                    <option value="forhirecomprehensive">For hire Third party fire and theft</option>
                 </Form.Control>
                 <Form.Label>Vehicle registration</Form.Label>
                 <Form.Control size="lg" type="text" placeholder= {this.state.regNo} />
