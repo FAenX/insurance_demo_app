@@ -6,6 +6,7 @@ class Rates extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            email: "",
             carValue: "",
             cover: "",
             regNo: "",
@@ -84,6 +85,14 @@ class Rates extends React.Component {
         })
     }
 
+    onEmailChangeHandler = (event) => {
+        event.preventDefault()
+        console.log(event.target.value)
+        this.setState({
+            email: event.target.value
+        })
+    }
+
     onProductChangeHandler = (event) => {
         event.preventDefault()
         this.setState({
@@ -140,7 +149,7 @@ class Rates extends React.Component {
             <Form>
             <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control type="email" placeholder="name@example.com" onChange= {this.onEmailChangeHandler} />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect1">
                 <Form.Label>Select Motor insurance product</Form.Label>
@@ -156,9 +165,9 @@ class Rates extends React.Component {
                     <option value="">For hire Comprehensive</option>
                 </Form.Control>
                 <Form.Label>Vehicle registration</Form.Label>
-                <Form.Control size="lg" type="text" placeholder="Reg Number" />
+                <Form.Control size="lg" type="text" placeholder= {this.state.regNo} />
                 <Form.Label>Vehicle value</Form.Label>
-                <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder="Value" />
+                <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder={this.state.carValue} />
                 {tones}
             </Form.Group>
             </Form>
