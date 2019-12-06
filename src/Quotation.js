@@ -17,10 +17,10 @@ class Quotation extends React.Component {
             <Card >
                 <h1>{this.props.data.cover}</h1>
             <ListGroup variant="flush">
-                <ListGroup.Item>Email <h2>{this.props.data.email} </h2></ListGroup.Item>
-                <ListGroup.Item>REG Number <h2>{this.props.data.reg} </h2></ListGroup.Item>
-                <ListGroup.Item>Vehicle value <h2>{this.props.data.value} </h2></ListGroup.Item>
-                <ListGroup.Item>Premium  <h2>KSH {this.props.data.premium} </h2></ListGroup.Item>
+                <ListGroup.Item>Email: {this.props.data.email} </ListGroup.Item>
+                <ListGroup.Item>REG Number:  {this.props.data.reg} </ListGroup.Item>
+                <ListGroup.Item>Vehicle value:  {this.props.data.value} </ListGroup.Item>
+                <ListGroup.Item>Premium KSH: {this.props.data.premium}</ListGroup.Item>
             </ListGroup>
             </Card>
             </div>
