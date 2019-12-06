@@ -38,12 +38,13 @@ class Rates extends React.Component {
             body: JSON.stringify(data),
 
         }).then(
-            (res)=> res.json()
+            (res)=> res
         ).catch(
             (err) => err
         );
 
         response.then((res)=>{
+            res.json().then((res) =>{
             
             if (res.status === "success"){
                 this.setState({
@@ -58,10 +59,16 @@ class Rates extends React.Component {
                     responseData: res.error
                 })
                 this.setState({isLoading:false})
-            }else{
+            }else {
                 console.log(res)
                 this.setState({isLoading:false})
             }
+        }).catch(err=>{
+            this.setState({
+                responseData: res.status,
+            })
+            this.setState({isLoading:false})
+        })
         }).catch((err)=>{
             console.log(`err: ${err}`)
             this.setState({isLoading:false})
@@ -131,12 +138,14 @@ class Rates extends React.Component {
                     </div>
         }
 
-        if (this.state.responseData && this.state.responseData !== "something went wrong" && this.state.responseData !== "Working on it"){
+        if (this.state.responseData && this.state.responseData !== "something went wrong" && this.state.responseData !== "Working on it" && this.state.responseData !== 404){
             quoteAlert = <Alert variant="success"> Successfull. Redirecting to quotation</Alert>
         } else if (this.state.responseData && this.state.responseData === "something went wrong"){
             quoteAlert = <Alert variant="danger"> Error</Alert>
         } else if (this.state.responseData && this.state.responseData === "Working on it"){
             quoteAlert = <Alert variant="warning">Sorry the feature is not available yet</Alert>
+        } else if (this.state.responseData && this.state.responseData === 404){
+            quoteAlert = <Alert variant="danger">{ this.state.responseData }</Alert>
         }
 
         return(
