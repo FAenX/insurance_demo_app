@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Alert } from "react-bootstrap"
 import LoaderButton from "./LoaderButton"
+import {withRouter} from "react-router-dom"
 
 class Rates extends React.Component {
     constructor(props){
@@ -157,7 +158,7 @@ class Rates extends React.Component {
             quoteAlert = <Alert variant="danger"> { this.state.premium }</Alert>
         } else if (this.state.premium === "Working on it"){
             quoteAlert = <Alert variant="warning">Sorry the feature is not available yet</Alert>
-        } else if (this.state.premium === 504 || this.state.premium === 404 ){
+        } else if (this.state.premium === 504 || this.state.premium === 404 || this.state.premium === 500){
             quoteAlert = <Alert variant="danger">{ this.state.premium }</Alert>
         } else if (this.state.premium ){
             quoteAlert = <Alert variant="success"> Successfull. Redirecting to quotation</Alert>
@@ -203,4 +204,4 @@ class Rates extends React.Component {
     }
 }
 
-export default Rates;
+export default withRouter(Rates);
