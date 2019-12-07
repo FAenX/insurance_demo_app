@@ -10,7 +10,8 @@ class Rates extends React.Component {
             carValue: "",
             cover: "",
             regNo: "",
-            responseData: "",
+            tonnes: "",
+            premium: "",
             isLoading:false
         }
     }
@@ -20,15 +21,18 @@ class Rates extends React.Component {
            cover: "privatethirdpartyonly",
            carValue: 100000,
            regNo: "KBK 200",
-           email: "name@example.com"
+           email: "name@example.com",
+           tonnes: "3"
        })
     }
 
 
+    // handle submit
     onSubmitHandler = (event) => {
-        this.setState({isLoading:true})
         event.preventDefault();
-        const data = {value: this.state.carValue, cover: this.state.cover};
+        this.setState({isLoading:true})
+        const data = this.state;
+        console.log(data)
 
         const url = "api/v1/quotes/quote/";
         const response = fetch(url, {
@@ -50,15 +54,15 @@ class Rates extends React.Component {
             
             if (res.status === "success"){
                 this.setState({
-                    responseData: res.data
+                    premium: res.data
                 })
-                const data = {premium: res.data, registration: this.state.regNo, value: this.state.carValue, cover: this.state.cover }
+                const data = this.state
                 this.props.handleRequest(data)
-                setTimeout(() => this.handleRedirectOnResponse(), 3000)
+                setTimeout(() => this.handleRedirectOnResponse(), 1000)
 
             } else if (res.status === "error"){
                 this.setState({
-                    responseData: res.error
+                    premium: res.error
                 })
                 this.setState({isLoading:false})
             }else {
@@ -67,7 +71,7 @@ class Rates extends React.Component {
             }
         }).catch(err=>{
             this.setState({
-                responseData: res.status,
+                premium: res.status,
             })
             this.setState({isLoading:false})
         })
@@ -78,6 +82,7 @@ class Rates extends React.Component {
 
     }
 
+    // handle car value chage
     onValueChangeHandler = (event) => {
         event.preventDefault()
         console.log(event.target.value)
@@ -86,6 +91,7 @@ class Rates extends React.Component {
         })
     }
 
+    // handle email change
     onEmailChangeHandler = (event) => {
         event.preventDefault()
         console.log(event.target.value)
@@ -94,6 +100,7 @@ class Rates extends React.Component {
         })
     }
 
+    //handle cover change
     onProductChangeHandler = (event) => {
         event.preventDefault()
         this.setState({
@@ -102,6 +109,16 @@ class Rates extends React.Component {
        
     }
 
+    // handle tonnes change for commercial vehicles
+    onLoadChangeHandler = (event) => {
+        event.preventDefault()
+        this.setState({
+            tonnes: event.target.value
+        })
+       
+    }
+
+    //handle chsnge reg number
     onRegChangeHandler = (event) => {
         event.preventDefault()
         this.setState({
@@ -110,6 +127,7 @@ class Rates extends React.Component {
        
     }
 
+    // handle redirect after response
     handleRedirectOnResponse =()=>{
         this.props.history.push('/quotation')
         
@@ -120,29 +138,30 @@ class Rates extends React.Component {
     }
     render(){
 
-        let tones;
+        let tonnes;
         let quoteAlert;
         
         if (this.state.cover.startsWith("commercial") ){
-            tones = <div className="quote-form">
+            tonnes = <div className="quote-form">
                     
                     <Form.Label>Load size</Form.Label>
-                    <Form.Control as="select">
-                        <option>3 tones</option>
+                    <Form.Control as="select" onChange={this.onLoadChangeHandler}>
+                        <option value="3">3 tones</option>
+                        <option value="38">3-8 tones</option>
+                        <option value="810">8-10 tones</option>
                     </Form.Control>
                     </div>
-            
         } 
 
-        if (this.state.responseData && this.state.responseData !== "something went wrong" && this.state.responseData !== "Working on it" && this.state.responseData !== 404){
-            quoteAlert = <Alert variant="success"> Successfull. Redirecting to quotation</Alert>
-        } else if (this.state.responseData && this.state.responseData === "something went wrong"){
-            quoteAlert = <Alert variant="danger"> Error</Alert>
-        } else if (this.state.responseData && this.state.responseData === "Working on it"){
+        if (this.state.premium === "something went wrong"){
+            quoteAlert = <Alert variant="danger"> { this.state.premium }</Alert>
+        } else if (this.state.premium === "Working on it"){
             quoteAlert = <Alert variant="warning">Sorry the feature is not available yet</Alert>
-        } else if (this.state.responseData && this.state.responseData === 404){
-            quoteAlert = <Alert variant="danger">{ this.state.responseData }</Alert>
-        }
+        } else if (this.state.premium === 504 || this.state.premium === 404 ){
+            quoteAlert = <Alert variant="danger">{ this.state.premium }</Alert>
+        } else if (this.state.premium ){
+            quoteAlert = <Alert variant="success"> Successfull. Redirecting to quotation</Alert>
+        } 
 
         return(
             <div className="form">
@@ -158,7 +177,7 @@ class Rates extends React.Component {
                     <option value="privatethirdpartyonly">Private third party only</option>
                     <option value="privatethirdpartyfireandtheft">Private third party fire and theft</option>
                     <option value="privatecomprehensive">Private Comprehensive</option>
-                    <option value="commercialthirdpartyonly">Commercial Third party only</option>
+                    <option value="commercialthirdparty">Commercial Third party only</option>
                     <option value="commercialthirdpartyfireandtheft">Commercial third party fire and theft</option>
                     <option value="commercialcomprehensive">Commercial comprehensive</option>
                     <option value="forhirethirdpirtyonly">For hire Third party only</option>
@@ -169,7 +188,7 @@ class Rates extends React.Component {
                 <Form.Control size="lg" type="text" placeholder= {this.state.regNo} />
                 <Form.Label>Vehicle value</Form.Label>
                 <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder={this.state.carValue} />
-                {tones}
+                {tonnes}
             </Form.Group>
             </Form>
             

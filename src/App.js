@@ -10,11 +10,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      email:"",
-      premium:"",
-      reg: "",
-      value: "",
-      cover: ""
+     quotation: "",
     }
   }
   
@@ -25,11 +21,7 @@ class App extends React.Component {
   handleQuotationRequest =(data)=>{
     console.log(data)
     this.setState({
-      premium: data.premium,
-      reg: data.registration,
-      value: data.value,
-      cover: data.cover,
-      email: data.email
+      quotation: data,
     })
 
   }
