@@ -1,4 +1,8 @@
 .App {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-content: center;
   text-align: center;
 }
 
@@ -43,4 +47,7 @@
  
 }
 
+.card {
+  width: 70%;
+}
 
