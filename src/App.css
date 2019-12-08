@@ -46,8 +46,27 @@
 
  
 }
-
 .card {
-  width: 70%;
+  margin:5px;
+}
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  
 }
 
+.payment-options img {
+  width: 120px;
+  height: 120px;
+}
+
+.p-option {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  text-align: left;
+  
+}

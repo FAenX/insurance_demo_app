@@ -2,6 +2,10 @@ import React from 'react';
 import './App.css';
 import Rates from "./Rates"
 import Quotation from "./Quotation"
+import PaymentOptions from "./PaymentOptions"
+import Mpesa from "./Mpesa"
+import MasterCard from "./MasterCard"
+import PayPall from "./PayPall"
 import {Container} from "react-bootstrap";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
@@ -34,6 +38,10 @@ class App extends React.Component {
       <Switch>
           <Route exact path='/' render = {(props) => <Rates {...props} handleRequest={this.handleQuotationRequest}/>}/>
           <Route exact path='/quotation' render = {(props) => <Quotation {...props} data={this.state}/>}/>
+          <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} data={this.state}/>}/>
+          <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} data={this.state}/>}/>
+          <Route exact path='/mastercard' render = {(props) => <MasterCard {...props} data={this.state}/>}/>
+          <Route exact path='/paypall' render = {(props) => <PayPall {...props} data={this.state}/>}/>
       </Switch>
       
         
