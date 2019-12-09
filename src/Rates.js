@@ -183,14 +183,18 @@ class Rates extends React.Component {
                     </Form.Control>
                 </Form.Group>
                     <Alert variant="info">
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                        <Alert.Link href="#">Insurance cover title</Alert.Link>
+                        <p>
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                        </p>
+                    <Alert.Link href="#">Application procedure</Alert.Link>
                     <ol>
                         <li> step 1</li>
                         <li> step 2</li>

@@ -27,12 +27,12 @@ class Quotation extends React.Component {
             <Card >
                 <h1>Quotation</h1>
             <ListGroup variant="flush">
-                <ListGroup.Item>Email: {this.props.data.quotation.email} </ListGroup.Item>
-                <ListGroup.Item>REG Number:  {this.props.data.quotation.regNo} </ListGroup.Item>
-                <ListGroup.Item>Vehicle value:  {this.props.data.quotation.carValue} </ListGroup.Item>
-                <ListGroup.Item>Vehicle Capacity:  {this.props.data.quotation.tonnes} </ListGroup.Item>
-                <ListGroup.Item>Premium KSH: {this.props.data.quotation.premium}</ListGroup.Item>
-                <ListGroup.Item>Cover: {this.props.data.quotation.cover}</ListGroup.Item>
+                <ListGroup.Item>Email: <b>{this.props.data.quotation.email} </b></ListGroup.Item>
+                <ListGroup.Item>REG Number:  <b>{this.props.data.quotation.regNo}</b> </ListGroup.Item>
+                <ListGroup.Item>Vehicle value:  <b>{this.props.data.quotation.carValue}</b> </ListGroup.Item>
+                <ListGroup.Item>Vehicle Capacity:  <b>{this.props.data.quotation.tonnes}</b> </ListGroup.Item>
+                <ListGroup.Item>Premium KSH: <b>{this.props.data.quotation.premium}</b></ListGroup.Item>
+                <ListGroup.Item>Cover: <b>{this.props.data.quotation.cover}</b></ListGroup.Item>
             </ListGroup>
             </Card>
             <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
