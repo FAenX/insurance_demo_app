@@ -18,7 +18,14 @@ class Quotation extends React.Component {
     }
 
     handleSubmit = () =>{
-        this.props.history.push("/payment-options")
+        this.setState({
+            isLoading: true,
+        })
+        this.handleRedirect()
+    }
+
+    handleRedirect = () => {
+        setTimeout(()=>{this.props.history.push("/payment-options")}, 1000)
     }
 
     render(){

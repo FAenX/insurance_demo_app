@@ -7,7 +7,7 @@ class Mpesa extends React.Component {
         return(
             <Card>
             <Card.Title>Receipt</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">MPESA TRANSACTION CODE: <b>HGD5854TR</b></Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted">TRANSACTION CODE: <b>HGD5854TR</b></Card.Subtitle>
             <Card.Subtitle className="mb-2 text-muted">Trancaction id: <b>HGD5854TR</b></Card.Subtitle>
             <Card.Body>   
             <ListGroup variant="flush">

@@ -28,7 +28,8 @@ class PaymentOptions extends React.Component {
     
     handleSelect = (event) =>{
         event.preventDefault()
-        const id = event.target.parentNode.parentNode.parentNode.parentNode.id
+        const id = event.target.parentNode.parentNode.id
+        console.log(id)
         console.log(id)
         this.setState({
             selectedPaymentOption: id,
@@ -46,8 +47,12 @@ class PaymentOptions extends React.Component {
     handleRedirect =()=>{
         
         if (this.state.selectedPaymentOption !== "") {
-            this.props.history.push(`/${this.state.selectedPaymentOption}`)
+            this.props.history.push("/mpesa")
         }
+    }
+
+    validateForm = () => {
+        return this.selectedPaymentOption
     }
       
     render(){
@@ -114,21 +119,15 @@ class PaymentOptions extends React.Component {
             paymentOption = <Alert  variant="info">  To Pay your bill ( KES 669.50) via Your Visa or MasterCard. Enter Your Card Details Below then click 'Submit'</Alert>
             
         }
-        let instructions = <Accordion defaultActiveKey="">
-                            <Card>
-                            <Card.Header onClick={this.handleSelect}>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="0"> Select </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="0">
-                                <Card.Body>
+        let instructions = <div>
+                            <div onClick={this.handleSelect}> Select  </div>
                                 {paymentOption}
-                                <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
-                                   proceed
-                                </LoaderButton>
-                                </Card.Body>
-                            </Accordion.Collapse>
-                            </Card>
-                        </Accordion>
+                            <LoaderButton variant="primary" type="submit" disabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.handleSubmit}>
+                                proceed
+                            </LoaderButton>
+                                
+                            
+                            </div>
 
         return(
             <div className="payments-page" >
