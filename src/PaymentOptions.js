@@ -51,12 +51,15 @@ class PaymentOptions extends React.Component {
         }
     }
 
+    handleCardinfo = (event) => {
+
+    }
+
     validateForm = () => {
         return this.selectedPaymentOption
     }
       
     render(){
-        let paymentOption;
         let mpesaPaymentOption = <div className="mpesa">
                             <Alert  variant="info"> To Pay your bill (KES. KES 650) via MPESA. Follow the Steps Below. Once you receive a successful reply from Mpesa. Click the complete button bellow. </Alert>
                             <ol>
@@ -69,7 +72,7 @@ class PaymentOptions extends React.Component {
                                     <li>You will receive a confirmation SMS from MPESA</li>
 
                             </ol>
-                            <LoaderButton variant="primary" type="submit" disabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.handleSubmit}>
+                            <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
                                 proceed
                             </LoaderButton>
                             </div>
