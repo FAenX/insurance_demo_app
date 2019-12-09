@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Alert } from "react-bootstrap"
+import { Form, Alert, Card, Button } from "react-bootstrap"
 import LoaderButton from "./LoaderButton"
 import {withRouter} from "react-router-dom"
 
@@ -165,26 +165,43 @@ class Rates extends React.Component {
         } 
 
         return(
-            <div className="form">
+            <div className="products">
                 <div>{quoteAlert}</div>
-            <Form>
-            <Form.Group controlId="exampleForm.ControlInput1">
+                <Form>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label>Select Motor insurance product</Form.Label>
+                    <Form.Control as="select" onChange={this.onProductChangeHandler}>
+                        <option value="privatethirdpartyonly">Private third party only</option>
+                        <option value="privatethirdpartyfireandtheft">Private third party fire and theft</option>
+                        <option value="privatecomprehensive">Private Comprehensive</option>
+                        <option value="commercialthirdparty">Commercial Third party only</option>
+                        <option value="commercialthirdpartyfireandtheft">Commercial third party fire and theft</option>
+                        <option value="commercialcomprehensive">Commercial comprehensive</option>
+                        <option value="forhirethirdpirtyonly">For hire Third party only</option>
+                        <option value="forhirethirdpirtyfireandtheft">For hire Third party fire and theft</option>
+                        <option value="forhirecomprehensive">For hire Comprehensive</option>
+                    </Form.Control>
+                </Form.Group>
+                    <Alert variant="info">
+                    Some quick example text to build on the card title and make up the bulk of
+                    the card's content.
+                    Some quick example text to build on the card title and make up the bulk of
+                    the card's content.
+                    Some quick example text to build on the card title and make up the bulk of
+                    the card's content.
+                    Some quick example text to build on the card title and make up the bulk of
+                    the card's content.
+                    <ol>
+                        <li> step 1</li>
+                        <li> step 2</li>
+                        <li> step 3</li>
+                    </ol>
+                    </Alert>
+            <Form.Group controlId="exampleForm.ControlInput1" style={{display: "none"}}>
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="name@example.com" onChange= {this.onEmailChangeHandler} />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlSelect1">
-                <Form.Label>Select Motor insurance product</Form.Label>
-                <Form.Control as="select" onChange={this.onProductChangeHandler}>
-                    <option value="privatethirdpartyonly">Private third party only</option>
-                    <option value="privatethirdpartyfireandtheft">Private third party fire and theft</option>
-                    <option value="privatecomprehensive">Private Comprehensive</option>
-                    <option value="commercialthirdparty">Commercial Third party only</option>
-                    <option value="commercialthirdpartyfireandtheft">Commercial third party fire and theft</option>
-                    <option value="commercialcomprehensive">Commercial comprehensive</option>
-                    <option value="forhirethirdpirtyonly">For hire Third party only</option>
-                    <option value="forhirethirdpirtyfireandtheft">For hire Third party fire and theft</option>
-                    <option value="forhirecomprehensive">For hire Comprehensive</option>
-                </Form.Control>
                 <Form.Label>Vehicle registration</Form.Label>
                 <Form.Control size="lg" type="text" placeholder= {this.state.regNo} />
                 <Form.Label>Vehicle value</Form.Label>
@@ -194,10 +211,10 @@ class Rates extends React.Component {
             </Form>
             
                 
-                <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} disabled={!this.validateForm()} onClick={this.onSubmitHandler}>
-                        Submit
-                </LoaderButton>
-            
+            <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} disabled={!this.validateForm()} onClick={this.onSubmitHandler}>
+                    Get quote
+            </LoaderButton>
+        
             
             </div>
         )

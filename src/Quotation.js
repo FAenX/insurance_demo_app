@@ -35,7 +35,7 @@ class Quotation extends React.Component {
             </ListGroup>
             </Card>
             <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
-               Pay
+               Accept
             </LoaderButton>
             </div>
         )
