@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Accordion, Button, Alert} from "react-bootstrap"
+import { Card, Accordion, Button, Alert, Form, Col} from "react-bootstrap"
 import mpesaLogo from "./assets/images/mpesa.png"
 import mastercard from "./assets/images/mastercard.png"
 import paypall from "./assets/images/download.jpeg"
@@ -71,6 +71,42 @@ class PaymentOptions extends React.Component {
                             <Alert  variant="info"> To Pay your bill ( KES 669.50) via Your Visa or MasterCard. Enter Your Card Details Below then click 'Submit' </Alert>
                             <Alert variant="warning"> Please Note : Use of stolen cards is an offence punishable by law .</Alert>
                             <img alt="crediCartPlaceHolder" src={crediCartPlaceHolder}/>
+                            <div id="creditcardinfo">
+                                <Form.Control size="lg" type="text" placeholder="Card Number" />
+                                <br />
+                                <Form.Control size="lg" type="text" placeholder="CVV" />
+                                <br />
+                                <div id="creditcardinfodate">
+                                <Form.Row>
+                                <Form.Group as={Col} controlId="formGridCity">
+                                <Form.Label>Month</Form.Label>
+                                <Form.Control as="select">
+                                    <option>Choose...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                </Form.Control>
+
+                                </Form.Group>
+
+                                <Form.Group as={Col} controlId="formGridState">
+                                <Form.Label>Year</Form.Label>
+                                <Form.Control as="select">
+                                    <option>Choose...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                    <option>...</option>
+                                </Form.Control>
+                                </Form.Group>
+                            </Form.Row>
+                                </div>
+                            </div>
                             </div>
                             
         }else if (this.state.selectedPaymentOption === "paypall"){

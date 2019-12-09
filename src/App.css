@@ -74,3 +74,14 @@
   width: 300px;
   height: 200px;
 }
+
+#creditcardinfo {
+  margin: 20px;
+}
+
+#creditcardinfodate {
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  width: 300px;
+}
