@@ -25,7 +25,8 @@ class Quotation extends React.Component {
         return(
             <div className="quotation">
             <Card >
-                <h1>Quotation</h1>
+            <Card.Title>Quotation</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted"> Quote ID: </Card.Subtitle>
             <ListGroup variant="flush">
                 <ListGroup.Item>Email: <b>{this.props.data.quotation.email} </b></ListGroup.Item>
                 <ListGroup.Item>REG Number:  <b>{this.props.data.quotation.regNo}</b> </ListGroup.Item>
