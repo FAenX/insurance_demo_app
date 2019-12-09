@@ -3,6 +3,7 @@ import { Card, Accordion, Button, Alert, Form, Col} from "react-bootstrap"
 import mpesaLogo from "./assets/images/mpesa.png"
 import mastercard from "./assets/images/mastercard.png"
 import paypall from "./assets/images/download.jpeg"
+import user from "./assets/images/user.jpeg"
 import crediCartPlaceHolder from "./assets/images/creditcardplaceholder.gif"
 import {withRouter} from "react-router-dom"
 import LoaderButton from "./LoaderButton"
@@ -164,7 +165,7 @@ class PaymentOptions extends React.Component {
                 </div>
                 <div className="userprofile">
                 <Card style={{ width: '20rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={user} />
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
                     <Card.Text>
