@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Alert, Form, Col} from "react-bootstrap"
+import { Card, Button, Alert, Form} from "react-bootstrap"
 import mpesaLogo from "./assets/images/mpesa.png"
 import mastercard from "./assets/images/mastercard.png"
 import paypall from "./assets/images/download.jpeg"
@@ -14,7 +14,13 @@ class PaymentOptions extends React.Component {
         this.state={
             isLoading: false,
             display: "none",
-            selectedPaymentOption: ""
+            selectedPaymentOption: "",
+            card: {
+                cardExpiryMonth: "",
+                cardExpiryYear: "",
+                cardCVV: "",
+                cardNumber: ""
+            }
         }
     }
 
@@ -28,17 +34,19 @@ class PaymentOptions extends React.Component {
     
     handleSelect = (event) =>{
         event.preventDefault()
-        const id = event.target.parentNode.id
-        console.log(id)
-        event.target.parentNode.children[2].style.display = "block"
-        this.setState({
-            selectedPaymentOption: id,
-        })
+        const target = event.target.parentNode.children[2]
+        target.style.display === "none" ? target.style.display = "block" : target.style.display = "none";
+        
 
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const id = event.target.id
+        console.log(id)
+
         this.setState ({
+            selectedPaymentOption: id,
             isLoading: true
         })
         setTimeout(()=>this.handleRedirect(), 1000)
@@ -51,76 +59,95 @@ class PaymentOptions extends React.Component {
         }
     }
 
-    handleCardinfo = (event) => {
-
+    validateForm = () => {
+        return this.state.card.cardNumber && this.state.card.cardCVV && 
+                this.state.card.cardExpiryYear && this.state.card.cardExpiryMonth
     }
 
-    validateForm = () => {
-        return this.selectedPaymentOption
+    handleCardForm =(event)=>{
+        event.preventDefault()
+        let id = event.target.id
+        console.log(id)
+        let card = this.state.card
+        card[id] = event.target.value
+        this.setState({
+            card
+        })
+
     }
       
     render(){
         let mpesaPaymentOption = <div className="mpesa">
-                            <Alert  variant="info"> To Pay your bill (KES. KES 650) via MPESA. Follow the Steps Below. Once you receive a successful reply from Mpesa. Click the complete button bellow. </Alert>
-                            <ol>
-                                    <li>Go to M-PESA on your phone </li>
-                                    <li>Select Pay Bill option</li>
-                                    <li>Enter Business no. 206206</li>
-                                    <li>Enter Account no. BDZMWVS</li>
-                                    <li>Enter the Amount. KES 650</li>
-                                    <li>Enter your M-PESA PIN and Send</li>
-                                    <li>You will receive a confirmation SMS from MPESA</li>
+            <Alert  variant="info"> To Pay your bill (KES. KES 650) via MPESA. Follow the Steps Below. Once you receive a successful reply from Mpesa. Click the complete button bellow. </Alert>
+            <ol>
+                    <li>Go to M-PESA on your phone </li>
+                    <li>Select Pay Bill option</li>
+                    <li>Enter Business no. 206206</li>
+                    <li>Enter Account no. BDZMWVS</li>
+                    <li>Enter the Amount. KES 650</li>
+                    <li>Enter your M-PESA PIN and Send</li>
+                    <li>You will receive a confirmation SMS from MPESA</li>
 
-                            </ol>
-                            <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
-                                proceed
-                            </LoaderButton>
-                            </div>
+            </ol>
+            <LoaderButton variant="primary" type="submit"  id="mpesa" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
+                proceed
+            </LoaderButton>
+            </div>
 
         let cardPaymentOption = <div className="mastercard">
-                        <Alert  variant="info"> To Pay your bill ( KES 669.50) via Your Visa or MasterCard. Enter Your Card Details Below then click 'Submit' </Alert>
-                        <Alert variant="warning"> Please Note : Use of stolen cards is an offence punishable by law .</Alert>
-                        <img alt="crediCartPlaceHolder" src={crediCartPlaceHolder}/>
-                        <div id="creditcardinfo">
-                            <Form.Control size="lg" type="text" placeholder="Card Number" />
-                            <br />
-                            <Form.Control size="lg" type="text" placeholder="CVV" />
-                            <br />
-                            <div id="creditcardinfodate">
-                            <Form.Row>
-                            <Form.Group as={Col} controlId="formGridCity">
-                            <Form.Label>Month</Form.Label>
-                            <Form.Control as="select">
-                                <option>Choose...</option>
-                                <option>...</option>
-                                <option>...</option>
-                                <option>...</option>
-                                <option>...</option>
-                                <option>...</option>
-                                <option>...</option>
-                            </Form.Control>
+            <div>
+            <Alert  variant="info"> To Pay your bill ( KES 669.50) via Your Visa or MasterCard. Enter Your Card Details Below then click 'Submit' </Alert>
+            <Alert variant="warning"> Please Note : Use of stolen cards is an offence punishable by law .</Alert>
+            </div>
+            <div><img alt="crediCartPlaceHolder" src={crediCartPlaceHolder}/></div>
+            <div id="creditcardinfo">
+                <Form.Control size="lg" type="text" placeholder="Card Number" id="cardNumber" onChange={this.handleCardForm}/>
+                <br />
+                <Form.Control size="lg" type="text" placeholder="CVV" id="cardCVV" onChange={this.handleCardForm}/>
+                <br />
+                <div id="creditcardinfodate">
+                    <div>
+                    <Form.Row>
+                    <div>
+                    <Form.Group controlId="cardExpiryMonth" onChange={this.handleCardForm}>
+                    <Form.Label>Month</Form.Label>
+                    <Form.Control as="select">
+                        <option>Choose...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                    </Form.Control>
 
-                            </Form.Group>
-
-                            <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>Year</Form.Label>
-                            <Form.Control as="select">
-                                <option>Choose...</option>
-                                <option>...</option>
-                                <option>...</option>
-                                <option>...</option>
-                                <option>...</option>
-                                <option>...</option>
-                                <option>...</option>
-                            </Form.Control>
-                            </Form.Group>
-                        </Form.Row>
-                            </div>
-                        </div>
-                        <LoaderButton variant="primary" type="submit" disabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.handleSubmit}>
-                            proceed
-                        </LoaderButton>
-                        </div>
+                    </Form.Group>
+                    </div>
+                    <div>
+                    <Form.Group controlId="cardExpiryYear" onChange={this.handleCardForm}>
+                    <Form.Label>Year</Form.Label>
+                    <Form.Control as="select">
+                        <option>Choose...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                        <option>...</option>
+                    </Form.Control>
+                    </Form.Group>
+                    </div>
+                    
+                    </Form.Row>                                
+                    </div>
+                </div>
+            </div>
+            <div>
+            <LoaderButton variant="primary" type="submit" id="mastercard" disabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.handleSubmit}>
+                proceed
+            </LoaderButton>
+            </div>
+            </div>
         
         let paypallPaymentOption = <Alert  variant="info">  To Pay your bill ( KES 669.50) via Your Visa or MasterCard. Enter Your Card Details Below then click 'Submit'</Alert>
 
@@ -133,8 +160,8 @@ class PaymentOptions extends React.Component {
                 <div className="p-option">
                 <img alt="mpesa logo" src={mpesaLogo} /> 
                 <Card  id="mpesa" >
-                <Card.Title id="mpesa">Mpesa</Card.Title>
-                <Card.Link href="#" onClick={this.handleSelect}>Click to select</Card.Link> 
+                <Card.Title>Mpesa</Card.Title>
+                <Card.Link href="#" onClick={this.handleSelect}>Click select</Card.Link> 
                 <div className="payment-instructions" style={{display: `${this.state.display}`}}>
                 {mpesaPaymentOption}                         
                 </div>
@@ -144,9 +171,9 @@ class PaymentOptions extends React.Component {
 
                 <div className="p-option">
                 <img alt="mpesa logo" src={mastercard} />   
-                <Card id="mastercard" >
+                <Card>
                 <Card.Title>Visa/MasterCard</Card.Title>
-                <Card.Link href="#" onClick={this.handleSelect}>Click to select</Card.Link>
+                <Card.Link href="#" onClick={this.handleSelect}>Click select </Card.Link>
                 <div className="payment-instructions" style={{display: `${this.state.display}`}}>
                 {cardPaymentOption}
                 </div> 
@@ -156,9 +183,9 @@ class PaymentOptions extends React.Component {
 
                 <div className="p-option">
                 <img alt="mpesa logo" src={paypall} /> 
-                <Card  id="paypall" > 
+                <Card> 
                 <Card.Title>Paypall </Card.Title>
-                <Card.Link href="#" onClick={this.handleSelect}>Click to select</Card.Link>
+                <Card.Link href="#" onClick={this.handleSelect}>Click select</Card.Link>
                 <div className="payment-instructions" style={{display: `${this.state.display}`}}>
                 {paypallPaymentOption}
                 </div> 
