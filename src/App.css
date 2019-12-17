@@ -27,6 +27,20 @@
   text-align: left;
 }
 
+.covers {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body button{
+  align-self: flex-end;
+}
+
 .quote-form {
   display: flex;
   flex-direction: column;

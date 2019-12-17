@@ -9,7 +9,7 @@ class Rates extends React.Component {
         this.state = {
             email: "",
             carValue: "",
-            cover: "",
+            chosenProduct: "",
             regNo: "",
             tonnes: "",
             premium: "",
@@ -19,12 +19,14 @@ class Rates extends React.Component {
     
     componentDidMount = () => {
         this.setState({
-           cover: "privatethirdpartyonly",
-           carValue: 100000,
-           regNo: "KBK 200",
-           email: "name@example.com",
-           tonnes: "3"
+            chosenProduct: this.props.chosenProduct,
+            carValue: 100000,
+            regNo: "KBK 200",
+            email: "name@example.com",
+            tonnes: "3"
        })
+
+       
     }
 
 
@@ -101,14 +103,6 @@ class Rates extends React.Component {
         })
     }
 
-    //handle cover change
-    onProductChangeHandler = (event) => {
-        event.preventDefault()
-        this.setState({
-            cover: event.target.value
-        })
-       
-    }
 
     // handle tonnes change for commercial vehicles
     onLoadChangeHandler = (event) => {
@@ -135,14 +129,25 @@ class Rates extends React.Component {
     }
 
     validateForm=()=>{
-        return this.state.carValue && this.state.regNo && this.state.cover
+        return this.state.carValue && this.state.regNo && this.state.chosenProduct
     }
     render(){
 
         let tonnes;
         let quoteAlert;
+
+        let cover = "";
+        let name = ""
         
-        if (this.state.cover.startsWith("commercial") ){
+        if (!this.props.chosenProduct){
+            quoteAlert = <Alert variant="warning">Please select cover</Alert>
+        }
+        else {
+          cover =  this.props.chosenProduct.chosenProductAlias 
+          name = this.props.chosenProduct.chosenProductName
+        }
+        
+        if (cover.startsWith("commercial") ){
             tonnes = <div className="quote-form">
                     
                     <Form.Label>Load size</Form.Label>
@@ -167,52 +172,34 @@ class Rates extends React.Component {
         return(
             <div className="products">
                 <div>{quoteAlert}</div>
-                <Form>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Select Motor insurance product</Form.Label>
-                    <Form.Control as="select" onChange={this.onProductChangeHandler}>
-                        <option value="privatethirdpartyonly">Private third party only</option>
-                        <option value="privatethirdpartyfireandtheft">Private third party fire and theft</option>
-                        <option value="privatecomprehensive">Private Comprehensive</option>
-                        <option value="commercialthirdparty">Commercial Third party only</option>
-                        <option value="commercialthirdpartyfireandtheft">Commercial third party fire and theft</option>
-                        <option value="commercialcomprehensive">Commercial comprehensive</option>
-                        <option value="forhirethirdpirtyonly">For hire Third party only</option>
-                        <option value="forhirethirdpirtyfireandtheft">For hire Third party fire and theft</option>
-                        <option value="forhirecomprehensive">For hire Comprehensive</option>
-                    </Form.Control>
-                </Form.Group>
-                    <Alert variant="info">
-                        <Alert.Link href="#">Insurance cover title</Alert.Link>
-                        <p>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
-                        </p>
-                    <Alert.Link href="#">Application procedure</Alert.Link>
+                <div> <p><b>Request quotation for {name} cover</b></p></div>
+                <div>
+                <Alert variant="info">
+                    
+                    <p><b>Get insured in just five simple steps:</b></p>
                     <ol>
-                        <li> step 1</li>
-                        <li> step 2</li>
-                        <li> step 3</li>
+                        <li> Step 1</li>Fill out the form below and click Get quote to receive a quote for your preferred insurance cover.
+                        <li> Step 2</li>After receiving your quote on the screen. Click on Accept to proceed.
+                        <li> Step 3</li>Select your preferred payment method.
+                        <li> Step 4</li>Fill out your payment information and click proceed to process your payment.
+                        <li>And finally</li> Download your insurance cover. Congratulations you’re insured!
                     </ol>
                     </Alert>
-            <Form.Group controlId="exampleForm.ControlInput1" style={{display: "none"}}>
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="name@example.com" onChange= {this.onEmailChangeHandler} />
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlSelect1">
-                <Form.Label>Vehicle registration</Form.Label>
-                <Form.Control size="lg" type="text" placeholder= {this.state.regNo} />
-                <Form.Label>Vehicle value</Form.Label>
-                <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder={this.state.carValue} />
-                {tonnes}
-            </Form.Group>
-            </Form>
+                </div>
+                <Form>
+                    
+                <Form.Group controlId="exampleForm.ControlInput1" style={{display: "none"}}>
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="name@example.com" onChange= {this.onEmailChangeHandler} />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label>Vehicle registration</Form.Label>
+                    <Form.Control size="lg" type="text" placeholder= {this.state.regNo} />
+                    <Form.Label>Vehicle value</Form.Label>
+                    <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder={this.state.carValue} />
+                    {tonnes}
+                </Form.Group>
+                </Form>
             
                 
             <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} disabled={!this.validateForm()} onClick={this.onSubmitHandler}>
