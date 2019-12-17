@@ -40,6 +40,7 @@ class Covers extends React.Component {
 
     // handle submit
     onSubmitHandler = (event) => {
+        event.preventDefault();
         console.log(event.target.name)
         console.log(event.target.id)
 
