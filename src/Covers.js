@@ -19,11 +19,12 @@ class Covers extends React.Component {
         }).then((res)=>{
             if(res.status === 200){
                 res.json().then((data)=>{
-                    console.log(data[1].products)
+                    console.log(data[0])
                     this.setState({
-                        products: data[1].products
+                        products: data[0].products
                     });
                 }).catch((error)=>{
+                    console.log(error)
                     console.log(res)
                 })
             } else {
