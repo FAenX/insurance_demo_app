@@ -8,6 +8,9 @@ import Covers from "./Covers";
 import {Container} from "react-bootstrap";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
+import dotenv from "dotenv"
+dotenv.config()
+
 
 class App extends React.Component {
   constructor(props){

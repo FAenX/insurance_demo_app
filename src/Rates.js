@@ -34,7 +34,13 @@ class Rates extends React.Component {
     onSubmitHandler = (event) => {
         event.preventDefault();
         this.setState({isLoading:true})
-        const data = this.state;
+        const data = {
+            carValue: this.state.carValue,
+            cover: this.state.chosenProduct.chosenProductAlias,
+            regNo: this.state.regNo,
+            email: this.state.email,
+            tonnes: this.state.tonnes,
+        };
         console.log(data)
 
         const url = "api/v1/quotes/quote/";
