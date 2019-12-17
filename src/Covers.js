@@ -42,7 +42,7 @@ class Covers extends React.Component {
     onSubmitHandler = (event) => {
         event.preventDefault();
         console.log(event.target.name)
-        console.log(event.target.id)
+        console.log(event.target.value)
 
         this.setState({
             isLoading: true
@@ -51,7 +51,7 @@ class Covers extends React.Component {
         this.props.chosenProduct(
                 {
                 chosenProductName: event.target.name,
-                chosenProductAlias: event.target.id
+                chosenProductAlias: event.target.value
             }
         )
 
@@ -85,7 +85,7 @@ class Covers extends React.Component {
                             {i.description}
                         </Card.Text>
                         <LoaderButton variant="primary" type="submit" name={i.name} 
-                                    id={i.alias} isLoading={this.state.isLoading}  
+                                    value={i.alias} isLoading={this.state.isLoading}  
                                     onClick={this.onSubmitHandler}>
                             Get quote
                         </LoaderButton>
