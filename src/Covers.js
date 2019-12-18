@@ -70,8 +70,7 @@ class Covers extends React.Component {
     render(){
        
         let dataAlert;
-        let covers;
-        
+        let covers;        
 
         if (this.state.products == null){
             dataAlert = <Alert variant="warning">Sorry no insurance products found</Alert>
@@ -94,12 +93,8 @@ class Covers extends React.Component {
                             </Card>
                         </div>
                          })}
-                    </div>
-           
+                    </div>    
         }
-
-
-        
 
         return(
            <div>
