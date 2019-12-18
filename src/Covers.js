@@ -9,6 +9,7 @@ class Covers extends React.Component {
         this.state = {
             isLoading:false,
             products:null,
+            chosenProduct: null
            
         }
     }
@@ -43,17 +44,17 @@ class Covers extends React.Component {
         event.preventDefault();
         console.log(event.target.name)
         console.log(event.target.value)
+        
 
         this.setState({
-            isLoading: true
-        })
-
-        this.props.chosenProduct(
-                {
+            isLoading: true,
+            chosenProduct: {
                 chosenProductName: event.target.name,
                 chosenProductAlias: event.target.value
             }
-        )
+        })
+        console.log(this.state.chosenProduct)
+        setTimeout(()=>{this.props.chosenProduct(this.state.chosenProduct)}, 1000)
 
        
         setTimeout(()=>{this.handleRedirect()}, 1000)

@@ -9,7 +9,6 @@ class Rates extends React.Component {
         this.state = {
             email: "",
             carValue: "",
-            chosenProduct: "",
             regNo: "",
             tonnes: "",
             premium: "",
@@ -19,7 +18,6 @@ class Rates extends React.Component {
     
     componentDidMount = () => {
         this.setState({
-            chosenProduct: this.props.chosenProduct,
             carValue: 100000,
             regNo: "KBK 200",
             email: "name@example.com",
@@ -36,7 +34,7 @@ class Rates extends React.Component {
         this.setState({isLoading:true})
         const data = {
             carValue: this.state.carValue,
-            cover: this.state.chosenProduct.chosenProductAlias,
+            cover: this.props.chosenProduct.chosenProductAlias,
             regNo: this.state.regNo,
             email: this.state.email,
             tonnes: this.state.tonnes,
@@ -135,7 +133,7 @@ class Rates extends React.Component {
     }
 
     validateForm=()=>{
-        return this.state.carValue && this.state.regNo && this.state.chosenProduct
+        return this.state.carValue && this.state.regNo && this.props.chosenProduct
     }
     render(){
 
