@@ -19,11 +19,12 @@ class Covers extends React.Component {
         }).then((res)=>{
             if(res.status === 200){
                 res.json().then((data)=>{
-                    console.log(data[1].products)
+                    console.log(data[0])
                     this.setState({
-                        products: data[1].products
+                        products: data[0].products
                     });
                 }).catch((error)=>{
+                    console.log(error)
                     console.log(res)
                 })
             } else {
@@ -39,8 +40,9 @@ class Covers extends React.Component {
 
     // handle submit
     onSubmitHandler = (event) => {
+        event.preventDefault();
         console.log(event.target.name)
-        console.log(event.target.id)
+        console.log(event.target.value)
 
         this.setState({
             isLoading: true
@@ -49,7 +51,7 @@ class Covers extends React.Component {
         this.props.chosenProduct(
                 {
                 chosenProductName: event.target.name,
-                chosenProductAlias: event.target.id
+                chosenProductAlias: event.target.value
             }
         )
 
@@ -74,23 +76,26 @@ class Covers extends React.Component {
         if (this.state.products == null){
             dataAlert = <Alert variant="warning">Sorry no insurance products found</Alert>
         } else {
-            covers = this.state.products.map(i => {
-            return <div className="covers" key={i.alias} > 
-                    <Card >
-                    <Card.Body>
-                        <Card.Title>{i.name}</Card.Title>
-                        <Card.Text>
-                            {i.description}
-                        </Card.Text>
-                        <LoaderButton variant="primary" type="submit" name={i.name} 
-                                    id={i.alias} isLoading={this.state.isLoading}  
-                                    onClick={this.onSubmitHandler}>
-                            Get quote
-                        </LoaderButton>
-                    </Card.Body>
-                    </Card>
+            covers = <div>
+                    {this.state.products.map(i => {
+                    return <div className="covers" key={i.alias} > 
+                            <Card >
+                            <Card.Body>
+                                <Card.Title>{i.name}</Card.Title>
+                                <Card.Text>
+                                    {i.description}
+                                </Card.Text>
+                                <LoaderButton variant="primary" type="submit" name={i.name} 
+                                            value={i.alias} isLoading={this.state.isLoading}  
+                                            onClick={this.onSubmitHandler}>
+                                    Get quote
+                                </LoaderButton>
+                            </Card.Body>
+                            </Card>
+                        </div>
+                         })}
                     </div>
-            })
+           
         }
 
 
