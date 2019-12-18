@@ -82,8 +82,11 @@ class Covers extends React.Component {
             const splitText = text.split(':')
             mainDescription = splitText[0]
             bullets = splitText[1]
+            
             if (bullets !== undefined){
-                bull = bullets.split('.')
+                bull = bullets.split('.').filter((value, index, array)=>{
+                    return value !== ""
+                })
             } else {
                 bull = []
             }
