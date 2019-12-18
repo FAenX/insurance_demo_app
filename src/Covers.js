@@ -76,23 +76,26 @@ class Covers extends React.Component {
         if (this.state.products == null){
             dataAlert = <Alert variant="warning">Sorry no insurance products found</Alert>
         } else {
-            covers = this.state.products.map(i => {
-            return <div className="covers" key={i.alias} > 
-                    <Card >
-                    <Card.Body>
-                        <Card.Title>{i.name}</Card.Title>
-                        <Card.Text>
-                            {i.description}
-                        </Card.Text>
-                        <LoaderButton variant="primary" type="submit" name={i.name} 
-                                    value={i.alias} isLoading={this.state.isLoading}  
-                                    onClick={this.onSubmitHandler}>
-                            Get quote
-                        </LoaderButton>
-                    </Card.Body>
-                    </Card>
+            covers = <div>
+                    {this.state.products.map(i => {
+                    return <div className="covers" key={i.alias} > 
+                            <Card >
+                            <Card.Body>
+                                <Card.Title>{i.name}</Card.Title>
+                                <Card.Text>
+                                    {i.description}
+                                </Card.Text>
+                                <LoaderButton variant="primary" type="submit" name={i.name} 
+                                            value={i.alias} isLoading={this.state.isLoading}  
+                                            onClick={this.onSubmitHandler}>
+                                    Get quote
+                                </LoaderButton>
+                            </Card.Body>
+                            </Card>
+                        </div>
+                         })}
                     </div>
-            })
+           
         }
 
 
