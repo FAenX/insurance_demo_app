@@ -176,19 +176,25 @@ class Rates extends React.Component {
         return(
             <div className="products">
                 <div>{quoteAlert}</div>
-                <div> <p><b>Request quotation for {name} cover</b></p></div>
+                <div> 
+                    <p><b>Request quotation for: </b></p>
+                    <p><b> {name} cover</b></p>
+                </div>
                 <div>
                 <Alert variant="info">
                     
                     <p><b>Get insured in just five simple steps:</b></p>
                     <ol>
-                        <li> Step 1</li>Fill out the form below and click Get quote to receive a quote for your preferred insurance cover.
-                        <li> Step 2</li>After receiving your quote on the screen. Click on Accept to proceed.
+                        <li> Step 1</li>Fill out the form below and click <b>Get quote</b> to receive a quote for your preferred insurance cover.
+                        <li> Step 2</li>After receiving your quote on the screen. Click on <b>Accept</b> to proceed.
                         <li> Step 3</li>Select your preferred payment method.
-                        <li> Step 4</li>Fill out your payment information and click proceed to process your payment.
+                        <li> Step 4</li>Fill out your payment information and click <b>Proceed</b> to process your payment.
                         <li>And finally</li> Download your insurance cover. Congratulations you’re insured!
                     </ol>
                     </Alert>
+                </div>
+                <div>
+                    <Alert variant="success">Fill the form below ..</Alert>
                 </div>
                 <Form>
                     

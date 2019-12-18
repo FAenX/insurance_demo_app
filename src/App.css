@@ -22,7 +22,6 @@
 .products {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: space-around;
   text-align: left;
 }
@@ -30,6 +29,10 @@
 .covers {
   display: flex;
   flex-direction: column;
+}
+
+.cover-scope {
+  text-align: left;
 }
 
 .card-body {

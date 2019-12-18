@@ -3,6 +3,7 @@ import { Card, Alert } from "react-bootstrap"
 import LoaderButton from "./LoaderButton"
 import {withRouter} from "react-router-dom"
 
+
 class Covers extends React.Component {
     constructor(props){
         super(props)
@@ -71,20 +72,51 @@ class Covers extends React.Component {
     render(){
        
         let dataAlert;
-        let covers;        
+        let covers; 
+        let mainDescription;
+        let bullets;
+        let bull;
+        let coverScope;
+        
+        const description = (text)=>{
+            const splitText = text.split(':')
+            mainDescription = splitText[0]
+            bullets = splitText[1]
+            if (bullets !== undefined){
+                bull = bullets.split('.')
+            } else {
+                bull = []
+            }
+            console.log(bull)
+
+        }
+
 
         if (this.state.products == null){
             dataAlert = <Alert variant="warning">Sorry no insurance products found</Alert>
         } else {
             covers = <div>
                     {this.state.products.map(i => {
-                    return <div className="covers" key={i.alias} > 
+                    return <div className="covers" key={i.id} > 
                             <Card >
-                            <Card.Body>
+                            <Card.Body className="cover-scope">
                                 <Card.Title>{i.name}</Card.Title>
-                                <Card.Text>
-                                    {i.description}
-                                </Card.Text>
+                                
+                                    {description(i.description)}
+                                    <div><Card.Text>{mainDescription}:</Card.Text></div>
+                                    {bull.map(i=>{
+                                        return <div key={i} >
+                                                <ul>
+                                                <li>{i}</li>
+                                                </ul>
+                                                </div>
+                                    })} 
+                                    {coverScope}
+                                    
+                                                                    
+
+                                    
+                                
                                 <LoaderButton variant="primary" type="submit" name={i.name} 
                                             value={i.alias} isLoading={this.state.isLoading}  
                                             onClick={this.onSubmitHandler}>
