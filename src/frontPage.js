@@ -129,7 +129,10 @@ class FrontPage extends React.Component {
                     <h1>our partners</h1>
                     <div className="providers">
                         {providers}
+                        <div class="previous round">&#8249;</div>
+                        <div class="next round">&#8250;</div>
                     </div>
+                    
                 </div>
                 <div className="footer">
                     <h1>footer</h1>
