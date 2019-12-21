@@ -5,7 +5,8 @@ import Quotation from "./Quotation"
 import PaymentOptions from "./PaymentOptions"
 import Mpesa from "./Mpesa"
 import Covers from "./Covers";
-import {Container} from "react-bootstrap";
+import FrontPage from "./frontPage";
+import {Navbar} from "react-bootstrap";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import dotenv from "dotenv"
@@ -57,11 +58,27 @@ class App extends React.Component {
   render(){
   return (
     <Router>
-    <header className="App-header">Motor insurance products mini app</header>
-    <Container className="App">
+    <header className="App-header">
+    
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">
+          <img
+            alt=""
+            src="/logo.svg"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{' '}
+          React Bootstrap
+        </Navbar.Brand>
+      </Navbar>
+   
+    </header>
+    <div className="App">
      
       <Switch>
-          <Route exact path='/' render = {(props) => <Covers {...props} chosenProduct={this.handleChosenProduct}/>}/>
+      <Route exact path='/' render = {(props) => <FrontPage {...props} />}/>
+          <Route exact path='/covers' render = {(props) => <Covers {...props} chosenProduct={this.handleChosenProduct}/>}/>
           <Route exact path='/rates' render = {(props) => <Rates {...props} chosenProduct= {this.state.chosenProduct} handleRequest={this.handleQuotationRequest}/>}/>
           <Route exact path='/quotation' render = {(props) => <Quotation {...props} data={this.state}/>}/>
           <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} data={this.state} paymentOption={this.handlePayment}/>} />
@@ -70,7 +87,7 @@ class App extends React.Component {
       
         
      
-    </Container>
+    </div>
     </Router>
   );
   }

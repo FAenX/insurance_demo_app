@@ -3,7 +3,6 @@ import { Card, Button, Alert, Form} from "react-bootstrap"
 import mpesaLogo from "./assets/images/mpesa.png"
 import mastercard from "./assets/images/mastercard.png"
 import paypall from "./assets/images/download.jpeg"
-import user from "./assets/images/user.jpeg"
 import crediCartPlaceHolder from "./assets/images/creditcardplaceholder.gif"
 import {withRouter} from "react-router-dom"
 import LoaderButton from "./LoaderButton"
@@ -82,9 +81,9 @@ class PaymentOptions extends React.Component {
             <ol>
                     <li>Go to M-PESA on your phone </li>
                     <li>Select Pay Bill option</li>
-                    <li>Enter Business no. 206206</li>
+                    <li>Enter Business no. XXXXX</li>
                     <li>Enter Account no. BDZMWVS</li>
-                    <li>Enter the Amount. KES 650</li>
+                    <li>Enter the Amount. KES 7500</li>
                     <li>Enter your M-PESA PIN and Send</li>
                     <li>You will receive a confirmation SMS from MPESA</li>
 

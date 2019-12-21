@@ -178,7 +178,7 @@ class Rates extends React.Component {
                 <div>{quoteAlert}</div>
                 <div> 
                     <p><b>Request quotation for: </b></p>
-                    <p><b> {name} cover</b></p>
+                    <p><b> {name} </b></p>
                 </div>
                 <div>
                 <Alert variant="info">

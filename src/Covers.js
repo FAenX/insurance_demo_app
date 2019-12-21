@@ -100,9 +100,9 @@ class Covers extends React.Component {
         } else {
             covers = <div>
                     {this.state.products.map(i => {
-                    return <div className="covers" key={i.id} > 
+                    return <div className="covers" key={i.id}> 
                             <Card >
-                            <Card.Body className="cover-scope">
+                            <Card.Body className="cover-scope" id={i.alias}>
                                 <Card.Title>{i.name}</Card.Title>
                                 
                                     {description(i.description)}
