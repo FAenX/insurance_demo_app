@@ -1,10 +1,9 @@
 import React from "react";
 import {withRouter} from "react-router-dom"
-import { Button } from "react-bootstrap"
-import logo from './assets/images/amaco.jpeg'
-import insurance from './assets/images/insurance.jpeg'
-import Footer from "./Footer";
+import { Button} from "react-bootstrap"
 import Home from "./Home"
+import HowItWorks from './HowItWorks'
+import OurPatners from "./OurPatners"
 
 class FrontPage extends React.Component {
     constructor(props){
@@ -38,26 +37,7 @@ class FrontPage extends React.Component {
             console.log(err)
         })
 
-        fetch("/api/v1/products/providers/", {
-            method: "GET",
-            
-        }).then(res=>{
-            if(res.status === 200){
-                res.json().then((data)=>{
-                    console.log(data)
-                    this.setState({
-                        providers: data
-                    });
-                }).catch((error)=>{
-                    console.log(error)
-                    console.log(res)
-                })
-            } else {
-                console.log(res)
-            }
-        }).catch((err)=>{
-            console.log(err)
-        })
+        
 
     }
 
@@ -77,30 +57,20 @@ class FrontPage extends React.Component {
 
     render(){
         let highlights;
-        let providers;
+        
 
         if (this.state.subCategories) {
             highlights = this.state.subCategories.map(i => {
                     return <div className="highlight">
                         <div className="sub-category">{i.name}</div>
-                        <img alt="insurance" src={insurance}/>
+                        <img alt="insurance" src={""}/>
                         <div>{i.description}</div>
                         <Button variant="danger" onClick={this.handleClickedSub}>View more</Button>
                     </div>
             })
         }
 
-        if (this.state.providers) {
-            providers = this.state.providers.map(i => {
-                    return <div className="provider">
-                        <div >{i.name}</div>
-                        <img alt="logo" src={logo}/>
-                        <div>{i.description}</div>
-                    </div>
-            })
-        }
-
-
+       
 
         return(
             <div className="front-page">
@@ -108,13 +78,20 @@ class FrontPage extends React.Component {
                     <div>
                         <Home />
                     </div>
-                </div>  
+                </div>
+            
                 <div>
-                    <Footer/>
-                </div>             
+                    <HowItWorks/>
+                </div>
+
+                <div>
+                    <OurPatners/>
+                </div>   
+                     
+               
+                       
             </div>
         )
     }
 }
-
 export default withRouter (FrontPage)

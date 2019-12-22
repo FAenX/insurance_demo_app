@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import Rates from "./Rates"
-import Quotation from "./Quotation"
-import PaymentOptions from "./PaymentOptions"
-import Mpesa from "./Mpesa"
-import Covers from "./Covers";
-import FrontPage from "./frontPage";
+import Rates from "./covers/Rates"
+import Quotation from "./covers/Quotation"
+import PaymentOptions from "./payments/PaymentOptions"
+import Mpesa from "./payments/Mpesa"
+import Covers from "./covers/Covers";
+import FrontPage from "./frontpage/frontPage";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import SideNav from "./SideNav"
+import SideNav from "./frontpage/SideNav"
+import Footer from "./Footer";
 
 
 import dotenv from "dotenv"
@@ -103,6 +104,7 @@ class App extends React.Component {
         
      
     </div>
+    <Footer/>
     </Router>
   );
   }

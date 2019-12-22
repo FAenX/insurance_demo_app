@@ -1,11 +1,11 @@
 import React from "react";
 import { Card, Button, Alert, Form} from "react-bootstrap"
-import mpesaLogo from "./assets/images/mpesa.png"
-import mastercard from "./assets/images/mastercard.png"
-import paypall from "./assets/images/download.jpeg"
-import crediCartPlaceHolder from "./assets/images/creditcardplaceholder.gif"
+import mpesaLogo from "../assets/images/mpesa.png"
+import mastercard from "../assets/images/mastercard.png"
+import paypall from "../assets/images/download.jpeg"
+import crediCartPlaceHolder from "../assets/images/creditcardplaceholder.gif"
 import {withRouter} from "react-router-dom"
-import LoaderButton from "./LoaderButton"
+import LoaderButton from "../LoaderButton"
 
 class PaymentOptions extends React.Component {
     constructor(props){

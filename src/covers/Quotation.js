@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, ListGroup } from "react-bootstrap"
-import LoaderButton from "./LoaderButton";
+import LoaderButton from "../LoaderButton";
 import {withRouter} from "react-router-dom";
 
 class Quotation extends React.Component {

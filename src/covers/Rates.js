@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Alert } from "react-bootstrap"
-import LoaderButton from "./LoaderButton"
+import LoaderButton from "../LoaderButton"
 import {withRouter} from "react-router-dom"
 
 class Rates extends React.Component {
