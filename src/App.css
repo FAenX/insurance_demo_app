@@ -67,7 +67,6 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #045a6988;
 }
 
 .highlights {
@@ -152,8 +151,28 @@ h1{
 }
 
 .footer {
-  min-height: 60vh;
-  background-color: #045a693b;
+  min-height:10vh;
+  min-width: 100vw;
+  background-color: #045a6960;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  text-align: left;
+  min-width: 100vw;
+}
+
+.welcome-text {
+  max-width: 50vh;
+  align-self: flex-start;
+  margin-left: 10vw;
+  font-size: 1em;
+}
+
+.welcome-text .btn {
+
 }
 
 .products {
@@ -278,4 +297,8 @@ h1{
   flex-flow: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.footer {
+  
 }

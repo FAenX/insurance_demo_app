@@ -3,6 +3,8 @@ import {withRouter} from "react-router-dom"
 import { Button } from "react-bootstrap"
 import logo from './assets/images/amaco.jpeg'
 import insurance from './assets/images/insurance.jpeg'
+import Footer from "./Footer";
+import Home from "./Home"
 
 class FrontPage extends React.Component {
     constructor(props){
@@ -102,43 +104,12 @@ class FrontPage extends React.Component {
             <div className="front-page">
                 <div className="cover-page">
                     <div>
-                       <Button variant="danger" onClick={this.handleSubmit}>Get quote</Button>
+                        <Home />
                     </div>
-                </div>
-                {/* <div>
-                    <h1>What we sell</h1>
-                    <div className="highlights">
-                        {highlights}
-                    </div>
-                </div>
+                </div>  
                 <div>
-                    <h1>How does it work</h1>
-                    <div className="how-it-works">
-                        <div className="steps">
-                            
-                        </div>
-                        <div className="steps">
-                            
-                        </div>
-                        <div className="steps">
-                           
-                        </div>                        
-                    </div>
-                </div>
-                <div>
-                    <h1>our partners</h1>
-                    <div className="providers">
-                        {providers}
-                        <div class="previous round">&#8249;</div>
-                        <div class="next round">&#8250;</div>
-                    </div>
-                    
-                </div>
-                <div className="footer">
-                    <h1>footer</h1>
-
-                </div> */}
-               
+                    <Footer/>
+                </div>             
             </div>
         )
     }
