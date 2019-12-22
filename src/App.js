@@ -7,6 +7,7 @@ import Mpesa from "./Mpesa"
 import Covers from "./Covers";
 import FrontPage from "./frontPage";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import SideNav from "./SideNav"
 
 
 import dotenv from "dotenv"
@@ -26,7 +27,8 @@ class App extends React.Component {
   
   componentDidMount() {
     this.setState({
-      chosenProduct: null
+      chosenProduct: null,
+      isOpen: false
     })
     
   }
@@ -56,20 +58,37 @@ class App extends React.Component {
 
   }
 
-  handleToggle = () => {
+
+  handleMenuOpen = ()=>{
     this.setState({
-      isOpen: !this.state.isOpen
-    });
-  };
+      isOpen: true
+    })
+  }
+
+  handleMenuClose = ()=>{
+    this.setState({
+      isOpen: false
+    })
+  }
 
   render(){
   return (
     <Router>
-    <header className="App-header">    
-
-        
-    </header>
+      <SideNav close={this.handleMenuClose} open={this.state.isOpen}/>
+    
     <div className="App">
+    <header className="App-header">
+      <div>
+        Insurance
+      </div>
+        
+      <div onClick={this.handleMenuOpen}>
+      <div className="menu"></div>
+      <div className="menu"></div>
+      <div className="menu"></div>
+      </div>
+          
+    </header>
     
       
       <Switch>

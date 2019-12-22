@@ -100,6 +100,8 @@ class FrontPage extends React.Component {
             })
         }
 
+
+
         return(
             <div className="front-page">
                 <div className="cover-page">

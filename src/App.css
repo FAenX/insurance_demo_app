@@ -1,3 +1,7 @@
+#root {
+ 
+}
+
 .App {
   display: flex;
   flex-flow: column;
@@ -9,65 +13,84 @@
 
 .App-header {
   background-color: #045a69;
-  min-height: 10vh;
+  min-height: 7vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   color: white;
+  padding: 1rem;
 }
 
 .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+  position: absolute;
+  min-height: 100vh;
+  max-width: 70vw;
+  min-width: 70vw;
+  background-color: #ffffff;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
+.closebtn {
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+
 }
 
-#main {
-  transition: margin-left .5s;
-  padding: 16px;
+.nav-items {
+  display: flex;
+  flex-flow: column;
+  padding: 2rem;
+  font-weight: 600;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+.nav-item {
+  padding: 5px;
+
+}
+
+.nav-item:hover {
+  background-color: #045a691c
+
+}
+
+.menu {
+  width: 30px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
 }
 
 .cover-page {
   display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+  flex-flow: column;  
   min-height: 100vh;
+  color: #045a69;
+  font-weight: 700;
+  font-stretch: expanded;
 }
+
+.home {
+  display: flex;
+  flex-direction: row;
+  min-width: 100vw;
+}
+
+.welcome-text {
+  max-width: 50vh;
+  margin-left: 10vw;
+  font-size: 1em;
+  text-align: left;
+  margin-top: 20vh;
+}
+
+.welcome-text .btn {
+
+}
+
 
 .highlights {
   display: flex;
@@ -156,24 +179,6 @@ h1{
   background-color: #045a6960;
 }
 
-.home {
-  display: flex;
-  flex-direction: row;
-  align-items: left;
-  text-align: left;
-  min-width: 100vw;
-}
-
-.welcome-text {
-  max-width: 50vh;
-  align-self: flex-start;
-  margin-left: 10vw;
-  font-size: 1em;
-}
-
-.welcome-text .btn {
-
-}
 
 .products {
   display: flex;
@@ -297,8 +302,4 @@ h1{
   flex-flow: row;
   align-items: center;
   justify-content: space-between;
-}
-
-.footer {
-  
 }
