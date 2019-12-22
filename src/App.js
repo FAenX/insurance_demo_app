@@ -6,8 +6,8 @@ import PaymentOptions from "./PaymentOptions"
 import Mpesa from "./Mpesa"
 import Covers from "./Covers";
 import FrontPage from "./frontPage";
-import {Navbar} from "react-bootstrap";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+
 
 import dotenv from "dotenv"
 dotenv.config()
@@ -19,7 +19,8 @@ class App extends React.Component {
     this.state = {
       chosenProduct: null,
       quotation: "",
-      chosenPaymentOption: ""
+      chosenPaymentOption: "",
+      isOpen: false
     }
   }
   
@@ -55,27 +56,22 @@ class App extends React.Component {
 
   }
 
+  handleToggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+
   render(){
   return (
     <Router>
-    <header className="App-header">
-    
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">
-          <img
-            alt=""
-            src="/logo.svg"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />{' '}
-          React Bootstrap
-        </Navbar.Brand>
-      </Navbar>
-   
+    <header className="App-header">    
+
+        
     </header>
     <div className="App">
-     
+    
+      
       <Switch>
       <Route exact path='/' render = {(props) => <FrontPage {...props} />}/>
           <Route exact path='/covers' render = {(props) => <Covers {...props} chosenProduct={this.handleChosenProduct}/>}/>

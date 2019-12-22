@@ -105,7 +105,7 @@ class FrontPage extends React.Component {
                        <Button variant="danger" onClick={this.handleSubmit}>Get quote</Button>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                     <h1>What we sell</h1>
                     <div className="highlights">
                         {highlights}
@@ -137,7 +137,7 @@ class FrontPage extends React.Component {
                 <div className="footer">
                     <h1>footer</h1>
 
-                </div>
+                </div> */}
                
             </div>
         )
