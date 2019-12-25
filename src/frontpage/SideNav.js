@@ -1,4 +1,5 @@
 import React from "react"
+import {withRouter} from  "react-router-dom";
 
 
 
@@ -6,6 +7,7 @@ class SideNav extends React.Component {
     constructor(props){
         super(props)
         this.state={
+            active: "",
             style: {
                 display: "none"
             }
@@ -17,8 +19,33 @@ class SideNav extends React.Component {
         this.props.close();
     }
 
+    handleLoginNav = () =>{
+        this.props.history.push("/login")
+    }
+
+    handleSignUpNav = () =>{
+        this.props.history.push("/signup")
+    }
+    
+    handleDashNavClick =(event)=>{
+        
+        this.setState({
+            active: event.target.id
+        })
+        
+        this.props.history.push(`/${event.target.id}`)
+        
+    }
     render(){
         let style;
+        let dashboardNavs;
+        
+
+        if (this.props.isLoggedIn === true){
+            dashboardNavs = <div className="nav-items">                    
+                                <p id="dashboard" onClick={this.handleDashNavClick}>My dashboard</p>            
+                            </div>
+        }
        
         if (this.props.open===true){            
             style = {display: "block"}           
@@ -30,12 +57,14 @@ class SideNav extends React.Component {
             <div className="sidenav" style={style}>
                 <div className="closebtn" onClick={this.handleClose}>&times;</div>
                 <div className="nav-items">                    
-                    <p className="nav-item">Home</p>
-                    <p className="nav-item">Insurance covers</p>
-                    <p className="nav-item">Claim</p>
-                    <p className="nav-item">Who are we?</p>
-                    <p className="nav-item">Log in</p>  
-                    <p className="nav-item">Sign up</p>                    
+                    <div id="home" className="nav-item" onClick={this.handleDashNavClick} >Home</div>
+                    <p id ="covers" className="nav-item" onClick={this.handleDashNavClick}>Insurance covers</p>
+                    <p id = "claim" className="nav-item" onClick={this.handleDashNavClick}>Claim</p>
+                    <p id = "whoarewe" className="nav-item" onClick={this.handleDashNavClick}>Who are we?</p>
+                    <p id = "signin" className="nav-item" onClick={this.handleLoginNav}>Log in</p>  
+                    <p id ="signup" className="nav-item" onClick={this.handleSignUpNav}>Sign up</p> 
+                    <p id ="signup" className="nav-item" onClick={this.handleSignUpNav}>Sign out</p>  
+                    <div>{dashboardNavs}</div>                 
                 </div>
                
             </div>   
@@ -43,4 +72,4 @@ class SideNav extends React.Component {
     }
 }
 
-export default SideNav;
+export default withRouter(SideNav);

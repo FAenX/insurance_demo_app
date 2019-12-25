@@ -9,6 +9,11 @@ import FrontPage from "./frontpage/frontPage";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import SideNav from "./frontpage/SideNav"
 import Footer from "./Footer";
+import SignIn from "./auth/SignIn"
+import SignUp from "./auth/SignUp"
+import Dashboard from "./auth/dashboard/Dashboard"
+import IconButton from "@material-ui/core/IconButton"
+import MenuIcon from "@material-ui/icons/Menu"
 
 
 import dotenv from "dotenv"
@@ -22,7 +27,8 @@ class App extends React.Component {
       chosenProduct: null,
       quotation: "",
       chosenPaymentOption: "",
-      isOpen: false
+      isOpen: false,
+      isLoggedIn: false,
     }
   }
   
@@ -59,6 +65,12 @@ class App extends React.Component {
 
   }
 
+  handleLoginLogout =()=>{
+    this.setState({
+      isLoggedIn: true
+    })
+  }
+
 
   handleMenuOpen = ()=>{
     this.setState({
@@ -75,25 +87,28 @@ class App extends React.Component {
   render(){
   return (
     <Router>
-      <SideNav close={this.handleMenuClose} open={this.state.isOpen}/>
+      <SideNav isLoggedIn={this.state.isLoggedIn} close={this.handleMenuClose} open={this.state.isOpen}/>
     
     <div className="App">
+      
+     
     <header className="App-header">
-      <div>
+      <div className="logo">
         Insurance
       </div>
-        
-      <div onClick={this.handleMenuOpen}>
-      <div className="menu"></div>
-      <div className="menu"></div>
-      <div className="menu"></div>
-      </div>
-          
+      <div onClick={this.handleMenuOpen}> 
+        <IconButton edge="start" color="inherit" aria-label="menu">
+          <MenuIcon />
+        </IconButton>
+      </div>      
     </header>
     
       
       <Switch>
-      <Route exact path='/' render = {(props) => <FrontPage {...props} />}/>
+          <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+          <Route exact path='/login' render = {(props) => <SignIn {...props} login={this.handleLoginLogout}/>}/>
+          <Route exact path='/signup' render = {(props) => <SignUp {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+          <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           <Route exact path='/covers' render = {(props) => <Covers {...props} chosenProduct={this.handleChosenProduct}/>}/>
           <Route exact path='/rates' render = {(props) => <Rates {...props} chosenProduct= {this.state.chosenProduct} handleRequest={this.handleQuotationRequest}/>}/>
           <Route exact path='/quotation' render = {(props) => <Quotation {...props} data={this.state}/>}/>

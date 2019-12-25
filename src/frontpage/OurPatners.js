@@ -1,5 +1,5 @@
 import React from "react"
-import {Card} from "react-bootstrap";
+import Paper from '@material-ui/core/Paper';
 import apa from "../assets/images/apa.png"
 
 
@@ -39,23 +39,23 @@ class OurPatners extends React.Component{
 
         if (this.state.providers) {
             providers = this.state.providers.map(i => {
-                    return <div key={i.name} className="provider">
-                        <div>{i.name}</div>
-                        <div><img alt="logo" src={apa}/></div>
-                    </div>
+                    return <Paper elevation={3} key={i.name} className="provider">
+                            <div>{i.name}</div>
+                            <div><img alt="logo" src={apa}/></div>
+                            </Paper>
             })
         }
 
         return(
             <div className="providers-wrapper">
                 <p>Our patners include:</p>
-                <Card>
+                <div>
                     <div className="providers"> {providers} </div>
                     <div className="scroller">
                     <div className="previous round"><div>&#8249;</div></div>
                     <div className="next round"><div>&#8250;</div></div>
                 </div>
-                </Card>
+                </div>
             </div> 
         )
     }

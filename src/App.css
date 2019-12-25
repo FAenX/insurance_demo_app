@@ -1,6 +1,7 @@
 #root {
- color: #045a69;
+ color: #001929;
 }
+
 
 .App {
   display: flex;
@@ -14,15 +15,20 @@
 
 
 .App-header {
-  background-color: #045a69;
-  min-height: 7vh;
+  background-color: #001929d0;
+  min-height: 5vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  color: white;
+  color: #f60;
   padding: 1rem;
 }
+
+.logo {
+  font-size: 2rem; 
+}
+
 
 .sidenav {
   position: absolute;
@@ -69,6 +75,7 @@
 .front-page {
   display: flex;
   flex-flow: column;
+  
 }
 
 .cover-page {
@@ -76,56 +83,197 @@
   flex-flow: column;  
   justify-content: center;
   min-height: 100vh;
-  color: #045a69;
   font-weight: 700;
-  background-image: url(./assets/images/cover_bg.jpg);
-  background-repeat: no-repeat;
-  background-size: 200vw 50vh;
+  background-image: url(./assets/images/trana.png);
+  background-position-x: 30rem;
+  background-color: #001929b7;
+  background-repeat: no-repeat;  
+  
 }
 
 .home {
   display: flex;
   flex-direction: column;
-  min-width: 100vw;
+  justify-content: center;
+  margin-left: 3rem;
+  max-width: 50vw;
+  text-align: left;
+  
+  
 }
 
 
-.welcome-text {
+.headline-text {
   display: flex;
   flex-flow: column;
-  
-  margin-left: 10vw;
+  justify-content: space-between;  
   margin-right: 10vw;
-  font-size: 1em;
-  text-align: left;
+  margin-bottom: 3rem;
+  color: #ffffff;
+  
+  
 }
 
-.welcome-text h1 {
-  font-weight: 800;
-  font-size: 2em;
-
-}
-
-.welcome-text p {
-  font-weight: 300;
-  line-height: 2rem;
-
+.headline-subtext {
+  font-weight: 600;
+  max-width: 30vw;
+  color: #ffffff;
+  
 }
 
 .home-buttons {
   display: flex;
   flex-flow: row;
-  margin-left: 5vh;
   
 }
 
-.home-buttons button{
+.get-started-button button{
+  background: #f60;
   margin-right: 1rem;
 }
 
-.home-buttons .btn{
-  font-size: .75rem;
+.free-quotation-button button{
+  color: #ffffff;
+  background-color: #001929;
 }
+
+.how-it-works {
+  display: flex;
+  flex-flow: row wrap; 
+  justify-content: space-between; 
+  align-items: center;
+  min-height: 80vh;
+  margin-top: 3rem;
+  
+}
+
+.step {
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+  height: 90vh;
+  width: 40vh;
+  margin: 1rem;
+}
+
+.step-text {
+  
+}
+
+.step-header img{
+  display: inline;
+  padding: 1rem;
+  
+}
+
+.sub-header h1{
+  font-size: 2rem;
+}
+
+.step-header{
+  margin-bottom: 1rem;
+  border-left: #f60 solid .05rem;
+  border-bottom: #f60 solid .05rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+
+
+
+
+.page2-cover {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  background-color: #001929c4;
+  min-height: 40vh;
+}
+
+
+.page2-headline-text {
+  display: flex;
+  flex-flow: column;
+  justify-content: baseline;
+  justify-content: space-between;  
+  margin-left: 2rem;
+  max-width: 50vw;
+  color: white;
+  text-align: left;
+}
+
+.page2-headline-text button {
+  background-color: #f60;
+}
+
+@media screen and (max-width: 600px)  {
+  .home{
+    min-width: 100vw;
+  }
+  .home-buttons button{
+    font-size: .6rem;
+  }
+  .cover-page{
+    background-position-x: 5vh;
+    background-position-y: 30vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .page2-cover {
+    background-position-x: -150vh;
+    background-position-y: -20vh;
+
+  }
+  .page2-headline-text {
+    min-width: 100vw;   
+
+  }
+
+  .headline-text{
+    min-width: 70vw;
+    max-width: 80vw;
+    margin-right: 2rem;
+
+  }
+
+  .headline-subtext{
+    max-width: 30vh;
+    
+  }
+
+ }
+
+ @media screen and (max-width: 400px)  {
+  .cover-page{
+    background-position-x: -100vh;
+    background-position-y: 25vh;
+    
+  }
+
+  .home {
+    margin-left: .5rem;
+    min-height: 60vh;
+    
+    
+  }
+  .headline-text {
+    font-size: 1rem;
+    
+  }
+  .headline-subtext {
+    margin-bottom: 5rem;
+    font-size: .75rem;
+    font-weight: 500;
+    word-spacing: .25rem;
+
+
+  }
+  
+  
+ }
+
+
+
 
 .previous {
   display: flex;
@@ -198,100 +346,206 @@
 }
 
 
-.highlights {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-}
-
-h1{
-  margin-top: 2rem;
-}
-
-.highlight {
-  height: 40vh;
-  width: 40vh;
-}
-
-.sub-category {
-  font-size: 4vh;
-}
-
-.highlight img{
-  max-height: 15vh;
-  max-width: 150vh;
-}
-
-.how-it-works {
-  display: flex;
-  flex-flow: column; 
-  justify-content: space-between; 
-  align-items: center;
-  min-height: 80vh;
-}
-
-.step {
-  display: flex;
-  flex-flow: column;
-  height: 90vh;
-  width: 40vh;
-  margin: 1rem;
-}
-
-.step img{
-  padding: 1rem;
-  height: 40vh;
-  width: 40vh;
-}
-
-.sub-header h1{
-  font-size: 2rem;
-}
-
-.step-header{
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
 .footer {
   min-height:25vh;
   min-width: 100vw;
-  background-color: #045a697e;
+  background-color: #001929c4;
+}
+
+/* sign in */
+
+.signin-page {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.signin-wrapper {
+  min-width: 50vw;
+  max-width: 80vw;
+  min-height: 60vh;
+  margin-top: 3rem;
+}
+
+.signup-page {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.signup-wrapper {
+  min-width: 40vw;
+  min-height: 80vh;
+  margin-top: 3rem;
+}
+
+.signup-names-flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+}
+
+.signup-names-flex input{
+  max-width: 300px;
+}
+
+.signin-button p{
+  margin-top: 1rem;
+}
+
+/* dashboard */
+.dashboard {
+  display: flex;
+  text-align: left;
+
+}
+
+.dash-nav-item {
+  padding: 1rem;
+}
+
+.dashboard-wrapper {
+  display: flex;
+  flex-flow: column;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.dashboard-nav{
+  margin: 1rem;
+
+}
+
+.dash-side-nav-items {
+  display: flex;
+  flex-flow: column;
+  font-weight: 600;  
+}
+
+.dashboard-main{
+  display: flex;
+  flex-flow: column;
+  padding: 2rem;
+  font-weight: 600;
+  padding: 2rem;
+  min-width: 100vw;
+}
+
+.profile {
+  display: flex;
+  flex-flow: column;
 }
 
 
-.products {
+/*  */
+
+.covers-list {
+  display: flex;
+  flex-flow: column;
+}
+
+.cover {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  text-align: left;
+  margin: 2rem;
 }
 
 .covers {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
+.covers-wrapper {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.cover2-page {
+  display: flex;
+  flex-flow: column;
+  text-align: left;
+  min-height: 100vh;
+  color: #057275;
+  
+}
 .cover-scope {
   text-align: left;
-}
-
-.card {
   padding: 1rem;
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
+.cover-scope h2 {
+  margin: .5rem;
+  font-size: 1rem;
 }
 
-.card-body button{
-  align-self: flex-end;
+.cover-scope div{
+  text-align: left;
+  margin: .5rem;
+  font-size: 1rem;
 }
+
+.page2-menu{
+ position: relative;
+ right: 10px;
+ float: left;
+ margin: 1rem;
+}
+
+.highlights {
+  display: flex;
+  flex-flow: column;
+  margin: 1.5vh;
+  height: 100vh;
+}
+
+.highlight {
+  display: flex;
+  flex-flow: column;
+  text-align: left;
+  margin: 1rem;
+ 
+}
+
+.highlight-title {
+  border-left: .15rem #f60 solid; 
+  font-size: 1.5rem;
+  padding-left: .25rem;
+  margin: 1.5rem;
+}
+
+.highlight-button {
+  margin-top: 2.5rem;
+}
+
+.highlight-card {
+  margin: 1rem;
+}
+
+
+
+@media screen and (max-width: 400px)  {
+  
+}
+
+@media screen and (max-width: 600px)  {
+  .highlight-card {
+    min-height: 50vh;
+  }
+}
+
+
+
 
 .quote-form {
   display: flex;
@@ -314,9 +568,6 @@ h1{
 .quotation h1{
   text-align: center;
 }
-.card {
-  margin:5px;
-}
 
 .payments-page {
   display: flex;
@@ -324,19 +575,6 @@ h1{
   justify-content: space-around;
   flex-grow: 3;
   
-}
-.userprofile {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: 2rem;
-}
-
-.userprofile img{
-  width: 200px;
-  height: 200px;
 }
 
 .payments-page div:nth-of-type(1) {flex-grow: 3;}
