@@ -1,11 +1,12 @@
 import React from 'react';
 import { Alert } from "react-bootstrap"
-import Card from "@material-ui/core/Card"
+import Paper from "@material-ui/core/Paper"
 import {withRouter} from "react-router-dom"
 import Button from "@material-ui/core/Button"
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import image1 from "../assets/images/image1.png"
 
 class Covers extends React.Component {
     constructor(props){
@@ -107,23 +108,23 @@ class Covers extends React.Component {
 
         if (this.state.subCategories) {
             highlights = this.state.subCategories.map(i => {
-                    return<Card variant="outlined" className="highlight-card">
+            return<Paper className="highlight-card">
+            
+                    <div  className="highlight">                           
+                
+                    <div className="highlight-title">{i.name}</div>
+                    <div className="highlight-text">
+                        Build a bench of trusted, skilled and certified IT 
+                        techs so you can become a full-service partner to more 
+                        of your customers.
+                    </div> 
+                    <div className="highlight-button" >
+                        <Button id={i.alias} onClick={this.handleRedirect}>Learn more</Button>
+                    </div> 
+                        
                     
-                                <div  className="highlight">                           
-                            
-                                <div className="highlight-title">{i.name}</div>
-                                <div className="highlight-text">
-                                    Build a bench of trusted, skilled and certified IT 
-                                    techs so you can become a full-service partner to more 
-                                    of your customers.
-                                </div> 
-                                <div className="highlight-button" >
-                                    <Button >Learn more</Button>
-                                </div>                                                     
-                            
-                            
-                            </div> 
-                            </Card>
+                </div> 
+                </Paper>
             })
         }
         

@@ -174,7 +174,7 @@ class Rates extends React.Component {
         } 
 
         return(
-            <div className="products">
+            <div className="rates">
                 <div>{quoteAlert}</div>
                 <div> 
                     <p><b>Request quotation for: </b></p>

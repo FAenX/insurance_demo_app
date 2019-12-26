@@ -14,6 +14,7 @@ import SignUp from "./auth/SignUp"
 import Dashboard from "./auth/dashboard/Dashboard"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
+import logo from "./logo.svg"
 
 
 import dotenv from "dotenv"
@@ -94,9 +95,6 @@ class App extends React.Component {
           <MenuIcon />
         </IconButton>
       </div>   
-      <div className="logo">
-        Insurance
-      </div>
 
       <div className="nav-login">
         Sign in

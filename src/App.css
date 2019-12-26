@@ -15,23 +15,17 @@
 
 
 .App-header {
-  background-color: #001929d0;
+  background-color: #001929e1;
   min-height: 5vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   color: #f60;
-  padding: 1rem;
+  padding: .5rem;
   
 }
 
-.logo {
-  font-size: 2rem; 
-  border: #f60 solid .05rem;
-  padding: .25rem;
-  font-size: 1rem;
-}
 
 
 .sidenav {
@@ -456,14 +450,7 @@
   align-items: center;
 }
 
-.cover2-page {
-  display: flex;
-  flex-flow: column;
-  text-align: left;
-  min-height: 100vh;
-  color: #057275;
-  
-}
+
 .cover-scope {
   text-align: left;
   padding: 1rem;
@@ -480,33 +467,23 @@
   font-size: 1rem;
 }
 
-.page2-menu{
- position: relative;
- right: 10px;
- float: left;
- margin: 1rem;
-}
-
 .highlights {
   display: flex;
   flex-flow: column;
-  margin: 1.5vh;
-  height: 100vh;
 }
 
 .highlight {
   display: flex;
   flex-flow: column;
   text-align: left;
-  margin: 1rem;
- 
 }
+
 
 .highlight-title {
   border-left: .15rem #f60 solid; 
   font-size: 1.5rem;
   padding-left: .25rem;
-  margin: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 .highlight-button {
@@ -515,6 +492,8 @@
 
 .highlight-card {
   margin: 1rem;
+  display: flex;
+  flex-flow: column;
 }
 
 
@@ -525,8 +504,16 @@
 
 @media screen and (max-width: 600px)  {
   .highlight-card {
-    min-height: 50vh;
+    
   }
+}
+
+.rates {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 
