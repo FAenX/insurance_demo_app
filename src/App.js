@@ -89,20 +89,25 @@ class App extends React.Component {
       
      
     <header className="App-header">
-      <div className="logo">
-        Insurance
-      </div>
-      <div onClick={this.toggleDrawer(true)}> 
+    <div onClick={this.toggleDrawer(true)}> 
         <IconButton edge="start" color="inherit" aria-label="menu">
           <MenuIcon />
         </IconButton>
-      </div>      
+      </div>   
+      <div className="logo">
+        Insurance
+      </div>
+
+      <div className="nav-login">
+        Sign in
+      </div>
+         
     </header>
     
       
       <Switch>
           <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-          <Route exact path='/login' render = {(props) => <SignIn {...props} login={this.handleLoginLogout}/>}/>
+          <Route exact path='/signin' render = {(props) => <SignIn {...props} login={this.handleLoginLogout}/>}/>
           <Route exact path='/signup' render = {(props) => <SignUp {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           <Route exact path='/covers' render = {(props) => <Covers {...props} chosenProduct={this.handleChosenProduct}/>}/>

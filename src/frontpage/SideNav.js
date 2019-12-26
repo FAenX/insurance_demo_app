@@ -1,23 +1,11 @@
 import React from 'react';
+import {withRouter} from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-
-const useStyles = makeStyles({
-  list: {
-    width: "100vh",
-  },
-  fullList: {
-    width: 'auto',
-  },
-});
 
 class SideBar extends React.Component {
 
@@ -33,6 +21,19 @@ class SideBar extends React.Component {
         }
         
     }
+
+    handleRedirectOnClick = (event)=>{
+        let target; 
+        if (event.target.id) {
+            target = event.target.id
+        }else{
+            target = event.target.parentNode.id
+        }
+       
+        this.props.history.push(`/${target}`)
+    }
+
+
 
     
     render(){
@@ -50,36 +51,36 @@ class SideBar extends React.Component {
             onKeyDown={this.props.toggleDrawer(false)}
             >
                     <List>               
-                        <ListItem button>                       
-                            <ListItemText  primary="Home"/>
+                        <ListItem button  id="home" onClick={this.handleRedirectOnClick}>                       
+                            <ListItemText id="home" primary="Home"/>
                         </ListItem>
                         <Divider />
-                        <ListItem button>                       
-                            <ListItemText  primary="Insurance Covers"/>
+                        <ListItem button id="covers" onClick={this.handleRedirectOnClick}>                       
+                            <ListItemText  id="covers" primary="Insurance Covers"/>
                         </ListItem>
                         <Divider />
-                        <ListItem button>                       
-                            <ListItemText  primary="Claim"/>
+                        <ListItem button id="claim" onClick={this.handleRedirectOnClick}>                       
+                            <ListItemText  id="claim" primary="Claim"/>
                         </ListItem>
                         <Divider />
-                        <ListItem button>                       
-                            <ListItemText  primary="Who are we"/>
+                        <ListItem button id="whoarewe" onClick={this.handleRedirectOnClick}>                       
+                            <ListItemText  id="whoarewe" primary="Who are we"/>
                         </ListItem>
                         <Divider />                   
-                        <ListItem button >                        
-                            <ListItemText primary="Sign up"/>
+                        <ListItem button id="signup" onClick={this.handleRedirectOnClick}>                        
+                            <ListItemText id="signup" primary="Sign up"/>
                         </ListItem>
                         <Divider />
-                        <ListItem button >                        
-                            <ListItemText primary="Sign in"/>
+                        <ListItem button id="signin" onClick={this.handleRedirectOnClick}>                        
+                            <ListItemText id="signin" primary="Sign in"/>
                         </ListItem>
                         <Divider />
-                        <ListItem button >                        
-                            <ListItemText primary="Dashboard"/>
+                        <ListItem button id="dashboard" onClick={this.handleRedirectOnClick}>                        
+                            <ListItemText id="dashboard" primary="Dashboard"/>
                         </ListItem>  
                         <Divider />                      
-                        <ListItem button >                        
-                            <ListItemText primary="Sign out"/>
+                        <ListItem button id="signout" onClick={this.handleRedirectOnClick}>                        
+                            <ListItemText id="signout" primary="Sign out"/>
                         </ListItem> 
                         <Divider />   
                         </List>
@@ -91,4 +92,4 @@ class SideBar extends React.Component {
     }
 }
 
-export default SideBar;
+export default withRouter(SideBar);

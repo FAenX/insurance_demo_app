@@ -23,10 +23,14 @@
   justify-content: space-between;
   color: #f60;
   padding: 1rem;
+  
 }
 
 .logo {
   font-size: 2rem; 
+  border: #f60 solid .05rem;
+  padding: .25rem;
+  font-size: 1rem;
 }
 
 
