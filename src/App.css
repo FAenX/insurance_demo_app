@@ -31,10 +31,7 @@
 
 
 .sidenav {
-  position: absolute;
-  min-height: 100vh;
-  max-width: 70vw;
-  min-width: 70vw;
+  min-width: 100vw;
   background-color: #ffffff;
 }
 
@@ -140,7 +137,7 @@
 .how-it-works {
   display: flex;
   flex-flow: row wrap; 
-  justify-content: space-between; 
+  justify-content: center; 
   align-items: center;
   min-height: 80vh;
   margin-top: 3rem;
@@ -151,23 +148,19 @@
   display: flex;
   flex-flow: column;
   padding: 1rem;
-  height: 90vh;
-  width: 40vh;
+  width: 30vh;
   margin: 1rem;
 }
 
-.step-text {
+.step-header {
+  margin-top: 2rem;
   
 }
 
-.step-header img{
-  display: inline;
-  padding: 1rem;
-  
-}
 
-.sub-header h1{
-  font-size: 2rem;
+.how-it-works-sub-header h1{
+  font-size: 4rem;
+  margin-top: 3rem;
 }
 
 .step-header{
@@ -272,36 +265,6 @@
   
  }
 
-
-
-
-.previous {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f8fbfcc0;
-  color: rgb(7, 7, 7);
-  font-size: 2vh;
-  border: thin solid;
-}
-
-.next {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #045a69c0;
-  color: white;
-  font-size: 2vh;
-  
-}
-
-.round {
-  border-radius: 50%;
-  height: 5vh;
-  width: 5vh;
-  margin: 1rem;
-}
-
 .scroller {
   display: flex;
   flex-flow: row;
@@ -311,9 +274,20 @@
 .providers-wrapper {
   display: flex;
   flex-flow: column;
+  justify-content: center;
+  align-items: center;
   color: #045a69;
   margin: 1rem;
 
+}
+
+.providers-headline {
+  margin-top: 2rem;
+}
+
+.providers-headline p{
+ color: #0019298f;
+ font-size: 1rem;
 }
 
 .providers {
@@ -321,10 +295,6 @@
   justify-content: center;
   overflow-x: auto; 
   -webkit-overflow-scrolling: touch;
-}
-
-.providers-wrapper p {
-  font-size: 2rem;
 }
 
 .providers::-webkit-scrollbar {
@@ -345,11 +315,22 @@
   width: 25vh;
 }
 
+/* footer */
 
-.footer {
-  min-height:25vh;
+.footer-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+  min-height:15vh;
   min-width: 100vw;
   background-color: #001929c4;
+}
+
+.footer-wrapper p{
+
 }
 
 /* sign in */

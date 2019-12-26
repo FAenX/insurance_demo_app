@@ -38,7 +38,7 @@ class FrontPage extends React.Component {
             <div className="front-page">
                 <div className="cover-page">
                     
-                        <Home/>
+                    <Home/>
                    
                 </div>
             

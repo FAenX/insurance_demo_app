@@ -48,14 +48,11 @@ class OurPatners extends React.Component{
 
         return(
             <div className="providers-wrapper">
-                <p>Our patners include:</p>
-                <div>
-                    <div className="providers"> {providers} </div>
-                    <div className="scroller">
-                    <div className="previous round"><div>&#8249;</div></div>
-                    <div className="next round"><div>&#8250;</div></div>
+                <div className="providers-headline">
+                    <h1>Our Insurance Patners</h1>
+                    <p>With over 12 insurers to choose from, Name works actively to find an ideal plan for you</p>
                 </div>
-                </div>
+                <div className="providers"> {providers} </div>
             </div> 
         )
     }

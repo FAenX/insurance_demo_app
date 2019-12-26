@@ -1,75 +1,94 @@
-import React from "react"
-import {withRouter} from  "react-router-dom";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
 
+const useStyles = makeStyles({
+  list: {
+    width: "100vh",
+  },
+  fullList: {
+    width: 'auto',
+  },
+});
 
+class SideBar extends React.Component {
 
-class SideNav extends React.Component {
     constructor(props){
         super(props)
         this.state={
             active: "",
             style: {
                 display: "none"
-            }
+            },
+            left: false,
 
         }
+        
     }
 
-    handleClose = () => {
-        this.props.close();
-    }
-
-    handleLoginNav = () =>{
-        this.props.history.push("/login")
-    }
-
-    handleSignUpNav = () =>{
-        this.props.history.push("/signup")
-    }
     
-    handleDashNavClick =(event)=>{
-        
-        this.setState({
-            active: event.target.id
-        })
-        
-        this.props.history.push(`/${event.target.id}`)
-        
-    }
     render(){
-        let style;
-        let dashboardNavs;
+    return (
+        <div>
+        <SwipeableDrawer
+            open={this.props.drawer}
+            onClose={this.props.toggleDrawer(false)}
+            onOpen={this.props.toggleDrawer(true)}
+        >
+            <div  
+            className="sidenav" 
+            role="presentation"  
+            onClick={this.props.toggleDrawer(false)} 
+            onKeyDown={this.props.toggleDrawer(false)}
+            >
+                    <List>               
+                        <ListItem button>                       
+                            <ListItemText  primary="Home"/>
+                        </ListItem>
+                        <Divider />
+                        <ListItem button>                       
+                            <ListItemText  primary="Insurance Covers"/>
+                        </ListItem>
+                        <Divider />
+                        <ListItem button>                       
+                            <ListItemText  primary="Claim"/>
+                        </ListItem>
+                        <Divider />
+                        <ListItem button>                       
+                            <ListItemText  primary="Who are we"/>
+                        </ListItem>
+                        <Divider />                   
+                        <ListItem button >                        
+                            <ListItemText primary="Sign up"/>
+                        </ListItem>
+                        <Divider />
+                        <ListItem button >                        
+                            <ListItemText primary="Sign in"/>
+                        </ListItem>
+                        <Divider />
+                        <ListItem button >                        
+                            <ListItemText primary="Dashboard"/>
+                        </ListItem>  
+                        <Divider />                      
+                        <ListItem button >                        
+                            <ListItemText primary="Sign out"/>
+                        </ListItem> 
+                        <Divider />   
+                        </List>
+            </div>
+        </SwipeableDrawer>
         
-
-        if (this.props.isLoggedIn === true){
-            dashboardNavs = <div className="nav-items">                    
-                                <p id="dashboard" onClick={this.handleDashNavClick}>My dashboard</p>            
-                            </div>
-        }
-       
-        if (this.props.open===true){            
-            style = {display: "block"}           
-        }else if (this.props.open===false){
-            style = this.state.style
-        }
-
-        return(
-            <div className="sidenav" style={style}>
-                <div className="closebtn" onClick={this.handleClose}>&times;</div>
-                <div className="nav-items">                    
-                    <div id="home" className="nav-item" onClick={this.handleDashNavClick} >Home</div>
-                    <p id ="covers" className="nav-item" onClick={this.handleDashNavClick}>Insurance covers</p>
-                    <p id = "claim" className="nav-item" onClick={this.handleDashNavClick}>Claim</p>
-                    <p id = "whoarewe" className="nav-item" onClick={this.handleDashNavClick}>Who are we?</p>
-                    <p id = "signin" className="nav-item" onClick={this.handleLoginNav}>Log in</p>  
-                    <p id ="signup" className="nav-item" onClick={this.handleSignUpNav}>Sign up</p> 
-                    <p id ="signup" className="nav-item" onClick={this.handleSignUpNav}>Sign out</p>  
-                    <div>{dashboardNavs}</div>                 
-                </div>
-               
-            </div>   
-        )
+        </div>
+    );
     }
 }
 
-export default withRouter(SideNav);
+export default SideBar;

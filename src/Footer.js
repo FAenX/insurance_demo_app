@@ -8,8 +8,8 @@ class Footer extends React.Component {
 
     render(){
         return(
-            <div className="footer">
-                
+            <div className="footer-wrapper">
+               <p>Name Insurance Brokers (EA) Ltd.  ©  2018 All rights reserved.  |  Powered by TechRafiki Solutions</p>
             </div>
         )
     }

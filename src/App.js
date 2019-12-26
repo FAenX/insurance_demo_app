@@ -27,6 +27,7 @@ class App extends React.Component {
       chosenProduct: null,
       quotation: "",
       chosenPaymentOption: "",
+      //drawer
       isOpen: false,
       isLoggedIn: false,
     }
@@ -72,22 +73,17 @@ class App extends React.Component {
   }
 
 
-  handleMenuOpen = ()=>{
-    this.setState({
-      isOpen: true
-    })
-  }
-
-  handleMenuClose = ()=>{
-    this.setState({
-      isOpen: false
-    })
-  }
+  toggleDrawer = (open) => event => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+    }
+    this.setState({ isOpen: open });
+    };
 
   render(){
   return (
     <Router>
-      <SideNav isLoggedIn={this.state.isLoggedIn} close={this.handleMenuClose} open={this.state.isOpen}/>
+      <SideNav isLoggedIn={this.state.isLoggedIn} drawer={this.state.isOpen} toggleDrawer={this.toggleDrawer}/>
     
     <div className="App">
       
@@ -96,7 +92,7 @@ class App extends React.Component {
       <div className="logo">
         Insurance
       </div>
-      <div onClick={this.handleMenuOpen}> 
+      <div onClick={this.toggleDrawer(true)}> 
         <IconButton edge="start" color="inherit" aria-label="menu">
           <MenuIcon />
         </IconButton>
