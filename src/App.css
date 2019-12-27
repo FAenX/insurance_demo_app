@@ -265,14 +265,29 @@
 }
 
 .providers-carousel {
-  display: flex;
-  width: 100vw;
-  flex-flow: row;
-  overflow: hidden;
+  
 }
 
 .slider-wrapper {
   background-color: white;
+}
+
+/* covers subcategory */
+.cover-wrapper{
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.coversub-cover {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  background-color: #001929c4;
+  min-height: 30vh;
+  text-align: left;
+  padding: 1rem;
+  color: white;
 }
 
 
@@ -289,10 +304,6 @@
   min-height:15vh;
   min-width: 100vw;
   background-color: #001929c4;
-}
-
-.footer-wrapper p{
-
 }
 
 /* sign in */

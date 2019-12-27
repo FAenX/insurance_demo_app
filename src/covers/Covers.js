@@ -3,10 +3,6 @@ import { Alert } from "react-bootstrap"
 import Paper from "@material-ui/core/Paper"
 import {withRouter} from "react-router-dom"
 import Button from "@material-ui/core/Button"
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import image1 from "../assets/images/image1.png"
 
 class Covers extends React.Component {
     constructor(props){
@@ -14,33 +10,12 @@ class Covers extends React.Component {
         this.state = {
             subCategories: "",
             isLoading:false,
-            products:null,
-            chosenProduct: null
+            chosenSub: null
            
         }
     }
     
     componentDidMount = () => {
-        fetch("api/v1/products/", {
-           method: "GET" 
-        }).then((res)=>{
-            if(res.status === 200){
-                res.json().then((data)=>{
-                    console.log(data[0])
-                    this.setState({
-                        products: data[0].products
-                    });
-                }).catch((error)=>{
-                    console.log(error)
-                    console.log(res)
-                })
-            } else {
-                console.log(res)
-            }
-            console.log(res.status)
-        }).catch((err)=>{
-            console.log(err)
-        })
 
         fetch("/api/v1/products/sub-categories/", {
             method: "GET",
@@ -62,47 +37,37 @@ class Covers extends React.Component {
         }).catch((err)=>{
             console.log(err)
         })
-
-    }
-
-
-    // handle submit
-    onSubmitHandler = (event) => {
-        event.preventDefault();
-        console.log(event.target.name)
-        console.log(event.target.value)
         
 
+    } 
+    
+    handleOnClickSub =(event)=>{
+        let target; 
+        if (event.target.id) {
+            target = event.target.id
+        }else{
+            target = event.target.parentNode.id
+        }   
+        
+        console.log(target)
+
         this.setState({
-            isLoading: true,
-            chosenProduct: {
-                chosenProductName: event.target.name,
-                chosenProductAlias: event.target.value
-            }
+            chosenSub: target,
         })
-        console.log(this.state.chosenProduct)
-        setTimeout(()=>{this.props.chosenProduct(this.state.chosenProduct)}, 1000)
 
-       
-        setTimeout(()=>{this.handleRedirect()}, 1000)
-
-
+        setTimeout(()=>{this.handleRedirect()},1000)
     }
 
     // handle redirect after response
-    handleRedirect =()=>{
-        this.props.history.push('/')
+    handleRedirect =()=>{  
+        console.log(this.state)
+        this.props.chosenProduct(this.state)        
+        this.props.history.push('/cover')
         
     }
-
     render(){
        
-        let dataAlert;
-        let covers; 
-        let mainDescription;
-        let bullets;
-        let bull;
-        let coverScope;
+        let dataAlert;            
         let highlights;
         
 
@@ -119,7 +84,7 @@ class Covers extends React.Component {
                         of your customers.
                     </div> 
                     <div className="highlight-button" >
-                        <Button variant="outlined" id={i.alias} onClick={this.handleRedirect}>Learn more</Button>
+                        <Button variant="outlined" id={i.alias} onClick={this.handleOnClickSub}>Learn more</Button>
                     </div> 
                         
                     
@@ -128,24 +93,8 @@ class Covers extends React.Component {
             })
         }
         
-        const description = (text)=>{
-            const splitText = text.split(':')
-            mainDescription = splitText[0]
-            bullets = splitText[1]
-            
-            if (bullets !== undefined){
-                bull = bullets.split('.').filter((value, index, array)=>{
-                    return value !== ""
-                })
-            } else {
-                bull = []
-            }
-            console.log(bull)
 
-        }
-
-
-        if (this.state.products == null){
+        if (this.state.subCategories == null){
             dataAlert = <Alert variant="warning">Sorry no insurance products found</Alert>
         } else {
             

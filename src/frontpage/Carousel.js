@@ -6,7 +6,7 @@ import provider from "../assets/images/apa.png";
 class DemoCarousel extends React.Component {
     render() {
         return (
-            <Carousel width="100vw" infiniteLoop autoPlay swipeable={false}>
+            <Carousel infiniteLoop autoPlay swipeable={true}>
                 
                 <div className="provider">
                 <img alt="" src={provider}/>

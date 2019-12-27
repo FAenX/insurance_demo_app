@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import "./style.scss";
 import Rates from "./covers/Rates"
+import Cover from "./covers/Cover"
 import Quotation from "./covers/Quotation"
 import PaymentOptions from "./payments/PaymentOptions"
 import Mpesa from "./payments/Mpesa"
@@ -109,6 +110,7 @@ class App extends React.Component {
           <Route exact path='/signin' render = {(props) => <SignIn {...props} login={this.handleLoginLogout}/>}/>
           <Route exact path='/signup' render = {(props) => <SignUp {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+          <Route exact path='/cover' render = {(props) => <Cover {...props} chosenSub={this.state.chosenProduct}/>}/>
           <Route exact path='/covers' render = {(props) => <Covers {...props} chosenProduct={this.handleChosenProduct}/>}/>
           <Route exact path='/rates' render = {(props) => <Rates {...props} chosenProduct= {this.state.chosenProduct} handleRequest={this.handleQuotationRequest}/>}/>
           <Route exact path='/quotation' render = {(props) => <Quotation {...props} data={this.state}/>}/>
