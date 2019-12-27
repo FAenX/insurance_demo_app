@@ -213,36 +213,26 @@
 
   }
 
-  .headline-text{
-   
+  .headline-text{   
     margin-right: 2rem;
-
   }
 
   .headline-subtext{
-    max-width: 30vh;
-    
+    max-width: 30vh;    
   }
 
  }
 
  @media screen and (max-width: 400px)  {
-  .cover-page{
-    
-    background-position-y: -20vh;
-    
+  .cover-page{    
+    background-position-y: -20vh;    
   }
 
-  .home {
-    
+  .home {    
     margin-left: .5rem;
-    min-height: 60vh;
-    
-    
+    min-height: 60vh;      
   }
-  .headline-text {
-    
-    
+  .headline-text {       
     font-size: 1rem;
     
   }
@@ -251,31 +241,12 @@
     font-size: .9rem;
     font-weight: 600;
     word-spacing: .25rem;
-
-
   }
   .home-buttons button {
     font-size: .75rem;
   }
   
-  
  }
-
-.scroller {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-}
-
-.providers-wrapper {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  color: #045a69;
-  margin: 1rem;
-
-}
 
 .providers-headline {
   margin-top: 2rem;
@@ -293,23 +264,18 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.providers::-webkit-scrollbar {
-  display: none;
+.providers-carousel {
+  display: flex;
+  width: 100vw;
+  flex-flow: row;
+  overflow: hidden;
 }
 
-.provider {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  margin-right: 1rem;
-  height: 30vh;
-  width: 30vh;
-  
+.slider-wrapper {
+  background-color: white;
 }
-.provider img{
-  height: 25vh;
-  width: 25vh;
-}
+
+
 
 /* footer */
 
@@ -418,6 +384,45 @@
   flex-flow: column;
 }
 
+/* highlights */
+.highlights {
+  display: flex;
+  flex-flow: column;
+}
+
+.highlight {
+  display: flex;
+  flex-flow: column;
+  text-align: left;
+}
+
+
+.highlight-title {
+  border-bottom: .05rem #f60 solid; 
+  font-size: 1.5rem;
+  padding-left: .25rem;
+  margin: 1rem;
+}
+
+.highlight-text {
+  padding: 1rem;
+}
+
+.highlight-button {
+  margin: 1rem;
+}
+
+
+.highlight-button button{
+  color: #f60;
+}
+
+.highlight-card {
+  margin: 1rem;
+  display: flex;
+  flex-flow: column;
+}
+
 
 /*  */
 
@@ -465,34 +470,7 @@
   font-size: 1rem;
 }
 
-.highlights {
-  display: flex;
-  flex-flow: column;
-}
 
-.highlight {
-  display: flex;
-  flex-flow: column;
-  text-align: left;
-}
-
-
-.highlight-title {
-  border-left: .15rem #f60 solid; 
-  font-size: 1.5rem;
-  padding-left: .25rem;
-  margin-left: 1.5rem;
-}
-
-.highlight-button {
-  margin-top: 2.5rem;
-}
-
-.highlight-card {
-  margin: 1rem;
-  display: flex;
-  flex-flow: column;
-}
 
 
 

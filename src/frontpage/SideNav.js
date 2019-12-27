@@ -21,6 +21,7 @@ class SideBar extends React.Component {
         
     }
 
+    //redirect to id
     handleRedirectOnClick = (event)=>{
         let target; 
         if (event.target.id) {
@@ -31,9 +32,6 @@ class SideBar extends React.Component {
        
         this.props.history.push(`/${target}`)
     }
-
-
-
     
     render(){
     return (

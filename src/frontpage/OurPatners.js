@@ -1,6 +1,7 @@
 import React from "react"
 import Paper from '@material-ui/core/Paper';
 import apa from "../assets/images/apa.png"
+import Carousel from "./Carousel"
 
 
 class OurPatners extends React.Component{
@@ -34,6 +35,7 @@ class OurPatners extends React.Component{
             console.log(err)
         })
     }
+    
     render(){
         let providers;
 
@@ -52,7 +54,11 @@ class OurPatners extends React.Component{
                     <h1>Our Insurance Patners</h1>
                     <p>With over 12 insurers to choose from, Name works actively to find an ideal plan for you</p>
                 </div>
-                <div className="providers"> {providers} </div>
+                <div className="providers-carousel"> 
+                   
+                        <Carousel/>
+                    </div>
+                       
             </div> 
         )
     }
