@@ -19,6 +19,16 @@ class Cover extends React.Component {
         }
     }
 
+    componentWillUnmount =()=>{
+        this.setState({
+            subCategory: "",
+            isLoading:false,
+            products:null,
+            chosenProduct: null
+           
+        })
+    }
+
     componentDidMount =()=> {
         fetch("api/v1/products/", {
             method: "GET" 
@@ -74,22 +84,6 @@ class Cover extends React.Component {
         let subCategories; 
         let sub;
 
-        try {
-            sub = this.props.chosenSub.chosenSub;
-            if (sub === "private"){
-                title = "Private Vehicles"
-            }
-            
-        } catch (error) {
-            
-            title = <Alert variant="danger">Sorry</Alert>
-
-        }
-        
-        
-
-        
-        
         const description = (text)=>{
             const splitText = text.split(':')
             mainDescription = splitText[0]
@@ -106,6 +100,33 @@ class Cover extends React.Component {
 
         }
 
+        try {
+            sub = this.props.chosenSub.chosenSub;
+            subCategories = this.props.subCategories;
+
+
+            if (sub === "private"){
+                title = "Private Vehicles"
+            }else if( sub === "commercial"){
+                title="Commercial vehicles"
+            } else if (sub === "forhire"){
+                title = "Vehicles For Hire"
+            }
+            
+        } catch (error) {
+            
+            title = <Alert variant="danger">Sorry</Alert>
+
+        }
+
+
+        
+        
+
+        
+        
+        
+
 
         return(
             <div className="cover-wrapper">
@@ -115,6 +136,7 @@ class Cover extends React.Component {
                     <div className="coversub-header-text">
                         <div >
                             <h1>{title}</h1>
+                            <h2></h2>
                         </div>                        
                         <div><Button variant="contained" color="secondary">Get started</Button></div>
                     </div>
@@ -122,7 +144,7 @@ class Cover extends React.Component {
                 </div>            
         </div>
                 
-                <div>{description}</div>
+                <div></div>
             </div>
         )
     }
