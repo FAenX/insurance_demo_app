@@ -91,7 +91,7 @@ class Covers extends React.Component {
 
     // handle redirect after response
     handleRedirect =()=>{
-        this.props.history.push('/rates')
+        this.props.history.push('/')
         
     }
 
@@ -108,7 +108,7 @@ class Covers extends React.Component {
 
         if (this.state.subCategories) {
             highlights = this.state.subCategories.map(i => {
-            return<Paper className="highlight-card">
+            return<Paper variant="outlined" className="highlight-card">
             
                     <div  className="highlight">                           
                 
@@ -119,7 +119,7 @@ class Covers extends React.Component {
                         of your customers.
                     </div> 
                     <div className="highlight-button" >
-                        <Button id={i.alias} onClick={this.handleRedirect}>Learn more</Button>
+                        <Button variant="outlined" id={i.alias} onClick={this.handleRedirect}>Learn more</Button>
                     </div> 
                         
                     
@@ -171,7 +171,7 @@ class Covers extends React.Component {
                     </div>            
             </div>
             <div className="highlights"> {highlights} </div>
-            <div  className="covers-wrapper">{covers}</div>
+            
         </div>
         )
             

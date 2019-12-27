@@ -110,7 +110,7 @@ class SignIn extends React.Component {
     }
 
     handleRedirectOnLogin = () => {
-        this.props.history.push("/covers")
+        this.props.history.push("/dashboard")
     }
 
     validateForm = ()=>{
