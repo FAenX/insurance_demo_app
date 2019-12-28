@@ -178,7 +178,7 @@
 }
 
 
-.page2-headline-text {
+.page-headline-text {
   display: flex;
   flex-flow: column;
   justify-content: baseline;
@@ -189,7 +189,7 @@
   text-align: left;
 }
 
-.page2-headline-text button {
+.page-headline-text button {
   background-color: #f60;
 }
 
@@ -208,7 +208,7 @@
     background-position-y: -20vh;
 
   }
-  .page2-headline-text {
+  .page-headline-text {
     min-width: 100vw;   
 
   }
@@ -288,6 +288,43 @@
   text-align: left;
   padding: 1rem;
   color: white;
+}
+
+.coversub-header-text {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  
+}
+
+.main-body-wrapper{
+  display: flex;
+  flex-flow: column;
+  padding:1rem;
+
+}
+
+.main-body-highlight-text {
+  font-size: 2rem;
+  padding-left: 1rem;
+  margin-top: 2rem;
+  border-bottom: #f60 .05rem solid;
+
+
+}
+
+.main-body-header-text h2{
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.main-body-text {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.coversub-button button {
+  background-color: #f60;
 }
 
 

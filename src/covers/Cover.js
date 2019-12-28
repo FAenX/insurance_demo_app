@@ -3,9 +3,11 @@ import { Alert } from "react-bootstrap"
 import Paper from "@material-ui/core/Paper"
 import {withRouter} from "react-router-dom"
 import Button from "@material-ui/core/Button"
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class Cover extends React.Component {
     constructor(props){
@@ -14,42 +16,59 @@ class Cover extends React.Component {
             subCategory: "",
             isLoading:false,
             products:null,
-            chosenProduct: null
+            chosenProduct: null,
+            filteredProducts: []
            
         }
     }
 
-    componentWillUnmount =()=>{
-        this.setState({
-            subCategory: "",
-            isLoading:false,
-            products:null,
-            chosenProduct: null
-           
-        })
+    filterProducts =()=>{
+        let filteredProducts=[];
+        try{
+            for (let i=0; i < this.state.products.length; i++){
+                if (this.state.products[i].alias.startsWith(this.props.chosenSub.chosenSub)){
+                    
+                    filteredProducts.push(this.state.products[i])
+                    }
+            }
+            this.setState({
+                filteredProducts: filteredProducts
+            })
+
+        }catch{
+            filteredProducts = []
+        }
+        
+    }
+
+    componentWillUnmount = ()=>{
+        localStorage.setItem("coverState", this.state)
     }
 
     componentDidMount =()=> {
-        fetch("api/v1/products/", {
-            method: "GET" 
-         }).then((res)=>{
-             if(res.status === 200){
-                 res.json().then((data)=>{
-                     console.log(data[0])
-                     this.setState({
-                         products: data[0].products
-                     });
-                 }).catch((error)=>{
-                     console.log(error)
+       
+            fetch("api/v1/products/", {
+                method: "GET" 
+             }).then((res)=>{
+                 if(res.status === 200){
+                     res.json().then((data)=>{                         
+                         this.setState({
+                             products: data[0].products
+                         });
+                     }).catch((error)=>{
+                         console.log(error)
+                         console.log(res)
+                     })
+                 } else {
                      console.log(res)
-                 })
-             } else {
-                 console.log(res)
-             }
-             console.log(res.status)
-         }).catch((err)=>{
-             console.log(err)
-         })
+                 }
+                 
+             }).catch((err)=>{
+                 console.log(err)
+             }) 
+             
+             setTimeout(()=>{this.filterProducts()},1000)
+        
     }
 
     // handle submit
@@ -66,7 +85,7 @@ class Cover extends React.Component {
                 chosenProductAlias: event.target.value
             }
         })
-        console.log(this.state.chosenProduct)
+        
         setTimeout(()=>{this.props.chosenProduct(this.state.chosenProduct)}, 1000)
 
        
@@ -78,55 +97,122 @@ class Cover extends React.Component {
     render(){
 
         let bullets;
-        let bull; 
+        let bulleted; 
         let mainDescription; 
-        let title;
+        let filteredProducts;
+        let product1;
+        let product2;
+        let product3;
+        let products;
+        let panel;
+        
         let subCategories; 
         let sub;
 
-        const description = (text)=>{
+        const formatDescription = (text)=>{
             const splitText = text.split(':')
             mainDescription = splitText[0]
             bullets = splitText[1]
             
             if (bullets !== undefined){
-                bull = bullets.split('.').filter((value, index, array)=>{
+                bulleted = bullets.split('.').filter((value, index, array)=>{
                     return value !== ""
                 })
             } else {
-                bull = []
+                bulleted = []
             }
-            console.log(bull)
+            
 
         }
 
         try {
+            let _a = this.props.chosenSub.subCategories
             sub = this.props.chosenSub.chosenSub;
-            subCategories = this.props.subCategories;
+            products = this.state.products
+            filteredProducts = this.state.filteredProducts;
 
-
+            product1 = filteredProducts[0]
+            product2 = filteredProducts[1]
+            product3 = filteredProducts[2]
+  
             if (sub === "private"){
-                title = "Private Vehicles"
+                subCategories = this.props.chosenSub.subCategories[0]
+                
+            
             }else if( sub === "commercial"){
-                title="Commercial vehicles"
+                subCategories = this.props.chosenSub.subCategories[1]
+               
             } else if (sub === "forhire"){
-                title = "Vehicles For Hire"
-            }
+                subCategories = this.props.chosenSub.subCategories[2]
+             
+            } else {
+                subCategories = {name: "empty", description: "empty"}
+            }             
             
         } catch (error) {
-            
-            title = <Alert variant="danger">Sorry</Alert>
-
+            subCategories = <Alert variant="danger">Sorry</Alert>
         }
 
+        try {
+            panel =<div>
+                    <ExpansionPanel>
+                    <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className="">{product1.name}</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                        <Typography>
+                           {product1.description}
+                        </Typography>
+                        </ExpansionPanelDetails>
+                        <div className="coversub-button">
+                            <Button variant="contained" color="secondary">Learn more</Button>
+                        </div>
+                    </ExpansionPanel>
 
-        
-        
+                    <ExpansionPanel>
+                        <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel2a-content"
+                        id="panel2a-header"
+                        >
+                        <Typography className="">{product2.name}</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                        <Typography>
+                        {product2.description}
+                        </Typography>
+                        </ExpansionPanelDetails>
+                        <div className="coversub-button">
+                            <Button variant="contained" color="secondary">Learn more</Button>
+                        </div>
+                    </ExpansionPanel>
 
-        
-        
-        
+                    <ExpansionPanel >
+                        <ExpansionPanelSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel3a-content"
+                        id="panel3a-header"
+                        >
+                        <Typography className="">{product3.name}</Typography>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                        <Typography>
+                        {product3.description}
+                        </Typography>
+                        
+                        </ExpansionPanelDetails>
+                        <div className="coversub-button">
+                            <Button variant="contained" color="secondary">Learn more</Button>
+                        </div>
+                    </ExpansionPanel>
+                    </div> 
+        }catch{
 
+        }
 
         return(
             <div className="cover-wrapper">
@@ -134,15 +220,27 @@ class Cover extends React.Component {
                 
                 <div >                    
                     <div className="coversub-header-text">
-                        <div >
-                            <h1>{title}</h1>
-                            <h2></h2>
+                        <div className="main-body-header-text">
+                            <h1>{subCategories.name}</h1>
+                            <h2>
+                                GET A QUOTE IN 3 EASY STEPS
+                                It will take you less than 2 minutes.</h2>
                         </div>                        
-                        <div><Button variant="contained" color="secondary">Get started</Button></div>
+                        <div className="coversub-button"><Button variant="contained" color="secondary">Get started</Button></div>
                     </div>
                     
-                </div>            
-        </div>
+                    </div>            
+                </div>
+                <div className="main-body-wrapper">
+                    
+                    {panel}
+                    <div className="main-body-highlight-text">
+                        {subCategories.name}
+                    </div>
+                    <Paper variant="outlined" className="main-body-text">
+                        {subCategories.description}                        
+                    </Paper>
+                </div>
                 
                 <div></div>
             </div>

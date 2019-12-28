@@ -44,7 +44,6 @@ class App extends React.Component {
   }
 
   handleChosenProduct = (data)=>{
-    console.log(data)
     this.setState({
       chosenProduct: data,
     })

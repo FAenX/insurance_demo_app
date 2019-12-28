@@ -23,7 +23,6 @@ class Covers extends React.Component {
         }).then(res=>{
             if(res.status === 200){
                 res.json().then((data)=>{
-                    console.log(data)
                     this.setState({
                         subCategories: data
                     });
@@ -49,8 +48,6 @@ class Covers extends React.Component {
             target = event.target.parentNode.id
         }   
         
-        console.log(target)
-
         this.setState({
             chosenSub: target,
         })
@@ -60,7 +57,6 @@ class Covers extends React.Component {
 
     // handle redirect after response
     handleRedirect =()=>{  
-        console.log(this.state)
         this.props.chosenProduct(this.state)        
         this.props.history.push('/cover')
         
@@ -107,7 +103,7 @@ class Covers extends React.Component {
                 
                     <div >
                         
-                        <div className="page2-headline-text">
+                        <div className="page-headline-text">
                             <div >
                                 <h1>Name Insurance Brokers (EA) Ltd. Products</h1>
                                 <p>Insurance made easy</p>
