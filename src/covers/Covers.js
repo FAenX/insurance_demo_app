@@ -1,6 +1,5 @@
 import React from 'react';
 import { Alert } from "react-bootstrap"
-import Paper from "@material-ui/core/Paper"
 import {withRouter} from "react-router-dom"
 import Button from "@material-ui/core/Button"
 
@@ -8,14 +7,11 @@ class Covers extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            subCategories: "",
-            isLoading:false,
-            chosenSub: null
-           
+            subCategories: "",           
         }
     }
     
-    componentDidMount = () => {
+    componentWillMount = () => {
 
         fetch("/api/v1/products/sub-categories/", {
             method: "GET",
@@ -26,6 +22,7 @@ class Covers extends React.Component {
                     this.setState({
                         subCategories: data
                     });
+                    sessionStorage.setItem("sub_categories", JSON.stringify(data))
                 }).catch((error)=>{
                     console.log(error)
                     console.log(res)
@@ -38,7 +35,11 @@ class Covers extends React.Component {
         })
         
 
-    } 
+    }
+    
+    componentWillUnmount=()=>{
+        
+    }
     
     handleOnClickSub =(event)=>{
         let target; 
@@ -48,16 +49,14 @@ class Covers extends React.Component {
             target = event.target.parentNode.id
         }   
         
-        this.setState({
-            chosenSub: target,
-        })
+
+        sessionStorage.setItem("chosen_sub", JSON.stringify(target))
 
         setTimeout(()=>{this.handleRedirect()},1000)
     }
 
     // handle redirect after response
-    handleRedirect =()=>{  
-        this.props.chosenProduct(this.state)        
+    handleRedirect =()=>{          
         this.props.history.push('/cover')
         
     }
@@ -65,10 +64,13 @@ class Covers extends React.Component {
        
         let dataAlert;            
         let highlights;
+        let subCategories
+        
         
 
-        if (this.state.subCategories) {
-            highlights = this.state.subCategories.map(i => {
+        try {
+            subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
+            highlights = subCategories.map(i => {
             return<div className="highlight">
                     <div className="highlight-title">{i.name}</div> 
                     <div className="highlight-card">                
@@ -90,10 +92,12 @@ class Covers extends React.Component {
                     </div>
                     </div>
             })
+        }catch{
+            // i will write this later
         }
         
 
-        if (this.state.subCategories == null){
+        if (subCategories == null || subCategories === undefined){
             dataAlert = <Alert variant="warning">Sorry no insurance products found</Alert>
         } else {
             

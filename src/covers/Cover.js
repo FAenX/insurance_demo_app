@@ -1,5 +1,4 @@
 import React from 'react';
-import { Alert } from "react-bootstrap"
 import {withRouter} from "react-router-dom"
 import Button from "@material-ui/core/Button"
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -12,18 +11,14 @@ class Cover extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            subCategory: "",
-            isLoading:false,
             products:null,
-            chosenProduct: null,
-            filteredProducts: []
-           
+            chosenProduct: null,           
         }
     }
 
 
     componentWillUnmount = ()=>{
-        localStorage.setItem("coverState", JSON.stringify(this.state))
+        
     }
 
     componentWillMount =()=> {
@@ -36,6 +31,8 @@ class Cover extends React.Component {
                          this.setState({
                              products: data[0].products
                          });
+                         sessionStorage.setItem("products", JSON.stringify(data[0].products))
+                         
                      }).catch((error)=>{
                          console.log(error)
                          console.log(res)
@@ -47,9 +44,13 @@ class Cover extends React.Component {
              }).catch((err)=>{
                  console.log(err)
              }) 
+
+                     
              
-             setTimeout(()=>{this.filterProducts()},1000)
-        
+    }
+
+    componentDidMount=()=>{
+            
     }
 
     // handle submit
@@ -75,82 +76,80 @@ class Cover extends React.Component {
         this.props.history.push("/product")
     }
 
-    filterProducts =()=>{
-        let filteredProducts=[];
-        try{
-            for (let i=0; i < this.state.products.length; i++){
-                if (this.state.products[i].alias.startsWith(this.props.chosenSub.chosenSub)){
-                    
-                    filteredProducts.push(this.state.products[i])
-                    }
-            }
-            this.setState({
-                filteredProducts: filteredProducts
-            })
-
-        }catch{
-            filteredProducts = []
-        }
-        
-    }
+    
     
     render(){
 
-        let bullets;
-        let bulleted; 
-        let mainDescription; 
         let filteredProducts;
         let product1;
         let product2;
         let product3;
-        let products;
         let panel;
         
         let subCategories; 
         let sub;
 
-        const formatDescription = (text)=>{
-            const splitText = text.split(':')
-            mainDescription = splitText[0]
-            bullets = splitText[1]
+        // const formatDescription = (text)=>{
+        //     const splitText = text.split(':')
+        //     mainDescription = splitText[0]
+        //     bullets = splitText[1]
             
-            if (bullets !== undefined){
-                bulleted = bullets.split('.').filter((value, index, array)=>{
-                    return value !== ""
-                })
-            } else {
-                bulleted = []
-            }
+        //     if (bullets !== undefined){
+        //         bulleted = bullets.split('.').filter((value, index, array)=>{
+        //             return value !== ""
+        //         })
+        //     } else {
+        //         bulleted = []
+        //     }
             
 
+        // }
+
+        const filterProducts =(sub, products)=>{
+            let filteredProducts=[];    
+    
+            try{
+                for (let i=0; i < products.length; i++){
+                    if (products[i].alias.startsWith(sub)){
+                        
+                        filteredProducts.push(products[i])
+                        }
+                }
+                sessionStorage.setItem("filtered_products", JSON.stringify(filteredProducts))
+    
+            }catch{
+                // i will write this later
+            }
+            return filteredProducts;
+            
         }
 
         try {
-            let _a = this.props.chosenSub.subCategories
-            sub = this.props.chosenSub.chosenSub;
-            products = this.state.products
-            filteredProducts = this.state.filteredProducts;
+            const products = JSON.parse(sessionStorage.getItem("products"))
+            subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
+            sub = JSON.parse(sessionStorage.getItem("chosen_sub"))
+            filteredProducts = filterProducts(sub, products)
 
             product1 = filteredProducts[0]
             product2 = filteredProducts[1]
             product3 = filteredProducts[2]
   
             if (sub === "private"){
-                subCategories = this.props.chosenSub.subCategories[0]
+                subCategories = subCategories[0]
                 
             
             }else if( sub === "commercial"){
-                subCategories = this.props.chosenSub.subCategories[1]
+                subCategories = subCategories[1]
                
             } else if (sub === "forhire"){
-                subCategories = this.props.chosenSub.subCategories[2]
+                subCategories = subCategories[2]
              
             } else {
                 subCategories = {name: "empty", description: "empty"}
             }             
             
         } catch (error) {
-            subCategories = <Alert variant="danger">Sorry</Alert>
+            // i will write this later
         }
 
         try {

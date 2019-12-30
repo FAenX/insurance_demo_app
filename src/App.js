@@ -30,8 +30,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       chosenProduct: null,
-      quotation: "",
-      chosenPaymentOption: "",
+      chosenSub: null,
+      quotation: null,
+      chosenPaymentOption: null,
       //drawer
       isOpen: false,
       isLoggedIn: false,
@@ -46,9 +47,18 @@ class App extends React.Component {
     
   }
 
+
+  //handle chose product
   handleChosenProduct = (data)=>{
     this.setState({
       chosenProduct: data,
+    })
+  }
+
+  //handle chose sub-category
+  handleChosenSub = (data)=>{
+    this.setState({
+      chosenSub: data,
     })
   }
 
@@ -70,6 +80,7 @@ class App extends React.Component {
 
   }
 
+  //handle logout
   handleLoginLogout =()=>{
     this.setState({
       isLoggedIn: true
@@ -77,6 +88,7 @@ class App extends React.Component {
   }
 
 
+  //toggle drawer
   toggleDrawer = (open) => event => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
         return;
@@ -84,6 +96,7 @@ class App extends React.Component {
     this.setState({ isOpen: open });
     };
 
+  //redirect to signin
   redirectToSignin =()=>{
     this.props.history.push("/signin")
   }
@@ -117,8 +130,8 @@ class App extends React.Component {
           <Route exact path='/signin' render = {(props) => <SignIn {...props} login={this.handleLoginLogout}/>}/>
           <Route exact path='/signup' render = {(props) => <SignUp {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-          <Route exact path='/cover' render = {(props) => <Cover {...props} chosenSub={this.state.chosenProduct}/>}/>
-          <Route exact path='/covers' render = {(props) => <Covers {...props} chosenProduct={this.handleChosenProduct}/>}/>
+          <Route exact path='/cover' render = {(props) => <Cover {...props} chosenSub={this.state.chosenSub}/>}/>
+          <Route exact path='/covers' render = {(props) => <Covers {...props} chooseSub={this.handleChosenSub}/>}/>
           <Route exact path='/rates' render = {(props) => <Rates {...props} chosenProduct= {this.state.chosenProduct} handleRequest={this.handleQuotationRequest}/>}/>
           <Route exact path='/quotation' render = {(props) => <Quotation {...props} data={this.state}/>}/>
           <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} data={this.state} paymentOption={this.handlePayment}/>} />
