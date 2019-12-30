@@ -30,7 +30,9 @@
 
 .sidenav {
   min-width: 100vw;
-  background-color: #ffffff;
+  min-height: 100vh;
+  color: #ffffff;
+  background-color: #001929;
 }
 
 .closebtn {
