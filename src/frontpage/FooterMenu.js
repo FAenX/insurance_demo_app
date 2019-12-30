@@ -6,6 +6,19 @@ import ListItemText from "@material-ui/core/ListItemText"
 import Divider from "@material-ui/core/Divider"
 
 class FooterMenu extends React.Component {
+    
+
+     //redirect to id
+     handleRedirectOnClick = (event)=>{
+        let target; 
+        if (event.target.id) {
+            target = event.target.id
+        }else{
+            target = event.target.parentNode.id
+        }
+       
+        this.props.history.push(`/${target}`)
+    }
 
     render(){
         return(

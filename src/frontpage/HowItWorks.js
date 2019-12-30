@@ -16,7 +16,9 @@ class HowItWorks extends React.Component{
         return(
             <div className="how-it-works-wrapper">
                 <div className="how-it-works-sub-header">
-                    <h1>How does it work?</h1>
+                    <div className="how-it-works-sub-header-child">
+                        <h1>How does it work?</h1>
+                    </div>
                 </div>
             <div className="how-it-works">                
                 <div className="step">
@@ -71,7 +73,7 @@ class HowItWorks extends React.Component{
                     </div>
                 </div>
                 </div>
-                <div className="get-started-button"><Button variant="contained" onClick={this.handleGetStartedButton}>Get started</Button></div>
+                
             </div>
         )
     }

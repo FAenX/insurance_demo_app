@@ -46,6 +46,7 @@ class FrontPage extends React.Component {
                 <div>
                     <HowItWorks/>
                 </div>
+                <div className="get-started-button"><Button variant="contained" onClick={this.handleGetStartedButton}>Get started</Button></div>
                 <div>
                     <WhyUs />
                 </div> 

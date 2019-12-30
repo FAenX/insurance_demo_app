@@ -113,9 +113,9 @@
 
 .headline-subtext {
   font-weight: 400;
-  max-width: 30vw;
   color: #ffffff;
-  font-weight: 100;
+  max-width: 30vw;
+  
 
   
 }
@@ -125,6 +125,7 @@
   flex-flow: row;
   
 }
+
 
 .get-started-button button{
   background: #f60;
@@ -142,7 +143,7 @@
   justify-content: center; 
   align-items: center;
   min-height: 80vh;
-  margin-top: 3rem;  
+  background-color: #ffffff; 
 }
 
 .step {
@@ -156,15 +157,41 @@
   margin-top: 2rem;  
 }
 
-.how-it-works-sub-header{
-  border-bottom: .10rem solid #f60;
-  margin: 2rem;
+.how-it-works-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #00192927;
+  margin-top: 2rem;
+ 
 }
+
+.how-it-works-sub-header{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+ 
+  
+}
+
+.how-it-works-sub-header-child{
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  padding-left: 1rem;
+  
+  
+ 
+  min-height: 10vh;
+  border-left: #f60 1rem solid;
+}
+
 .how-it-works-sub-header h1{
   font-size: 2rem;
-  margin-top: 3rem;
- 
-
+  font-weight: 300;
 }
 
 .step-header{
@@ -374,7 +401,6 @@
   .headline-subtext {
     margin-bottom: 5rem;
     font-size: .9rem;
-    font-weight: 600;
     word-spacing: .25rem;
   }
   .home-buttons button {
