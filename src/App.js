@@ -81,6 +81,11 @@ class App extends React.Component {
     this.setState({ isOpen: open });
     };
 
+  redirectToSignin =()=>{
+    this.props.history.push("/signin")
+  }
+
+
   render(){
   return (
     <Router>
@@ -96,7 +101,7 @@ class App extends React.Component {
         </IconButton>
       </div>   
 
-      <div className="nav-login">
+      <div className="nav-login" onClick={this.redirectToSignin}>
         Sign in
       </div>
          

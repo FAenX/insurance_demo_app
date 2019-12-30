@@ -3,9 +3,15 @@ import selectImg from "../assets/images/cover_bg.svg"
 import quotationImg from "../assets/images/office.svg"
 import doneImg from "../assets/images/done.svg"
 import Button from "@material-ui/core/Button"
+import {withRouter} from "react-router-dom";
 
 
 class HowItWorks extends React.Component{
+
+    handleGetStartedButton=()=>{
+        this.props.history.push("/signup")
+    }
+
     render(){
         return(
             <div className="how-it-works-wrapper">
@@ -65,10 +71,10 @@ class HowItWorks extends React.Component{
                     </div>
                 </div>
                 </div>
-                <div className="get-started-button"><Button variant="contained">Get started</Button></div>
+                <div className="get-started-button"><Button variant="contained" onClick={this.handleGetStartedButton}>Get started</Button></div>
             </div>
         )
     }
 }
 
-export default HowItWorks;
+export default withRouter(HowItWorks);

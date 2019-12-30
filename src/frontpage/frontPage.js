@@ -4,6 +4,8 @@ import { Button} from "react-bootstrap"
 import Home from "./Home"
 import HowItWorks from './HowItWorks'
 import OurPatners from "./OurPatners"
+import WhyUs from "./WhyUs"
+import Contacts from "./Contacts"
 
 class FrontPage extends React.Component {
     constructor(props){
@@ -37,21 +39,20 @@ class FrontPage extends React.Component {
         return(
             <div className="front-page">
                 <div className="cover-page">
-                    
                     <Home/>
-                   
                 </div>
-            
                 <div>
                     <HowItWorks/>
                 </div>
-
+                <div>
+                    <WhyUs />
+                </div> 
                 <div>
                     <OurPatners/>
-                </div>   
-                     
-               
-                       
+                </div> 
+                <div>
+                    <Contacts/>
+                </div> 
             </div>
         )
     }
