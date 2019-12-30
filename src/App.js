@@ -9,13 +9,16 @@ import Mpesa from "./payments/Mpesa"
 import Covers from "./covers/Covers";
 import FrontPage from "./frontpage/frontPage";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import SideNav from "./frontpage/SideNav"
+import SideNav from "./SideNav"
 import Footer from "./Footer";
 import SignIn from "./auth/SignIn"
 import SignUp from "./auth/SignUp"
 import Dashboard from "./auth/dashboard/Dashboard"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
+import FooterMenu from "./FooterMenu"
+import SocialMedia from "./SocialMedia"
+
 
 
 import dotenv from "dotenv"
@@ -125,6 +128,12 @@ class App extends React.Component {
         
      
     </div>
+    <div>
+        <FooterMenu/>
+    </div>
+    <div>
+        <SocialMedia/>
+    </div>  
     <Footer/>
     </Router>
   );

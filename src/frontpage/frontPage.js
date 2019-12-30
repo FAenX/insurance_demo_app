@@ -6,8 +6,8 @@ import HowItWorks from './HowItWorks'
 import OurPatners from "./OurPatners"
 import WhyUs from "./WhyUs"
 import Contacts from "./Contacts"
-import SocialMedia from "./SocialMedia"
-import FooterMenu from "./FooterMenu"
+
+
 
 class FrontPage extends React.Component {
     constructor(props){
@@ -56,12 +56,7 @@ class FrontPage extends React.Component {
                 <div>
                     <Contacts/>
                 </div>
-                <div>
-                    <FooterMenu/>
-                </div> 
-                <div>
-                    <SocialMedia/>
-                </div> 
+                
             </div>
         )
     }

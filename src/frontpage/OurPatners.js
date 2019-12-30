@@ -37,17 +37,7 @@ class OurPatners extends React.Component{
     }
     
     render(){
-        let providers;
-
-        if (this.state.providers) {
-            providers = this.state.providers.map(i => {
-                    return <Paper elevation={3} key={i.name} className="provider">
-                            <div>{i.name}</div>
-                            <div><img alt="logo" src={apa}/></div>
-                            </Paper>
-            })
-        }
-
+        
         return(
             <div className="providers-wrapper">
                 <div className="providers-headline">

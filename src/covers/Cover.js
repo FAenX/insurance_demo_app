@@ -1,6 +1,5 @@
 import React from 'react';
 import { Alert } from "react-bootstrap"
-import Paper from "@material-ui/core/Paper"
 import {withRouter} from "react-router-dom"
 import Button from "@material-ui/core/Button"
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -154,14 +153,14 @@ class Cover extends React.Component {
         }
 
         try {
-            panel =<div>
+            panel =<div className="covers-expansion-panel">
                     <ExpansionPanel>
                     <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                         >
-                        <Typography className="">{product1.name}</Typography>
+                        <Typography className="product-name">{product1.name}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                         <Typography>
@@ -169,7 +168,7 @@ class Cover extends React.Component {
                         </Typography>
                         </ExpansionPanelDetails>
                         <div className="coversub-button">
-                            <Button variant="contained" color="secondary">Learn more</Button>
+                            <Button variant="outlined">Learn more</Button>
                         </div>
                     </ExpansionPanel>
 
@@ -179,7 +178,7 @@ class Cover extends React.Component {
                         aria-controls="panel2a-content"
                         id="panel2a-header"
                         >
-                        <Typography className="">{product2.name}</Typography>
+                        <Typography className="product-name">{product2.name}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                         <Typography>
@@ -187,7 +186,7 @@ class Cover extends React.Component {
                         </Typography>
                         </ExpansionPanelDetails>
                         <div className="coversub-button">
-                            <Button variant="contained" color="secondary">Learn more</Button>
+                            <Button variant="outlined">Learn more</Button>
                         </div>
                     </ExpansionPanel>
 
@@ -197,7 +196,7 @@ class Cover extends React.Component {
                         aria-controls="panel3a-content"
                         id="panel3a-header"
                         >
-                        <Typography className="">{product3.name}</Typography>
+                        <Typography className="product-name">{product3.name}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                         <Typography>
@@ -206,7 +205,7 @@ class Cover extends React.Component {
                         
                         </ExpansionPanelDetails>
                         <div className="coversub-button">
-                            <Button variant="contained" color="secondary">Learn more</Button>
+                            <Button variant="outlined">Learn more</Button>
                         </div>
                     </ExpansionPanel>
                     </div> 
@@ -226,7 +225,7 @@ class Cover extends React.Component {
                                 GET A QUOTE IN 3 EASY STEPS
                                 It will take you less than 2 minutes.</h2>
                         </div>                        
-                        <div className="coversub-button"><Button variant="contained" color="secondary">Get started</Button></div>
+                        <div className="coversub-button"><Button variant="contained">Get started</Button></div>
                     </div>
                     
                     </div>            
@@ -237,9 +236,9 @@ class Cover extends React.Component {
                     <div className="main-body-highlight-text">
                         {subCategories.name}
                     </div>
-                    <Paper variant="outlined" className="main-body-text">
-                        {subCategories.description}                        
-                    </Paper>
+                    <div className="main-body-text">
+                        {subCategories.description}                     
+                    </div>
                 </div>
                 
                 <div></div>

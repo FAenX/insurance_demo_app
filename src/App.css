@@ -247,6 +247,37 @@
   margin: 1rem;
 }
 
+/* providers carousel */
+
+.providers-carousel{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+ }
+
+.providers-headline {
+  margin-top: 2rem;
+}
+
+.providers-headline p{
+ color: #0019298f;
+ font-size: 1rem;
+}
+
+.carousel {
+  max-width: 15rem;
+}
+
+.provider img{
+  max-height: 15rem;
+  max-width: 15rem;
+}
+
+.slider-wrapper {
+  max-width: 15rem;
+}
+
 /* contacts */
 .contacts-wrapper {
   display: flex;
@@ -334,6 +365,10 @@
   display: flex;
   flex-flow: column;
   justify-content: space-around;
+  background-image: url(./assets/images/image1.png);
+  background-position-x: 10rem;
+  background-position-y: -15rem;
+  background-repeat: no-repeat;
   background-color: #001929c4;
   min-height: 40vh;
 }
@@ -348,6 +383,12 @@
   max-width: 50vw;
   color: white;
   text-align: left;
+  font-weight: 300;
+  
+}
+
+.page-headline-text h1 {
+  font-weight: 300;
 }
 
 .page-headline-text button {
@@ -363,17 +404,15 @@
     background-position-y: 10vh;
     justify-content: flex-start;
     align-items: flex-start;
-  }
-
-  
+  }  
 
   .page2-cover {
-    background-position-x: -100vh;
+    background-position-x: 10vh;
     background-position-y: -20vh;
 
   }
   .page-headline-text {
-    min-width: 100vw;   
+    min-width: 100vw; 
 
   }
 
@@ -415,31 +454,49 @@
   
  }
 
+ 
 
-
-
-.providers-headline {
-  margin-top: 2rem;
-}
-
-.providers-headline p{
- color: #0019298f;
- font-size: 1rem;
-}
-
-.providers {
+/* highlights */
+.highlights {
   display: flex;
-  justify-content: center;
-  overflow-x: auto; 
-  -webkit-overflow-scrolling: touch;
+  flex-flow: column;
+  background-color: #0019293b;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.providers-carousel {
+.highlight {
+  display: flex;
+  flex-flow: column;
+  text-align: left;
+}
+
+.highlight-title {
+  border-left: .1rem #f60 solid; 
+  font-size: 2rem;
+  font-weight: 300;
+  padding-left: 1rem;
+  margin: 2rem;
   
 }
 
-.slider-wrapper {
-  background-color: white;
+.highlight-text {
+  padding: 1rem;
+}
+
+.highlight-button {
+  margin: 1rem;
+}
+
+
+.highlight-button button{
+  color: #f60;
+}
+
+.highlight-card {
+  display: flex;
+  flex-flow: column;
+  background-color: #ffffff;
 }
 
 /* covers subcategory */
@@ -453,6 +510,10 @@
   display: flex;
   flex-flow: column;
   justify-content: space-around;
+  background-image: url(./assets/images/image1.png);
+  background-position-x: 1rem;
+  background-position-y: -8rem;
+  background-repeat: no-repeat;
   background-color: #001929c4;
   min-height: 30vh;
   text-align: left;
@@ -465,36 +526,58 @@
   flex-flow: column;
   justify-content: center;
   
+  
+}
+
+.main-body-header-text h1{
+  font-weight: 300;
+}
+
+.main-body-header-text h2{
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }
 
 .main-body-wrapper{
   display: flex;
   flex-flow: column;
-  padding:1rem;
-
+  margin-top: 1rem;
+  background-color: #0019293b;
 }
 
 .main-body-highlight-text {
   font-size: 2rem;
+  font-weight: 300;
+  border-left: #f60 .05rem solid;
+  margin: 1rem;
+  text-align: left;
   padding-left: 1rem;
-  margin-top: 2rem;
-  border-bottom: #f60 .05rem solid;
-
 
 }
 
-.main-body-header-text h2{
-  font-size: 1.5rem;
-  margin-top: 2rem;
+.covers-expansion-panel {
+  text-align: left;
 }
+
+.covers-expansion-panel .MuiTypography-body1  {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
 
 .main-body-text {
-  margin: 1rem;
+  background-color: #ffffff;
   padding: 1rem;
+  text-align: left;
+  letter-spacing: .05rem;
+  line-height: 1.5rem;
+  border-bottom: .5rem solid #f60;
 }
 
 .coversub-button button {
   background-color: #f60;
+  margin: 1rem;
 }
 
 
@@ -602,46 +685,6 @@
   display: flex;
   flex-flow: column;
 }
-
-/* highlights */
-.highlights {
-  display: flex;
-  flex-flow: column;
-}
-
-.highlight {
-  display: flex;
-  flex-flow: column;
-  text-align: left;
-}
-
-
-.highlight-title {
-  border-bottom: .05rem #f60 solid; 
-  font-size: 1.5rem;
-  padding-left: .25rem;
-  margin: 1rem;
-}
-
-.highlight-text {
-  padding: 1rem;
-}
-
-.highlight-button {
-  margin: 1rem;
-}
-
-
-.highlight-button button{
-  color: #f60;
-}
-
-.highlight-card {
-  margin: 1rem;
-  display: flex;
-  flex-flow: column;
-}
-
 
 /*  */
 
