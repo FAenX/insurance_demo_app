@@ -69,7 +69,6 @@ class Cover extends React.Component {
 
        
         this.handleRedirect()
-
     }
 
     handleRedirect=()=>{
@@ -118,10 +117,9 @@ class Cover extends React.Component {
                 sessionStorage.setItem("filtered_products", JSON.stringify(filteredProducts))
     
             }catch{
-                // i will write this later
+                setTimeout(()=>{window.location.reload()}, 2000)
             }
-            return filteredProducts;
-            
+            return filteredProducts;            
         }
 
         try {
@@ -129,28 +127,24 @@ class Cover extends React.Component {
             subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
             sub = JSON.parse(sessionStorage.getItem("chosen_sub"))
             filteredProducts = filterProducts(sub, products)
-
-            product1 = filteredProducts[0]
-            product2 = filteredProducts[1]
-            product3 = filteredProducts[2]
-  
-            if (sub === "private"){
-                subCategories = subCategories[0]
-                
-            
-            }else if( sub === "commercial"){
-                subCategories = subCategories[1]
-               
-            } else if (sub === "forhire"){
-                subCategories = subCategories[2]
-             
-            } else {
-                subCategories = {name: "empty", description: "empty"}
-            }             
             
         } catch (error) {
-            // i will write this later
-        }
+            setTimeout(()=>{window.location.reload()}, 1000)
+        }   
+        
+        product1 = filteredProducts[0]
+        product2 = filteredProducts[1]
+        product3 = filteredProducts[2]
+
+        if (sub === "private"){
+            subCategories = subCategories[0]            
+        }else if( sub === "commercial"){
+            subCategories = subCategories[1]               
+        } else if (sub === "forhire"){
+            subCategories = subCategories[2]             
+        } else {
+            subCategories = {name: "empty", description: "empty"}
+        }             
 
         try {
             panel =<div className="covers-expansion-panel">
@@ -215,8 +209,7 @@ class Cover extends React.Component {
 
         return(
             <div className="cover-wrapper">
-                <div className="coversub-cover">
-                
+                <div className="coversub-cover">                
                 <div >                    
                     <div className="coversub-header-text">
                         <div className="main-body-header-text">
@@ -230,8 +223,7 @@ class Cover extends React.Component {
                     
                     </div>            
                 </div>
-                <div className="main-body-wrapper">
-                    
+                <div className="main-body-wrapper">                    
                     {panel}
                     <div className="main-body-highlight-text">
                         {subCategories.name}
@@ -239,8 +231,7 @@ class Cover extends React.Component {
                     <div className="main-body-text">
                         {subCategories.description}                     
                     </div>
-                </div>
-                
+                </div>                
                 <div></div>
             </div>
         )

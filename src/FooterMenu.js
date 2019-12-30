@@ -37,7 +37,7 @@ class FooterMenu extends React.Component {
                 </ListItem>
                 <hr className="devider"></hr>
                 <ListItem button id="signout" onClick={this.handleRedirectOnClick}>                        
-                    <ListItemText id="info" primary="What you need to know ..."/>
+                    <ListItemText id="info" primary="Everything you need to know ..."/>
                 </ListItem>                     
                 <hr className="devider"></hr>              
                 <ListItem button id="signup" onClick={this.handleRedirectOnClick}>                        

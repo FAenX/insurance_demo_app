@@ -71,30 +71,29 @@ class Covers extends React.Component {
         try {
             subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
             highlights = subCategories.map(i => {
-            return<div className="highlight">
-                    <div className="highlight-title">{i.name}</div> 
-                    <div className="highlight-card">                
-                        
-                        <div className="highlight-text">
-                            Build a bench of trusted, skilled and certified IT 
-                            techs so you can become a full-service partner to more 
-                            of your customers.
-                            Build a bench of trusted, skilled and certified IT 
-                            techs so you can become a full-service partner to more 
-                            of your customers.
-                        </div> 
-                        <div className="highlight-button" >
-                            <Button variant="outlined" id={i.alias} onClick={this.handleOnClickSub}>Learn more</Button>
-                        </div> 
-                            
-                        
-                    
-                    </div>
-                    </div>
-            })
+                return<div className="highlight">
+                        <div className="highlight-title">{i.name}</div> 
+                        <div className="highlight-card">  
+                            <div className="highlight-text">
+                                Build a bench of trusted, skilled and certified IT 
+                                techs so you can become a full-service partner to more 
+                                of your customers.
+                                Build a bench of trusted, skilled and certified IT 
+                                techs so you can become a full-service partner to more 
+                                of your customers.
+                            </div> 
+                            <div className="highlight-button" >
+                                <Button variant="outlined" id={i.alias} onClick={this.handleOnClickSub}>Learn more</Button>
+                            </div>  
+                        </div>
+                        </div>
+                })
+           
         }catch{
-            // i will write this later
+            setTimeout(()=>{window.location.reload()}, 1000)
         }
+
+        
         
 
         if (subCategories == null || subCategories === undefined){
