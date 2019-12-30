@@ -21,30 +21,12 @@ class Cover extends React.Component {
         }
     }
 
-    filterProducts =()=>{
-        let filteredProducts=[];
-        try{
-            for (let i=0; i < this.state.products.length; i++){
-                if (this.state.products[i].alias.startsWith(this.props.chosenSub.chosenSub)){
-                    
-                    filteredProducts.push(this.state.products[i])
-                    }
-            }
-            this.setState({
-                filteredProducts: filteredProducts
-            })
-
-        }catch{
-            filteredProducts = []
-        }
-        
-    }
 
     componentWillUnmount = ()=>{
-        localStorage.setItem("coverState", this.state)
+        localStorage.setItem("coverState", JSON.stringify(this.state))
     }
 
-    componentDidMount =()=> {
+    componentWillMount =()=> {
        
             fetch("api/v1/products/", {
                 method: "GET" 
@@ -72,25 +54,44 @@ class Cover extends React.Component {
 
     // handle submit
     onSubmitHandler = (event) => {
-        event.preventDefault();
-        console.log(event.target.name)
-        console.log(event.target.value)
-        
+        event.preventDefault();  
+        console.log(event.target)      
 
         this.setState({
             isLoading: true,
             chosenProduct: {
-                chosenProductName: event.target.name,
-                chosenProductAlias: event.target.value
+                chosenProductAlias: event.target.id
             }
         })
         
-        setTimeout(()=>{this.props.chosenProduct(this.state.chosenProduct)}, 1000)
+        //setTimeout(()=>{this.props.chosenProduct(this.state.chosenProduct)}, 1000)
 
        
-        setTimeout(()=>{this.handleRedirect()}, 1000)
+        this.handleRedirect()
 
+    }
 
+    handleRedirect=()=>{
+        this.props.history.push("/product")
+    }
+
+    filterProducts =()=>{
+        let filteredProducts=[];
+        try{
+            for (let i=0; i < this.state.products.length; i++){
+                if (this.state.products[i].alias.startsWith(this.props.chosenSub.chosenSub)){
+                    
+                    filteredProducts.push(this.state.products[i])
+                    }
+            }
+            this.setState({
+                filteredProducts: filteredProducts
+            })
+
+        }catch{
+            filteredProducts = []
+        }
+        
     }
     
     render(){
@@ -168,7 +169,7 @@ class Cover extends React.Component {
                         </Typography>
                         </ExpansionPanelDetails>
                         <div className="coversub-button">
-                            <Button variant="outlined">Learn more</Button>
+                            <Button variant="outlined" id={product1.alias} onClick={this.onSubmitHandler}>Learn more</Button>
                         </div>
                     </ExpansionPanel>
 
