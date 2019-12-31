@@ -16,15 +16,18 @@ class Rates extends React.Component {
         }
     }
     
-    componentDidMount = () => {
+    componentWillMount =()=>{
+        this.cover = this.props.chosenProductAlias;
+        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
+    }
+
+    componentDidMount = () => {        
         this.setState({
             carValue: 100000,
             regNo: "KBK 200",
             email: "name@example.com",
             tonnes: "3"
-       })
-
-       
+       })       
     }
 
 
@@ -34,7 +37,7 @@ class Rates extends React.Component {
         this.setState({isLoading:true})
         const data = {
             carValue: this.state.carValue,
-            cover: this.props.chosenProduct.chosenProductAlias,
+            cover: this.cover,
             regNo: this.state.regNo,
             email: this.state.email,
             tonnes: this.state.tonnes,
@@ -133,25 +136,20 @@ class Rates extends React.Component {
     }
 
     validateForm=()=>{
-        return this.state.carValue && this.state.regNo && this.props.chosenProduct
+        return this.state.carValue && this.state.regNo && this.cover
     }
     render(){
 
         let tonnes;
         let quoteAlert;
 
-        let cover = "";
-        let name = ""
+       
         
-        if (!this.props.chosenProduct){
+        if (!this.cover || !this.chosenProduct){
             quoteAlert = <Alert variant="warning">Please select cover</Alert>
         }
-        else {
-          cover =  this.props.chosenProduct.chosenProductAlias 
-          name = this.props.chosenProduct.chosenProductName
-        }
         
-        if (cover.startsWith("commercial") ){
+        if (this.cover.startsWith("commercial") ){
             tonnes = <div className="quote-form">
                     
                     <Form.Label>Load size</Form.Label>
@@ -176,47 +174,58 @@ class Rates extends React.Component {
         return(
             <div className="rates">
                 <div>{quoteAlert}</div>
-                <div> 
-                    <p><b>Request quotation for: </b></p>
-                    <p><b> {name} </b></p>
+                <div className="rates-title-wrapper"> 
+                    <div className="rates-title"> Request quotation for: {this.chosenProduct.name}</div> 
                 </div>
-                <div>
-                <Alert variant="info">
+
+                <div className="aplication-instructions-wrapper">
+                <div className="aplication-instructions-text-wrapper">
                     
-                    <p><b>Get insured in just five simple steps:</b></p>
-                    <ol>
-                        <li> Step 1</li>Fill out the form below and click <b>Get quote</b> to receive a quote for your preferred insurance cover.
-                        <li> Step 2</li>After receiving your quote on the screen. Click on <b>Accept</b> to proceed.
-                        <li> Step 3</li>Select your preferred payment method.
-                        <li> Step 4</li>Fill out your payment information and click <b>Proceed</b> to process your payment.
-                        <li>And finally</li> Download your insurance cover. Congratulations you’re insured!
-                    </ol>
-                    </Alert>
+                    <div className="aplication-instructions-title">
+                        Get insured in just five simple steps:
+                    </div>
+                    <div className="aplication-instructions-text">
+                        <ol>
+                            <li> Step 1</li>Fill out the form below and click <b>Get quote</b> 
+                                to receive a quote for {this.chosenProduct.name}.
+                            <li> Step 2</li>After receiving your quote on the screen. 
+                                Click on <b>Accept</b> to proceed.
+                            <li> Step 3</li>Select your preferred payment method.
+                            <li> Step 4</li>Fill out your payment information and click 
+                                <b>Proceed</b> to process your payment.
+                            <li>And finally</li> Download your insurance cover. 
+                                Congratulations you’re insured!
+                        </ol>
+                    </div>
+                    </div>
                 </div>
-                <div>
-                    <Alert variant="success">Fill the form below ..</Alert>
-                </div>
-                <Form>
-                    
-                <Form.Group controlId="exampleForm.ControlInput1" style={{display: "none"}}>
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" onChange= {this.onEmailChangeHandler} />
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>Vehicle registration</Form.Label>
-                    <Form.Control size="lg" type="text" placeholder= {this.state.regNo} />
-                    <Form.Label>Vehicle value</Form.Label>
-                    <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder={this.state.carValue} />
-                    {tonnes}
-                </Form.Group>
-                </Form>
-            
-                
-            <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} disabled={!this.validateForm()} onClick={this.onSubmitHandler}>
-                    Get quote
-            </LoaderButton>
-        
-            
+                <div className="rates-form-wrapper">
+                    <div className="rates-title-wrapper">
+                        <div className="rates-title">Request quotation</div>
+                    </div>
+                    <div className="rates-form">
+                        <div className="r-form">
+                            <Form>
+                            <Form.Group controlId="exampleForm.ControlInput1" style={{display: "none"}}>
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control type="email" placeholder="name@example.com" onChange= {this.onEmailChangeHandler} />
+                            </Form.Group>
+                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                <Form.Label>Vehicle registration</Form.Label>
+                                <Form.Control size="lg" type="text" placeholder= {this.state.regNo} />
+                                <Form.Label>Vehicle value</Form.Label>
+                                <Form.Control onChange= {this.onValueChangeHandler} size="lg" type="text" placeholder={this.state.carValue} />
+                                {tonnes}
+                            </Form.Group>
+                            </Form>
+                        </div>
+                    </div>
+                    <div className="rates-submit-button-wrapper"> 
+                        <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} disabled={!this.validateForm()} onClick={this.onSubmitHandler}>
+                                Get quote
+                        </LoaderButton>
+                    </div>      
+            </div>
             </div>
         )
     }

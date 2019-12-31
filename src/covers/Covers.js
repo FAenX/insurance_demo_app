@@ -7,39 +7,68 @@ class Covers extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            subCategories: "",           
+               subCategories: []  
         }
     }
     
     componentWillMount = () => {
+        try{   
+            console.log("trying")         
+            this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))            
+            if(this.subCategories != null && this.subCategories !== undefined && this.subCategories.length > 0){  
+                console.log("if")          
+                this.createHighlights(this.subCategories) 
+                console.log("if") 
+                           
+            }else{   
+                console.log("else")            
+                
+            }         
 
-        fetch("/api/v1/products/sub-categories/", {
-            method: "GET",
-            
-        }).then(res=>{
-            if(res.status === 200){
-                res.json().then((data)=>{
-                    this.setState({
-                        subCategories: data
-                    });
-                    sessionStorage.setItem("sub_categories", JSON.stringify(data))
-                }).catch((error)=>{
-                    console.log(error)
-                    console.log(res)
+        }catch{
+            this.dataAlert = <Alert variant="warning">Something went wrong</Alert>
+        }        
+
+    }
+
+    componentDidUpdate=()=>{
+        if (this.state.subCategories.length > 0){
+            console.log(this.state.subCategories)
+            this.createHighlights(this.state.subCategories)
+            console.log("yes")
+            sessionStorage.setItem("sub_categories", JSON.stringify(this.state.subCategories))
+        }      
+
+    }
+
+    createHighlights=()=>{
+        try{
+            const subCategories = JSON.parse(sessionStorage.getItem("sub_categories")) 
+            this.highlights = subCategories.map(i => {
+            return<div className="highlight" key={i.alias}>
+                    <div className="highlight-title">{i.name}</div> 
+                    <div className="highlight-card">  
+                        <div className="highlight-text">
+                            Build a bench of trusted, skilled and certified IT 
+                            techs so you can become a full-service partner to more 
+                            of your customers.
+                            Build a bench of trusted, skilled and certified IT 
+                            techs so you can become a full-service partner to more 
+                            of your customers.
+                        </div> 
+                        <div className="highlight-button" >
+                            <Button variant="outlined" id={i.alias} onClick={this.handleOnClickSub}>Learn more</Button>
+                        </div>  
+                    </div>
+                    </div>
                 })
-            } else {
-                console.log(res)
-            }
-        }).catch((err)=>{
-            console.log(err)
-        })
-        
 
+        }catch{
+            this.highlights = <Alert variant="info"> None </Alert>
+        }
     }
     
-    componentWillUnmount=()=>{
-        
-    }
+   
     
     handleOnClickSub =(event)=>{
         let target; 
@@ -47,12 +76,9 @@ class Covers extends React.Component {
             target = event.target.id
         }else{
             target = event.target.parentNode.id
-        }   
-        
-
+        }  
         sessionStorage.setItem("chosen_sub", JSON.stringify(target))
-
-        setTimeout(()=>{this.handleRedirect()},1000)
+        this.handleRedirect()
     }
 
     // handle redirect after response
@@ -60,51 +86,19 @@ class Covers extends React.Component {
         this.props.history.push('/cover')
         
     }
-    render(){
-       
-        let dataAlert;            
-        let highlights;
-        let subCategories
-        
-        
-
-        try {
-            subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
-            highlights = subCategories.map(i => {
-                return<div className="highlight">
-                        <div className="highlight-title">{i.name}</div> 
-                        <div className="highlight-card">  
-                            <div className="highlight-text">
-                                Build a bench of trusted, skilled and certified IT 
-                                techs so you can become a full-service partner to more 
-                                of your customers.
-                                Build a bench of trusted, skilled and certified IT 
-                                techs so you can become a full-service partner to more 
-                                of your customers.
-                            </div> 
-                            <div className="highlight-button" >
-                                <Button variant="outlined" id={i.alias} onClick={this.handleOnClickSub}>Learn more</Button>
-                            </div>  
-                        </div>
-                        </div>
-                })
-           
-        }catch{
-            //
-        }
+    render(){  
 
         
         
-
-        if (subCategories == null || subCategories === undefined){
-            dataAlert = <Alert variant="warning">Sorry no insurance products found</Alert>
-        } else {
-            
-        }
+        
+        
+        
+        
+        
 
         return(
             <div className="page2">
-                <div>{dataAlert}</div>
+                <div>{this.dataAlert}</div>
             <div className="page2-cover">                
                 <div >                    
                     <div className="page-headline-text"> 
@@ -114,7 +108,7 @@ class Covers extends React.Component {
                     </div>                    
                 </div>            
             </div>
-            <div className="highlights"> {highlights} </div>            
+            <div className="highlights"> {this.highlights} </div>            
         </div>
         )
             

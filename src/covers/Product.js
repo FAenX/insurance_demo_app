@@ -1,6 +1,9 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
-import { filter } from "minimatch"
+import {Button} from "@material-ui/core"
+import Rates from "./Rates"
+
+
 
 
 
@@ -12,25 +15,48 @@ class Product extends React.Component {
     }
 
     componentWillMount=()=>{
-        this.chosenProductAlias = JSON.parse(sessionStorage.getItem("chosen_product"))
+        this.chosenProductAlias = JSON.parse(sessionStorage.getItem("chosen_product_alias"))
         this.filteredProducts = JSON.parse(sessionStorage.getItem("filtered_products"))
-        this.chosenProduct = this.filter(this.filteredProducts, this.chosenProductAlias)
+        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
+        
     }
 
-    filter =(products, alias)=>{
-        let chosenProduct;
-        for (let i=0; i < products.length; i++){
-            if (products[i].alias === alias){
-                chosenProduct = products[i]
-            }                
-        }
-        return chosenProduct
-    }
+    
+
 
     render(){
         return (
             <div className="product-wrapper">
-                    {this.chosenProduct.name}
+                <div className="coversub-cover">                
+                <div >                    
+                    <div className="coversub-header-text">
+                        <div className="main-body-header-text">
+                            <h1>{this.chosenProduct.name}</h1>
+                            <h2>
+                                GET A QUOTE IN 3 EASY STEPS
+                                It will take you less than 2 minutes.</h2>
+                        </div>                        
+                        <div className="coversub-button"><Button variant="contained">Get started</Button></div>
+                    </div>
+                    
+                    </div>            
+                </div>
+                <div className="product-body-wrapper">
+                    <div className="product-text-wrapper">
+                        <div className="product-title">
+                            {this.chosenProduct.name}
+                        </div>
+                        <div className="product-description-wrapper">
+                            <div className="product-description">
+                                 {this.chosenProduct.description} 
+                            </div>
+                        </div>
+                    </div>
+                    <div className="rates-wrapper">
+                        <Rates chosenProductAlias={this.chosenProductAlias}/>
+                    </div>
+                </div>
+                   
             </div>
         )
     }

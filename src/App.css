@@ -571,6 +571,131 @@
   min-height: 100vh;
 }
 
+.product-body-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0019293b;
+}
+
+.product-title {
+  margin: 2rem;
+  font-weight: 300;
+  text-align: left;
+  font-size: 2rem;
+  padding-left: 2rem;
+  border-left: .05rem #f60 solid;
+}
+
+.product-description-wrapper {
+  background-color: #ffffff;
+  font-weight: 300;
+  text-align: left;
+  font-size: 1.2rem;
+}
+.product-description {
+  padding: 2rem;
+}
+
+.rates-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rates {
+  display: flex;
+  flex-flow: column;
+  justify-content: left;
+}
+
+.rates-title-wrapper {
+  text-align: left;
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin: 2rem;
+}
+
+.rates-title {
+  padding-left: 1.5rem;
+  border-left: #f60 1rem solid;
+
+}
+
+.aplication-instructions-wrapper{
+  background-color: #ffffff;
+  text-align: left;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.aplication-instructions-text-wrapper{
+  padding: 1rem;
+}
+
+.aplication-instructions-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.aplication-instructions-text {
+  padding:1rem;
+  font-weight: 300;
+  line-height: 2rem;
+}
+
+.rates-form-wrapper {
+  display: flex;
+  flex-flow: column;
+  text-align: left;
+}
+
+
+.rates-form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #ffffff;
+  min-width: 80vw;
+}
+
+.r-form {
+  max-width: 60vw;
+}
+
+.rates-submit-button-wrapper{
+  margin: 2rem;
+}
+
+/* quotation page */
+.quote-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.quotation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  margin: 20px; 
+}
+
+.quotation h1{
+  text-align: center;
+}
+
+
+
 /* footer */
 
 .footer-wrapper {
@@ -735,38 +860,7 @@
   }
 }
 
-.rates {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
 
-
-
-
-.quote-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-}
-
-.quotation {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 14px;
-  margin: 20px;
-
- 
-}
-
-.quotation h1{
-  text-align: center;
-}
 
 .payments-page {
   display: flex;

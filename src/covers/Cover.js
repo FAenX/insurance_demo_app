@@ -6,140 +6,108 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {Alert} from "react-bootstrap"
 
 class Cover extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            products:null,
+
             chosenProduct: null,           
         }
     }
-
-
-    componentWillUnmount = ()=>{
         
-    }
 
-    componentWillMount =()=> {
-       
-            fetch("api/v1/products/", {
-                method: "GET" 
-             }).then((res)=>{
-                 if(res.status === 200){
-                     res.json().then((data)=>{                         
-                         this.setState({
-                             products: data[0].products
-                         });
-                         sessionStorage.setItem("products", JSON.stringify(data[0].products))
-                         
-                     }).catch((error)=>{
-                         console.log(error)
-                         console.log(res)
-                     })
-                 } else {
-                     console.log(res)
-                 }
-                 
-             }).catch((err)=>{
-                 console.log(err)
-             }) 
+    componentWillMount =()=> { 
+        try{        
+            this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
+            this.sub = JSON.parse(sessionStorage.getItem("chosen_sub"))    
+            this.products = JSON.parse(sessionStorage.getItem("products"))          
+            if(this.products != null && this.products !== undefined && this.products.length > 0){                
+                this.filteredProducts = this.filterProducts(this.products, this.sub)
+                this.getProducts(this.filteredProducts)
+            }else{               
+                console.log("else")
+            }         
 
-                     
-             
-    }
+        }catch{
+            this.dataAlert = <Alert variant="warning">Something went wrong</Alert>
+        }        
 
-    componentDidMount=()=>{
-            
+    } 
+
+    
+
+    //get specific products form the filtered lot
+    getProducts=(filteredProducts)=>{
+        this.product1 = filteredProducts[0];
+        this.product2 = filteredProducts[1];
+        this.product3 = filteredProducts[2];
+        console.log(this.prodict1)
     }
+    
 
     // handle submit
     onSubmitHandler = (event) => {
         event.preventDefault();  
               
-        let target; 
+        let chosenProductAlias; 
         if (event.target.id) {
-            target = event.target.id
+            chosenProductAlias = event.target.id
         }else{
-            target = event.target.parentNode.id
-        }   
-        console.log(target)   
+            chosenProductAlias = event.target.parentNode.id
+        }    
 
         this.setState({
             isLoading: true,
             chosenProduct: {
-                chosenProductAlias: target
+                chosenProductAlias: chosenProductAlias
             }
         })
+        
 
-        sessionStorage.setItem("chosen_product", JSON.stringify(target))
+        sessionStorage.setItem("chosen_product_alias", JSON.stringify(chosenProductAlias))
+        sessionStorage.setItem("chosen_product", JSON.stringify(this.getProduct(this.products, chosenProductAlias)))
         this.props.history.push("/product")      
         
-    }      
+    }  
+    
+    
+    //return chosen product from filtered products
+    getProduct =(products, alias)=>{
+        let chosenProduct;
+        for (let i=0; i < products.length; i++){
+            if (products[i].alias === alias){
+                chosenProduct = products[i]
+            }                
+        }
+        return chosenProduct
+    }
+    
+    //filter products to match chosen sub alias
+    filterProducts =(products, sub)=>{
+        let filteredProducts=[];    
+        for (let i=0; i < products.length; i++){
+            if (products[i].alias.startsWith(sub)){
+                
+                filteredProducts.push(products[i])
+                }
+        }
+        return filteredProducts;            
+    }
     
     render(){
-        let filteredProducts;
-        let product1;
-        let product2;
-        let product3;
-        let panel;        
-        let subCategories; 
-        let sub;
-
-        // const formatDescription = (text)=>{
-        //     const splitText = text.split(':')
-        //     mainDescription = splitText[0]
-        //     bullets = splitText[1]
-            
-        //     if (bullets !== undefined){
-        //         bulleted = bullets.split('.').filter((value, index, array)=>{
-        //             return value !== ""
-        //         })
-        //     } else {
-        //         bulleted = []
-        //     }
-            
-
-        // }
-
-        const filterProducts =(sub, products)=>{
-            let filteredProducts=[];    
-    
-            try{
-                for (let i=0; i < products.length; i++){
-                    if (products[i].alias.startsWith(sub)){
-                        
-                        filteredProducts.push(products[i])
-                        }
-                }
-                sessionStorage.setItem("filtered_products", JSON.stringify(filteredProducts))
-    
-            }catch{
-                //
-            }
-            return filteredProducts;            
-        }
-
-        try {
-            const products = JSON.parse(sessionStorage.getItem("products"))
-            subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
-            sub = JSON.parse(sessionStorage.getItem("chosen_sub"))
-            filteredProducts = filterProducts(sub, products)
-            
-        } catch (error) {
-            //
-        }   
+        let subCategories;
+        let panel; 
         
-        product1 = filteredProducts[0]
-        product2 = filteredProducts[1]
-        product3 = filteredProducts[2]
+        
 
-        if (sub === "private"){
-            subCategories = subCategories[0]            
-        }else if( sub === "commercial"){
-            subCategories = subCategories[1]               
-        } else if (sub === "forhire"){
-            subCategories = subCategories[2]             
+        if (this.sub === "private"){
+            subCategories = this.subCategories[0]            
+        }else if( this.sub === "commercial"){
+            subCategories = this.subCategories[1]               
+        } else if (this.sub === "forhire"){
+            subCategories = this.subCategories[2]             
         } else {
             subCategories = {name: "empty", description: "empty"}
         }             
@@ -152,15 +120,15 @@ class Cover extends React.Component {
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                         >
-                        <Typography className="product-name">{product1.name}</Typography>
+                        <Typography className="product-name">{this.product1.name}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                         <Typography>
-                           {product1.description}
+                           {this.product1.description}
                         </Typography>
                         </ExpansionPanelDetails>
                         <div className="coversub-button">
-                            <Button variant="outlined" id={product1.alias} onClick={this.onSubmitHandler}>Learn more</Button>
+                            <Button variant="outlined" id={this.product1.alias} onClick={this.onSubmitHandler}>Learn more</Button>
                         </div>
                     </ExpansionPanel>
 
@@ -170,15 +138,15 @@ class Cover extends React.Component {
                         aria-controls="panel2a-content"
                         id="panel2a-header"
                         >
-                        <Typography className="product-name">{product2.name}</Typography>
+                        <Typography className="product-name">{this.product2.name}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                         <Typography>
-                        {product2.description}
+                        {this.product2.description}
                         </Typography>
                         </ExpansionPanelDetails>
                         <div className="coversub-button">
-                            <Button variant="outlined">Learn more</Button>
+                            <Button variant="outlined" id={this.product2.alias} onClick={this.onSubmitHandler}>Learn more</Button>
                         </div>
                     </ExpansionPanel>
 
@@ -188,21 +156,21 @@ class Cover extends React.Component {
                         aria-controls="panel3a-content"
                         id="panel3a-header"
                         >
-                        <Typography className="product-name">{product3.name}</Typography>
+                        <Typography className="product-name">{this.product3.name}</Typography>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
                         <Typography>
-                        {product3.description}
+                        {this.product3.description}
                         </Typography>
                         
                         </ExpansionPanelDetails>
                         <div className="coversub-button">
-                            <Button variant="outlined">Learn more</Button>
+                            <Button variant="outlined" id={this.product3.alias} onClick={this.onSubmitHandler}>Learn more</Button>
                         </div>
                     </ExpansionPanel>
                     </div> 
         }catch{
-
+            //
         }
 
         return(
