@@ -372,6 +372,8 @@
   color: white;
   text-align: left;
   font-weight: 300;
+  border-left: 1rem #f60 solid;
+  padding-left: 1rem;
   
 }
 
@@ -512,7 +514,10 @@
 .coversub-header-text {
   display: flex;
   flex-flow: column;
-  justify-content: center;   
+  justify-content: center; 
+  text-transform: capitalize;
+  padding-left: 1rem;
+  border-left: 1rem #f60 solid;
 }
 
 .main-body-header-text h1{
@@ -539,6 +544,7 @@
   margin: 1rem;
   text-align: left;
   padding-left: 1rem;
+  
 
 }
 
@@ -586,7 +592,8 @@
   text-align: left;
   font-size: 2rem;
   padding-left: 2rem;
-  border-left: .05rem #f60 solid;
+  border-left: .1rem #f60 solid;
+  text-transform: capitalize;
 }
 
 .product-description-wrapper {
@@ -596,7 +603,7 @@
   font-size: 1.2rem;
 }
 .product-description {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .rates-wrapper {
@@ -621,29 +628,31 @@
 
 .rates-title {
   padding-left: 1.5rem;
-  border-left: #f60 1rem solid;
+  border-left: #f60 .1rem solid;
+  text-transform: capitalize;
 
 }
 
 .aplication-instructions-wrapper{
   background-color: #ffffff;
   text-align: left;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
 }
 
 .aplication-instructions-text-wrapper{
-  padding: 1rem;
+  padding: .5rem;
 }
 
 .aplication-instructions-title {
   text-align: center;
   font-size: 1.5rem;
   font-weight: 300;
+  text-transform: capitalize;
 }
 
 .aplication-instructions-text {
-  padding:1rem;
+  padding:.5rem;
   font-weight: 300;
   line-height: 2rem;
 }

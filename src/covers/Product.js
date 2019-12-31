@@ -19,10 +19,7 @@ class Product extends React.Component {
         this.filteredProducts = JSON.parse(sessionStorage.getItem("filtered_products"))
         this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
         
-    }
-
-    
-
+    }   
 
     render(){
         return (
@@ -33,8 +30,7 @@ class Product extends React.Component {
                         <div className="main-body-header-text">
                             <h1>{this.chosenProduct.name}</h1>
                             <h2>
-                                GET A QUOTE IN 3 EASY STEPS
-                                It will take you less than 2 minutes.</h2>
+                                Insuring your car couldn't be simpler.</h2>
                         </div>                        
                         <div className="coversub-button"><Button variant="contained">Get started</Button></div>
                     </div>

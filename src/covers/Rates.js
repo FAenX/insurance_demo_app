@@ -175,14 +175,17 @@ class Rates extends React.Component {
             <div className="rates">
                 <div>{quoteAlert}</div>
                 <div className="rates-title-wrapper"> 
-                    <div className="rates-title"> Request quotation for: {this.chosenProduct.name}</div> 
+                    <div className="rates-title"> 
+                        <p>Your policy could be in your email in 5 minutes.</p>                        
+                    </div> 
                 </div>
 
                 <div className="aplication-instructions-wrapper">
                 <div className="aplication-instructions-text-wrapper">
                     
                     <div className="aplication-instructions-title">
-                        Get insured in just five simple steps:
+                        
+                        <p>Get insured in just five simple steps:</p>
                     </div>
                     <div className="aplication-instructions-text">
                         <ol>
@@ -201,7 +204,9 @@ class Rates extends React.Component {
                 </div>
                 <div className="rates-form-wrapper">
                     <div className="rates-title-wrapper">
-                        <div className="rates-title">Request quotation</div>
+                        <div className="rates-title">
+                        Request quotation for: {this.chosenProduct.name}
+                        </div>
                     </div>
                     <div className="rates-form">
                         <div className="r-form">
