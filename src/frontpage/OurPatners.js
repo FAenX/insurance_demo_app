@@ -1,6 +1,4 @@
 import React from "react"
-import Paper from '@material-ui/core/Paper';
-import apa from "../assets/images/apa.png"
 import Carousel from "./Carousel"
 
 

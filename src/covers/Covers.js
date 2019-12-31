@@ -90,7 +90,7 @@ class Covers extends React.Component {
                 })
            
         }catch{
-            setTimeout(()=>{window.location.reload()}, 1000)
+            //
         }
 
         

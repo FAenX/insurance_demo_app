@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Alert, Form} from "react-bootstrap"
+import { Card, Alert, Form} from "react-bootstrap"
 import mpesaLogo from "../assets/images/mpesa.png"
 import mastercard from "../assets/images/mastercard.png"
 import paypall from "../assets/images/download.jpeg"

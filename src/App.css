@@ -94,10 +94,8 @@
   justify-content: center;
   margin-left: 3rem;
   max-width: 50vw;
-  text-align: left;
-  
+  text-align: left;  
 }
-
 
 .headline-text {
   display: flex;
@@ -116,16 +114,12 @@
 .headline-subtext {
   font-weight: 400;
   color: #ffffff;
-  max-width: 30vw;
-  
-
-  
+  max-width: 30vw;   
 }
 
 .home-buttons {
   display: flex;
-  flex-flow: row;
-  
+  flex-flow: row;  
 }
 
 
@@ -165,8 +159,7 @@
   justify-content: center;
   align-items: center;
   background-color: #00192927;
-  margin-top: 2rem;
- 
+  margin-top: 2rem; 
 }
 
 .how-it-works-sub-header{
@@ -174,19 +167,14 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
- 
-  
+  padding: 1.5rem;  
 }
 
 .how-it-works-sub-header-child{
   display: flex;
   flex-flow: column;
   justify-content: flex-end;
-  padding-left: 1rem;
-  
-  
- 
+  padding-left: 1rem; 
   min-height: 10vh;
   border-left: #f60 1rem solid;
 }
@@ -524,9 +512,7 @@
 .coversub-header-text {
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  
-  
+  justify-content: center;   
 }
 
 .main-body-header-text h1{
@@ -577,6 +563,12 @@
 .coversub-button button {
   background-color: #f60;
   margin: 1rem;
+}
+
+
+/* product page */
+.product-wrapper {
+  min-height: 100vh;
 }
 
 /* footer */

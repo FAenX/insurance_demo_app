@@ -2,7 +2,6 @@ import React from "react"
 import selectImg from "../assets/images/cover_bg.svg"
 import quotationImg from "../assets/images/office.svg"
 import doneImg from "../assets/images/done.svg"
-import Button from "@material-ui/core/Button"
 import {withRouter} from "react-router-dom";
 
 

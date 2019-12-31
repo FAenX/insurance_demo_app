@@ -2,7 +2,6 @@ import React from 'react';
 import {withRouter} from "react-router-dom";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import SocialMedia from "./SocialMedia"

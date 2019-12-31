@@ -56,35 +56,33 @@ class Cover extends React.Component {
     // handle submit
     onSubmitHandler = (event) => {
         event.preventDefault();  
-        console.log(event.target)      
+              
+        let target; 
+        if (event.target.id) {
+            target = event.target.id
+        }else{
+            target = event.target.parentNode.id
+        }   
+        console.log(target)   
 
         this.setState({
             isLoading: true,
             chosenProduct: {
-                chosenProductAlias: event.target.id
+                chosenProductAlias: target
             }
         })
+
+        sessionStorage.setItem("chosen_product", JSON.stringify(target))
+        this.props.history.push("/product")      
         
-        //setTimeout(()=>{this.props.chosenProduct(this.state.chosenProduct)}, 1000)
-
-       
-        this.handleRedirect()
-    }
-
-    handleRedirect=()=>{
-        this.props.history.push("/product")
-    }
-
-    
+    }      
     
     render(){
-
         let filteredProducts;
         let product1;
         let product2;
         let product3;
-        let panel;
-        
+        let panel;        
         let subCategories; 
         let sub;
 
@@ -117,7 +115,7 @@ class Cover extends React.Component {
                 sessionStorage.setItem("filtered_products", JSON.stringify(filteredProducts))
     
             }catch{
-                setTimeout(()=>{window.location.reload()}, 2000)
+                //
             }
             return filteredProducts;            
         }
@@ -129,7 +127,7 @@ class Cover extends React.Component {
             filteredProducts = filterProducts(sub, products)
             
         } catch (error) {
-            setTimeout(()=>{window.location.reload()}, 1000)
+            //
         }   
         
         product1 = filteredProducts[0]
