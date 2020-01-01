@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import "./style.scss";
 import Rates from "./covers/Rates"
 import Cover from "./covers/Cover"
 import Quotation from "./covers/Quotation"
