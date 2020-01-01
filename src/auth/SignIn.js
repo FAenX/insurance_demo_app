@@ -130,7 +130,7 @@ class SignIn extends React.Component {
         }
 
         return(
-            <div className="signin-page">
+            <div className="signin-wrapper">
                 <div className="coversub-cover">                
                 <div >                    
                     <div className="cover-header-text-wrapper">
@@ -145,35 +145,37 @@ class SignIn extends React.Component {
                     
                     </div>            
                 </div>
-            <div className="signin-wrapper">
+            <div className="main-body-wrapper">
                 <div>{alert}</div>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" onChange={this.handleEmailChange}/>
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
-                    </Form.Group>
+                <div className="main-body-highlight-text">
+                    Sign In
+                </div>
+                <div className="signin-form-wrapper">
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" onChange={this.handleEmailChange}/>
+                            <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                            </Form.Text>
+                        </Form.Group>
 
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
-                    </Form.Group>
-                    <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group>
-                    <div className="signin-button">
-                    <LoaderButton variant="primary" type="submit" desabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.submitForm}>
-                        Submit
-                    </LoaderButton> 
-                    <p>Create account</p>
-                    </div>
-                </Form>
-
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Check me out" />
+                        </Form.Group>
+                        <div className="signin-button">
+                        <LoaderButton variant="primary" type="submit" desabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.submitForm}>
+                            Submit
+                        </LoaderButton> 
+                        <p>Create account</p>
+                        </div>
+                    </Form>
+                </div>
             </div>
-                
-            
             </div>
         )
     }

@@ -434,7 +434,7 @@
 /* covers subcategory */
 .cover-wrapper{
   display: inherit;
-  flex-flow: column;
+  flex-flow: inherit;
   min-height: 100vh;
 }
 
@@ -464,6 +464,7 @@
 
 .cover-header-text h1{
   font-weight: 300;
+  text-transform: uppercase;
 }
 
 .cover-header-text h2{
@@ -477,7 +478,6 @@
   flex-flow: column;
   margin-top: 1rem;
   background-color: #0019293b;
-  min-height: 100vh;
 }
 
 .main-body-highlight-text {
@@ -487,6 +487,7 @@
   margin: 1rem;
   text-align: left;
   padding-left: 1rem;
+  text-transform: uppercase;
   
 
 }
@@ -506,7 +507,6 @@
   text-align: left;
   letter-spacing: .05rem;
   line-height: 1.5rem;
-  border-bottom: .5rem solid #f60;
 }
 
 .cover-button button {
@@ -687,35 +687,26 @@
   background-color: #001929;
 }
 
-/* sign in */
-
-.signin-page {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-}
-
+/* sign in sign up*/
 .signin-wrapper {
-  min-width: 50vw;
-  max-width: 80vw;
-  min-height: 60vh;
-  margin-top: 3rem;
+  display: inherit;
+  flex-flow: inherit;
 }
 
-.signup-page {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-}
 
 .signup-wrapper {
-  min-width: 40vw;
-  min-height: 80vh;
-  margin-top: 3rem;
+  display: inherit;
+  flex-flow: inherit;
+}
+
+.signup-form-wrapper{
+  
+  padding: 1rem;
+
+}
+
+.signin-form-wrapper{
+  padding: 1rem;
 }
 
 .signup-names-flex {

@@ -137,7 +137,7 @@ class SignUp extends React.Component {
 
 
         return(
-            <div className="signup-page">
+            <div className="signup-wrapper">
                 <div className="coversub-cover">                
                 <div >                    
                     <div className="cover-header-text-wrapper">
@@ -152,39 +152,44 @@ class SignUp extends React.Component {
                     
                     </div>            
                 </div>
-                <div className="signup-wrapper">
-                <div>{alert}</div>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" onChange={this.handleEmailChange}/>
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
-                    </Form.Group>
+                <div className="main-body-wrapper">
+                    <div>{alert}</div>
+                    <div className="main-body-highlight-text">
+                        Sign Up
+                    </div>
+                    <div className="signup-form-wrapper">
+                        <Form>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control type="email" placeholder="Enter email" onChange={this.handleEmailChange}/>
+                                <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
 
-                    <Form.Group>
-                    
-                        
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control placeholder="First name" onChange={this.handleFirstNameChange}/>
-                
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control placeholder="Last name" onChange={this.handleLastNameChange}/>
+                            <Form.Group>
                             
+                                
+                            <Form.Label>First name</Form.Label>
+                            <Form.Control placeholder="First name" onChange={this.handleFirstNameChange}/>
                         
-                    
-                    </Form.Group>
+                            <Form.Label>Last name</Form.Label>
+                            <Form.Control placeholder="Last name" onChange={this.handleLastNameChange}/>
+                                    
+                                
+                            
+                            </Form.Group>
 
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
-                    </Form.Group>
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
+                            </Form.Group>
 
-                    <LoaderButton variant="primary" type="submit" desabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.submitForm}>
-                        Submit
-                    </LoaderButton>
-                </Form>
+                            <LoaderButton variant="primary" type="submit" desabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.submitForm}>
+                                Submit
+                            </LoaderButton>
+                        </Form>
+                    </div>
                 </div>
             </div>
         )

@@ -14,7 +14,6 @@ class Claim extends React.Component {
                         <div className="cover-header-text">
                             <h1>Claim</h1>
                             <h2>
-                                GET A QUOTE IN 3 EASY STEPS
                                 It will take you less than 2 minutes.</h2>
                         </div>                        
                         <div className="cover-button"><Button variant="contained">Get started</Button></div>
@@ -25,7 +24,7 @@ class Claim extends React.Component {
                 <div className="main-body-wrapper">                    
                     
                     <div className="main-body-highlight-text">
-                        
+                    make a claim
                     </div>
                     <div className="main-body-text">
                                        

@@ -25,9 +25,10 @@ class WhoAreWe extends React.Component {
                 <div className="main-body-wrapper">                    
                     
                     <div className="main-body-highlight-text">
-                        
+                    Name Insurance Brokers (EA) Ltd. Products
                     </div>
                     <div className="main-body-text">
+                    
                                        
                     </div>
                 </div>      

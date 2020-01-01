@@ -25,7 +25,7 @@ class EverythingYouNeedToKnow extends React.Component {
                 <div className="main-body-wrapper">                    
                     
                     <div className="main-body-highlight-text">
-                        
+                    Everything you need to know
                     </div>
                     <div className="main-body-text">
                                        
