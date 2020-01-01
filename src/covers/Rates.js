@@ -7,10 +7,17 @@ class Rates extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            email: "",
-            carValue: "",
-            regNo: "",
-            tonnes: "",
+            vehicle: {
+                email: "",
+                vehicleUse: "",
+                carMake: "",
+                carModel: "",
+                yearOfManufacture: "",
+                carValue: "",
+                regNo: "",
+                coverStartDate: "",
+                tonnes: "",
+            },
             premium: "",
             isLoading:false
         }
@@ -44,51 +51,9 @@ class Rates extends React.Component {
         };
         console.log(data)
 
-        const url = "api/v1/quotes/quote/";
-        const response = fetch(url, {
-            method: 'POST',  
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-              },
-            body: JSON.stringify(data),
+        
 
-        }).then(
-            (res)=> res
-        ).catch(
-            (err) => err
-        );
-
-        response.then((res)=>{
-            res.json().then((res) =>{
-            
-            if (res.status === "success"){
-                this.setState({
-                    premium: res.data
-                })
-                const data = this.state
-                this.props.handleRequest(data)
-                setTimeout(() => this.handleRedirectOnResponse(), 1000)
-
-            } else if (res.status === "error"){
-                this.setState({
-                    premium: res.error
-                })
-                this.setState({isLoading:false})
-            }else {
-                console.log(res)
-                this.setState({isLoading:false})
-            }
-        }).catch(err=>{
-            this.setState({
-                premium: res.status,
-            })
-            this.setState({isLoading:false})
-        })
-        }).catch((err)=>{
-            console.log(`err: ${err}`)
-            this.setState({isLoading:false})
-        });
+        
 
     }
 
