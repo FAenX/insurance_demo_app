@@ -6,7 +6,7 @@
 .App {
   display: flex;
   flex-flow: column;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
   text-align: center;
   font-family: Open Sans,Roboto,Oxygen,Ubuntu,Cantarell,Lato,Helvetica Neue,sans-serif;
@@ -388,67 +388,6 @@
   background-color: #f60;
 }
 
-@media screen and (max-width: 600px)  {
-  .home{
-    min-width: 100vw;
-  }
-  .cover-page{
-    background-position-x: -10vh;
-    background-position-y: 10vh;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }  
-
-  .page2-cover {
-    background-position-x: 10vh;
-    background-position-y: -20vh;
-
-  }
-  .page-headline-text {
-    min-width: 100vw; 
-
-  }
-
-  .headline-text{   
-    margin-right: 2rem;
-  }
-
-  .headline-subtext{
-    max-width: 30vh;    
-  }
-
- }
-
- @media screen and (max-width: 400px)  {
-  .cover-page{    
-    background-position-y: -20vh;    
-  }
-
-  .home {    
-    margin-left: .5rem;
-    min-height: 60vh;      
-  }
-  .headline-text {       
-    font-size: 1rem;
-    
-  }
-  .headline-subtext {
-    margin-bottom: 5rem;
-    font-size: .9rem;
-    word-spacing: .25rem;
-  }
-  .home-buttons button {
-    font-size: .75rem;
-  }
-  .why-us-child img{
-    min-height: 15rem;
-    min-width: 15rem;
-  }
-  
- }
-
- 
-
 /* highlights */
 .highlights {
   display: flex;
@@ -662,38 +601,47 @@
 
 .rates-form-wrapper {
   display: flex;
-  flex-flow: column;
-  text-align: left;
+  flex-flow: column;  
 }
-
 
 .rates-form {
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: .5rem;
   background-color: #ffffff;
-  min-width: 80vw;
-}
-
-.r-form {
-  max-width: 60vw;
+  
 }
 
 .rates-submit-button-wrapper{
   margin: 2rem;
 }
 
-/* quotation page */
+/* quotation request form */
 .quote-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  min-width: 90vw;
+  display: inherit;
   justify-content: center;
-  text-align: left;
+  align-items: center;
+  flex-flow: row wrap;
 }
 
+.quote-form-header{
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: .05rem #f60 solid;
+}
+
+.vehicle-controls {
+  width: 12rem;
+  height: 7rem;
+  margin-left: .5rem;
+  margin-top: 1.5rem;
+}
+
+/* quotation page */
 .quotation {
   display: flex;
   flex-direction: column;
@@ -858,22 +806,6 @@
   font-size: 1rem;
 }
 
-
-
-
-
-@media screen and (max-width: 400px)  {
-  
-}
-
-@media screen and (max-width: 600px)  {
-  .highlight-card {
-    
-  }
-}
-
-
-
 .payments-page {
   display: flex;
   flex-flow: row wrap;
@@ -934,3 +866,66 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 450px)  {
+  .cover-page{    
+    background-position-y: -20vh;    
+  }
+
+  .home {    
+    margin-left: .5rem;
+    min-height: 60vh;      
+  }
+  .headline-text {       
+    font-size: 1rem;
+    
+  }
+  .headline-subtext {
+    margin-bottom: 5rem;
+    font-size: .9rem;
+    word-spacing: .25rem;
+  }
+  .home-buttons button {
+    font-size: .75rem;
+  }
+  .why-us-child img{
+    min-height: 15rem;
+    min-width: 15rem;
+  }
+  .vehicle-controls {
+    width: 10rem;
+  }
+  
+ }
+
+
+ @media screen and (max-width: 600px)  {
+  .home{
+    min-width: 100vw;
+  }
+  .cover-page{
+    background-position-x: -10vh;
+    background-position-y: 10vh;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }  
+
+  .page2-cover {
+    background-position-x: 10vh;
+    background-position-y: -20vh;
+
+  }
+  .page-headline-text {
+    min-width: 100vw; 
+
+  }
+
+  .headline-text{   
+    margin-right: 2rem;
+  }
+
+  .headline-subtext{
+    max-width: 30vh;    
+  }
+
+ }
