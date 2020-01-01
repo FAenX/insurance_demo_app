@@ -126,7 +126,7 @@ class Cover extends React.Component {
                            {this.product1.description}
                         </Typography>
                         </ExpansionPanelDetails>
-                        <div className="coversub-button">
+                        <div className="cover-button">
                             <Button variant="outlined" id={this.product1.alias} onClick={this.onSubmitHandler}>Learn more</Button>
                         </div>
                     </ExpansionPanel>
@@ -144,7 +144,7 @@ class Cover extends React.Component {
                         {this.product2.description}
                         </Typography>
                         </ExpansionPanelDetails>
-                        <div className="coversub-button">
+                        <div className="cover-button">
                             <Button variant="outlined" id={this.product2.alias} onClick={this.onSubmitHandler}>Learn more</Button>
                         </div>
                     </ExpansionPanel>
@@ -163,7 +163,7 @@ class Cover extends React.Component {
                         </Typography>
                         
                         </ExpansionPanelDetails>
-                        <div className="coversub-button">
+                        <div className="cover-button">
                             <Button variant="outlined" id={this.product3.alias} onClick={this.onSubmitHandler}>Learn more</Button>
                         </div>
                     </ExpansionPanel>

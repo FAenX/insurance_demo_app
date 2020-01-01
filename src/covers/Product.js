@@ -26,14 +26,14 @@ class Product extends React.Component {
             <div className="product-wrapper">
                 <div className="coversub-cover">                
                 <div >                    
-                    <div className="coversub-header-text">
-                        <div className="main-body-header-text">
+                    <div className="cover-header-text-wrapper">
+                        <div className="cover-header-text">
                             <h1>{this.chosenProduct.name}</h1>
                             <h2>
                                 our moto
                             </h2>
                         </div>                        
-                        <div className="coversub-button"><Button variant="contained">Get started</Button></div>
+                        <div className="cover-button"><Button variant="contained">Get started</Button></div>
                     </div>
                     
                     </div>            
