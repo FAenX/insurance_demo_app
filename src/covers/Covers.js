@@ -7,41 +7,46 @@ class Covers extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-               subCategories: []  
+              
         }
+
+        this.wait = this.wait.bind(this)
     }
     
     componentWillMount = () => {
-        try{   
-                  
-            this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))            
-            if(this.subCategories != null && this.subCategories !== undefined && this.subCategories.length > 0){  
-                         
-                this.createHighlights(this.subCategories) 
-                
-                           
-            }else{   
-                           
-                
-            }         
-
-        }catch{
-            this.dataAlert = <Alert variant="warning">Something went wrong</Alert>
-        }        
-
-    }
-
-    componentDidUpdate=()=>{
-        if (this.state.subCategories.length > 0){
+        
+        this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))  
+           
+        if (this.subCategories==null){
             
-            this.createHighlights(this.state.subCategories)
+            this.subCategories = {name: "Session ended. Please refresh", alias: "Session ended. Please refresh", description: "Session ended. Please refresh"}
             
-            sessionStorage.setItem("sub_categories", JSON.stringify(this.state.subCategories))
-        }      
-
+            this.wait()
+       
+        }else{
+            this.createHighlights()    
+        }
+       
+         
     }
+         
+    async wait(){
+        const timer = () => setTimeout(() => {
+            const subCategories = JSON.parse(sessionStorage.getItem("sub_categories")) 
+            console.log(subCategories)
+            this.createHighlights()
+            this.forceUpdate()
+        }, 3000) 
+        const res = await timer()
+        console.log(res)
+    }
+       
+
+    
+    
 
     createHighlights=()=>{
+        console.log("creating highlights")
         try{
             const subCategories = JSON.parse(sessionStorage.getItem("sub_categories")) 
             this.highlights = subCategories.map(i => {
