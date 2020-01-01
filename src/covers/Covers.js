@@ -64,7 +64,7 @@ class Covers extends React.Component {
                 })
 
         }catch{
-            this.highlights = <Alert variant="info"> None </Alert>
+            this.highlights = <Alert variant="info"> Refresh page </Alert>
         }
     }
     
@@ -87,14 +87,6 @@ class Covers extends React.Component {
         
     }
     render(){  
-
-        
-        
-        
-        
-        
-        
-        
 
         return(
             <div className="page2">

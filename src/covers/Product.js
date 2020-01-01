@@ -11,10 +11,18 @@ class Product extends React.Component {
     }
 
     componentWillMount=()=>{
-        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))        
-    }   
+       
+        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
+       
+        if (this.chosenProduct==null){
+            this.chosenProduct = {name: "Session ended. Please refresh", description: "Session ended. Please refresh"}
+        }            
+               
+    } 
+
 
     render(){
+        console.log(this.chosenProduct)
         return (
             <div className="product-wrapper">
                 <div className="coversub-cover">                
@@ -23,7 +31,8 @@ class Product extends React.Component {
                         <div className="main-body-header-text">
                             <h1>{this.chosenProduct.name}</h1>
                             <h2>
-                                Insuring your car couldn't be simpler.</h2>
+                                our moto
+                            </h2>
                         </div>                        
                         <div className="coversub-button"><Button variant="contained">Get started</Button></div>
                     </div>

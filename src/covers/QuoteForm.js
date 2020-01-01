@@ -32,7 +32,17 @@ class QuoteForm extends React.Component {
     }
 
     componentWillMount=()=>{
-        this.chosenProduct = this.props.chosenProduct  
+        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
+       
+        if (this.chosenProduct==null){
+            this.chosenProduct = {
+                name: "Session ended. Please refresh", 
+                description: "Session ended. Please refresh",
+                alias: "Session ended. Please refresh"
+            }
+        }            
+               
+    
         const vehicle = this.state.vehicle
 
         vehicle["cover"]=this.chosenProduct.alias

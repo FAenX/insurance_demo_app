@@ -587,15 +587,17 @@
 }
 
 .aplication-instructions-title {
-  text-align: center;
+  text-align: left;
+  padding: 1rem;
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: capitalize;
+  margin-bottom: 1rem;
 }
 
 .aplication-instructions-text {
   padding:.5rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 2rem;
 }
 
@@ -607,9 +609,8 @@
 .rates-form {
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  padding: .5rem;
+  justify-content: left;
+  text-align: left;
   background-color: #ffffff;
   
 }
@@ -620,18 +621,32 @@
 
 /* quotation request form */
 .quote-form {
-  min-width: 90vw;
   display: inherit;
   justify-content: center;
+  margin: .5rem;
   align-items: center;
   flex-flow: row wrap;
 }
 
 .quote-form-header{
+  display: inherit;
+  flex-flow: column;
+  text-align: left;
   font-weight: 400;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
-  border-bottom: .05rem #f60 solid;
+  padding-left: 1rem;
+  padding: 1rem;
+  margin: .5rem;
+  border-bottom: 1rem #f60 solid;
+}
+
+.quote-form-nav {
+  display: inherit;
+  justify-content: space-between;
+}
+
+.quote-form-nav svg{
+  cursor: pointer;
 }
 
 .vehicle-controls {
