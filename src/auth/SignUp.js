@@ -1,6 +1,7 @@
 import React from "react"
 import {Form, Alert} from "react-bootstrap"
 import LoaderButton from "../LoaderButton"
+import {Button} from "@material-ui/core"
 
 
 class SignUp extends React.Component {
@@ -137,6 +138,20 @@ class SignUp extends React.Component {
 
         return(
             <div className="signup-page">
+                <div className="coversub-cover">                
+                <div >                    
+                    <div className="cover-header-text-wrapper">
+                        <div className="cover-header-text">
+                            <h1>Sign Up</h1>
+                            <h2>
+                                GET A QUOTE IN 3 EASY STEPS
+                                It will take you less than 2 minutes.</h2>
+                        </div>                        
+                        <div className="cover-button"><Button variant="contained">Get started</Button></div>
+                    </div>
+                    
+                    </div>            
+                </div>
                 <div className="signup-wrapper">
                 <div>{alert}</div>
                 <Form>

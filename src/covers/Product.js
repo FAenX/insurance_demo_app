@@ -22,7 +22,6 @@ class Product extends React.Component {
 
 
     render(){
-        console.log(this.chosenProduct)
         return (
             <div className="product-wrapper">
                 <div className="coversub-cover">                

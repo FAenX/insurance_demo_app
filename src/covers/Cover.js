@@ -27,7 +27,7 @@ class Cover extends React.Component {
                 this.filteredProducts = this.filterProducts(this.products, this.sub)
                 this.getProducts(this.filteredProducts)
             }else{               
-                console.log("else")
+                
             }         
 
         }catch{
@@ -43,7 +43,6 @@ class Cover extends React.Component {
         this.product1 = filteredProducts[0];
         this.product2 = filteredProducts[1];
         this.product3 = filteredProducts[2];
-        console.log(this.prodict1)
     }
     
 
@@ -177,14 +176,14 @@ class Cover extends React.Component {
             <div className="cover-wrapper">
                 <div className="coversub-cover">                
                 <div >                    
-                    <div className="coversub-header-text">
-                        <div className="main-body-header-text">
+                    <div className="cover-header-text-wrapper">
+                        <div className="cover-header-text">
                             <h1>{subCategories.name}</h1>
                             <h2>
                                 GET A QUOTE IN 3 EASY STEPS
                                 It will take you less than 2 minutes.</h2>
                         </div>                        
-                        <div className="coversub-button"><Button variant="contained">Get started</Button></div>
+                        <div className="cover-button"><Button variant="contained">Get started</Button></div>
                     </div>
                     
                     </div>            

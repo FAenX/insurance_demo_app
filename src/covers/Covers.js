@@ -13,15 +13,15 @@ class Covers extends React.Component {
     
     componentWillMount = () => {
         try{   
-            console.log("trying")         
+                  
             this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))            
             if(this.subCategories != null && this.subCategories !== undefined && this.subCategories.length > 0){  
-                console.log("if")          
+                         
                 this.createHighlights(this.subCategories) 
-                console.log("if") 
+                
                            
             }else{   
-                console.log("else")            
+                           
                 
             }         
 
@@ -33,9 +33,9 @@ class Covers extends React.Component {
 
     componentDidUpdate=()=>{
         if (this.state.subCategories.length > 0){
-            console.log(this.state.subCategories)
+            
             this.createHighlights(this.state.subCategories)
-            console.log("yes")
+            
             sessionStorage.setItem("sub_categories", JSON.stringify(this.state.subCategories))
         }      
 

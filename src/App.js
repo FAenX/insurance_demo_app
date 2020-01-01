@@ -19,6 +19,9 @@ import MenuIcon from "@material-ui/icons/Menu"
 import FooterMenu from "./FooterMenu"
 import SocialMedia from "./SocialMedia"
 import Product from './covers/Product';
+import Claim from "./claims/Claim"
+import WhoAreWe from "./whoarewe/WhoAreWe"
+import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeedToKnow"
 import dotenv from "dotenv"
 
 dotenv.config()
@@ -138,6 +141,9 @@ class App extends React.Component {
           <Route exact path='/product' render = {(props) => <Product {...props} />}/>
           <Route exact path='/cover' render = {(props) => <Cover {...props} />}/>
           <Route exact path='/covers' render = {(props) => <Covers {...props} />}/>
+          <Route exact path='/claim' render = {(props) => <Claim {...props} />}/>
+          <Route exact path='/about' render = {(props) => <WhoAreWe {...props} />}/>
+          <Route exact path='/info' render = {(props) => <EverythingYouNeedToKnow {...props} />}/>
           <Route exact path='/rates' render = {(props) => <Rates {...props} />}/>
           <Route exact path='/quotation' render = {(props) => <Quotation {...props} />}/>
           <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />

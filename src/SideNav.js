@@ -61,8 +61,8 @@ class SideBar extends React.Component {
                             <ListItemText  id="claim" primary="Claim"/>
                         </ListItem>
                         <hr className="devider"></hr>
-                        <ListItem button id="whoarewe" onClick={this.handleRedirectOnClick}>                       
-                            <ListItemText  id="whoarewe" primary="Who are we"/>
+                        <ListItem button id="about" onClick={this.handleRedirectOnClick}>                       
+                            <ListItemText  id="about" primary="Who are we"/>
                         </ListItem>
                         <hr className="devider"></hr>
                         <ListItem button id="signout" onClick={this.handleRedirectOnClick}>                        
