@@ -40,24 +40,23 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function LoaderButton(props) {
+export default function CircularIntegration() {
   const classes = useStyles();
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
-  
+  const timer = React.useRef();
 
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
   });
 
   React.useEffect(() => {
-    setLoading(props.loading)
-    if (props.status === 200){
-      setSuccess(true)
-    }
-  }, [props.loading, props.status]);
+    return () => {
+      clearTimeout(timer.current);
+    };
+  }, []);
 
-  /* const handleButtonClick = () => {
+  const handleButtonClick = () => {
     if (!loading) {
       setSuccess(false);
       setLoading(true);
@@ -66,19 +65,30 @@ export default function LoaderButton(props) {
         setLoading(false);
       }, 2000);
     }
-  }; */
+  };
 
   return (
     <div className={classes.root}>
+      <div className={classes.wrapper}>
+        <Fab
+          aria-label="save"
+          color="primary"
+          className={buttonClassname}
+          onClick={handleButtonClick}
+        >
+          {success ? <CheckIcon /> : <SaveIcon />}
+        </Fab>
+        {loading && <CircularProgress size={68} className={classes.fabProgress} />}
+      </div>
       <div className={classes.wrapper}>
         <Button
           variant="contained"
           color="primary"
           className={buttonClassname}
           disabled={loading}
-          onClick={props.handleButtonClick}
+          onClick={handleButtonClick}
         >
-          Get Quote
+          Accept terms
         </Button>
         {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
       </div>

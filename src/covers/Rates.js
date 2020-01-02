@@ -1,16 +1,24 @@
 import React from 'react';
 import {withRouter} from "react-router-dom"
 import QuoteForm from "./QuoteForm"
-import {Button, Paper} from "@material-ui/core"
+import {Paper} from "@material-ui/core"
 import Filter9PlusIcon from '@material-ui/icons/Filter9Plus';
+import LoaderButton from "../LoaderButton";
+import SnackBar from "../SnackBar"
 
 class Rates extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            premium: "",
-            isLoading:false
+            premium: 0,
+            responseData: {},
+            status: "error",
+            loading: false,
+            showSnackBar: false,
+            vehicle: {}
         }
+
+        this.requestQuotation = this.requestQuotation.bind(this)
     }
     
     componentWillMount =()=>{
@@ -22,52 +30,55 @@ class Rates extends React.Component {
                
     } 
 
-    requestQuotation =(data)=>{
+    async requestQuotation (){
+        this.setState({
+            loading: true,
+            showSnackBar: false,
+        })
+
         const url = "api/v1/quotes/quote/";
-        const response = fetch(url, {
+        const request =fetch(url, {
             method: 'POST',  
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
               },
-            body: JSON.stringify(data),
+            body: JSON.stringify(this.state.vehicle),
         }).then(
-            (res)=> res
+            (res)=> res.json()
         ).catch(
             (err) => err
         );
+        
+        
+        const response = await request
 
-        response.then((res)=>{
-            res.json().then((res) =>{
-            
-            if (res.status === "success"){
-                this.setState({
-                    premium: res.data
-                })
-                const data = this.state
-                this.props.handleRequest(data)
-                setTimeout(() => this.handleRedirectOnResponse(), 1000)
-
-            } else if (res.status === "error"){
-                this.setState({
-                    premium: res.error
-                })
-                this.setState({isLoading:false})
-            }else {
-                console.log(res)
-                this.setState({isLoading:false})
-            }
-        }).catch(err=>{
-            this.setState({
-                premium: res.status,
-            })
-            this.setState({isLoading:false})
+        this.setState({
+            loading: false,
+            responseData: response
         })
-        }).catch((err)=>{
-            console.log(`err: ${err}`)
-            this.setState({isLoading:false})
-        });
+        
+        if(response.status==="success"){
+            this.setState({
+                status: "success",
+                message: "Request Successfull. Redirecting....",
+                showSnackBar: true
+            })
 
+            
+        }else if(response.status==="error"){
+            this.setState({
+                status: "error",
+                message: response.error,
+                showSnackBar: true
+            })
+        }
+    }
+
+    vehicleChangeListener=(vehicle)=>{
+        this.setState({
+            vehicle,
+        })
     }
 
    
@@ -113,9 +124,26 @@ class Rates extends React.Component {
                             <Filter9PlusIcon style={{ fontSize: 40, color:"#f60" }}/>
                             </div>
                         </Paper>
-                        <QuoteForm chosenProduct={this.chosenProduct} />
+                        <QuoteForm 
+                            chosenProduct={this.chosenProduct} 
+                            vehicleChangeListener={this.vehicleChangeListener}
+                        />
+                        
                         <div className="rates-submit-button-wrapper"> 
-                            <Button variant="contained">Request</Button>
+                        
+                        <SnackBar 
+                            status={this.state.status} 
+                            message={this.state.message} 
+                            show={this.state.showSnackBar}
+                        />
+
+                        <LoaderButton 
+                            status={this.state.status}
+                            loading={this.state.loading} 
+                            handleButtonClick={this.requestQuotation}                            
+                        >
+                            Request
+                        </LoaderButton>
                        </div> 
                     </div>
                 </div>

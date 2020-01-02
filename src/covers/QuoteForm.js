@@ -53,6 +53,8 @@ class QuoteForm extends React.Component {
     }
 
     componentDidMount=()=>{
+        
+
         if (this.chosenProduct.alias.startsWith("commercial") ){
             this.vehicleUse = "Commercial";
             
@@ -80,6 +82,8 @@ class QuoteForm extends React.Component {
         this.setState({
             vehicle,
         })
+
+        this.props.vehicleChangeListener(this.state.vehicle)
     }
 
     selectedDate=(selectedDate)=>{

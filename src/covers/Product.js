@@ -2,6 +2,8 @@ import React from "react"
 import {withRouter} from "react-router-dom"
 import {Button} from "@material-ui/core"
 import Rates from "./Rates"
+import SnackBar from "../SnackBar";
+
 
 class Product extends React.Component {
 
@@ -22,8 +24,11 @@ class Product extends React.Component {
 
 
     render(){
+        
+
         return (
             <div className="product-wrapper">
+                
                 <div className="coversub-cover">                
                 <div >                    
                     <div className="cover-header-text-wrapper">
@@ -53,7 +58,7 @@ class Product extends React.Component {
                         <Rates chosenProduct={this.chosenProduct}/>
                     </div>
                 </div>
-                   
+               
             </div>
         )
     }
