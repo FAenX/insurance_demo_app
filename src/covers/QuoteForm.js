@@ -38,9 +38,7 @@ class QuoteForm extends React.Component {
        
         if (this.chosenProduct==null){
 
-            this.chooseProduct = this.chooseProductControl()
-            this.chooseVehicleUse = this.chooseVehicleUseControl()
-            
+          //
           
         }else{
 
@@ -68,51 +66,7 @@ class QuoteForm extends React.Component {
         
     }
 
-    chooseProductControl=()=>{
-        const chooseProduct = <div className="vehicle-controls"> 
-                            <FormControl className="vehicle-controls">
-                                <InputLabel>Select cover</InputLabel>
-                                <Select
-                                    name="cover"
-                                    value={this.state.vehicle.cover}
-                                    onChange={this.formOnChange}
-                                >
-                                <MenuItem value="mercedes">Mercedes</MenuItem>
-                                <MenuItem value="toyota">Toyota</MenuItem>
-                                <MenuItem value="tesla">Tesla</MenuItem>
-                                </Select>
-                                <FormHelperText>
-                                    Select insurance cover for your vehicle's
-                                </FormHelperText>
-                            </FormControl>
-                            </div>
-        return chooseProduct;
-                               
-                                
-        
-    }
-
-    chooseVehicleUseControl =()=>{
-        const chooseVehicleUse =<div className="vehicle-controls"> 
-                                <FormControl className="vehicle-controls">
-                                    <InputLabel>vehicle use</InputLabel>
-                                    <Select
-                                        name="vehicleUse"
-                                        value={this.state.vehicle.vehicleUse}
-                                        onChange={this.formOnChange}
-                                    >
-                                    <MenuItem value="private">Private</MenuItem>
-                                    <MenuItem value="commercial">Commercial</MenuItem>
-                                    <MenuItem value="forhire">For Hire</MenuItem>
-                                    </Select>
-                                    <FormHelperText>
-                                        Select insurance cover for your vehicle's
-                                    </FormHelperText>
-                                </FormControl>
-                                </div>
-        return chooseVehicleUse;
-    }
-
+   
     validateForm=()=>{
         return this.state.vehicleValue && this.state.regNo && this.chosenProduct.alias
     }
@@ -127,8 +81,9 @@ class QuoteForm extends React.Component {
         this.setState({
             vehicle,
         })
+        this.props.vehicleChangeListener(vehicle)
 
-        this.props.vehicleChangeListener(this.state.vehicle)
+        
     }
 
     selectedDate=(selectedDate)=>{
@@ -142,13 +97,49 @@ class QuoteForm extends React.Component {
     }
    
 
-    render(){  
+    render(){
+        if  (this.chosenProduct==null){
+            this.chooseVehicleUse =<div className="vehicle-controls"> 
+                <FormControl className="vehicle-controls">
+                    <InputLabel>vehicle use</InputLabel>
+                    <Select
+                        name="vehicleUse"
+                        value={this.state.vehicle.vehicleUse}
+                        onChange={this.formOnChange}
+                    >
+                    <MenuItem value="private">Private</MenuItem>
+                    <MenuItem value="commercial">Commercial</MenuItem>
+                    <MenuItem value="forhire">For Hire</MenuItem>
+                    </Select>
+                    <FormHelperText>
+                        Select insurance cover for your vehicle's
+                    </FormHelperText>
+                </FormControl>
+                </div>
+                this.chooseProduct = <div className="vehicle-controls"> 
+                <FormControl className="vehicle-controls">
+                    <InputLabel>Select cover</InputLabel>
+                    <Select
+                        name="cover"
+                        value={this.state.vehicle.cover}
+                        onChange={this.formOnChange}
+                    >
+                    <MenuItem value="mercedes">Mercedes</MenuItem>
+                    <MenuItem value="toyota">Toyota</MenuItem>
+                    <MenuItem value="tesla">Tesla</MenuItem>
+                    </Select>
+                    <FormHelperText>
+                        Select insurance cover for your vehicle's
+                    </FormHelperText>
+                </FormControl>
+            </div>
 
-
-
+        }
+    
         return(
             <Paper elevation={5} className="quote-form">
             <div className="quote-form">
+                    
                     {this.chooseVehicleUse}
                     {this.chooseProduct} 
                 
