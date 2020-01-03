@@ -7,7 +7,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import DatePicker from "./DatePicker"
-import {Paper} from "@material-ui/core"
+import {Paper, Input} from "@material-ui/core"
 
 
 
@@ -35,6 +35,7 @@ class QuoteForm extends React.Component {
 
     componentWillMount=()=>{
         this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
+        this.products = JSON.parse(sessionStorage.getItem("products"))
        
         if (this.chosenProduct==null){
 
@@ -95,10 +96,28 @@ class QuoteForm extends React.Component {
             vehicle,
         })
     }
+
+    //filter products to match chosen sub alias
+    filterProducts =(products, sub)=>{
+        let filteredProducts=[];    
+        for (let i=0; i < products.length; i++){
+            if (products[i].alias.startsWith(sub)){
+                
+                filteredProducts.push(products[i])
+                }
+        }
+        return filteredProducts;            
+    }
    
 
     render(){
         if  (this.chosenProduct==null){
+            const productsInCategory = this.filterProducts(this.products, this.state.vehicle.vehicleUse)
+            const covers = productsInCategory.map((i) => {
+                return <option key={i.alias} value="private">{i.name}</option>
+        
+                       
+            })
             this.chooseVehicleUse =<div className="vehicle-controls"> 
                 <FormControl className="vehicle-controls">
                     <InputLabel>vehicle use</InputLabel>
@@ -112,37 +131,35 @@ class QuoteForm extends React.Component {
                     <MenuItem value="forhire">For Hire</MenuItem>
                     </Select>
                     <FormHelperText>
-                        Select insurance cover for your vehicle's
+                        Select vehicle use
                     </FormHelperText>
                 </FormControl>
                 </div>
-                this.chooseProduct = <div className="vehicle-controls"> 
+            this.chooseProduct = <div className="vehicle-controls"> 
                 <FormControl className="vehicle-controls">
-                    <InputLabel>Select cover</InputLabel>
-                    <Select
-                        name="cover"
-                        value={this.state.vehicle.cover}
+                <InputLabel>Insurance Cover</InputLabel>
+                
+                    <Select 
+                        native defaultValue="" 
+                        name="cover"                        
                         onChange={this.formOnChange}
                     >
-                    <MenuItem value="mercedes">Mercedes</MenuItem>
-                    <MenuItem value="toyota">Toyota</MenuItem>
-                    <MenuItem value="tesla">Tesla</MenuItem>
+                        <option value="" />
+                        {covers}   
                     </Select>
+                    
                     <FormHelperText>
-                        Select insurance cover for your vehicle's
+                        Select insurance cover for your vehicle
                     </FormHelperText>
                 </FormControl>
             </div>
-
         }
     
         return(
             <Paper elevation={5} className="quote-form">
             <div className="quote-form">
-                    
                     {this.chooseVehicleUse}
                     {this.chooseProduct} 
-                
                 <div className="vehicle-controls">
                 <FormControl className="vehicle-controls">
                     <InputLabel>vehicle make</InputLabel>
