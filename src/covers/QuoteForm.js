@@ -114,7 +114,7 @@ class QuoteForm extends React.Component {
         if  (this.chosenProduct==null){
             const productsInCategory = this.filterProducts(this.products, this.state.vehicle.vehicleUse)
             const covers = productsInCategory.map((i) => {
-                return <option key={i.alias} value="private">{i.name}</option>
+                return <option key={i.alias} value={i.alias}>{i.name}</option>
         
                        
             })
@@ -137,12 +137,14 @@ class QuoteForm extends React.Component {
                 </div>
             this.chooseProduct = <div className="vehicle-controls"> 
                 <FormControl className="vehicle-controls">
-                <InputLabel>Insurance Cover</InputLabel>
-                
+                <InputLabel htmlFor="age-native-required">Insurance Cover</InputLabel>
                     <Select 
-                        native defaultValue="" 
+                        native
                         name="cover"                        
                         onChange={this.formOnChange}
+                        inputProps={{
+                            id: 'age-native-required',
+                        }}
                     >
                         <option value="" />
                         {covers}   
