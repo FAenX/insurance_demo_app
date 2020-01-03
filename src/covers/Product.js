@@ -2,7 +2,6 @@ import React from "react"
 import {withRouter} from "react-router-dom"
 import {Button} from "@material-ui/core"
 import Rates from "./Rates"
-import SnackBar from "../SnackBar";
 
 
 class Product extends React.Component {

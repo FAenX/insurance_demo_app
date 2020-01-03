@@ -17,18 +17,17 @@ class Rates extends React.Component {
             showSnackBar: false,
             vehicle: {}
         }
-
         this.requestQuotation = this.requestQuotation.bind(this)
     }
     
     componentWillMount =()=>{
-        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
-       
+        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))       
         if (this.chosenProduct==null){
-            this.chosenProduct = {name: "Session ended. Please refresh", description: "Session ended. Please refresh"}
+            this.chosenProduct = {name: "Select cover"}
         }            
                
     } 
+    
 
     async requestQuotation (){
         this.setState({
@@ -52,7 +51,6 @@ class Rates extends React.Component {
         
         
         const response = await request
-
         this.setState({
             loading: false,
             responseData: response
@@ -101,8 +99,8 @@ class Rates extends React.Component {
                     </Paper>
                     <Paper elevation={5} className="aplication-instructions-text">
                         <ol>
-                            <li> Step 1</li>Fill out the form below and click <b>Get quote</b> to receive a quote for {this.chosenProduct.name}.
-                            <li> Step 2</li>After receiving your quote on the screen. Click on <b>Accept</b> to proceed.
+                            <li> Step 1</li>Fill out the form below and click <b>Get quote</b> to receive a quotation.
+                            <li> Step 2</li>After receiving your quotation on the screen. Click on <b>Accept</b> to proceed.
                             <li> Step 3</li>Select your preferred payment method.
                             <li> Step 4</li>Fill out your payment information and click <b>Proceed</b> to process your payment.
                             <li>And finally</li> Download your insurance cover. Congratulations you’re insured!

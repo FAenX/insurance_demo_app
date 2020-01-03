@@ -31,41 +31,86 @@ class QuoteForm extends React.Component {
         }
     }
 
+        
+
     componentWillMount=()=>{
         this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
        
         if (this.chosenProduct==null){
-            this.chosenProduct = {
-                name: "Session ended. Please refresh", 
-                description: "Session ended. Please refresh",
-                alias: "Session ended. Please refresh"
-            }
-        }            
+
+            this.chooseProduct = this.chooseProductControl()
+            this.chooseVehicleUse = this.chooseVehicleUseControl()
+            
+          
+        }else{
+
+            if (this.chosenProduct.alias.startsWith("commercial") ){
+                this.vehicleUse = "Commercial";
+                
+                
+            } else if (this.chosenProduct.alias.startsWith("private") ){
+                this.vehicleUse = "Private";
                
-    
-        const vehicle = this.state.vehicle
+            }else if (this.chosenProduct.alias.startsWith("forhire") ){
+                this.vehicleUse = "For Hire";
+               
+            }
+            const vehicle = this.state.vehicle
 
-        vehicle["cover"]=this.chosenProduct.alias
+            vehicle["cover"]=this.chosenProduct.alias
+            vehicle["vehicleUse"] = this.vehicleUse
 
-        this.setState({
-            vehicle,
-        })
+            this.setState({
+                vehicle,
+            })
+        }
+
+        
     }
 
-    componentDidMount=()=>{
+    chooseProductControl=()=>{
+        const chooseProduct = <div className="vehicle-controls"> 
+                            <FormControl className="vehicle-controls">
+                                <InputLabel>Select cover</InputLabel>
+                                <Select
+                                    name="cover"
+                                    value={this.state.vehicle.cover}
+                                    onChange={this.formOnChange}
+                                >
+                                <MenuItem value="mercedes">Mercedes</MenuItem>
+                                <MenuItem value="toyota">Toyota</MenuItem>
+                                <MenuItem value="tesla">Tesla</MenuItem>
+                                </Select>
+                                <FormHelperText>
+                                    Select insurance cover for your vehicle's
+                                </FormHelperText>
+                            </FormControl>
+                            </div>
+        return chooseProduct;
+                               
+                                
         
+    }
 
-        if (this.chosenProduct.alias.startsWith("commercial") ){
-            this.vehicleUse = "Commercial";
-            
-            
-        } else if (this.chosenProduct.alias.startsWith("private") ){
-            this.vehicleUse = "Private";
-           
-        }else if (this.chosenProduct.alias.startsWith("forhire") ){
-            this.vehicleUse = "For Hire";
-           
-        }
+    chooseVehicleUseControl =()=>{
+        const chooseVehicleUse =<div className="vehicle-controls"> 
+                                <FormControl className="vehicle-controls">
+                                    <InputLabel>vehicle use</InputLabel>
+                                    <Select
+                                        name="vehicleUse"
+                                        value={this.state.vehicle.vehicleUse}
+                                        onChange={this.formOnChange}
+                                    >
+                                    <MenuItem value="private">Private</MenuItem>
+                                    <MenuItem value="commercial">Commercial</MenuItem>
+                                    <MenuItem value="forhire">For Hire</MenuItem>
+                                    </Select>
+                                    <FormHelperText>
+                                        Select insurance cover for your vehicle's
+                                    </FormHelperText>
+                                </FormControl>
+                                </div>
+        return chooseVehicleUse;
     }
 
     validateForm=()=>{
@@ -99,9 +144,14 @@ class QuoteForm extends React.Component {
 
     render(){  
 
+
+
         return(
             <Paper elevation={5} className="quote-form">
             <div className="quote-form">
+                    {this.chooseVehicleUse}
+                    {this.chooseProduct} 
+                
                 <div className="vehicle-controls">
                 <FormControl className="vehicle-controls">
                     <InputLabel>vehicle make</InputLabel>
