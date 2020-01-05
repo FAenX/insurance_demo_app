@@ -621,9 +621,14 @@
 }
 
 /* quotation request form */
-.quote-form {
+.quote-form-wrapper{
   display: inherit;
   justify-content: center;
+  align-items: center;
+}
+.quote-form {
+  display: inherit;
+  justify-content: baseline;
   margin: .5rem;
   align-items: center;
   flex-flow: row wrap;

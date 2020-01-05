@@ -105,72 +105,72 @@ class QuoteForm extends React.Component {
 
 
     render(){
+        let tonnes;
 
         if(this.state.vehicle.vehicleUse.startsWith("commercial")){
-            this.tonnes=<div className="vehicle-controls"> 
-                        <FormControl className="vehicle-controls">
-                            <InputLabel>vehicle load capacity</InputLabel>
-                            <Select
-                                name="tonnes"
-                                value={this.state.vehicle.tonnes}
-                                onChange={this.formOnChange}
-                            >
-                            <MenuItem value="3">3 tonnes and less</MenuItem>
-                            <MenuItem value="38">3-8 tonnes</MenuItem>
-                            <MenuItem value="810">8 to 10 tonnes</MenuItem>
-                            </Select>
-                            <FormHelperText>
-                                Ho many tonnes does your vehicle carry?
-                            </FormHelperText>
-                        </FormControl>
-                        </div>
-        }
-        if  (this.chosenProduct!==null){
-
-            this.chooseVehicleUse =<div className="vehicle-controls"> 
+            tonnes=<div className="vehicle-controls"> 
                 <FormControl className="vehicle-controls">
-                    <InputLabel>vehicle use</InputLabel>
+                    <InputLabel>vehicle load capacity</InputLabel>
                     <Select
-                        name="vehicleUse"
-                        value={this.state.vehicle.vehicleUse}
+                        name="tonnes"
+                        value={this.state.vehicle.tonnes}
                         onChange={this.formOnChange}
                     >
-                    <MenuItem value="private">Private</MenuItem>
-                    <MenuItem value="commercial">Commercial</MenuItem>
-                    <MenuItem value="forhire">For Hire</MenuItem>
+                    <MenuItem value="3">3 tonnes and less</MenuItem>
+                    <MenuItem value="38">3-8 tonnes</MenuItem>
+                    <MenuItem value="810">8 to 10 tonnes</MenuItem>
                     </Select>
                     <FormHelperText>
-                        Select vehicle use
+                        Ho many tonnes does your vehicle carry?
                     </FormHelperText>
                 </FormControl>
                 </div>
-            this.chooseProduct = <div className="vehicle-controls"> 
-                <FormControl className="vehicle-controls">
-                <InputLabel>Insurance Cover</InputLabel>
-                    <Select                         
-                        name="cover"                        
-                        onChange={this.formOnChange}
-                        value={this.state.vehicle.cover}                        
-                    >
-                        
-                          {filterBySub(this.products, this.state.vehicle.vehicleUse).map(i=>{
-                            return <MenuItem key={i.alias} value={i.alias}>{i.name} </MenuItem>
-                          })} 
-                    </Select>
-                    
-                    <FormHelperText>
-                        Select insurance cover for your vehicle
-                    </FormHelperText>
-                </FormControl>
-            </div>
         }
+        
+
+           
+       
     
         return(
-            <Paper elevation={5} className="quote-form">
+            <Paper elevation={5} className="quote-form-wrapper">
             <div className="quote-form">
-                    {this.chooseVehicleUse}
-                    {this.tonnes}
-                    {this.chooseProduct} 
+                    <div className="vehicle-controls"> 
+                    <FormControl className="vehicle-controls">
+                        <InputLabel>vehicle use</InputLabel>
+                        <Select
+                            name="vehicleUse"
+                            value={this.state.vehicle.vehicleUse}
+                            onChange={this.formOnChange}
+                        >
+                        <MenuItem value="private">Private</MenuItem>
+                        <MenuItem value="commercial">Commercial</MenuItem>
+                        <MenuItem value="forhire">For Hire</MenuItem>
+                        </Select>
+                        <FormHelperText>
+                            Select vehicle use
+                        </FormHelperText>
+                    </FormControl>
+                    </div>
+                    {tonnes}
+                    <div className="vehicle-controls"> 
+                    <FormControl className="vehicle-controls">
+                    <InputLabel>Insurance Cover</InputLabel>
+                        <Select                         
+                            name="cover"                        
+                            onChange={this.formOnChange}
+                            value={this.state.vehicle.cover}                        
+                        >
+                            
+                            {filterBySub(this.products, this.state.vehicle.vehicleUse).map(i=>{
+                                return <MenuItem key={i.alias} value={i.alias}>{i.name} </MenuItem>
+                            })} 
+                        </Select>
+                        
+                        <FormHelperText>
+                            Select insurance cover for your vehicle
+                        </FormHelperText>
+                    </FormControl>
+                </div> 
                 <div className="vehicle-controls">
                 <FormControl className="vehicle-controls">
                     <InputLabel>vehicle make</InputLabel>
