@@ -663,17 +663,23 @@
 }
 
 /* quotation page */
-.quotation {
+.quotation-page-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 14px;
-  margin: 20px; 
 }
 
-.quotation h1{
-  text-align: center;
+.quotation-wrapper {
+  min-height: 80vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
+.quotation {
+
+}
+
 
 
 

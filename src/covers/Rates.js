@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from "react-router-dom"
 import QuoteForm from "./QuoteForm"
-import {Paper} from "@material-ui/core"
+import {Paper, Button} from "@material-ui/core"
 import Filter9PlusIcon from '@material-ui/icons/Filter9Plus';
 import LoaderButton from "../helpers/LoaderButton";
 import SnackBar from "../helpers/SnackBar"
@@ -63,12 +63,8 @@ class Rates extends React.Component {
         this.setState({
             chosenProduct: this.chosenProduct,
             vehicle,
-        })
-
-        
-           
-               
-    }     
+        }) 
+    }  
 
     async requestQuotation (){
         this.setState({
@@ -100,8 +96,11 @@ class Rates extends React.Component {
             this.setState({
                 status: "success",
                 message: "Request Successfull. Redirecting....",
-                showSnackBar: true
+                showSnackBar: true,
             })
+            sessionStorage.setItem("premium", JSON.stringify(response.data))
+            sessionStorage.setItem("vehicle", JSON.stringify(this.state.vehicle))
+            setTimeout(()=>{this.props.history.push("/quotation")}, 3000)
             
         }else if(response.status==="error"){
             this.setState({
@@ -118,6 +117,7 @@ class Rates extends React.Component {
         })
     }
     productChangeListener=(product)=>{
+        sessionStorage.setItem("chosen_product", JSON.stringify(product))
         this.setState({
             chosenProduct: product,
         })
@@ -141,6 +141,18 @@ class Rates extends React.Component {
         })
     }
 
+    validateForm=()=>{
+        return this.state.vehicle.vehicleValue 
+        && this.state.vehicle.regNo 
+        && this.state.vehicle.email
+        && this.state.vehicle.cover
+        && this.state.vehicle.vehicleUse
+        && this.state.vehicle.vehicleMake
+        && this.state.vehicle.vehicleModel
+        && this.state.vehicle.yearOfManufacture
+        //&& this.state.vehicle.coverStartDate
+    }   
+
    
     render(){        
 
@@ -151,6 +163,7 @@ class Rates extends React.Component {
                     closeChooseDialog={this.closeChooseDialog}  
                     productChangeListener={this.productChangeListener}
                 />
+                
                 <div className="rates-title-wrapper"> 
                     <div className="rates-title"> 
                         <p>Your policy could be in your email in 5 minutes.</p>                    
@@ -209,7 +222,8 @@ class Rates extends React.Component {
                         <LoaderButton 
                             status={this.state.status}
                             loading={this.state.loading} 
-                            handleButtonClick={this.requestQuotation}                            
+                            handleButtonClick={this.requestQuotation} 
+                            disabled={!this.validateForm()}                           
                         >
                             Request
                         </LoaderButton>

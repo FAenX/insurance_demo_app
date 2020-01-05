@@ -18,7 +18,7 @@ class QuoteForm extends React.Component {
         super(props)
         this.state = {
             vehicle: {
-                email: "",
+                email: "example.email.com",
                 cover: "",
                 vehicleUse: "",
                 vehicleMake: "",
@@ -64,14 +64,6 @@ class QuoteForm extends React.Component {
                 vehicle,
             })
         }
-
-        
-    }
-
-
-   
-    validateForm=()=>{
-        return this.state.vehicleValue && this.state.regNo && this.chosenProduct.alias
     }
 
     formOnChange=(event)=>{
@@ -84,7 +76,7 @@ class QuoteForm extends React.Component {
         this.setState({
             vehicle,
         })
-        this.props.vehicleChangeListener(vehicle)
+        this.props.vehicleChangeListener(this.state.vehicle)
         this.props.productChangeListener(
             filterByAlias(this.products, this.state.vehicle.cover)
         )
