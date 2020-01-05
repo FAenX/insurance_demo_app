@@ -1,7 +1,7 @@
 import React from 'react';
 import LoaderButton from "../helpers/LoaderButton";
 import {withRouter} from "react-router-dom";
-import {Button, Paper, ListItem} from "@material-ui/core"
+import {Button, Paper, ListItem, Divider} from "@material-ui/core"
 
 class Quotation extends React.Component {
     constructor(props){
@@ -49,16 +49,35 @@ class Quotation extends React.Component {
                         </div>
                         <div className="product-description-wrapper">
                             <div className="quotation-wrapper">
-                            <Paper elevation={4} className="quotation">
-                                <p>Quotation</p>
-                                <p className=""> Quote ID: </p>                            
-                                <ListItem>Email: <b>{vehicle.email} </b></ListItem>
-                                <ListItem>REG Number:  <b>{vehicle.regNo}</b> </ListItem>
-                                <ListItem>Vehicle value:  <b>{vehicle.vehicleValue}</b> </ListItem>
-                                <ListItem>Vehicle Capacity:  <b>{vehicle.tonnes}</b> </ListItem>
-                                <ListItem>Premium KSH: <b>{premium}</b></ListItem>
-                                <ListItem>Cover: <b>{vehicle.cover}</b></ListItem>
-                            
+                                <Paper elevation={4}className="quotation" >                                
+                                    <div id="quotation-header">
+                                        <div>
+                                            <p>
+                                                Quotation
+                                            </p>
+                                        </div>
+                                            <p className=""> 
+                                                Quote ID:
+                                            </p>
+                                        <div></div>                                       
+                                        
+                                    </div>
+                                    <div id="quotation-content">
+                                        <Divider />
+                                        <ListItem button>Email: <b>{vehicle.email} </b></ListItem>
+                                        <Divider />
+                                        <ListItem button>REG Number:  <b>{vehicle.regNo}</b> </ListItem>
+                                        <Divider />
+                                        <ListItem button>Vehicle value:  <b>{vehicle.vehicleValue}</b> </ListItem>
+                                        <Divider />
+                                        <ListItem button>Vehicle Capacity:  <b>{vehicle.tonnes}</b> </ListItem>
+                                        <Divider />
+                                        <ListItem button>Premium KSH: <b>{premium}</b></ListItem>
+                                        <Divider />
+                                        <ListItem button>Cover: <b>{vehicle.cover}</b></ListItem>  
+                                    </div>
+                                                             
+                                                                                            
                                 </Paper>
                             <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
                             Accept

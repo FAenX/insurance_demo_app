@@ -677,7 +677,19 @@
   align-items: center;
 }
 .quotation {
-
+  display: grid;
+  padding: 1rem;
+  min-width: 90vw;
+  min-height: 70vh;
+}
+#quotation-header{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+#quotation-content{
+  display: grid;
 }
 
 
