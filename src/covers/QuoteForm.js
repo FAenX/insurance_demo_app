@@ -6,8 +6,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import DatePicker from "./DatePicker"
-import {Paper, Input} from "@material-ui/core"
+import DatePicker from "../helpers/DatePicker"
+import {Paper} from "@material-ui/core"
+import {filterBySub, filterByAlias} from "../helpers/js/dataManipulation"
 
 
 
@@ -33,8 +34,8 @@ class QuoteForm extends React.Component {
 
         
 
-    componentWillMount=()=>{
-        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
+    UNSAFE_componentWillMount=()=>{
+        this.chosenProduct = this.props.chosenProduct
         this.products = JSON.parse(sessionStorage.getItem("products"))
        
         if (this.chosenProduct==null){
@@ -44,14 +45,14 @@ class QuoteForm extends React.Component {
         }else{
 
             if (this.chosenProduct.alias.startsWith("commercial") ){
-                this.vehicleUse = "Commercial";
+                this.vehicleUse = "commercial";
                 
                 
             } else if (this.chosenProduct.alias.startsWith("private") ){
-                this.vehicleUse = "Private";
+                this.vehicleUse = "private";
                
             }else if (this.chosenProduct.alias.startsWith("forhire") ){
-                this.vehicleUse = "For Hire";
+                this.vehicleUse = "forhire";
                
             }
             const vehicle = this.state.vehicle
@@ -66,6 +67,7 @@ class QuoteForm extends React.Component {
 
         
     }
+
 
    
     validateForm=()=>{
@@ -83,6 +85,9 @@ class QuoteForm extends React.Component {
             vehicle,
         })
         this.props.vehicleChangeListener(vehicle)
+        this.props.productChangeListener(
+            filterByAlias(this.products, this.state.vehicle.cover)
+        )
 
         
     }
@@ -96,28 +101,32 @@ class QuoteForm extends React.Component {
             vehicle,
         })
     }
+    
 
-    //filter products to match chosen sub alias
-    filterProducts =(products, sub)=>{
-        let filteredProducts=[];    
-        for (let i=0; i < products.length; i++){
-            if (products[i].alias.startsWith(sub)){
-                
-                filteredProducts.push(products[i])
-                }
-        }
-        return filteredProducts;            
-    }
-   
 
     render(){
-        if  (this.chosenProduct==null){
-            const productsInCategory = this.filterProducts(this.products, this.state.vehicle.vehicleUse)
-            const covers = productsInCategory.map((i) => {
-                return <option key={i.alias} value={i.alias}>{i.name}</option>
-        
-                       
-            })
+
+        if(this.state.vehicle.vehicleUse.startsWith("commercial")){
+            this.tonnes=<div className="vehicle-controls"> 
+                        <FormControl className="vehicle-controls">
+                            <InputLabel>vehicle load capacity</InputLabel>
+                            <Select
+                                name="tonnes"
+                                value={this.state.vehicle.tonnes}
+                                onChange={this.formOnChange}
+                            >
+                            <MenuItem value="3">3 tonnes and less</MenuItem>
+                            <MenuItem value="38">3-8 tonnes</MenuItem>
+                            <MenuItem value="810">8 to 10 tonnes</MenuItem>
+                            </Select>
+                            <FormHelperText>
+                                Ho many tonnes does your vehicle carry?
+                            </FormHelperText>
+                        </FormControl>
+                        </div>
+        }
+        if  (this.chosenProduct!==null){
+
             this.chooseVehicleUse =<div className="vehicle-controls"> 
                 <FormControl className="vehicle-controls">
                     <InputLabel>vehicle use</InputLabel>
@@ -137,17 +146,16 @@ class QuoteForm extends React.Component {
                 </div>
             this.chooseProduct = <div className="vehicle-controls"> 
                 <FormControl className="vehicle-controls">
-                <InputLabel htmlFor="age-native-required">Insurance Cover</InputLabel>
-                    <Select 
-                        native
+                <InputLabel>Insurance Cover</InputLabel>
+                    <Select                         
                         name="cover"                        
                         onChange={this.formOnChange}
-                        inputProps={{
-                            id: 'age-native-required',
-                        }}
+                        value={this.state.vehicle.cover}                        
                     >
-                        <option value="" />
-                        {covers}   
+                        
+                          {filterBySub(this.products, this.state.vehicle.vehicleUse).map(i=>{
+                            return <MenuItem key={i.alias} value={i.alias}>{i.name} </MenuItem>
+                          })} 
                     </Select>
                     
                     <FormHelperText>
@@ -161,6 +169,7 @@ class QuoteForm extends React.Component {
             <Paper elevation={5} className="quote-form">
             <div className="quote-form">
                     {this.chooseVehicleUse}
+                    {this.tonnes}
                     {this.chooseProduct} 
                 <div className="vehicle-controls">
                 <FormControl className="vehicle-controls">

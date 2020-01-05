@@ -934,5 +934,8 @@
   .headline-subtext{
     max-width: 30vh;    
   }
+  .product-description-wrapper{
+    min-width: 100vw;
+  }
 
  }

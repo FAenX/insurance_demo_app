@@ -3,31 +3,72 @@ import {withRouter} from "react-router-dom"
 import QuoteForm from "./QuoteForm"
 import {Paper} from "@material-ui/core"
 import Filter9PlusIcon from '@material-ui/icons/Filter9Plus';
-import LoaderButton from "../LoaderButton";
-import SnackBar from "../SnackBar"
+import LoaderButton from "../helpers/LoaderButton";
+import SnackBar from "../helpers/SnackBar"
+import {filterByAlias} from "../helpers/js/dataManipulation"
+import SelectDialog from "../helpers/selectDialog"
 
 class Rates extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            productAlias: "privatethirdpartyonly",
+            chosenProduct: null,
             premium: 0,
             responseData: {},
             status: "error",
             loading: false,
             showSnackBar: false,
+            showChooseDialog: false,
             vehicle: {}
         }
         this.requestQuotation = this.requestQuotation.bind(this)
     }
     
-    componentWillMount =()=>{
-        this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))       
+    UNSAFE_componentWillMount =()=>{
+        //try to get product from props
+        
+       
+        if (this.props.chosenProduct!==null){
+            this.chosenProduct = this.props.chosenProduct
+            
+        } 
+        if (this.props.chosenProduct !==null){
+           //look for product in session storage
+           this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product")) 
+        }
+        
         if (this.chosenProduct==null){
-            this.chosenProduct = {name: "Select cover"}
-        }            
+            //if unsuccessfull supply default product
+            this.products = JSON.parse(sessionStorage.getItem("products"))  
+            this.chosenProduct = filterByAlias(this.products, this.state.productAlias)
+        } 
+
+        if (this.chosenProduct.alias.startsWith("commercial") ){
+            this.vehicleUse = "commercial";
+            
+            
+        } else if (this.chosenProduct.alias.startsWith("private") ){
+            this.vehicleUse = "private";
+            
+        }else if (this.chosenProduct.alias.startsWith("forhire") ){
+            this.vehicleUse = "forhire";
+            
+        }
+
+        const vehicle = this.state.vehicle
+        vehicle["cover"]=this.chosenProduct.alias
+        vehicle["vehicleUse"] = this.vehicleUse
+        
+        this.setState({
+            chosenProduct: this.chosenProduct,
+            vehicle,
+        })
+
+        
+           
                
-    } 
-    
+    }     
 
     async requestQuotation (){
         this.setState({
@@ -47,8 +88,7 @@ class Rates extends React.Component {
             (res)=> res.json()
         ).catch(
             (err) => err
-        );
-        
+        );        
         
         const response = await request
         this.setState({
@@ -62,7 +102,6 @@ class Rates extends React.Component {
                 message: "Request Successfull. Redirecting....",
                 showSnackBar: true
             })
-
             
         }else if(response.status==="error"){
             this.setState({
@@ -78,15 +117,43 @@ class Rates extends React.Component {
             vehicle,
         })
     }
+    productChangeListener=(product)=>{
+        this.setState({
+            chosenProduct: product,
+        })
+        try{
+            this.props.productChangeListener(product)
+        }catch{
+
+        }
+        
+    }     
+
+    openChooseDialog=()=>{
+        this.setState({
+            showChooseDialog: true
+        })
+    }
+
+    closeChooseDialog=()=>{
+        this.setState({
+            showChooseDialog: false
+        })
+    }
 
    
-    render(){       
+    render(){        
 
         return(
             <div className="rates">
+                <SelectDialog 
+                    showChooseDialog={this.state.showChooseDialog}
+                    closeChooseDialog={this.closeChooseDialog}  
+                    productChangeListener={this.productChangeListener}
+                />
                 <div className="rates-title-wrapper"> 
                     <div className="rates-title"> 
-                        <p>Your policy could be in your email in 5 minutes.</p>                        
+                        <p>Your policy could be in your email in 5 minutes.</p>                    
                     </div> 
                 </div>
 
@@ -118,13 +185,17 @@ class Rates extends React.Component {
                         <Paper elevation={5} className="quote-form-header">
                             <div>Request quotation</div>
                             <div className="quote-form-nav">
-                            {this.chosenProduct.name}
-                            <Filter9PlusIcon style={{ fontSize: 40, color:"#f60" }}/>
+                            {this.state.chosenProduct.name}
+                            <Filter9PlusIcon 
+                                style={{ fontSize: 40, color:"#f60" }}
+                                onClick={this.openChooseDialog}
+                            />
                             </div>
                         </Paper>
                         <QuoteForm 
                             chosenProduct={this.chosenProduct} 
                             vehicleChangeListener={this.vehicleChangeListener}
+                            productChangeListener={this.productChangeListener}
                         />
                         
                         <div className="rates-submit-button-wrapper"> 

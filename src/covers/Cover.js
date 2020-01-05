@@ -7,6 +7,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {Alert} from "react-bootstrap"
+import {filterBySub} from "../helpers/js/dataManipulation"
 
 class Cover extends React.Component {
     constructor(props){
@@ -24,7 +25,7 @@ class Cover extends React.Component {
             this.sub = JSON.parse(sessionStorage.getItem("chosen_sub"))    
             this.products = JSON.parse(sessionStorage.getItem("products"))          
             if(this.products != null && this.products !== undefined && this.products.length > 0){                
-                this.filteredProducts = this.filterProducts(this.products, this.sub)
+                this.filteredProducts = filterBySub(this.products, this.sub)
                 this.getProducts(this.filteredProducts)
             }else{               
                 
@@ -83,17 +84,6 @@ class Cover extends React.Component {
         return chosenProduct
     }
     
-    //filter products to match chosen sub alias
-    filterProducts =(products, sub)=>{
-        let filteredProducts=[];    
-        for (let i=0; i < products.length; i++){
-            if (products[i].alias.startsWith(sub)){
-                
-                filteredProducts.push(products[i])
-                }
-        }
-        return filteredProducts;            
-    }
     
     render(){
         let subCategories;

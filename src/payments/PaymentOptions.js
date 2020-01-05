@@ -5,7 +5,7 @@ import mastercard from "../assets/images/mastercard.png"
 import paypall from "../assets/images/download.jpeg"
 import crediCartPlaceHolder from "../assets/images/creditcardplaceholder.gif"
 import {withRouter} from "react-router-dom"
-import LoaderButton from "../LoaderButton"
+import LoaderButton from "../helpers/LoaderButton"
 
 class PaymentOptions extends React.Component {
     constructor(props){

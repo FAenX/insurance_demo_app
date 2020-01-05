@@ -30,6 +30,8 @@ class Covers extends React.Component {
          
     }
          
+    
+    // change
     async wait(){
         const timer = () => setTimeout(() => {
             const subCategories = JSON.parse(sessionStorage.getItem("sub_categories")) 
@@ -37,7 +39,7 @@ class Covers extends React.Component {
             this.createHighlights()
             this.forceUpdate()
         }, 3000) 
-        const res = await timer()
+        const res = timer()
         console.log(res)
     }
        
