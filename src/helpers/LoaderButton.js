@@ -58,7 +58,7 @@ export default function LoaderButton(props) {
           variant="contained"
           color="primary"
           className={buttonClassname}
-          disabled={props.loading}
+          disabled={props.disabled}
           onClick={props.handleButtonClick}
         >
           Get Quote
