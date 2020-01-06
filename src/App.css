@@ -133,6 +133,7 @@
   background-color: #001929;
 }
 
+/* how it works */
 .how-it-works {
   display: flex;
   flex-flow: row wrap; 
@@ -667,29 +668,66 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .quotation-wrapper {
   min-height: 80vh;
+  width: 100vw;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
 }
+.quotation-body-wrapper{
+  background-color: #0019294d;
+  width: 100vw;  
+}
+
 .quotation {
-  display: grid;
+  display: flex;
+  flex-flow: column;
   padding: 1rem;
   min-width: 90vw;
-  min-height: 70vh;
+  min-height: 90vh;
+  
+  
 }
 #quotation-header{
   display: flex;
-  flex-flow: row;
-  justify-content: space-between;
+  flex-flow: column;
+  justify-content: center;  
   padding: 1rem;
+ 
+  text-align:left;
+  padding: 2rem;
+  font-size: 1rem;
+ 
 }
 #quotation-content{
-  display: grid;
+  display: flex;
+  flex-flow: column;
+  text-align:left;
+  padding: 2rem;
+  font-size: 1rem;
+  
+  border-top: none;
+  
+}
+
+#quotation-top{ 
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;  
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #f60;  
+  border-bottom: none;
+}
+
+#vehicle-details{
+  margin: 1rem;
 }
 
 
@@ -960,5 +998,61 @@
   .product-description-wrapper{
     min-width: 100vw;
   }
+}
 
- }
+
+
+@media screen and (min-width: 600px)  {
+  .headline-text h1{
+    font-weight: 400;
+    font-size: 4rem;
+  }
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3rem;
+    /*max-width: 50vw;*/
+    text-align: left;  
+  }
+
+  .headline-text {
+    display: flex;
+    flex-flow: column;
+    
+    margin-right: 10vw;
+    margin-bottom: 5rem;
+    color: #ffffff;
+    
+  }
+  
+  .headline-text h1{
+    font-weight: 300;
+  }
+  
+  .headline-subtext {
+    font-weight: 400;
+    color: #ffffff;
+    max-width: 30vw;   
+  }
+  
+  .home-buttons {
+    display: flex;
+    flex-flow: row;  
+  }
+  
+  
+  .get-started-button button{
+    background: #f60;
+    margin-right: 1rem;
+  }
+  
+  .free-quotation-button button{
+    color: #ffffff;
+    background-color: #001929;
+  }
+}
+
+
+
+ 
