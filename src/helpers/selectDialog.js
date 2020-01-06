@@ -10,10 +10,6 @@ import {FormControl, FormHelperText} from '@material-ui/core';
 import Select from '@material-ui/core/Select';
 import {filterBySub, filterByAlias} from "../helpers/js/dataManipulation"
 
-
-
-
-
 export default class SelectDialog extends React.Component {
   
   constructor(props){
@@ -89,14 +85,12 @@ export default class SelectDialog extends React.Component {
               </div>
               <div className="vehicle-controls"> 
                   <FormControl className="vehicle-controls">
-                  <InputLabel htmlFor="age-native-required">Insurance Cover</InputLabel>
+                  <InputLabel >Insurance Cover</InputLabel>
                       <Select 
                           native
                           name={this.state.cover}                       
                           onChange={this.handleCoverSelect}
-                          inputProps={{
-                              id: 'age-native-required',
-                          }}
+                          
                       >
                           <option value="" />
                           {filterBySub(this.products, this.state.vehicleUse).map(i=>{
