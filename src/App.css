@@ -307,10 +307,10 @@
   background-color: #001929;
 }
 
-.devider {
+.divider {
   margin: 0rem;
   padding: 0rem;
-  background-color: rgba(255, 102, 0, 0.26);
+  background-color: #f60;
 }
 
 /* social media */
@@ -672,7 +672,7 @@
 }
 
 .quotation-wrapper {
-  min-height: 80vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-flow: column;
@@ -680,7 +680,7 @@
   align-items: center;
 }
 .quotation-body-wrapper{
-  background-color: #0019294d;
+  /*background-color: #0019292d;*/
   width: 100vw;  
 }
 
@@ -698,10 +698,12 @@
   flex-flow: column;
   justify-content: center;  
   padding: 1rem;
- 
+  /*background-color: rgba(255, 102, 0, 0.479);*/
+  margin: 1rem; 
   text-align:left;
   padding: 2rem;
-  font-size: 1rem;
+  font-size: 2.5rem;
+  font-weight: 300;
  
 }
 #quotation-content{
@@ -709,22 +711,39 @@
   flex-flow: column;
   text-align:left;
   padding: 2rem;
-  font-size: 1rem;
-  
-  border-top: none;
-  
+  font-size: 1rem;  
+  border-top: none;  
+}
+.q-content{
+  padding: 1rem;
+}
+.q-content-sub{
+  padding: 1rem;
+  font-weight: 400;
+}
+.q-content-sub p{
+  display: inline;
+}
+.q-content-sub p:nth-child(1){
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+#optional-benefits{
+  margin: 1rem;
+  min-height: 40vh;
+  background-color: #0019291a;
 }
 
-#quotation-top{ 
+#provider-details{
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  align-items: center;  
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: #f60;  
-  border-bottom: none;
+  margin: 1rem;
+  min-height: 40vh;
+  
+  padding: 1rem;
 }
+
+
 
 #vehicle-details{
   margin: 1rem;

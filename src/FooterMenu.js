@@ -27,27 +27,27 @@ class FooterMenu extends React.Component {
                 <ListItem button id="covers" onClick={this.handleRedirectOnClick}>                       
                     <ListItemText  id="covers" primary="Insurance Covers"/>
                 </ListItem>
-                <hr className="devider"></hr>
+                <hr className="divider"></hr>
                 <ListItem button id="claim" onClick={this.handleRedirectOnClick}>                       
                     <ListItemText  id="claim" primary="Claim"/>
                 </ListItem>
-                <hr className="devider"></hr>
+                <hr className="divider"></hr>
                 <ListItem button id="whoarewe" onClick={this.handleRedirectOnClick}>                       
                     <ListItemText  id="whoarewe" primary="Who are we"/>
                 </ListItem>
-                <hr className="devider"></hr>
+                <hr className="divider"></hr>
                 <ListItem button id="signout" onClick={this.handleRedirectOnClick}>                        
                     <ListItemText id="info" primary="Everything you need to know ..."/>
                 </ListItem>                     
-                <hr className="devider"></hr>              
+                <hr className="divider"></hr>              
                 <ListItem button id="signup" onClick={this.handleRedirectOnClick}>                        
                     <ListItemText id="signup" primary="Sign up"/>
                 </ListItem>
-                <hr className="devider"></hr>
+                <hr className="divider"></hr>
                 <ListItem button id="signin" onClick={this.handleRedirectOnClick}>                        
                     <ListItemText id="signin" primary="Sign in"/>
                 </ListItem>
-                <hr className="devider"></hr>
+                <hr className="divider"></hr>
                 </List>
             </div>
         )

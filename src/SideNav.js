@@ -48,43 +48,43 @@ class SideBar extends React.Component {
             onKeyDown={this.props.toggleDrawer(false)}
             >
                     <List>   
-                        <hr className="devider"></hr>            
+                        <hr className="divider"></hr>            
                         <ListItem button  id="home" onClick={this.handleRedirectOnClick}>                       
                             <ListItemText id="home" primary="Home"/>
                         </ListItem>
-                        <hr className="devider"></hr>
+                        <hr className="divider"></hr>
                         <ListItem button id="covers" onClick={this.handleRedirectOnClick}>                       
                             <ListItemText  id="covers" primary="Insurance Covers"/>
                         </ListItem>
-                        <hr className="devider"></hr>
+                        <hr className="divider"></hr>
                         <ListItem button id="claim" onClick={this.handleRedirectOnClick}>                       
                             <ListItemText  id="claim" primary="Claim"/>
                         </ListItem>
-                        <hr className="devider"></hr>
+                        <hr className="divider"></hr>
                         <ListItem button id="about" onClick={this.handleRedirectOnClick}>                       
                             <ListItemText  id="about" primary="Who are we"/>
                         </ListItem>
-                        <hr className="devider"></hr>
+                        <hr className="divider"></hr>
                         <ListItem button id="signout" onClick={this.handleRedirectOnClick}>                        
                             <ListItemText id="info" primary="Everything you need to know ..."/>
                         </ListItem>                           
-                        <hr className="devider"></hr>            
+                        <hr className="divider"></hr>            
                         <ListItem button id="signup" onClick={this.handleRedirectOnClick}>                        
                             <ListItemText id="signup" primary="Sign up"/>
                         </ListItem>
-                        <hr className="devider"></hr>
+                        <hr className="divider"></hr>
                         <ListItem button id="signin" onClick={this.handleRedirectOnClick}>                        
                             <ListItemText id="signin" primary="Sign in"/>
                         </ListItem>
-                        <hr className="devider"></hr>
+                        <hr className="divider"></hr>
                         <ListItem button id="dashboard" onClick={this.handleRedirectOnClick}>                        
                             <ListItemText id="dashboard" primary="Dashboard"/>
                         </ListItem>  
-                        <hr className="devider"></hr>                   
+                        <hr className="divider"></hr>                   
                         <ListItem button id="signout" onClick={this.handleRedirectOnClick}>                        
                             <ListItemText id="signout" primary="Sign out"/>
                         </ListItem> 
-                        <hr className="devider"></hr>
+                        <hr className="divider"></hr>
                         </List>
                         <SocialMedia/>
             </div>

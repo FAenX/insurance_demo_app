@@ -50,37 +50,50 @@ class Quotation extends React.Component {
                         </div>
                         
                             <div className="quotation-wrapper">
-                                <Paper elevation={3}className="quotation" >
+                                <div elevation={3}className="quotation" >
                                     <div id="quotation-top"></div>                              
-                                    <div id="quotation-header">
-                                        <h2> Hi {user}, we have found 1 plan for your {vehicle.vehicleMake} {vehicle.vehicleModel}</h2>
-                                    </div>
+                                    <Paper variant="outlined" id="quotation-header">
+                                        Hi {user}, we have found 1 plan for your {vehicle.vehicleMake} {vehicle.vehicleModel}
+                                    </Paper>
                                     <div id="quotation-content">
-                                        <div id="vehicle-details">
+                                        <Paper variant="outlined" className="q-content" id="vehicle-details">
                                         <ListItem button>Vehicle Use:<b> {vehicle.vehicleUse}</b></ListItem>                                        
-                                        <Divider />
+                                        <hr className="divider"></hr>
                                         <ListItem button>Vehicel Make: <b>{vehicle.vehicleMake}</b></ListItem>
-                                        <Divider />
+                                        <hr className="divider"></hr>
                                         <ListItem button>Vehicel Model: <b>{vehicle.vehicleModel}</b></ListItem>
-                                        <Divider />                                        
+                                        <hr className="divider"></hr>                                        
                                         <ListItem button>REG Number:  <b>{vehicle.regNo}</b> </ListItem>
-                                        <Divider />
-                                        <ListItem button>Vehicle value:  <b>{vehicle.vehicleValue}</b> </ListItem>
-                                        <Divider />
+                                        <hr className="divider"></hr>
+                                        <ListItem button>Vehicle value(KSH):  <b>{vehicle.vehicleValue}</b> </ListItem>
+                                        <hr className="divider"></hr>
                                         <ListItem button>Vehicle Capacity:  <b>{vehicle.tonnes}</b> </ListItem>
-                                        </div>
-                                        <div id="insurance-details">                                       
-                                        
-                                        <ListItem button>Cover: <b>{vehicle.cover}</b></ListItem> 
-                                        <Divider /> 
+                                        </Paper>
+                                        <Paper className="q-content" variant="outlined" id="optional-benefits">
+                                            <div className="q-content-sub" variant="outlined">
+                                                <p>Optional Benefits </p>
+                                                <p>(Any optional benefit selected means additional premium)</p>
+                                            </div>
+                                            <hr className="divider"></hr>  
+                                            <div></div>
+                                        </Paper>
+                                        <Paper variant="outlined" className="q-content" id="provider-details">
+                                            <div className="q-content-sub" variant="outlined">(+15yrs Special) Jubilee Motor Private Comprehensive Cover</div>
+                                            <hr className="divider"></hr>
+                                            <img alt="" src="" />
+                                            
+                                        </Paper>
+                                        <Paper variant="outlined" className="q-content" id="insurance-details">   
+                                        <ListItem button>Cover: <b>{chosenProduct.name}</b></ListItem> 
+                                        <hr className="divider"></hr> 
                                         <ListItem button>Cover to start from: <b>{vehicle.coverStartDate}</b></ListItem>
-                                        <Divider />
+                                        <hr className="divider"></hr>
                                         <ListItem button>Premium KSH: <b>{premium}</b></ListItem>
-                                        <Divider />
+                                        <hr className="divider"></hr>
                                         
-                                        </div> 
+                                        </Paper> 
                                     </div>                                                
-                                </Paper>
+                                </div>
                             <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
                             Accept
                             </LoaderButton>
