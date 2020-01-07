@@ -50,7 +50,7 @@ class OptionalBenefits extends React.Component {
             
                 )})}
             
-            <ListItem dense buttononClick={this.handleSelect} >
+            <ListItem dense onClick={this.handleSelect} >
                 <ListItemIcon>
                 <Checkbox
                     edge="start"
