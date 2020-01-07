@@ -737,6 +737,7 @@
 
 .q-content{
   padding: 1rem;
+  min-height: 40vh;
 }
 .q-content-sub{
   padding: 1rem;
@@ -763,11 +764,13 @@
   
   padding: 1rem;
 }
-
-
-
 #vehicle-details{
   margin: 1rem;
+  min-height: 40vh;
+}
+
+.table-container{
+  width: 60vw;
 }
 
 
@@ -1010,6 +1013,11 @@
  @media screen and (max-width: 600px)  {
   .home{
     min-width: 100vw;
+  }
+
+  table {
+    margin: 2rem;
+    width: 70vw;
   }
   .cover-page{
     background-position-x: -10vh;

@@ -27,9 +27,13 @@ class Quotation extends React.Component {
     }
 
     render(){
-        const vehicle = JSON.parse(sessionStorage.getItem("vehicle"))
-        const premium = JSON.parse(sessionStorage.getItem("premium"))
-        const chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
+        let vehicle = JSON.parse(sessionStorage.getItem("vehicle"))
+        let premium = JSON.parse(sessionStorage.getItem("premium"))
+        let chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
+        if (chosenProduct==null&&vehicle==null){
+            chosenProduct={name: "no product chosen", alias: "no product chosen"}
+            vehicle={name: "no product chosen", alias: "no product chosen"}
+        }
         const user = "user"
         return(
             <div className="quotation-page-wrapper">                
