@@ -43,6 +43,9 @@ class Rates extends React.Component {
             this.products = JSON.parse(sessionStorage.getItem("products"))  
             this.chosenProduct = filterByAlias(this.products, this.state.productAlias)
         } 
+        if (this.chosenProduct==null){
+            this.chosenProduct = {name: "no chosen product", alias: "no chosen product"}
+        } 
 
         if (this.chosenProduct.alias.startsWith("commercial") ){
             this.vehicleUse = "commercial";

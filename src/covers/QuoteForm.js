@@ -19,14 +19,14 @@ class QuoteForm extends React.Component {
         this.state = {
             vehicle: {
                 email: "example.email.com",
-                cover: "",
-                vehicleUse: "",
-                vehicleMake: "",
-                vehicleModel: "",
-                yearOfManufacture: "",
-                vehicleValue: "",
-                regNo: "",
-                coverStartDate: "",
+                cover: "privatethirdonly",
+                vehicleUse: "private",
+                vehicleMake: "none",
+                vehicleModel: "none",
+                yearOfManufacture: "1990",
+                vehicleValue: "100000",
+                regNo: "kbk 100",
+                coverStartDate: "today",
                 tonnes: "",
             },
         }
@@ -40,7 +40,7 @@ class QuoteForm extends React.Component {
        
         if (this.chosenProduct==null){
 
-          //
+           //
           
         }else{
 
