@@ -22,6 +22,7 @@ import Claim from "./claims/Claim"
 import WhoAreWe from "./whoarewe/WhoAreWe"
 import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeedToKnow"
 import dotenv from "dotenv"
+import LoginButton from "./LoginButton"
 
 dotenv.config()
 
@@ -103,11 +104,7 @@ class App extends React.Component {
     this.setState({ isOpen: open });
     };
 
-  //redirect to signin
-  redirectToSignin =()=>{
-    this.props.history.push("/signin")
-  }
-
+  
 
   render(){
   return (
@@ -125,7 +122,7 @@ class App extends React.Component {
       </div>   
 
       <div className="nav-login" onClick={this.redirectToSignin}>
-        Sign in
+       <LoginButton />
       </div>
          
     </header>

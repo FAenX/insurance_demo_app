@@ -50,12 +50,9 @@ class Quotation extends React.Component {
                                     <div id="quotation-content">
                                         <Vehicle vehicle={vehicle}/>                                    
                                         <OptionalBenefits premium={premium}/>
-                                        <Prodivers /> 
+                                        <Prodivers chosenProduct={chosenProduct} premium={premium}/> 
                                     </div>                                                
                                 </div>
-                            <LoaderButton variant="primary" type="submit" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
-                            Accept
-                            </LoaderButton>
                             </div>                     
                 </div>
             </div>

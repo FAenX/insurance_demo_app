@@ -1,6 +1,6 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
-import {Paper, Card, Button, ListItem} from "@material-ui/core"
+import {Paper, Button, ListItem} from "@material-ui/core"
 import Jubilee from "../assets/images/jubilee.png"
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,21 +16,15 @@ class Benefits extends React.Component {
         this.state={
 
         }
-        
-        
     }
     
-    createData=(name, calories)=>{
-        return { name, calories};
+    createData=(benefit, limit)=>{
+        return { benefit, limit};
       }
 
     render(){
         const rows = [
-            this.createData('Frozen yoghurt', 159),
-            this.createData('Ice cream sandwich', 237),
-            this.createData('Eclair', 262, 16.0,),
-            this.createData('Cupcake', 305, 3.7),
-            this.createData('Gingerbread', 356),
+            this.createData('windscreen damage', 50000),          
           ];
         return(
                 <TableContainer className="table-container" component={Paper}>
@@ -43,13 +37,11 @@ class Benefits extends React.Component {
                         </TableHead>
                         <TableBody>
                         {rows.map(row => (
-                            <TableRow key={row.name}>
+                            <TableRow key={row.benefit}>
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                {row.benefit}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            
+                            <TableCell align="right">{row.limit}</TableCell>
                             </TableRow>
                         ))}
                         </TableBody>
@@ -68,7 +60,7 @@ class ProviderRates extends React.Component {
             <hr className="divider"></hr> 
             <ListItem button>Cover to start from: <b>date</b></ListItem>
             <hr className="divider"></hr>
-            <ListItem button>Premium KSH: <b>premium</b></ListItem>
+            <ListItem button>Premium KSH: <b>{this.props.premium}</b></ListItem>
             <hr className="divider"></hr>                                                    
             </Paper>
            
@@ -78,7 +70,7 @@ class ProviderRates extends React.Component {
         )
     }
 }
-class Providers extends React.Component {
+class Provider extends React.Component {
 
     render(){
         return(<div>
@@ -87,11 +79,12 @@ class Providers extends React.Component {
                 <hr className="divider"></hr>
                 <img alt="" src={Jubilee} /> 
                 <hr className="divider"></hr>
-                <Button>KSH: premium</Button>
-                <Button variant="contained">view details</Button>
+                <Button>KSH: {this.props.premium}</Button>
+                <Button id="buy-button" variant="contained">Buy</Button>
+                <Button variant="outlined">view details</Button>
 
             </Paper>
-            <ProviderRates />
+            <ProviderRates premium={this.props.premium}/>
         </div>
             
             
@@ -99,4 +92,4 @@ class Providers extends React.Component {
     }
 }
 
-export default withRouter(Providers)
+export default withRouter(Provider)

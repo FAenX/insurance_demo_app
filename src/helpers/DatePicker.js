@@ -12,7 +12,7 @@ class DatePicker extends React.Component {
     constructor(props){
         super(props)
         this.state ={
-            selectedDate: new Date('2014-08-18T21:11:54')
+            selectedDate: new Date('2020-01-01T12:00:00')
         }
     }
 
