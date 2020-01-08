@@ -83,7 +83,7 @@
   display: flex;
   flex-flow: column;  
   justify-content: center;
-  min-height: 100vh;
+  min-height: 80vh;
   font-weight: 700;
   background-image: url(./assets/images/image1.png);
   background-position-x: 10rem;
@@ -140,7 +140,6 @@
 /* how it works */
 .how-it-works {
   flex-wrap: wrap; 
-  min-height: 80vh;
   background-color: #ffffff; 
 }
 
@@ -260,8 +259,7 @@
 .contacts-wrapper {
   display: flex;
   flex-flow: column;
-  margin-top: 2rem;
-  min-height: 100vh;
+  margin-top: 1rem;
   color: #ffffff;
   background-color: #001929d0;
 }
@@ -279,7 +277,6 @@
 }
 .contacts-child {
   text-align: left;
-  border-left: .01rem solid #f60;
   padding-left: 1rem;
   font-weight: 300;
   margin: 2rem;
@@ -300,11 +297,6 @@
 
 /* social media */
 .social-media {
-  display: flex;
-  flex-flow: row;
-  background-color: #001929;
-  justify-content: center;
-  align-items: center;
   min-height: 5vh;
 }
 

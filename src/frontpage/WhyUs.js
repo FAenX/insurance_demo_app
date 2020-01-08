@@ -12,7 +12,7 @@ class WhyUsChild extends React.Component {
             +"The quotes we provide are pulled directly from our providers, which means" 
             +"that we always provide you with the best deal."
 
-        const how1 = "Pacific Group is free to use, and commission free. We make money "
+        const how1 = "Name Insurance inc is free to use, and commission free. We make money "
             +"simply by charging our partners a fee when a customer chooses to "
             +"find out more about their products. This is important because, as a"
             +"business, we need to make money in order to continue to provide you,"

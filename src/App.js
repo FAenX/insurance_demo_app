@@ -16,7 +16,6 @@ import Dashboard from "./auth/dashboard/Dashboard"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
 import FooterMenu from "./FooterMenu"
-import SocialMedia from "./SocialMedia"
 import Product from './covers/Product';
 import Claim from "./claims/Claim"
 import WhoAreWe from "./whoarewe/WhoAreWe"
@@ -153,7 +152,7 @@ class App extends React.Component {
         <FooterMenu/>
     </div>
     <div>
-        <SocialMedia/>
+       
     </div>  
     <Footer/>
     </Router>

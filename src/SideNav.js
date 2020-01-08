@@ -4,7 +4,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import SocialMedia from "./SocialMedia"
+
 
 class SideBar extends React.Component {
 
@@ -86,7 +86,7 @@ class SideBar extends React.Component {
                         </ListItem> 
                         <hr className="divider"></hr>
                         </List>
-                        <SocialMedia/>
+                       
             </div>
             
         </SwipeableDrawer>

@@ -1,5 +1,6 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
+import SocialMedia from "./SocialMedia"
 
 class Contacts extends React.Component {
     render(){
@@ -8,7 +9,6 @@ class Contacts extends React.Component {
                 <div className="contacts-header">
                 
                 </div>
-               
                 <div className="contacts-child">
                     <h3>Heading</h3>
                     <p>contact</p>
@@ -17,19 +17,9 @@ class Contacts extends React.Component {
                     <p>contact</p>
                 </div>
                 <div className="contacts-child">
-                    <h3>Heading</h3>
-                    <p>contact</p>
-                    <p>contact</p>
-                    <p>contact</p>
-                    <p>contact</p>
+                    <SocialMedia/>
                 </div>
-                <div className="contacts-child">
-                    <h3>Heading</h3>
-                    <p>contact</p>
-                    <p>contact</p>
-                    <p>contact</p>
-                    <p>contact</p>
-                </div>
+                
 
             </div>
         )

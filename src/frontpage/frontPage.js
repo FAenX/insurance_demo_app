@@ -19,24 +19,15 @@ class FrontPage extends React.Component {
     }
 
     componentDidMount = ()=>{
-      
-
     }
 
-    handleSubmit =(event)=>{
-        event.preventDefault()
-        this.props.history.push('/covers')
-    }
-
-    handleClickedSub = (event) =>{
-        event.preventDefault()
-        this.props.history.push('/cover')
+    handleGetStartedButton=()=>{
+        this.props.history.push("/rates")
     }
 
     
 
     render(){
-       
 
         return(
             <div className="front-page">
@@ -61,4 +52,4 @@ class FrontPage extends React.Component {
         )
     }
 }
-export default withRouter (FrontPage)
+export default withRouter(FrontPage)
