@@ -139,42 +139,26 @@
 
 /* how it works */
 .how-it-works {
-  display: flex;
-  flex-flow: row wrap; 
-  justify-content: center; 
-  align-items: center;
+  flex-wrap: wrap; 
   min-height: 80vh;
   background-color: #ffffff; 
 }
 
 .step {
-  display: flex;
-  flex-flow: column;
   padding: 1rem;
   margin: 1rem;
 }
 
 .how-it-works-wrapper {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
   background-color: #00192927;
   margin-top: 2rem; 
 }
 
 .how-it-works-sub-header{
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
   padding: 1.5rem;  
 }
 
 .how-it-works-sub-header-child{
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
   padding-left: 1rem; 
   min-height: 10vh;
   border-left: #f60 1rem solid;
@@ -199,9 +183,8 @@
 }
 
 
+/*why us*/
 .why-us {
-  display: flex;
-  flex-flow: column;
   min-height: 100vh;
   background-color: #00192927;
   margin-top: 1rem;
@@ -210,6 +193,7 @@
 
 .why-us-header {
   text-align: left;
+  text-transform: uppercase;
   padding-left: 1rem;
   font-size: 2rem;
   font-weight: 300;
@@ -218,8 +202,6 @@
 }
 
 .why-us-text {
-  display: flex;
-  flex-flow: column;
   min-height: 60vh;
   background-color: #ffffff;
   margin: 1rem;
@@ -232,9 +214,8 @@
 }
 
 .why-us-child img{
-  min-height: 20rem;
-  min-width: 20rem;
-  background-color: #0019292d;
+  
+  
 }
 
 .why-us-child h1{
@@ -684,7 +665,6 @@
   align-items: center;
 }
 .quotation-body-wrapper{
-  /*background-color: #0019292d;*/
   width: 100vw;  
 }
 
@@ -702,7 +682,6 @@
   flex-flow: column;
   justify-content: center;  
   padding: 1rem;
-  /*background-color: rgba(255, 102, 0, 0.479);*/
   margin: 1rem; 
   text-align:left;
   padding: 2rem;
@@ -993,24 +972,28 @@
   }
 
   .home {    
-    margin-left: .5rem;
-    min-height: 60vh;      
+    min-height: 60vh;
+    margin: .5rem;      
   }
   .headline-text {       
     font-size: 1rem;
     
   }
   .headline-subtext {
-    margin-bottom: 5rem;
-    font-size: .9rem;
-    word-spacing: .25rem;
+    display: none;
+   
   }
+  .home-buttons{
+    flex-wrap: wrap;
+    height: 20vh;
+    justify-content: left;
+  }
+  
   .home-buttons button {
-    font-size: .75rem;
+    font-size: 1rem;
   }
   .why-us-child img{
-    min-height: 15rem;
-    min-width: 15rem;
+    
   }
   .vehicle-controls {
     width: 10rem;
