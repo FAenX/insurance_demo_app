@@ -23,7 +23,7 @@ class FooterMenu extends React.Component {
         return(
             <div className="footer-menu">
                 <List>   
-                         
+                <hr className="divider"></hr>        
                 <ListItem button id="covers" onClick={this.handleRedirectOnClick}>                       
                     <ListItemText  id="covers" primary="Insurance Covers"/>
                 </ListItem>

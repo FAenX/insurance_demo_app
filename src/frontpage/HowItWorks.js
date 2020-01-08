@@ -43,13 +43,13 @@ class HowItWorks extends React.Component{
 
     render(){
         return(
-            <div className="how-it-works-wrapper">
-                <div className="how-it-works-sub-header">
-                    <div className="how-it-works-sub-header-child">
+            <div className="flex-col how-it-works-wrapper">
+                <div className="flex-col how-it-works-sub-header">
+                    <div className="flex-col how-it-works-sub-header-child">
                         <h1>How does it work?</h1>
                     </div>
                 </div>
-                <div className="how-it-works">                
+                <div className="flex-col how-it-works">                
                <HowItWorksStep />
                 </div>
                 

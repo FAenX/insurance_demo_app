@@ -1,9 +1,11 @@
 import React from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
 import provider from "../assets/images/apa.png";
+import Jubilee from "../assets/images/jubilee.png"
+
  
-class DemoCarousel extends React.Component {
+class ProvidersCarousel extends React.Component {
     render() {
         return (
             <Carousel infiniteLoop autoPlay swipeable={true}>
@@ -13,24 +15,13 @@ class DemoCarousel extends React.Component {
                 
                 </div>
                 <div className="provider">
-                <img alt="" src={provider}/>
+                <img alt="" src={Jubilee}/>
                 
                 </div>
-                <div className="provider">
-                <img alt="" src={provider}/>
                 
-                </div>
-                <div className="provider">
-                <img alt="" src={provider}/>
-                
-                </div>
-                <div className="provider">
-                <img alt="" src={provider}/>
-                
-                </div>
             </Carousel>
         );
     }
 };
  
-export default DemoCarousel;
+export default ProvidersCarousel;
