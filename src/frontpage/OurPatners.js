@@ -9,13 +9,20 @@ class OurPatners extends React.Component{
             providers: ""
 
         }
+
+        this.fetchProviders=this.fetchProviders.bind(this)
     }
 
-    componentDidMount = ()=>{
-        fetch("/api/v1/products/providers/", {
+    async fetchProviders(){
+        const data = fetch("/api/v1/products/providers/", {
             method: "GET",
             
-        }).then(res=>{
+        }).then(res=>res)
+        .catch((err)=>{
+            console.log(err)
+        })
+
+        const response = await data.then(res=>{
             if(res.status === 200){
                 res.json().then((data)=>{
                     console.log(data)
@@ -29,9 +36,13 @@ class OurPatners extends React.Component{
             } else {
                 console.log(res)
             }
-        }).catch((err)=>{
-            console.log(err)
         })
+
+        console.log(response)
+    }
+
+    componentDidMount = ()=>{
+        this.fetchProviders()
     }
     
     render(){
