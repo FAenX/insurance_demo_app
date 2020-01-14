@@ -1,1 +1,1 @@
-web: node --max_old_space_size=4096 server.js
+web: babel-node server.js

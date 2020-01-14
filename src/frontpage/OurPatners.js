@@ -17,25 +17,16 @@ class OurPatners extends React.Component{
         const data = fetch("/api/v1/products/providers/", {
             method: "GET",
             
-        }).then(res=>res)
+        }).then(res=>res.json())
         .catch((err)=>{
             console.log(err)
         })
 
-        const response = await data.then(res=>{
-            if(res.status === 200){
-                res.json().then((data)=>{
-                    console.log(data)
+        const response = await data.then(res=>{            
                     this.setState({
-                        providers: data
+                        providers: res
                     });
-                }).catch((error)=>{
-                    console.log(error)
-                    console.log(res)
-                })
-            } else {
-                console.log(res)
-            }
+           return res
         })
 
         console.log(response)
