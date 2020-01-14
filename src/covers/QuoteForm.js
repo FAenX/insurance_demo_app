@@ -13,7 +13,6 @@ import {filterBySub, filterByAlias} from "../helpers/js/dataManipulation"
 
 
 class QuoteForm extends React.Component {
-
     constructor(props){
         super(props)
         this.state = {

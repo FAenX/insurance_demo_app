@@ -16,9 +16,12 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@trendmicro/react-sidenav": "^0.4.5",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "date-fns": "^2.0.0-beta.5",
     "dotenv": "^8.2.0",
     "express-http-proxy": "^1.6.0",
+    "helmet": "^3.21.2",
     "http-proxy-middleware": "^0.20.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
@@ -29,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "nodemon --exec babel-node server.js",
+    "dev": "yarn build && nodemon --exec babel-node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -23,6 +23,7 @@ import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeed
 import dotenv from "dotenv"
 import LoginButton from "./LoginButton"
 
+
 dotenv.config()
 
 
@@ -31,7 +32,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       products: "",
-      productSubs: "",
+      subCategories: "",
      
       //drawer
       isOpen: false,
@@ -44,50 +45,30 @@ class App extends React.Component {
     // init session
     async fetchProductsAndSubCategories (){
       const subCategories= fetch("/api/v1/products/sub-categories/", {
-        method: "GET",                
+        method: "GET",   
+                      
         }).then(res=>res)
         .catch((err)=>{
             console.log(err)
         })
 
       const products = fetch("/api/v1/products/", {
-          method: "GET" 
+          method: "GET", 
+                  
           }).then((res)=>res)
           .catch((err)=>{
               console.log(err)
           })  
 
-      const subs = await subCategories.then(res=>{
-          if(res.status === 200){
-            res.json().then((data)=>{
-                //console.log(data)
-                sessionStorage.setItem("sub_categories", JSON.stringify(data))                   
+      const subs = await subCategories.then(data=>data.json()).catch(err=>err) 
+      const prods = await products.then(data=>data.json()).catch(err=>err)
 
-            }).catch((error)=>{
-                //console.log(error)
-                console.log(res)
-            })
-        } else {
-            console.log(res)
-        }
-        })
-     
-
-      const prods = await products.then(res=>{
-        if(res.status === 200){
-          res.json().then((data)=>{       
-              sessionStorage.setItem("products", JSON.stringify(data[0].products))                        
-          
-            }).catch((error)=>{
-              console.log(error)
-              console.log(res)
-          })
-      } else {
-          console.log(res)
-      }
-      })
-      console.log(subs)
       console.log(prods)
+      console.log(subs)
+
+      sessionStorage.setItem("sub_categories", JSON.stringify(subs))
+      sessionStorage.setItem("products", JSON.stringify(prods[0].products))
+      
 
     }
 
@@ -121,7 +102,7 @@ class App extends React.Component {
 
   render(){
     
-   
+    
     
   return (
     <Router>
