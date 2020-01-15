@@ -23,7 +23,7 @@ import dotenv from "dotenv"
 import LoginButton from "./LoginButton"
 import imgPlaceholder from "./assets/images/img_placeholder.png"
 import Contacts from "./Contacts"
-import {Backdrop} from "@material-ui/core"
+
 
 
 dotenv.config()
@@ -111,7 +111,6 @@ class App extends React.Component {
     <div className="App">
     <header className="App-header">
       <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
-      <Backdrop />
         <IconButton >
           <MenuIcon />
         </IconButton>

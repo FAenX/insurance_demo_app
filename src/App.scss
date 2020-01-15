@@ -381,64 +381,65 @@ body {
 
 
 /* page2 */
-
-.page2-cover {
+.page2 {
   @include flex-col();
-  justify-content: space-around;
+  margin-top: 4rem;
+}
+
+.page2-cover {  
+  @include flex-col();
+  @include fullscreen();
+  align-items: baseline;
   background-image: url(./assets/images/image1.png);
-  background-position-x: 10rem;
-  background-position-y: -15rem;
   background-repeat: no-repeat;
-  background-color: #001929c4;
-  min-height: 40vh;
+  background-color: $color_1;
 }
 
 
 .page-headline-text {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;  
-  margin-left: 1rem;
-  max-width: 50vw;
-  color: white;
-  text-align: left;
+  @include flex-col(); 
+  margin: 1rem;
+  color: $white;
+  align-items: baseline;
   font-weight: 300;
-  border-left: 1rem #f60 solid;
+  border-left: .5rem $color_2 solid;
   padding-left: 1rem;
+  text-align: left;
   
 }
 
-.page-headline-text h1 {
-  font-weight: 300;
-}
-
-.page-headline-text button {
-  background-color: #f60;
-}
 
 /* highlights */
 .highlights {
-  display: flex;
-  flex-flow: column;
-  background-color: #0019293b;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+ @include flex-col();
+
+ .highlight-card{
+  @include flex-col();
+   background-color: $white;
+ }
+
+ .higlight-content{
+  @include flex-col();
+   margin: 1rem;
+   padding: .5rem;
+ }
 }
 
 .highlight {
-  display: flex;
-  flex-flow: column;
-  text-align: left;
+ @include flex-col();
+ align-items: baseline;
 }
 
 .highlight-title {
-  border-left: .1rem #f60 solid; 
+  border-left: .1rem $color_2 solid; 
   font-size: 2rem;
   font-weight: 300;
   padding-left: 1rem;
   margin: 2rem;
   
 }
+
+
 
 .highlight-text {
   padding: 1rem;
@@ -450,14 +451,10 @@ body {
 
 
 .highlight-button button{
-  color: #f60;
+  color: $color_2;
 }
 
-.highlight-card {
-  display: flex;
-  flex-flow: column;
-  background-color: #ffffff;
-}
+
 
 /* covers subcategory */
 .cover-wrapper{
@@ -1023,8 +1020,8 @@ body {
   }  
 
   .page2-cover {
-    background-position-x: 10vh;
-    background-position-y: -20vh;
+    background-position-x: -10vh;
+    background-position-y: 25vh;
 
   }
   .page-headline-text {
