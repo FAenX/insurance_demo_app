@@ -56,7 +56,7 @@ class HowItWorks extends React.Component{
                 <div className="how-it-works"> 
                     {
                         Object.keys(data).map(i=>{
-                            return <HowItWorksStep text={data[i]} title={i} img={imgPlaceholder}/>
+                            return <HowItWorksStep key={i} text={data[i]} title={i} img={imgPlaceholder}/>
                         })
                     } 
                     <div className="get-started-button">

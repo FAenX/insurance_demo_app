@@ -195,7 +195,7 @@ body {
 
 /* how it works */
 .how-it-works-wrapper {
-  @include fullscreen()
+  @include fullscreen();
   @include flex-col(); 
 }
 
@@ -307,15 +307,14 @@ body {
 /* contacts */
 .contacts-wrapper {
   @include flex-col();
-  color: $white;
-  background-color: $color_1;
   width: 100vw;
   align-items: baseline;
 }
 
 .contacts-header {
-  padding-left: 1rem;
+  @include flex-col();
   margin: 2rem;
+  border: $color_2 solid .05rem;
   
 }
 .contacts-child {
@@ -327,14 +326,6 @@ body {
   margin: 2rem;
   
 }
-
-/* footer menu */
-.divider {
-  margin: 0rem;
-  padding: 0rem;
-  background-color: $color_2
-}
-
 /* social media */
 .social-media {
   @include flex-row();
@@ -366,6 +357,28 @@ body {
   text-decoration: none;
   border-radius: 50%;
 }
+
+/* footer */
+
+.footer-wrapper {
+  @include flex-col();
+  color: $white;
+  font-size: 1rem;
+  min-height:5vh;
+  min-width: 100vw;
+  background-color: $color_1;
+  border-top: $color_2 .05rem solid;
+  padding: .5rem;
+  font-size: .75rem;
+}
+
+.divider {
+  margin: 0rem;
+  padding: 0rem;
+  background-color: $color_2
+}
+
+
 
 /* page2 */
 
@@ -774,23 +787,6 @@ body {
 #buy-button{
   margin: 1rem;
   background-color: #f60;
-}
-
-
-
-
-/* footer */
-
-.footer-wrapper {
-  @include flex-col();
-  color: $white;
-  font-size: 1rem;
-  min-height:5vh;
-  min-width: 100vw;
-  background-color: $color_1;
-  border-top: $color_2 .05rem solid;
-  padding: .5rem;
-  font-size: .75rem;
 }
 
 /* sign in sign up*/

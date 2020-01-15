@@ -4,7 +4,7 @@ import Home from "./Home"
 import HowItWorks from './HowItWorks'
 import OurPatners from "./OurPatners"
 import WhyUs from "./WhyUs"
-import Contacts from "./Contacts"
+
 
 
 
@@ -36,9 +36,7 @@ class FrontPage extends React.Component {
                 <div>
                     <OurPatners/>
                 </div> 
-                <div>
-                    <Contacts/>
-                </div>
+               
                 
             </div>
         )

@@ -22,6 +22,8 @@ import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeed
 import dotenv from "dotenv"
 import LoginButton from "./LoginButton"
 import imgPlaceholder from "./assets/images/img_placeholder.png"
+import Contacts from "./Contacts"
+import {Backdrop} from "@material-ui/core"
 
 
 dotenv.config()
@@ -31,12 +33,13 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      products: "",
-      subCategories: "",
      
       //drawer
       isOpen: false,
       isLoggedIn: false,
+
+      //backdrop
+      open: false
     }
     this.fetchProductsAndSubCategories=this.fetchProductsAndSubCategories.bind(this)
   }
@@ -44,6 +47,7 @@ class App extends React.Component {
   
     // init session
     async fetchProductsAndSubCategories (){
+     
       const subCategories= fetch("/api/v1/products/sub-categories/", {
         method: "GET",   
                       
@@ -54,7 +58,6 @@ class App extends React.Component {
 
       const products = fetch("/api/v1/products/", {
           method: "GET", 
-                  
           }).then((res)=>res)
           .catch((err)=>{
               console.log(err)
@@ -63,30 +66,11 @@ class App extends React.Component {
       const subs = await subCategories.then(data=>data.json()).catch(err=>err) 
       const prods = await products.then(data=>data.json()).catch(err=>err)
 
-      console.log(prods)
-      console.log(subs)
-        
-      try{
-        sessionStorage.setItem("sub_categories", JSON.stringify(subs))
-        sessionStorage.setItem("products", JSON.stringify(prods[0].products))
-      }catch{
-       //
-      }
-      
-      
-
+      sessionStorage.setItem("products", JSON.stringify(prods))
+      sessionStorage.setItem("sub_categories", JSON.stringify(subs))
     }
 
    
-  
-  componentDidMount=()=> {
-    this.fetchProductsAndSubCategories()
-    this.setState({
-      isOpen: false
-    })
-    
-  }
-
   //handle logout
   handleLoginLogout =()=>{
     this.setState({
@@ -106,35 +90,39 @@ class App extends React.Component {
   
 
   render(){
-    
-    
-    
+    let subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
+    let products = JSON.parse(sessionStorage.getItem("products"))
+    if (
+      subCategories!==null && 
+      subCategories !== undefined && 
+      subCategories.length > 0 &&
+      products!==null && 
+      products !== undefined && 
+      products.length > 0
+      ){
+      //
+    }else{
+      this.fetchProductsAndSubCategories()
+    }
+
   return (
     <Router>
       <SideNav isLoggedIn={this.state.isLoggedIn} drawer={this.state.isOpen} toggleDrawer={this.toggleDrawer}/>
-    
     <div className="App">
-      
-     
     <header className="App-header">
       <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
+      <Backdrop />
         <IconButton >
           <MenuIcon />
         </IconButton>
       </div> 
-
       <div className="logo">
         <img alt="logo" src={imgPlaceholder}/>
       </div>
-
-
       <div className="nav-login" onClick={this.redirectToSignin}>
        <LoginButton />
       </div>
-         
     </header>
-    
-      
       <Switch>
           <Route exact path='/' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
@@ -143,7 +131,7 @@ class App extends React.Component {
           <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           <Route exact path='/product' render = {(props) => <Product {...props} />}/>
           <Route exact path='/cover' render = {(props) => <Cover {...props} />}/>
-          <Route exact path='/covers' render = {(props) => <Covers {...props} />}/>
+          <Route exact path='/covers' render = {(props) => <Covers {...props} subCategories={this.state.subCategories}/>}/>
           <Route exact path='/claim' render = {(props) => <Claim {...props} />}/>
           <Route exact path='/about' render = {(props) => <WhoAreWe {...props} />}/>
           <Route exact path='/info' render = {(props) => <EverythingYouNeedToKnow {...props} />}/>
@@ -152,13 +140,10 @@ class App extends React.Component {
           <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />
           <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
       </Switch>
-      
-        
-     
     </div>
     <div>
-       
-    </div>  
+    </div>
+    <Contacts/>
     <Footer/>
     </Router>
   );
