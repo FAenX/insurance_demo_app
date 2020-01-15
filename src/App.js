@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import Rates from "./covers/Rates"
 import Cover from "./covers/Cover"
 import Quotation from "./covers/Quotation"
@@ -15,13 +15,13 @@ import SignUp from "./auth/SignUp"
 import Dashboard from "./auth/dashboard/Dashboard"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
-import FooterMenu from "./FooterMenu"
 import Product from './covers/Product';
 import Claim from "./claims/Claim"
 import WhoAreWe from "./whoarewe/WhoAreWe"
 import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeedToKnow"
 import dotenv from "dotenv"
 import LoginButton from "./LoginButton"
+import imgPlaceholder from "./assets/images/img_placeholder.png"
 
 
 dotenv.config()
@@ -65,9 +65,14 @@ class App extends React.Component {
 
       console.log(prods)
       console.log(subs)
-
-      sessionStorage.setItem("sub_categories", JSON.stringify(subs))
-      sessionStorage.setItem("products", JSON.stringify(prods[0].products))
+        
+      try{
+        sessionStorage.setItem("sub_categories", JSON.stringify(subs))
+        sessionStorage.setItem("products", JSON.stringify(prods[0].products))
+      }catch{
+       //
+      }
+      
       
 
     }
@@ -112,11 +117,16 @@ class App extends React.Component {
       
      
     <header className="App-header">
-    <div onClick={this.toggleDrawer(true)}> 
-        <IconButton edge="start" color="inherit" aria-label="menu">
+      <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
+        <IconButton >
           <MenuIcon />
         </IconButton>
-      </div>   
+      </div> 
+
+      <div className="logo">
+        <img alt="logo" src={imgPlaceholder}/>
+      </div>
+
 
       <div className="nav-login" onClick={this.redirectToSignin}>
        <LoginButton />
@@ -145,9 +155,6 @@ class App extends React.Component {
       
         
      
-    </div>
-    <div>
-        <FooterMenu/>
     </div>
     <div>
        

@@ -1,59 +1,70 @@
 import React from "react"
 import {withRouter} from "react-router-dom";
 import imgPlaceholder from "../assets/images/img_placeholder.png"
+import {Button, Paper} from "@material-ui/core"
 
 
 class HowItWorksStep extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-
-        }
-        
-    }
-
+    
     render(){
-        const how = "Name Insurance inc makes use of cutting-edge technology to provide our" 
-                    +"customers with the best deal. Our web services are managed and run"
-                    +"by leading and experienced web developers, meaning that our customers"
-                    +"always have the best experience, and that the quotes are always competitive."
-                    +"The quotes we provide are pulled directly from our providers, which means" 
-                    +"that we always provide you with the best deal."
-
         return(
-            <div className="step">
-                    <div className="step-image"><img alt="" src={imgPlaceholder}/></div>
+            <Paper variant="outlined" className="step">
+                    <div className="svg"><img alt="" src={this.props.img}/> </div>
                     <div className="step-text-wrapper">
-                        <div className="step-header">Select motor insurance cover</div>
+                        <div className="step-header">{this.props.title}</div>
                         <div className="step-text">
-                       {how}
+                       {this.props.text}
                         </div>
                     </div>
-            </div>
-              
+            </Paper>
         )
     }
 }
 
 class HowItWorks extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+        }
+    }
+    //fetch literature and images from backend
+    async fetchSteps() {
+    }
 
     handleGetStartedButton=()=>{
-        this.props.history.push("/signup")
+        this.props.history.push("/rates")
     }
 
     render(){
+
+        const data = {
+            "browse":"Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
+            "request quotation": "Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
+            "make payment": "Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
+            "download your policy and temporary sticker": "Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
+            "Your sticker will be delivered to you":  "Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur."
+        }
+
+
         return(
-            <div className="flex-col how-it-works-wrapper">
-                <div className="flex-col how-it-works-sub-header">
-                    <div className="flex-col how-it-works-sub-header-child">
-                        <h1>How does it work?</h1>
+            <div className="how-it-works-wrapper">
+                <div className="how-it-works-sub-header">
+                    <div className="how-it-works-sub-header-text">
+                        How does it work?
                     </div>
                 </div>
-                <div className="flex-col how-it-works">                
-               <HowItWorksStep />
+                <div className="how-it-works"> 
+                    {
+                        Object.keys(data).map(i=>{
+                            return <HowItWorksStep text={data[i]} title={i} img={imgPlaceholder}/>
+                        })
+                    } 
+                    <div className="get-started-button">
+                        <Button variant="outlined" onClick={this.handleGetStartedButton}>
+                            Get started
+                        </Button>
+                    </div>                
                 </div>
-                
-               
                 </div>
                 
            

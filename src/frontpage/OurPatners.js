@@ -1,5 +1,9 @@
 import React from "react"
-import Carousel from "./Carousel"
+import ProvidersCarousel from "./ProvidersCarousel"
+import apa from "../assets/images/apa.png";
+import jubilee from "../assets/images/partners-jubilee.png"
+import heritage from "../assets/images/partners-heritage.png";
+//import  from "../assets/images/apa.png";
 
 
 class OurPatners extends React.Component{
@@ -41,13 +45,17 @@ class OurPatners extends React.Component{
         return(
             <div className="providers-wrapper">
                 <div className="providers-headline">
-                    <h1>Our Insurance Patners</h1>
-                    <p>With over 12 insurers to choose from, Name works actively to find an ideal plan for you</p>
+                    <div className="providers-heading">Our Insurance Patners</div>
+                    <div className="providers-sub-heading">With over 12 insurers to choose from, Name works actively to find an ideal plan for you</div>
                 </div>
-                <div className="providers-carousel"> 
-                   
-                        <Carousel/>
-                    </div>
+               
+                <ProvidersCarousel 
+                    providers={this.state.providers}
+                    heritage={heritage}
+                    apa={apa}
+                    jubilee={jubilee}
+                />
+               
                        
             </div> 
         )

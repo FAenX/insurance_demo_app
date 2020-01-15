@@ -18,7 +18,7 @@ class LoginButton extends React.Component{
 
     render(){
             return(
-                <Button onClick={this.redirectToSignin}>login</Button>
+                <Button variant="outlined" onClick={this.redirectToSignin}>login</Button>
             )
         }
 }

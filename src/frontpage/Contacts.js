@@ -1,13 +1,14 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
 import SocialMedia from "./SocialMedia"
+import imgPlaceholder from "../assets/images/img_placeholder.png"
 
 class Contacts extends React.Component {
     render(){
         return(
             <div className="contacts-wrapper">
                 <div className="contacts-header">
-                
+                    <img alt="logo" src={imgPlaceholder} />
                 </div>
                 <div className="contacts-child">
                     <h3>Heading</h3>
