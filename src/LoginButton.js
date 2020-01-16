@@ -1,6 +1,7 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
 import {Button} from "@material-ui/core"
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 class LoginButton extends React.Component{
     constructor(props){
@@ -18,7 +19,7 @@ class LoginButton extends React.Component{
 
     render(){
             return(
-                <Button variant="outlined" onClick={this.redirectToSignin}>login</Button>
+                <AccountCircleIcon color="primary" onClick={this.redirectToSignin} />
             )
         }
 }

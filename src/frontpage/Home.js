@@ -1,19 +1,10 @@
 import React from "react"
-import Button from '@material-ui/core/Button';
 import {withRouter } from "react-router-dom";
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 
 class Home extends React.Component{
-    handleClickedBnt =(event)=>{
-        let target; 
-        if (event.target.id) {
-            target = event.target.id
-        }else{
-            target = event.target.parentNode.id
-        }
-        console.log(target)
-        this.props.history.push(`/${target}`)
-    }
+   
     render(){
         return(
             <div className="home">
@@ -25,18 +16,7 @@ class Home extends React.Component{
                 <p> Pay through a range of available payment options and download a printable copy of your insurance cover</p>
                 
                 </div>
-                <div className="home-buttons">
-                    <div className="get-started-button">
-                        <Button variant="outlined" id="signup" onClick={this.handleClickedBnt}>
-                            Create Free Account
-                        </Button>
-                    </div>
-                    <div className="free-quotation-button">
-                        <Button variant="outlined"  id="rates" onClick={this.handleClickedBnt}>
-                            Get a free quotation
-                        </Button>
-                    </div>
-                </div>
+                <ArrowForwardIcon />
             </div>
         )
     }

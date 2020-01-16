@@ -6,46 +6,29 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {Alert} from "react-bootstrap"
 import {filterBySub} from "../helpers/js/dataManipulation"
+
+
+//return chosen product from filtered products
+const getProduct =(products, alias)=>{
+    let chosenProduct;
+    for (let i=0; i < products.length; i++){
+        if (products[i].alias === alias){
+            chosenProduct = products[i]
+        }                
+    }
+    return chosenProduct
+}
+
 
 class Cover extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-
             chosenProduct: null,           
         }
     }
         
-
-    componentWillMount =()=> { 
-        try{        
-            this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
-            this.sub = JSON.parse(sessionStorage.getItem("chosen_sub"))    
-            this.products = JSON.parse(sessionStorage.getItem("products"))          
-            if(this.products != null && this.products !== undefined && this.products.length > 0){                
-                this.filteredProducts = filterBySub(this.products, this.sub)
-                this.getProducts(this.filteredProducts)
-            }else{               
-                
-            }         
-
-        }catch{
-            this.dataAlert = <Alert variant="warning">Something went wrong</Alert>
-        }        
-
-    } 
-
-    
-
-    //get specific products form the filtered lot
-    getProducts=(filteredProducts)=>{
-        this.product1 = filteredProducts[0];
-        this.product2 = filteredProducts[1];
-        this.product3 = filteredProducts[2];
-    }
-    
 
     // handle submit
     onSubmitHandler = (event) => {
@@ -67,25 +50,33 @@ class Cover extends React.Component {
         
 
         sessionStorage.setItem("chosen_product_alias", JSON.stringify(chosenProductAlias))
-        sessionStorage.setItem("chosen_product", JSON.stringify(this.getProduct(this.products, chosenProductAlias)))
+        sessionStorage.setItem("chosen_product", JSON.stringify(getProduct(this.products, chosenProductAlias)))
         this.props.history.push("/product")      
         
     }  
     
     
-    //return chosen product from filtered products
-    getProduct =(products, alias)=>{
-        let chosenProduct;
-        for (let i=0; i < products.length; i++){
-            if (products[i].alias === alias){
-                chosenProduct = products[i]
-            }                
-        }
-        return chosenProduct
-    }
     
     
     render(){
+        //get specific products form the filtered lot
+        const getProducts=(filteredProducts)=>{
+            this.product1 = filteredProducts[0];
+            this.product2 = filteredProducts[1];
+            this.product3 = filteredProducts[2];
+        }
+
+        this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
+        this.sub = JSON.parse(sessionStorage.getItem("chosen_sub"))    
+        this.products = JSON.parse(sessionStorage.getItem("products"))          
+        if(this.products != null && this.products !== undefined && this.products.length > 0){                
+            this.filteredProducts = filterBySub(this.products, this.sub)
+            getProducts(this.filteredProducts)
+        }else{               
+            
+        }         
+
+
         let subCategories;
         let panel; 
         
@@ -164,20 +155,7 @@ class Cover extends React.Component {
 
         return(
             <div className="cover-wrapper">
-                <div className="coversub-cover">                
-                <div >                    
-                    <div className="cover-header-text-wrapper">
-                        <div className="cover-header-text">
-                            <h1>{subCategories.name}</h1>
-                            <h2>
-                                GET A QUOTE IN 3 EASY STEPS
-                                It will take you less than 2 minutes.</h2>
-                        </div>                        
-                        <div className="cover-button"><Button variant="contained">Get started</Button></div>
-                    </div>
-                    
-                    </div>            
-                </div>
+                
                 <div className="main-body-wrapper">                    
                     {panel}
                     <div className="main-body-highlight-text">

@@ -2,6 +2,8 @@ import React from 'react';
 import {withRouter} from "react-router-dom"
 import {Button, Paper} from "@material-ui/core"
 import imgPlaceholder from "../assets/images/img_placeholder.png"
+import GetStartedButton from "../utils/GetStartedButton"
+import FreeQuotationButton from "../utils/FreeQuotationButton"
 
 class Covers extends React.Component {
     constructor(props){
@@ -28,47 +30,71 @@ class Covers extends React.Component {
         this.props.history.push('/cover')
         
     }
-    render(){ 
-        let highlights; 
-        let subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
-        if (subCategories!==null && subCategories !== undefined && subCategories.length > 0){
-            highlights = subCategories.map(i => {
-            return<div className="highlight" key={i.alias}>
-                    <div className="highlight-title">{i.name}</div> 
-                        <div className="highlight-card">
-                            <Paper variant="outlined" className="higlight-content">  
-                                <div className="svg"><img alt="" src={imgPlaceholder}/> </div>
-                                <div className="highlight-text">
-                                    Build a bench of trusted, skilled and certified IT 
-                                    techs so you can become a full-service partner to more 
-                                    of your customers.
-                                    Build a bench of trusted, skilled and certified IT 
-                                    techs so you can become a full-service partner to more 
-                                    of your customers.
-                                </div> 
-                                <div className="highlight-button" >
-                                    <Button variant="outlined" id={i.alias} onClick={this.handleOnClickSub}>Learn more</Button>
-                                </div>  
-                            </Paper>
-                        </div>
-                </div>
-                })
-            
-
-        } 
+    render(){     
 
         return(
-            <div className="page2">
+            <div className="motor-insurance">
+                <GetStartedButton />
+                <FreeQuotationButton />
                 <div>{this.dataAlert}</div>
-            <div className="page2-cover"> 
-                <div className="page-headline-text"> 
-                        <div className="headline-text">Name Insurance Brokers (EA) Ltd. Products</div>
-                        <div>Insurance made easy</div>
-                    <div className="get-started-button"><Button variant="outlined" color="secondary">Get started</Button></div>
-                </div>                    
-                        
-            </div>
-            <div className="highlights"> {highlights} </div>            
+                <div className="intro">
+                    <div className="headline-text">
+                        motor Insurance
+                    </div>
+                    <div className="sub-text">
+                    This is insurance for a motor vehicle such as a car, 
+                    which provides protection against loss in the event of an 
+                    accident, theft, etc.
+                    </div>
+                </div>
+                <div className="motor-insurance-highlights">
+                    <div className="motor-insurance-highlights-img">
+                        <img alt="" src={imgPlaceholder}></img>
+                    </div>
+                    <div className="headline-text">
+                        What you will get
+                    </div>
+                    <div className="sub-text">
+                    Our Motor insurance cover protects the insured against financial loss in the 
+                    event that the motor vehicle is involved in an accident, burnt or stolen.
+                    We offer 3 types of coverage: 
+                    <ul>
+                        <li>Third Party: Covers third party bodily injury and property damage arising out of a vehicle accident.</li>
+                        <li>Third party Fire & Theft: Cover extends to cover theft, fire, third party bodily injury and property damage.</li>
+                        <li>Comprehensive: Covers third party liability and property damage to the vehicle i.e. damage arising out of fire, theft and accidental damage to the vehicle.</li>
+                    
+                    </ul>                   
+                    </div>
+
+                </div>
+                <Paper className="motor-insurance-benefits">
+                    <div className="headline-text">
+                        Benefits at a glance
+                    </div>
+                    <div className="motor-insurance-benefits-list">
+                        <div className="motor-insurance-benefits-list-item">
+                            <div className="number">1</div>
+                            <div className="motor-insurance-benefits-text">Excellent claims settlement</div>
+                        </div>
+                        <div className="motor-insurance-benefits-list-item">
+                            <div className="number">2</div>
+                            <div className="motor-insurance-benefits-text">Political violence and terrorism benefit</div>
+                        </div>
+                        <div className="motor-insurance-benefits-list-item">
+                            <div className="number">3</div>
+                            <div className="motor-insurance-benefits-text">24hr towing service</div>
+                        </div>
+                        <div className="motor-insurance-benefits-list-item">
+                            <div className="number">4</div>
+                            <div className="motor-insurance-benefits-text">Accident and disability benefit</div>
+                        </div>
+                        <div className="motor-insurance-benefits-list-item">
+                            <div className="number">5</div>
+                            <div className="motor-insurance-benefits-text">Free motor valuation and inspection</div>
+                        </div>
+                    </div>
+                    
+                </Paper>
         </div>
         )
             

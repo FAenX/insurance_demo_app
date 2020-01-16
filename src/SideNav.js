@@ -54,11 +54,11 @@ class SideBar extends React.Component {
                         </ListItem>
                         <hr className="divider"></hr>
                         <ListItem button id="covers" onClick={this.handleRedirectOnClick}>                       
-                            <ListItemText  id="covers" primary="Insurance Covers"/>
+                            <ListItemText  id="covers" primary="Motor insurance"/>
                         </ListItem>
                         <hr className="divider"></hr>
                         <ListItem button id="claim" onClick={this.handleRedirectOnClick}>                       
-                            <ListItemText  id="claim" primary="Claim"/>
+                            <ListItemText  id="claim" primary="Make a claim"/>
                         </ListItem>
                         <hr className="divider"></hr>
                         <ListItem button id="about" onClick={this.handleRedirectOnClick}>                       

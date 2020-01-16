@@ -60,9 +60,6 @@ class HowItWorks extends React.Component{
                         })
                     } 
                     <div className="get-started-button">
-                        <Button variant="outlined" onClick={this.handleGetStartedButton}>
-                            Get started
-                        </Button>
                     </div>                
                 </div>
                 </div>

@@ -1,8 +1,8 @@
 $color_1: #001929;
-$color_2: rgb(255, 72, 0);
+$color_2: rgb(255, 81, 0);
 $white: #ffffff;
 $success_color: #3F9811;
-$color_3: #00192927;
+$color_3: #00192913;
 
 @mixin fullscreen {
   min-width: 100vw;
@@ -26,11 +26,13 @@ $color_3: #00192927;
 #root {
  color: $color_1;
  background-color: $color_3;
+ font-weight: 300;
 }
 
 body {
   text-align: center;
 }
+
 
 .svg {
   @include flex-col();
@@ -38,7 +40,6 @@ body {
   width: 15rem;
   border: $color_2 solid .005rem;
 }
-
 
 .App {
   @include flex-col();
@@ -58,7 +59,7 @@ body {
   color: $color_2;
   padding-right: 1rem;
   padding-left: 1rem;
-  border-bottom: .0025rem solid $color_2;
+  border-bottom: .05rem solid $color_2;
 
   .menu-icon {
     padding: none;
@@ -79,12 +80,11 @@ body {
 }
 
 .nav-login{
-  button{
+  .MuiSvgIcon-colorPrimary{
     color: $color_2;
+    font-size: 3rem;
   }
-  .MuiButton-outlined {
-    border: 1px solid $color_2;
-  }
+  
 } 
 
 .success-snackbar {
@@ -172,24 +172,30 @@ body {
 
 
 .get-started-button{
-  button{
-    background: $color_2;
-    margin-bottom: 2rem;
-    color: $white
-  }
-  .MuiButton-outlined {
-    border: 1px solid $color_1;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin:1rem;
+  margin-top: 8rem;
+  border: .05rem solid $color_2;
+  .MuiSvgIcon-colorPrimary{
+    color: $color_2;
+    font-size: 2.5rem;
   }
 
 } 
 
 .free-quotation-button{
-  button{
-    background-color: $color_1;
-    color: $white;
-  }
-  .MuiButton-outlined {
-    border: 1px solid $color_2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin:1rem;
+  margin-top: 5rem;
+  border: .05rem solid $color_2;
+  
+  .MuiSvgIcon-colorPrimary{
+    color: $color_2;
+    font-size: 2.5rem;
   }
 } 
 
@@ -380,198 +386,72 @@ body {
 
 
 
-/* page2 */
-.page2 {
+/* motor-insurance */
+.motor-insurance {
   @include flex-col();
   margin-top: 4rem;
-}
+  width: 100vw;
 
-.page2-cover {  
-  @include flex-col();
-  @include fullscreen();
-  align-items: baseline;
-  background-image: url(./assets/images/image1.png);
-  background-repeat: no-repeat;
-  background-color: $color_1;
-}
+  .intro {
+    margin-top: 2rem;
+  }
 
+  .headline-text {
+    @include flex-col(); 
+    font-size: 1.5rem;
+    margin: 2rem;
+    align-items: baseline;
+    font-weight: 400;
+    border-left: .5rem $color_2 solid;
+    padding-left: 1rem;
+    text-align: left;
+    text-transform: capitalize;
+    
+  }
 
-.page-headline-text {
-  @include flex-col(); 
-  margin: 1rem;
-  color: $white;
-  align-items: baseline;
-  font-weight: 300;
-  border-left: .5rem $color_2 solid;
-  padding-left: 1rem;
-  text-align: left;
-  
-}
+  .sub-text {  
+    @include flex-col();
+    text-align: left;
+    margin: 3rem;
+    line-height: 2rem;
+    letter-spacing: .1rem;  
+    
+  }
 
+  .motor-insurance-highlights{
+    background-color: $white;
 
-/* highlights */
-.highlights {
- @include flex-col();
+    .motor-insurance-highlights-img{
+      height: 20rem;
+      @include flex-col();
+    }
+  }
+  .motor-insurance-benefits{
+    @include flex-col();
+    align-items:baseline;
+    text-align: left;
+    margin: 1rem;
+    padding: 2rem;
 
- .highlight-card{
-  @include flex-col();
-   background-color: $white;
- }
-
- .higlight-content{
-  @include flex-col();
-   margin: 1rem;
-   padding: .5rem;
- }
-}
-
-.highlight {
- @include flex-col();
- align-items: baseline;
-}
-
-.highlight-title {
-  border-left: .1rem $color_2 solid; 
-  font-size: 2rem;
-  font-weight: 300;
-  padding-left: 1rem;
-  margin: 2rem;
-  
-}
-
-
-
-.highlight-text {
-  padding: 1rem;
-}
-
-.highlight-button {
-  margin: 1rem;
-}
-
-
-.highlight-button button{
-  color: $color_2;
-}
-
-
-
-/* covers subcategory */
-.cover-wrapper{
-  display: inherit;
-  flex-flow: inherit;
-  min-height: 100vh;
-}
-
-.coversub-cover {
-  display: inherit;
-  flex-flow: column;
-  justify-content: space-around;
-  background-image: url(./assets/images/image1.png);
-  background-position-x: 1rem;
-  background-position-y: -8rem;
-  background-repeat: no-repeat;
-  background-color: #001929c4;
-  min-height: 30vh;
-  text-align: left;
-  padding: 1rem;
-  color: white;
-}
-
-.cover-header-text-wrapper {
-  display: flex;
-  flex-flow: column;
-  justify-content: center; 
-  text-transform: capitalize;
-  padding-left: 1rem;
-  border-left: 1rem #f60 solid;
-}
-
-.cover-header-text h1{
-  font-weight: 300;
-  text-transform: uppercase;
-}
-
-.cover-header-text h2{
-  font-weight: 300;
-  font-size: 1.5rem;
-  margin-top: 2rem;
-}
-
-.main-body-wrapper{
-  display: flex;
-  flex-flow: column;
-  margin-top: 1rem;
-  background-color: #0019293b;
-}
-
-.main-body-highlight-text {
-  font-size: 2rem;
-  font-weight: 300;
-  border-left: #f60 .05rem solid;
-  margin: 1rem;
-  text-align: left;
-  padding-left: 1rem;
-  text-transform: uppercase;
+    .motor-insurance-benefits-list{
+      @include flex-col();     
+      align-items: flex-start;
+      .motor-insurance-benefits-list-item{
+        @include flex-row();
+        .number{
+          @include flex-col();  
+          height: 3rem;
+          width: 3rem;
+          border-radius: 50%;
+          margin: 1rem;
+          border: .05rem solid $color_2;
+        }
+      }
+    }
+  }
   
 
-}
-
-.covers-expansion-panel {
-  text-align: left;
-}
-
-.covers-expansion-panel .MuiTypography-body1  {
-  font-size: 1.2rem;
-  font-weight: 300;
-}
-
-.main-body-text {
-  background-color: #ffffff;
-  padding: 1rem;
-  text-align: left;
-  letter-spacing: .05rem;
-  line-height: 1.5rem;
-}
-
-.cover-button button {
-  background-color: #f60;
-  margin: 1rem;
-}
-
-
-/* product page */
-.product-wrapper {
-  min-height: 100vh;
-}
-
-.product-body-wrapper {
-  margin-top: 2rem;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #0019293b;
-}
-
-.product-title {
-  margin: 2rem;
-  font-weight: 300;
-  text-align: left;
-  font-size: 2rem;
-  padding-left: 2rem;
-  border-left: .1rem #f60 solid;
-  text-transform: capitalize;
-}
-
-.product-description-wrapper {
-  background-color: #ffffff;
-  font-weight: 300;
-  text-align: left;
-  font-size: 1.2rem;
-}
-.product-description {
-  padding: 1rem;
+  
 }
 
 .rates-wrapper {
@@ -975,7 +855,7 @@ body {
 
 @media screen and (max-width: 450px)  {
   .cover-page{    
-    background-position-y: -20vh;    
+    
   }
 
   .home {    
@@ -1045,52 +925,32 @@ body {
 
 @media screen and (min-width: 600px)  {
   .headline-text h1{
-    font-weight: 400;
-    font-size: 4rem;
+  
   }
   .home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 3rem;
-    /*max-width: 50vw;*/
-    text-align: left;  
+   
   }
 
-  .headline-text {
-    display: flex;
-    flex-flow: column;
-    
-    margin-right: 10vw;
-    margin-bottom: 5rem;
-    color: #ffffff;
-    
-  }
   
   .headline-text h1{
-    font-weight: 300;
+   
   }
   
   .headline-subtext {
-    font-weight: 400;
-    color: #ffffff;
-    max-width: 30vw;   
+   
   }
   
   .home-buttons {
-    display: flex;
-    flex-flow: row;  
+  
   }
   
   
   .get-started-button button{
-    background: #f60;
-    margin-right: 1rem;
+   
   }
   
   .free-quotation-button button{
-    color: #ffffff;
-    background-color: #001929;
+  
   }
 }
 
