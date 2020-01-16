@@ -1,6 +1,5 @@
 import React from "react"
 import {withRouter } from "react-router-dom";
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 
 class Home extends React.Component{
@@ -16,7 +15,7 @@ class Home extends React.Component{
                 <p> Pay through a range of available payment options and download a printable copy of your insurance cover</p>
                 
                 </div>
-                <ArrowForwardIcon />
+                
             </div>
         )
     }

@@ -33,36 +33,28 @@ class QuoteForm extends React.Component {
 
         
 
-    UNSAFE_componentWillMount=()=>{
-        this.chosenProduct = this.props.chosenProduct
-        this.products = JSON.parse(sessionStorage.getItem("products"))
-       
-        if (this.chosenProduct==null){
+    componentDidMount=()=>{        
 
-           //
-          
-        }else{
+    // if (this.chosenProduct.alias.startsWith("commercial") ){
+    //     this.vehicleUse = "commercial";
+        
+        
+    // } else if (this.chosenProduct.alias.startsWith("private") ){
+    //     this.vehicleUse = "private";
+        
+    // }else if (this.chosenProduct.alias.startsWith("forhire") ){
+    //     this.vehicleUse = "forhire";
+        
+    // }
+    // const vehicle = this.state.vehicle
 
-            if (this.chosenProduct.alias.startsWith("commercial") ){
-                this.vehicleUse = "commercial";
-                
-                
-            } else if (this.chosenProduct.alias.startsWith("private") ){
-                this.vehicleUse = "private";
-               
-            }else if (this.chosenProduct.alias.startsWith("forhire") ){
-                this.vehicleUse = "forhire";
-               
-            }
-            const vehicle = this.state.vehicle
+    // vehicle["cover"]=this.chosenProduct.alias
+    // vehicle["vehicleUse"] = this.vehicleUse
 
-            vehicle["cover"]=this.chosenProduct.alias
-            vehicle["vehicleUse"] = this.vehicleUse
+    // this.setState({
+    //     vehicle,
+    // })
 
-            this.setState({
-                vehicle,
-            })
-        }
     }
 
     formOnChange=(event)=>{
@@ -85,9 +77,7 @@ class QuoteForm extends React.Component {
 
     selectedDate=(selectedDate)=>{
         const vehicle = this.state.vehicle
-
         vehicle["coverStartDate"]=selectedDate
-
         this.setState({
             vehicle,
         })

@@ -1,8 +1,8 @@
-$color_1: #001929;
+$color_1: #002329;
 $color_2: rgb(255, 81, 0);
 $white: #ffffff;
 $success_color: #3F9811;
-$color_3: #00192913;
+$color_3: #0023291f;
 
 @mixin fullscreen {
   min-width: 100vw;
@@ -32,6 +32,49 @@ $color_3: #00192913;
 body {
   text-align: center;
 }
+
+.next-arrow{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  border: solid $color_2 .05rem;
+  margin: 1rem;
+  margin-bottom: 3rem;
+  .MuiSvgIcon-colorPrimary {
+    color: $color_2;
+    font-size: 2.5rem;
+  }
+}
+
+
+.get-started-button{
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin:1rem;
+  margin-top: 8rem;
+  border: .05rem solid $color_2;
+  .MuiSvgIcon-colorPrimary{
+    color: $color_2;
+    font-size: 2.5rem;
+  }
+
+} 
+
+.free-quotation-button{
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin:1rem;
+  margin-top: 5rem;
+  border: .05rem solid $color_2;
+  
+  .MuiSvgIcon-colorPrimary{
+    color: $color_2;
+    font-size: 2.5rem;
+  }
+} 
+
 
 
 .svg {
@@ -151,6 +194,8 @@ body {
   color: $white; 
 }
 
+
+
 .headline-text {
   @include flex-col();
   justify-content: space-between;  
@@ -164,40 +209,6 @@ body {
   font-weight: 400;  
 }
 
-.home-buttons {
-  @include flex-col();
-  align-items: baseline;
-  margin: 1rem;
-}
-
-
-.get-started-button{
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin:1rem;
-  margin-top: 8rem;
-  border: .05rem solid $color_2;
-  .MuiSvgIcon-colorPrimary{
-    color: $color_2;
-    font-size: 2.5rem;
-  }
-
-} 
-
-.free-quotation-button{
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin:1rem;
-  margin-top: 5rem;
-  border: .05rem solid $color_2;
-  
-  .MuiSvgIcon-colorPrimary{
-    color: $color_2;
-    font-size: 2.5rem;
-  }
-} 
 
 /* how it works */
 .how-it-works-wrapper {

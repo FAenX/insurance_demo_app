@@ -6,6 +6,7 @@ import OurPatners from "./OurPatners"
 import WhyUs from "./WhyUs"
 import GetStartedButton from "../utils/GetStartedButton"
 import FreeQuotationButton from "../utils/FreeQuotationButton"
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 
 
@@ -19,13 +20,18 @@ class FrontPage extends React.Component {
         }
     }
 
-    componentDidMount = ()=>{
-    }    
-
+    handleClick=(event)=>{
+        event.preventDefault()
+        this.props.history.push("/covers")
+    }
     render(){
 
         return(
             <div className="front-page">
+                <div className="next-arrow" >
+                <ArrowForwardIcon color="primary" onClick={this.handleClick}/>
+                </div> 
+                
                 <GetStartedButton />
                 <FreeQuotationButton />
                 <div className="cover-page">
