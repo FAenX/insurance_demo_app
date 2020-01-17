@@ -9,6 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+
 class Benefits extends React.Component {
 
     constructor(props){
@@ -60,7 +61,7 @@ class Benefits extends React.Component {
 class ProviderRates extends React.Component {
 
     render(){
-        return(<div>
+        return(<div className="provider-rates">
             <Paper variant="outlined" className="q-content" id="insurance-details">   
             <ListItem button>Cover: <b>Cover Name</b></ListItem> 
             <hr className="divider"></hr> 
@@ -79,17 +80,18 @@ class ProviderRates extends React.Component {
 class Provider extends React.Component {
 
     render(){
-        return(<div>
-            <Paper variant="outlined" className="flex-col q-content" id="provider-details">
-                <div className="q-content-sub">(+15yrs Special) Jubilee Motor Private Comprehensive Cover</div>
+        return(<div  id="provider-details">
+            <Paper variant="outlined" className="provider">
+                <div className="q-content-sub">(+15yrs Special) Jubilee Motor Private Third party Cover</div>
                 <hr className="divider"></hr>
-                <img alt="" src={Jubilee} /> 
+                <img alt="" src={Jubilee} />                 
+                <Button id="premium-button">KSH: {this.props.premium}</Button>
                 <hr className="divider"></hr>
-                <Button>KSH: {this.props.premium}</Button>
-                <Button id="buy-button" variant="contained">Buy</Button>
-                <Button variant="outlined">view details</Button>
+                <Button id="buy-button" variant="contained">Buy</Button>                
+                <Button id="details-button" variant="outlined">view details</Button>
 
             </Paper>
+            
             <ProviderRates premium={this.props.premium}/>
         </div>
             

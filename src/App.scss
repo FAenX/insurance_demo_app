@@ -464,6 +464,7 @@ body {
 .divider {
   margin: 0em;
   padding: 0em;
+  width: 100%;
   background-color: $color_2
 }
 
@@ -593,16 +594,12 @@ body {
 /* quotation request form */
 .quote-form-wrapper{
   @include flex-col();
-  
 }
 .quote-form {
   @include flex-row();
   flex-wrap: wrap;
   margin: 1em;
 }
-
-
-
 .quote-form-nav svg{
   cursor: pointer;
 }
@@ -639,24 +636,19 @@ body {
             margin: .5em;
             width: 100%;
           } 
-
           .q-content{
             padding: 1em;
-            min-height: 40vh;
           }
-
           #optional-benefits{
             margin: 1em;
             background-color: $color_3;
             .optional-benefits-listitems{
               @include flex-col();
               align-items: left;              
-            }            
-            
+            }  
             .q-content-sub{
               padding: 1em;
               font-weight: 400;
-
               p{
                 display: inline;
               }
@@ -665,45 +657,52 @@ body {
                 font-weight: 600;
               }
             }
-            
-            
-          } 
+          }
+          #provider-details{
+            @include flex-col();
+            margin: 1em;
+            .provider{
+              @include flex-col();
+              padding: 1em;
+              margin: .5em;
+              .q-content-sub{
+                padding: 1em;
+                font-weight: 400;
+              }
+              #premium-button{
+                margin: 1em;
+                width: 50%;
+              } 
+              #buy-button{
+                margin: 1em;
+                width: 50%;
+                background-color: $color_2;
+              } 
+              #details-button{
+                margin: 1em;
+                width: 50%;
+              } 
+            }
+            .provider-rates{
+              @include flex-col();
+              width: 100%;
+
+              #insurance-details{
+                width: 100%;
+                margin-bottom: 1em;
+              }
+              .table-container{
+                overflow: scroll;
+              }
+            }
+          }
         }      
-      }
-      
+      }      
     }
   }
-
-  
 }
 
 
-
-
-
-
-
-
-
-
-#provider-details{
-  display: flex;
-  flex-flow: column;
-  margin: 1em;
-  min-height: 40vh;
-  
-  padding: 1em;
-}
-
-
-.table-container{
-  width: 60vw;
-}
-
-#buy-button{
-  margin: 1em;
-  background-color: #f60;
-}
 
 /* sign in sign up*/
 .signin-wrapper {
@@ -718,9 +717,7 @@ body {
 }
 
 .signup-form-wrapper{
-  
   padding: 1em;
-
 }
 
 .signin-form-wrapper{
@@ -762,7 +759,6 @@ body {
 
 .dashboard-nav{
   margin: 1em;
-
 }
 
 .dash-side-nav-items {

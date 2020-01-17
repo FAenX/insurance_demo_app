@@ -47,9 +47,16 @@ class Quotation extends React.Component {
                                         Hi {user}, we have found 1 plan for your {vehicle.vehicleMake} {vehicle.vehicleModel}
                                     </Paper>
                                     <div id="quotation-content">
-                                        <Vehicle vehicle={vehicle}/>                                    
-                                        <OptionalBenefits premium={response.premium}/>
-                                        <Prodiver chosenProduct={chosenProduct} premium={response.premium}/> 
+                                        <Vehicle 
+                                            vehicle={vehicle}
+                                        />                                    
+                                        <OptionalBenefits 
+                                            premium={response.premium}
+                                        />
+                                        <Prodiver 
+                                            chosenProduct={chosenProduct} 
+                                            premium={response.premium}
+                                        /> 
                                     </div>                                                
                                 </div>
                             </div>                     
