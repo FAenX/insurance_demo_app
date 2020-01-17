@@ -2,74 +2,86 @@ import React from "react"
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Card from "@material-ui/core/Card"
+import {Select, MenuItem, InputLabel, Menu} from "@material-ui/core"
 
 class VehicleDetails extends React.Component{
 
     render(){
-        const vehicleUseOpts=["Private", "commercial", "For Hire"]
+        const vehicleUseOpts=[
+            {
+                label: "Private",
+                value: "private"
+            },
+            {
+                label: "Commercial",
+                value: "commercial"
+            },
+            {
+                label: "For hire",
+                value: "forhire"
+            },
+
+        ]
         return(
             <div className="swipeable-quote-form-form">
                 <div className="swipeable-quote-form-sub-header">Vehicle details</div>
                 <Card variant="outlined" className="swipeable-quote-form-content">
-                    <FormControl className="form-controls">
-                    <TextField
-                        id="vehicle-use"
-                        select
-                        label="Vehicle use"
-                        value=""
-                        onChange=""
-                        SelectProps={{
-                            native: true,
-                        }}
-                        helperText="Please select vehicle use"
-                        variant="outlined"
-                    >
+                    <FormControl variant="outlined" className="form-controls">
+                        <InputLabel  >
+                            Vehicle use
+                        </InputLabel>
+                        <Select                        
+                            id="vehicleUse"
+                            value={this.props.vehicle.vehicleUse}
+                            onChange={this.props.vehicleOnChangeListener}
+                            labelWidth={100}
+                        >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
                         {vehicleUseOpts.map(option => (
-                            <option key={option} value={option}>
-                            {option}
-                            </option>
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
                         ))}
-                        </TextField>
+                        </Select>
                     </FormControl>
+
                     <FormControl className="form-controls">
                     <TextField 
-                        id="make" 
-                        label="Toyota"
+                        id="vehicleMake" 
+                        label="Vehicle make"
                         variant="outlined"
-                        onChange="" 
-                        helperText="Vehicle Make"
-                        value=""
+                        onChange={this.props.vehicleOnChangeListener}
+                        helperText="Toyota"
                     />
                     </FormControl>
                    
                     <FormControl className="form-controls">
                     <TextField 
-                        id="model" 
+                        id="vehicleModel" 
                         label="Crown"
                         variant="outlined"
-                        onChange="" 
+                        onChange={this.props.vehicleOnChangeListener}
                         helperText="Vehicle model"
-                        value=""
                     />
                     </FormControl>
                     <FormControl className="form-controls">
                     <TextField 
-                        id="value" 
+                        id="vehicleValue" 
                         label="1,400,000"
                         variant="outlined"
-                        onChange="" 
+                        onChange={this.props.vehicleOnChangeListener}
                         helperText="Vehicle Value"
-                        value=""
                     />
                     </FormControl>
                     <FormControl className="form-controls">
                     <TextField 
-                        id="Year" 
+                        id="yearOfManufacture" 
                         label="2020"
                         variant="outlined"
-                        onChange="" 
+                        onChange={this.props.vehicleOnChangeListener}
                         helperText="year of manufacture"
-                        value=""
                     />
                     </FormControl>
                     

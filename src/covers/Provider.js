@@ -24,6 +24,12 @@ class Benefits extends React.Component {
 
     render(){
         const rows = [
+            this.createData('windscreen damage', 50000), 
+            this.createData('windscreen damage', 50000), 
+            this.createData('windscreen damage', 50000), 
+            this.createData('windscreen damage', 50000), 
+            this.createData('windscreen damage', 50000), 
+            this.createData('windscreen damage', 50000), 
             this.createData('windscreen damage', 50000),          
           ];
         return(

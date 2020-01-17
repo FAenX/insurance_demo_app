@@ -42,7 +42,7 @@ body {
   margin-bottom: 3em;
   .MuiSvgIcon-colorPrimary {
     color: $color_2;
-    font-size: 2.5em;
+    font-size: 2em;
   }
 }
 
@@ -55,13 +55,9 @@ body {
   margin-top: 8em;
   border: .05em solid $color_2;
 
-  .MuiButton-outlined{
-    padding: 0;
-  }
-
   .MuiSvgIcon-colorPrimary{
     color: $color_2;
-    font-size: 2.5em;
+    font-size: 2em;
   }
 
 } 
@@ -74,13 +70,10 @@ body {
   margin-top: 5em;
   border: .05em solid $color_2;
 
-  .MuiButton-outlined{
-    padding: 0;
-  }
   
   .MuiSvgIcon-colorPrimary{
     color: $color_2;
-    font-size: 2.5em;
+    font-size: 2em;
   }
 
 } 
@@ -93,6 +86,18 @@ body {
   @include flex-col();
   align-items: baseline;
   margin: .5em;
+
+  .request-button{
+    @include flex-col();
+    width: 95%;
+    margin: 1em;
+    padding: 1em;
+
+    .MuiButton-containedPrimary{
+      background-color: $color_2;
+      width: 15em;
+    }
+  }
 
   .swipeable-quote-form-sub-header{
     font-size: 1.5em;
@@ -606,80 +611,80 @@ body {
 
 /* quotation page */
 .quotation-page-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
+  @include flex-col();
+  margin-top: 7vh;
+  .quotation-body-wrapper{
+    .product-title{
+      @include flex-col();
+      font-size: 1.5em;
+      margin: 1em;
+    }
+    .quotation-wrapper {  
+      @include flex-col();
+      .quotation {
+        @include flex-col();
+        #quotation-header{
+          @include flex-col();         
+          margin: .75em;           
+          padding: .5em;
+          font-size: 2.5em; 
+        }  
+        #quotation-content{
+          @include flex-col();              
+          text-align:left;
+          padding: 2em;
+          font-size: 1em;  
+          border-top: none;
+          #vehicle-details{
+            margin: .5em;
+            width: 100%;
+          } 
+
+          .q-content{
+            padding: 1em;
+            min-height: 40vh;
+          }
+
+          #optional-benefits{
+            margin: 1em;
+            background-color: $color_3;
+            .optional-benefits-listitems{
+              @include flex-col();
+              align-items: left;              
+            }            
+            
+            .q-content-sub{
+              padding: 1em;
+              font-weight: 400;
+
+              p{
+                display: inline;
+              }
+              p:nth-child(1){
+                font-size: 1.5em;
+                font-weight: 600;
+              }
+            }
+            
+            
+          } 
+        }      
+      }
+      
+    }
+  }
+
+  
 }
 
-.quotation-wrapper {
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-.quotation-body-wrapper{
-  width: 100vw;  
-}
 
-.quotation {
-  display: flex;
-  flex-flow: column;
-  padding: 1em;
-  min-width: 90vw;
-  min-height: 90vh;
-  
-  
-}
-#quotation-header{
-  display: flex;
-  flex-flow: column;
-  justify-content: center;  
-  padding: 1em;
-  margin: 1em; 
-  text-align:left;
-  padding: 2em;
-  font-size: 2.5em;
-  font-weight: 300;
- 
-}
-#quotation-content{
-  display: flex;
-  flex-flow: column;
-  text-align:left;
-  padding: 2em;
-  font-size: 1em;  
-  border-top: none;  
-}
-.optional-benefits-listitems{
-  display: flex;
-  flex-flow: column;
-  align-items: left;
-  
-}
 
-.q-content{
-  padding: 1em;
-  min-height: 40vh;
-}
-.q-content-sub{
-  padding: 1em;
-  font-weight: 400;
-}
-.q-content-sub p{
-  display: inline;
-}
-.q-content-sub p:nth-child(1){
-  font-size: 1.5em;
-  font-weight: 600;
-}
-#optional-benefits{
-  margin: 1em;
-  min-height: 40vh;
-  background-color: #0019291a;
-}
+
+
+
+
+
+
 
 #provider-details{
   display: flex;
@@ -689,10 +694,7 @@ body {
   
   padding: 1em;
 }
-#vehicle-details{
-  margin: 1em;
-  min-height: 40vh;
-}
+
 
 .table-container{
   width: 60vw;

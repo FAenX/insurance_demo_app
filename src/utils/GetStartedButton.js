@@ -1,5 +1,4 @@
 import React from "react"
-import {Button} from "@material-ui/core"
 import {withRouter } from "react-router-dom";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
@@ -15,9 +14,9 @@ class GetStartedButton extends React.Component{
     render(){
         return(
             <div className="get-started-button"> 
-            <Button variant="outlined">
+            
                 <PersonAddIcon color="primary" onClick={this.handleClickedBnt}/>
-            </Button>               
+                  
                 
             </div>
         )

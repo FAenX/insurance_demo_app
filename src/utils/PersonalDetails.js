@@ -1,10 +1,6 @@
 import React from "react"
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
 import Card from "@material-ui/core/Card"
 
 class PersonalDetails extends React.Component{
@@ -19,19 +15,17 @@ class PersonalDetails extends React.Component{
                         id="name" 
                         label="John Doe"
                         variant="outlined"
-                        onChange="" 
+                        onChange={this.props.userOnChangeListener}
                         helperText="Full Name"
-                        value=""
                     />
                     </FormControl>
                     <FormControl className="form-controls">
                     <TextField 
-                        id="phone-number" 
+                        id="phone" 
                         label="07xx 5xx 6xx"
                         variant="outlined"
-                        onChange="" 
+                        onChange={this.props.userOnChangeListener}
                         helperText="Mobile Number"
-                        value=""
                     />
                     </FormControl>
                     <FormControl className="form-controls">
@@ -39,9 +33,8 @@ class PersonalDetails extends React.Component{
                         id="email" 
                         label="email@example.com"
                         variant="outlined"
-                        onChange="" 
+                        onChange={this.props.userOnChangeListener}
                         helperText="Email Address"
-                        value=""
                     />
                     </FormControl>
                     <FormControl className="form-controls">
@@ -49,9 +42,8 @@ class PersonalDetails extends React.Component{
                         id="location" 
                         label="Nairobi"
                         variant="outlined"
-                        onChange="" 
+                        onChange={this.props.userOnChangeListener}
                         helperText="Location"
-                        value=""
                     />
                     </FormControl>
                     

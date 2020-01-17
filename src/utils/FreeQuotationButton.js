@@ -1,9 +1,7 @@
 import React from "react"
 import {withRouter } from "react-router-dom";
 import SendIcon from '@material-ui/icons/Send';
-import {Button} from "@material-ui/core"
 import MotorInsuranceQuoteForm from "./MotorInsuranceQuoteForm"
-
 
 class FreeQuotationButton extends React.Component{
 
@@ -14,7 +12,7 @@ class FreeQuotationButton extends React.Component{
           //drawer
           isOpen: false,
     
-          //backdrop
+          //snackbar
           open: false
         }
        
@@ -41,10 +39,13 @@ class FreeQuotationButton extends React.Component{
                 <MotorInsuranceQuoteForm 
                     open={this.state.isOpen} 
                     toggleDrawer={this.toggleDrawer}
+                />               
+                <SendIcon 
+                    color="primary" 
+                    onClick={this.handleClickedBnt}
                 />
-                <Button variant="outlined">
-                    <SendIcon color="primary" onClick={this.handleClickedBnt}/>
-                </Button>
+                
+                
             </div>
         )
     }

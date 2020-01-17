@@ -5,7 +5,6 @@ import {Paper, Button} from "@material-ui/core"
 import Filter9PlusIcon from '@material-ui/icons/Filter9Plus';
 import LoaderButton from "../helpers/LoaderButton";
 import SnackBar from "../helpers/SnackBar"
-import {filterByAlias} from "../helpers/js/dataManipulation"
 import SelectDialog from "../helpers/selectDialog"
 
 class Rates extends React.Component {
@@ -24,50 +23,6 @@ class Rates extends React.Component {
         }
         this.requestQuotation = this.requestQuotation.bind(this)
     }
-    
-    UNSAFE_componentWillMount =()=>{
-        //try to get product from props
-        
-       
-        if (this.props.chosenProduct!==null){
-            this.chosenProduct = this.props.chosenProduct
-            
-        } 
-        if (this.props.chosenProduct !==null){
-           //look for product in session storage
-           this.chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product")) 
-        }
-        
-        if (this.chosenProduct==null){
-            //if unsuccessfull supply default product
-            this.products = JSON.parse(sessionStorage.getItem("products"))  
-            this.chosenProduct = filterByAlias(this.products, this.state.productAlias)
-        } 
-        if (this.chosenProduct==null){
-            this.chosenProduct = {name: "no chosen product", alias: "no chosen product"}
-        } 
-
-        if (this.chosenProduct.alias.startsWith("commercial") ){
-            this.vehicleUse = "commercial";
-            
-            
-        } else if (this.chosenProduct.alias.startsWith("private") ){
-            this.vehicleUse = "private";
-            
-        }else if (this.chosenProduct.alias.startsWith("forhire") ){
-            this.vehicleUse = "forhire";
-            
-        }
-
-        const vehicle = this.state.vehicle
-        vehicle["cover"]=this.chosenProduct.alias
-        vehicle["vehicleUse"] = this.vehicleUse
-        
-        this.setState({
-            chosenProduct: this.chosenProduct,
-            vehicle,
-        }) 
-    }  
 
     async requestQuotation (){
         this.setState({
@@ -114,36 +69,7 @@ class Rates extends React.Component {
         }
     }
 
-    vehicleChangeListener=(vehicle)=>{
-        this.setState({
-            vehicle,
-        })
-    }
-    productChangeListener=(product)=>{
-        sessionStorage.setItem("chosen_product", JSON.stringify(product))
-        this.setState({
-            chosenProduct: product,
-        })
-        try{
-            this.props.productChangeListener(product)
-        }catch{
-
-        }
-        
-    }     
-
-    openChooseDialog=()=>{
-        this.setState({
-            showChooseDialog: true
-        })
-    }
-
-    closeChooseDialog=()=>{
-        this.setState({
-            showChooseDialog: false
-        })
-    }
-
+    
     validateForm=()=>{
         return this.state.vehicle.vehicleValue 
         && this.state.vehicle.regNo 
