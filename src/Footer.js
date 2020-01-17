@@ -6,10 +6,13 @@ class Footer extends React.Component {
         this.state = {}
     }
 
+
+
     render(){
         return(
             <div className="footer-wrapper">
-               Name Insurance Brokers (EA) Ltd.  ©  2018 All rights reserved.  |  Powered by TechRafiki Solutions
+               Name Insurance Brokers (EA) Ltd.  ©  {new Date().getFullYear()} All rights reserved.                |  
+               Powered by <a href="http://">TechRafiki Solutions</a>
             </div>
         )
     }

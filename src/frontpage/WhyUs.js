@@ -31,7 +31,7 @@ class WhyUsChild extends React.Component {
 
 
         return(
-                <div className="why-us-text">
+                <div id="whoweare" className="why-us-text">
                     <Paper className="why-us-child">
                         <div className="svg"><img alt="" src={imgPlaceholder}/></div>
                         <div className="step-header">Tailor Made Quotes</div>

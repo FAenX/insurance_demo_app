@@ -4,6 +4,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import {Button} from "@material-ui/core"
 
 
 class SideBar extends React.Component {
@@ -31,6 +32,10 @@ class SideBar extends React.Component {
         }
        
         this.props.history.push(`/${target}`)
+    }
+
+    handleSignOut=(event)=>{
+        this.props.history.push("/home")
     }
     
     render(){
@@ -81,8 +86,8 @@ class SideBar extends React.Component {
                             <ListItemText id="dashboard" primary="Dashboard"/>
                         </ListItem>  
                         <hr className="divider"></hr>                   
-                        <ListItem button id="signout" onClick={this.handleRedirectOnClick}>                        
-                            <ListItemText id="signout" primary="Sign out"/>
+                        <ListItem button id="signout" onClick={this.handleSignOut}>                        
+                            <ListItemText id="signout" primary="Sign out" />
                         </ListItem> 
                         <hr className="divider"></hr>
                         </List>

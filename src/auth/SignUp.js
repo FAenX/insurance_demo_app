@@ -138,20 +138,7 @@ class SignUp extends React.Component {
 
         return(
             <div className="signup-wrapper">
-                <div className="coversub-cover">                
-                <div >                    
-                    <div className="cover-header-text-wrapper">
-                        <div className="cover-header-text">
-                            <h1>Sign Up</h1>
-                            <h2>
-                                GET A QUOTE IN 3 EASY STEPS
-                                It will take you less than 2 minutes.</h2>
-                        </div>                        
-                        <div className="cover-button"><Button variant="contained">Get started</Button></div>
-                    </div>
-                    
-                    </div>            
-                </div>
+                
                 <div className="main-body-wrapper">
                     <div>{alert}</div>
                     <div className="main-body-highlight-text">

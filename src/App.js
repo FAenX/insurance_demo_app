@@ -148,8 +148,6 @@ class App extends React.Component {
             <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
         </Switch>
       </div>
-      <div>
-      </div>
       <Contacts/>
       <Footer/>
     </Router>
