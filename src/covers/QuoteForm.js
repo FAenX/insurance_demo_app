@@ -113,8 +113,8 @@ class QuoteForm extends React.Component {
        
     
         return(
-            <Paper elevation={5} className="quote-form-wrapper">
-            <div className="quote-form">
+            <div className="quote-form-wrapper">
+            <Paper elevation={5} className="quote-form">
                     <div className="vehicle-controls"> 
                     <FormControl className="vehicle-controls">
                         <InputLabel>vehicle use</InputLabel>
@@ -220,8 +220,8 @@ class QuoteForm extends React.Component {
                     <FormHelperText>When do you want your cover to start?</FormHelperText>
                 </FormControl>
                 </div>
-            </div>
-        </Paper>
+            </Paper>
+        </div>
         )
     }
 }

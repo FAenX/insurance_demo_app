@@ -37,12 +37,12 @@ body {
   position: fixed;
   bottom: 0;
   right: 0;
-  border: solid $color_2 .05rem;
-  margin: 1rem;
-  margin-bottom: 3rem;
+  border: solid $color_2 .05em;
+  margin: 1em;
+  margin-bottom: 3em;
   .MuiSvgIcon-colorPrimary {
     color: $color_2;
-    font-size: 2.5rem;
+    font-size: 2.5em;
   }
 }
 
@@ -51,12 +51,17 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  margin:1rem;
-  margin-top: 8rem;
-  border: .05rem solid $color_2;
+  margin:1em;
+  margin-top: 8em;
+  border: .05em solid $color_2;
+
+  .MuiButton-outlined{
+    padding: 0;
+  }
+
   .MuiSvgIcon-colorPrimary{
     color: $color_2;
-    font-size: 2.5rem;
+    font-size: 2.5em;
   }
 
 } 
@@ -65,23 +70,77 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  margin:1rem;
-  margin-top: 5rem;
-  border: .05rem solid $color_2;
+  margin:1em;
+  margin-top: 5em;
+  border: .05em solid $color_2;
+
+  .MuiButton-outlined{
+    padding: 0;
+  }
   
   .MuiSvgIcon-colorPrimary{
     color: $color_2;
-    font-size: 2.5rem;
+    font-size: 2.5em;
   }
+
 } 
+
+
+
+//motor insurance form 
+.swipeable-quote-form {
+  width: 80vw;
+  @include flex-col();
+  align-items: baseline;
+  margin: .5em;
+
+  .swipeable-quote-form-sub-header{
+    font-size: 1.5em;
+    text-transform: capitalize;
+  }
+
+  .close-btn-wrapper {
+    @include flex-row();
+    width: 100%;
+    justify-content: flex-end; 
+  
+    .close-btn{
+      border: .05em solid $color_2;
+    } 
+
+    .MuiSvgIcon-colorPrimary{
+      color: $color_2;
+      font-size: 2em;
+    }
+    
+  }
+
+  .swipeable-quote-form-form{
+    @include flex-col();
+    width: 100%;
+    align-items: flex-start;
+
+    .swipeable-quote-form-content{
+      @include flex-col();
+      width: 100%;
+      padding: 1em;
+
+      //form controls
+    .form-controls {
+      width: 15em;
+      height: 6em;
+    }
+    }
+  }
+}
 
 
 
 .svg {
   @include flex-col();
-  height: 15rem;
-  width: 15rem;
-  border: $color_2 solid .005rem;
+  height: 15em;
+  width: 15em;
+  border: $color_2 solid .005em;
 }
 
 .App {
@@ -90,42 +149,49 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.App-header {
-  @include flex-row();
+.top-nav{
+  @include flex-col();
   position: fixed;
   top: 0;
   z-index: 1;
-  background-color: $color_1;
-  min-height: 5vh;
-  width: 100vw;
-  justify-content: space-between;
-  color: $color_2;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  border-bottom: .05rem solid $color_2;
 
-  .menu-icon {
-    padding: none;
-    border: 1px solid $color_2;
-
-    button {
-      color: $color_2;
-    }
-  }
-
-  .logo{
-    img{
-      height: 4rem;
-      width: 4rem;
-    }
-  }
+  .App-header {
+    @include flex-row();
+    
+    background-color: $color_1;
+    min-height: 5vh;
+    width: 100vw;
+    justify-content: space-between;
+    color: $color_2;
+    padding-right: 1em;
+    padding-left: 1em;
+    //border-bottom: .05em solid $color_2;
   
+    .menu-icon {
+      padding: none;
+      border: 1px solid $color_2;
+  
+      button {
+        color: $color_2;
+      }
+    }
+  
+    .logo{
+      img{
+        height: 4em;
+        width: 4em;
+      }
+    }
+    
+  }
 }
+
+
 
 .nav-login{
   .MuiSvgIcon-colorPrimary{
     color: $color_2;
-    font-size: 3rem;
+    font-size: 3em;
   }
   
 } 
@@ -150,7 +216,7 @@ body {
 }
 
 .nav-items {
-  padding: 2rem;
+  padding: 2em;
   font-weight: 600;
 }
 
@@ -199,10 +265,10 @@ body {
 .headline-text {
   @include flex-col();
   justify-content: space-between;  
-  margin: 1rem;
-  margin-bottom: 5rem;
+  margin: 1em;
+  margin-bottom: 5em;
   font-weight: 400;
-  font-size: 2.5rem;
+  font-size: 2.5em;
 }
 
 .headline-subtext {
@@ -218,16 +284,16 @@ body {
 
 .how-it-works-sub-header{
   @include flex-col();
-  padding: 1.5rem;  
+  padding: 1.5em;  
 }
 
 .how-it-works-sub-header-text{
   @include flex-col();
-  padding-left: 1rem; 
+  padding-left: 1em; 
   min-height: 10vh;
-  font-size: 2rem;
+  font-size: 2em;
   font-weight: 300;
-  border-left: $color_2 .05rem solid;
+  border-left: $color_2 .05em solid;
 }
 
 .how-it-works {
@@ -238,22 +304,22 @@ body {
 
 .step {
   @include flex-col();
-  padding: 1rem;
-  margin: 1rem;
+  padding: 1em;
+  margin: 1em;
 }
 
 
 .step-header{
-  margin: 1rem;
-  border-bottom: $color_2 solid .05rem;
-  font-size: 1.5rem;
+  margin: 1em;
+  border-bottom: $color_2 solid .05em;
+  font-size: 1.5em;
   font-weight: 400;
   text-transform: capitalize;
 }
 
 .step-text {
   font-weight: 300;
-  letter-spacing: .05rem;
+  letter-spacing: .05em;
 }
 
 
@@ -266,26 +332,26 @@ body {
 
 .why-us-header {
   @include flex-col();
-  margin: .75rem;
+  margin: .75em;
   text-align: left;
   text-transform: uppercase;
-  padding-left: 1rem;
-  font-size: 2rem;
+  padding-left: 1em;
+  font-size: 2em;
   font-weight: 300; 
-  border-left: 1rem solid $color_2;
+  border-left: 1em solid $color_2;
 }
 
 .why-us-text {
-  margin: .5rem;
+  margin: .5em;
   
 }
 
 .why-us-child {
   @include flex-col();
-  margin: .5rem;
-  padding: 1rem;
+  margin: .5em;
+  padding: 1em;
   font-weight: 300;
-  letter-spacing: .02rem;
+  letter-spacing: .02em;
   background-color: $white;
 }
 
@@ -297,7 +363,7 @@ body {
 
   .providers-carousel{
     @include flex-col();
-    padding: 3rem;
+    padding: 3em;
    }
    
   .provider{
@@ -306,16 +372,16 @@ body {
   
   .providers-headline {
     @include flex-col();
-    margin: 1rem;
+    margin: 1em;
     
     .providers-heading {
       @include flex-col();
-      font-size: 2rem;
+      font-size: 2em;
       text-transform: uppercase;
     }
     .providers-sub-heading {
       @include flex-col();
-      font-size: 1.2rem;
+      font-size: 1.2em;
       font-weight: 300;
     }
   }
@@ -326,21 +392,22 @@ body {
   @include flex-col();
   width: 100vw;
   align-items: baseline;
+  border-top: $color_2 .05em solid;
 }
 
 .contacts-header {
   @include flex-col();
-  margin: 2rem;
-  border: $color_2 solid .05rem;
+  margin: 2em;
+  border: $color_2 solid .05em;
   
 }
 .contacts-child {
   @include flex-col();
   align-items: baseline;
   text-align: left;
-  padding-left: 1rem;
+  padding-left: 1em;
   font-weight: 300;
-  margin: 2rem;
+  margin: 2em;
   
 }
 /* social media */
@@ -368,9 +435,9 @@ body {
 
 .fa {
   @include flex-col();
-  min-width: 3rem; 
-  min-height: 3rem;
-  margin: .1rem;  
+  min-width: 3em; 
+  min-height: 3em;
+  margin: .1em;  
   text-decoration: none;
   border-radius: 50%;
 }
@@ -380,18 +447,18 @@ body {
 .footer-wrapper {
   @include flex-col();
   color: $white;
-  font-size: 1rem;
+  font-size: 1em;
   min-height:5vh;
   min-width: 100vw;
   background-color: $color_1;
-  border-top: $color_2 .05rem solid;
-  padding: .5rem;
-  font-size: .75rem;
+  border-top: $color_2 .05em solid;
+  padding: .5em;
+  font-size: .75em;
 }
 
 .divider {
-  margin: 0rem;
-  padding: 0rem;
+  margin: 0em;
+  padding: 0em;
   background-color: $color_2
 }
 
@@ -400,21 +467,21 @@ body {
 /* motor-insurance */
 .motor-insurance {
   @include flex-col();
-  margin-top: 4rem;
+  margin-top: 4em;
   width: 100vw;
 
   .intro {
-    margin-top: 2rem;
+    margin-top: 2em;
   }
 
   .headline-text {
     @include flex-col(); 
-    font-size: 1.5rem;
-    margin: 2rem;
+    font-size: 1.5em;
+    margin: 2em;
     align-items: baseline;
     font-weight: 400;
-    border-left: .5rem $color_2 solid;
-    padding-left: 1rem;
+    border-left: .5em $color_2 solid;
+    padding-left: 1em;
     text-align: left;
     text-transform: capitalize;
     
@@ -423,9 +490,9 @@ body {
   .sub-text {  
     @include flex-col();
     text-align: left;
-    margin: 3rem;
-    line-height: 2rem;
-    letter-spacing: .1rem;  
+    margin: 3em;
+    line-height: 2em;
+    letter-spacing: .1em;  
     
   }
 
@@ -433,7 +500,7 @@ body {
     background-color: $white;
 
     .motor-insurance-highlights-img{
-      height: 20rem;
+      height: 20em;
       @include flex-col();
     }
   }
@@ -441,8 +508,8 @@ body {
     @include flex-col();
     align-items:baseline;
     text-align: left;
-    margin: 1rem;
-    padding: 2rem;
+    margin: 1em;
+    padding: 2em;
 
     .motor-insurance-benefits-list{
       @include flex-col();     
@@ -451,11 +518,11 @@ body {
         @include flex-row();
         .number{
           @include flex-col();  
-          height: 3rem;
-          width: 3rem;
+          height: 3em;
+          width: 3em;
           border-radius: 50%;
-          margin: 1rem;
-          border: .05rem solid $color_2;
+          margin: 1em;
+          border: .05em solid $color_2;
         }
       }
     }
@@ -465,118 +532,77 @@ body {
   
 }
 
-.rates-wrapper {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-
+//rates
 .rates {
-  display: flex;
-  flex-flow: column;
-  justify-content: left;
-}
+  @include flex-col();
+  margin-top: 5em;
+  .rates-wrapper {
+    @include flex-col();
+  }
+  .rates-title-wrapper {
+    text-align: left;
+    font-size: 1.5em;
+    margin: 2em;
+  }
+  
+  .rates-title {
+    padding-left: 1.5em;
+    border-left: $color_2 .1em solid;
+    text-transform: capitalize;
+  
+  }
 
-.rates-title-wrapper {
-  text-align: left;
-  font-weight: 300;
-  font-size: 1.5rem;
-  margin: 2rem;
-}
-
-.rates-title {
-  padding-left: 1.5rem;
-  border-left: #f60 .1rem solid;
-  text-transform: capitalize;
-
-}
-
-.aplication-instructions-wrapper{
-  background-color: #ffffff;
-  text-align: left;
-  margin-left: .5rem;
-  margin-right: .5rem;
-}
-
-.aplication-instructions-text-wrapper{
-  padding: .5rem;
-}
-
-.aplication-instructions-title {
-  text-align: left;
-  padding: 1rem;
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-transform: capitalize;
-  margin-bottom: 1rem;
-}
-
-.aplication-instructions-text {
-  padding:.5rem;
-  font-weight: 400;
-  line-height: 2rem;
-}
-
-.rates-form-wrapper {
-  display: flex;
-  flex-flow: column;  
-}
-
-.rates-form {
-  display: flex;
-  flex-flow: column;
-  justify-content: left;
-  text-align: left;
-  background-color: #ffffff;
+  .rates-form-wrapper {
+    @include flex-col();
+    background-color: $white;
+  }
+  
+  .rates-form {
+    @include flex-col();
+    justify-content: left;
+    text-align: left;
+    .quote-form-header{
+      @include flex-col();
+      width: 100vw;
+      text-align: left;
+      font-weight: 400;
+      font-size: 1.5em;
+      padding-left: 1em;
+      padding: 1em;
+      .quote-form-nav {
+       @include flex-row();
+       
+      }
+    }
+    
+    
+    
+  }  
+  .rates-submit-button-wrapper{
+    margin: 2em;
+  }
   
 }
 
-.rates-submit-button-wrapper{
-  margin: 2rem;
-}
 
 /* quotation request form */
 .quote-form-wrapper{
-  display: inherit;
-  justify-content: center;
-  align-items: center;
+  @include flex-col();
+  
 }
 .quote-form {
-  display: inherit;
-  justify-content: baseline;
-  margin: .5rem;
-  align-items: center;
-  flex-flow: row wrap;
+  @include flex-row();
+  flex-wrap: wrap;
+  margin: 1em;
 }
 
-.quote-form-header{
-  display: inherit;
-  flex-flow: column;
-  text-align: left;
-  font-weight: 400;
-  font-size: 1.5rem;
-  padding-left: 1rem;
-  padding: 1rem;
-  margin: .5rem;
-  border-bottom: 1rem #f60 solid;
-}
 
-.quote-form-nav {
-  display: inherit;
-  justify-content: space-between;
-}
 
 .quote-form-nav svg{
   cursor: pointer;
 }
 
-.vehicle-controls {
-  width: 12rem;
-  height: 7rem;
-  margin-left: .5rem;
-  margin-top: 1.5rem;
-}
+
 
 /* quotation page */
 .quotation-page-wrapper {
@@ -601,7 +627,7 @@ body {
 .quotation {
   display: flex;
   flex-flow: column;
-  padding: 1rem;
+  padding: 1em;
   min-width: 90vw;
   min-height: 90vh;
   
@@ -611,11 +637,11 @@ body {
   display: flex;
   flex-flow: column;
   justify-content: center;  
-  padding: 1rem;
-  margin: 1rem; 
+  padding: 1em;
+  margin: 1em; 
   text-align:left;
-  padding: 2rem;
-  font-size: 2.5rem;
+  padding: 2em;
+  font-size: 2.5em;
   font-weight: 300;
  
 }
@@ -623,8 +649,8 @@ body {
   display: flex;
   flex-flow: column;
   text-align:left;
-  padding: 2rem;
-  font-size: 1rem;  
+  padding: 2em;
+  font-size: 1em;  
   border-top: none;  
 }
 .optional-benefits-listitems{
@@ -635,22 +661,22 @@ body {
 }
 
 .q-content{
-  padding: 1rem;
+  padding: 1em;
   min-height: 40vh;
 }
 .q-content-sub{
-  padding: 1rem;
+  padding: 1em;
   font-weight: 400;
 }
 .q-content-sub p{
   display: inline;
 }
 .q-content-sub p:nth-child(1){
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: 600;
 }
 #optional-benefits{
-  margin: 1rem;
+  margin: 1em;
   min-height: 40vh;
   background-color: #0019291a;
 }
@@ -658,13 +684,13 @@ body {
 #provider-details{
   display: flex;
   flex-flow: column;
-  margin: 1rem;
+  margin: 1em;
   min-height: 40vh;
   
-  padding: 1rem;
+  padding: 1em;
 }
 #vehicle-details{
-  margin: 1rem;
+  margin: 1em;
   min-height: 40vh;
 }
 
@@ -673,7 +699,7 @@ body {
 }
 
 #buy-button{
-  margin: 1rem;
+  margin: 1em;
   background-color: #f60;
 }
 
@@ -691,12 +717,12 @@ body {
 
 .signup-form-wrapper{
   
-  padding: 1rem;
+  padding: 1em;
 
 }
 
 .signin-form-wrapper{
-  padding: 1rem;
+  padding: 1em;
 }
 
 .signup-names-flex {
@@ -711,7 +737,7 @@ body {
 }
 
 .signin-button p{
-  margin-top: 1rem;
+  margin-top: 1em;
 }
 
 /* dashboard */
@@ -722,7 +748,7 @@ body {
 }
 
 .dash-nav-item {
-  padding: 1rem;
+  padding: 1em;
 }
 
 .dashboard-wrapper {
@@ -733,7 +759,7 @@ body {
 }
 
 .dashboard-nav{
-  margin: 1rem;
+  margin: 1em;
 
 }
 
@@ -746,9 +772,9 @@ body {
 .dashboard-main{
   display: flex;
   flex-flow: column;
-  padding: 2rem;
+  padding: 2em;
   font-weight: 600;
-  padding: 2rem;
+  padding: 2em;
   min-width: 100vw;
 }
 
@@ -767,7 +793,7 @@ body {
 .cover {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
+  margin: 2em;
 }
 
 .covers {
@@ -789,18 +815,18 @@ body {
 
 .cover-scope {
   text-align: left;
-  padding: 1rem;
+  padding: 1em;
 }
 
 .cover-scope h2 {
-  margin: .5rem;
-  font-size: 1rem;
+  margin: .5em;
+  font-size: 1em;
 }
 
 .cover-scope div{
   text-align: left;
-  margin: .5rem;
-  font-size: 1rem;
+  margin: .5em;
+  font-size: 1em;
 }
 
 .payments-page {
@@ -819,7 +845,7 @@ body {
   flex-flow: column;
   justify-content: space-around;
   text-align: left;
-  margin: 2rem;
+  margin: 2em;
   
 }
 
@@ -885,13 +911,13 @@ body {
   }
   
   .home-buttons button {
-    font-size: 1rem;
+    font-size: 1em;
   }
   .why-us-child img{
     
   }
   .vehicle-controls {
-    width: 10rem;
+    width: 10em;
   }
   
  }

@@ -14,8 +14,11 @@ class GetStartedButton extends React.Component{
 
     render(){
         return(
-            <div className="get-started-button">                
+            <div className="get-started-button"> 
+            <Button variant="outlined">
                 <PersonAddIcon color="primary" onClick={this.handleClickedBnt}/>
+            </Button>               
+                
             </div>
         )
     }
