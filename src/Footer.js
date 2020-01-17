@@ -11,8 +11,10 @@ class Footer extends React.Component {
     render(){
         return(
             <div className="footer-wrapper">
-               Name Insurance Brokers (EA) Ltd.  ©  {new Date().getFullYear()} All rights reserved.                |  
-               Powered by <a href="http://">TechRafiki Solutions</a>
+                <footer>
+                    Name Insurance Brokers (EA) Ltd.  ©  {new Date().getFullYear()} All rights reserved.                |  
+                    Powered by <a href="http://">TechRafiki Solutions</a>
+                </footer>
             </div>
         )
     }

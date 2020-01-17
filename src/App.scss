@@ -460,17 +460,19 @@ body {
 .footer-wrapper {
   @include flex-col();
   min-height:5vh;
-  min-width: 100vw;
   color: $color_1;
-  font-weight: 600;
-  padding: .5em;
-  font-size: .75em;
   background-color: $white; 
-  display: inline;
-
-  a{
-    color: $color_2;
+  width: 100vw;
+  footer{
+    font-weight: 600;
+    padding: .5em;
+    font-size: .75em;    
+    display: inline;
+    a{
+      color: $color_2;
+    }
   }
+  
 }
 
 
