@@ -1,7 +1,6 @@
 import React from "react"
 import {withRouter } from "react-router-dom";
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import Fab from '@material-ui/core/Fab';
+import HomeIcon from '@material-ui/icons/Home';
 
 
 class HomeButton extends React.Component{
@@ -13,10 +12,10 @@ class HomeButton extends React.Component{
 
     render(){
         return(
-            <div className=""> 
-             <Fab color="primary" aria-label="add">
-             <PersonAddIcon color="primary" onClick={this.handleClickedBnt}/>
-                </Fab>      
+            <div className="home-button"> 
+             
+             <HomeIcon color="primary" onClick={this.handleClickedBnt}/>
+              
             
               
                   

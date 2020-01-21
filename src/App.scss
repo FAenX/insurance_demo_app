@@ -778,12 +778,7 @@ body {
       width: 100vw;
       z-index: 1301;
       height: 4em;
-      .toolbar {
-        @include flex-row();
-        width: 100%;
-        justify-content: 'flex-end';
-        padding: 1em;
-      }
+      
     }
     .appBarShift {
       margin-left: 40vw;
@@ -799,11 +794,43 @@ body {
      
     }
     .drawerOpen {
+      @include flex-col();
+      align-items: baseline;
+      justify-content: flex-start;
       width: 40vw;
+      .MuiListItem-gutters{
+       
+        .home-button{
+          margin-right: 1em;
+          .MuiSvgIcon-colorPrimary{
+            color: $color_2
+          }
+        }
+      }
+      .toolbar {
+        @include flex-row();
+        width: 100%;
+        justify-content: flex-end;
+        height: 4em;
+       
+      }
     }
     .drawerClose {
-      overflow-x: 'hidden';
-      width: 20vw;
+      @include flex-col();
+      align-items: baseline;
+      justify-content: flex-start;
+      overflow: hidden;
+      width: 12vw;
+      .MuiListItem-gutters{
+        
+        .home-button{
+          margin-right: 1em;
+          .MuiSvgIcon-colorPrimary{
+            color: $color_2
+          }
+        }
+      }
+      
     }
   
     .MuiDrawer-paper{

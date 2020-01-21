@@ -8,7 +8,6 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -77,9 +76,9 @@ class DashMenu extends React.Component {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Mini variant drawer
+                        Dashboard
                     </Typography>
-                    <HomeButton />
+                        
                     </Toolbar>
                 </AppBar>
                 <Drawer 
@@ -96,11 +95,38 @@ class DashMenu extends React.Component {
                     }),
                   }}
                 >
-                    <div className="">
-                    <IconButton onClick={this.handleDrawerClose}>
-                    <ChevronRightIcon /> : <ChevronLeftIcon />
-                    </IconButton>
+                    <div className="toolbar">
+                        <IconButton onClick={this.handleDrawerClose}>
+                            <ChevronLeftIcon />
+                        </IconButton>
                     </div>
+                    <hr className="divider"></hr>
+                    <List>
+                    <ListItem button>
+                        <HomeButton />
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                    <ListItem button>
+                        <HomeButton />
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                    <ListItem button>
+                        <HomeButton />
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                    </List>
+                    <hr className="divider"></hr>
+                    <List>
+                    <ListItem button>
+                        <HomeButton />
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                    <ListItem button>
+                        <HomeButton />
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                    
+                    </List>
                     
                 </Drawer>
             </div>
