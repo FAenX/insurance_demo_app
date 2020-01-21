@@ -31,17 +31,25 @@ $color_3: #0023291f;
 
 body {
   text-align: center;
+  .MuiFab-primary{
+    background-color: $color_2;
+    height: 50px;
+    width: 50px;
+  }
+  .MuiSvgIcon-colorPrimary{
+    color: $color_1;
+  }
 }
 
 .next-arrow{
   position: fixed;
   bottom: 0;
   right: 0;
-  border: solid $color_2 .05em;
+  
   margin: 1em;
   margin-bottom: 3em;
   .MuiSvgIcon-colorPrimary {
-    color: $color_2;
+    
     font-size: 2em;
   }
 }
@@ -52,11 +60,11 @@ body {
   top: 0;
   right: 0;
   margin:1em;
-  margin-top: 8em;
-  border: .05em solid $color_2;
+  margin-top: 10em;
+ 
 
   .MuiSvgIcon-colorPrimary{
-    color: $color_2;
+    
     font-size: 2em;
   }
 
@@ -68,11 +76,11 @@ body {
   right: 0;
   margin:1em;
   margin-top: 5em;
-  border: .05em solid $color_2;
+  
 
   
   .MuiSvgIcon-colorPrimary{
-    color: $color_2;
+    
     font-size: 2em;
   }
 
@@ -625,9 +633,9 @@ body {
       .quotation {
         @include flex-col();
         #quotation-header{
-          @include flex-col();         
-          margin: .75em;           
+          @include flex-col();           
           padding: .5em;
+          width: 95vw;
           font-size: 2.5em; 
         }  
         #quotation-content{

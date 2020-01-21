@@ -6,7 +6,7 @@ import OurPatners from "./OurPatners"
 import WhyUs from "./WhyUs"
 import GetStartedButton from "../utils/GetStartedButton"
 import FreeQuotationButton from "../utils/FreeQuotationButton"
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import MotorInsuranceButton from "../utils/MotorInsuranceButton"
 
 
 
@@ -28,9 +28,7 @@ class FrontPage extends React.Component {
 
         return(
             <div className="front-page">
-                <div className="next-arrow" >
-                <ArrowForwardIcon color="primary" onClick={this.handleClick}/>
-                </div> 
+                <MotorInsuranceButton />
                 
                 <GetStartedButton />
                 <FreeQuotationButton />

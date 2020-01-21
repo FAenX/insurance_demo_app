@@ -1,7 +1,7 @@
 import React from "react"
 import {withRouter } from "react-router-dom";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-
+import Fab from '@material-ui/core/Fab';
 
 
 class GetStartedButton extends React.Component{
@@ -14,8 +14,11 @@ class GetStartedButton extends React.Component{
     render(){
         return(
             <div className="get-started-button"> 
+             <Fab color="primary" aria-label="add">
+             <PersonAddIcon color="primary" onClick={this.handleClickedBnt}/>
+                </Fab>      
             
-                <PersonAddIcon color="primary" onClick={this.handleClickedBnt}/>
+              
                   
                 
             </div>

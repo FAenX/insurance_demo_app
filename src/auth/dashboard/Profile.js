@@ -12,8 +12,8 @@ class Profile extends React.Component {
     }
     
     componentDidMount = () =>{
-        const accessToken = localStorage.getItem("access")
-        const refresh = localStorage.getItem("refresh")
+        const accessToken = sessionStorage.getItem("access")
+        const refresh = sessionStorage.getItem("refresh")
 
         //////////////////////
         const refreshToken = fetch("/api/v1/users/token/refresh/", {

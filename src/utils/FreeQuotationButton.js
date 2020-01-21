@@ -2,6 +2,8 @@ import React from "react"
 import {withRouter } from "react-router-dom";
 import SendIcon from '@material-ui/icons/Send';
 import MotorInsuranceQuoteForm from "./MotorInsuranceQuoteForm"
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 class FreeQuotationButton extends React.Component{
 
@@ -39,11 +41,14 @@ class FreeQuotationButton extends React.Component{
                 <MotorInsuranceQuoteForm 
                     open={this.state.isOpen} 
                     toggleDrawer={this.toggleDrawer}
-                />               
-                <SendIcon 
-                    color="primary" 
-                    onClick={this.handleClickedBnt}
                 />
+                <Fab color="primary" aria-label="add">
+                    <SendIcon 
+                        color="primary" 
+                        onClick={this.handleClickedBnt}
+                    />
+                </Fab>               
+                
                 
                 
             </div>

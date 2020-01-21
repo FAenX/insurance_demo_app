@@ -13,18 +13,16 @@ class SignIn extends React.Component {
                 response: "",
                 data: ""
             },
-
             creds: {},
             isLoading: false,
         }
+        this.submitForm = this.submitForm.bind(this)
     }
 
     componentDidMount =()=>{
-        this.setState({
-            
+        this.setState({            
             userEmail:"",
-            userPassword: "",
-           
+            userPassword: "",           
             style: {
                 response: ""
             },
@@ -33,13 +31,14 @@ class SignIn extends React.Component {
         })
     }
 
-    submitForm =(event) => {
+    async submitForm (event) {
         event.preventDefault()
-       
         const url = "/api/v1/users/token/"
         const data = {email: this.state.userEmail, password: this.state.userPassword}
-
-        fetch(url, {
+        
+        
+        
+        const request = fetch(url, {
             method: 'POST', 
             headers: {
             'Content-Type': 'application/json'
@@ -57,8 +56,8 @@ class SignIn extends React.Component {
                         }                    
                    })
                    this.props.login()
-                   localStorage.setItem("access", data.access) 
-                   localStorage.setItem("refresh", data.refresh)                          
+                   sessionStorage.setItem("access", data.access) 
+                   sessionStorage.setItem("refresh", data.refresh)                          
                    setTimeout(()=>{
                        this.handleRedirectOnLogin()
                    }, 1000)
@@ -87,6 +86,9 @@ class SignIn extends React.Component {
         }).catch(err=>{
             console.log(err)
         });
+
+        const response = await request
+        console.log(response)
         
     }
 
@@ -141,23 +143,38 @@ class SignIn extends React.Component {
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" onChange={this.handleEmailChange}/>
-                            <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
+                            <Form.Control 
+                                type="email" 
+                                placeholder="Enter email" 
+                                onChange={this.handleEmailChange}/>
+                            <Form.Text 
+                                className="text-muted">
+                                We'll never share your email with anyone else.
                             </Form.Text>
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicPassword">
+                        <Form.Group 
+                            controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
+                            <Form.Control 
+                                type="password" 
+                                placeholder="Password" 
+                                onChange={this.handlePasswordChange}/>
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Check 
+                                type="checkbox" 
+                                label="Check me out" />
                         </Form.Group>
                         <div className="signin-button">
-                        <LoaderButton variant="primary" type="submit" desabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.submitForm}>
+                        <Button 
+                            variant="primary" 
+                            type="submit" 
+                            desabled={!this.validateForm()} 
+                            isLoading={this.state.isLoading} 
+                            onClick={this.submitForm}>
                             Submit
-                        </LoaderButton> 
+                        </Button> 
                         <p>Create account</p>
                         </div>
                     </Form>
