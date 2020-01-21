@@ -1,9 +1,12 @@
 import React from "react"
 import {withRouter} from  "react-router-dom";
 import {Alert} from "react-bootstrap"
-import Fab from "@material-ui/core/Fab";
-import AddIcon from '@material-ui/icons/Add';
 import Profile from "./Profile"
+import FreeQuotationButton from "../../utils/FreeQuotationButton"
+import MotorInsuranceButton from "../../utils/MotorInsuranceButton"
+import {Paper} from "@material-ui/core"
+import DashMenu from "./DashMenu"
+
 
 class Dashboard extends React.Component {
 
@@ -57,14 +60,14 @@ class Dashboard extends React.Component {
 
         return(
             <div className="dashboard">
-                <div className="dashboard-nav">
-                    <Fab variant="" color="secondary" aria-label="add">
-                    <AddIcon />
-                    </Fab>
+                <DashMenu />
+                <FreeQuotationButton />
+                <MotorInsuranceButton />
+                <Paper className="dashboard-nav">
                     <div className="dash-nav-item" id="personaldetails" onClick={this.handleDashNavClick}>Account</div>
                     <div className="dash-nav-item" id="paymenthistory" onClick={this.handleDashNavClick}>Payment History</div>
                     <div className="dash-nav-item" id="insurancecovers" onClick={this.handleDashNavClick}>Insurance Covers</div> 
-                </div>  
+                </Paper>  
                 
                 <div className="dashboard-wrapper">
                 

@@ -139,9 +139,9 @@ class SignUp extends React.Component {
         return(
             <div className="signup-wrapper">
                 
-                <div className="main-body-wrapper">
+                
                     <div>{alert}</div>
-                    <div className="main-body-highlight-text">
+                    <div className="headline-text">
                         Sign Up
                     </div>
                     <div className="signup-form-wrapper">
@@ -177,7 +177,7 @@ class SignUp extends React.Component {
                             </LoaderButton>
                         </Form>
                     </div>
-                </div>
+                
             </div>
         )
     }

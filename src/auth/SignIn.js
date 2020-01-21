@@ -1,6 +1,5 @@
 import React from "react"
 import { Form, Alert } from "react-bootstrap"
-import LoaderButton from "../helpers/LoaderButton";
 import {Button} from "@material-ui/core"
 
 class SignIn extends React.Component {
@@ -134,9 +133,9 @@ class SignIn extends React.Component {
         return(
             <div className="signin-wrapper">
                 
-            <div className="main-body-wrapper">
+           
                 <div>{alert}</div>
-                <div className="main-body-highlight-text">
+                <div className="headline-text">
                     Sign In
                 </div>
                 <div className="signin-form-wrapper">
@@ -179,7 +178,7 @@ class SignIn extends React.Component {
                         </div>
                     </Form>
                 </div>
-            </div>
+           
             </div>
         )
     }

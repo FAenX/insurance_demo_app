@@ -45,7 +45,7 @@ body {
   position: fixed;
   bottom: 0;
   right: 0;
-  
+  z-index: 1299;  
   margin: 1em;
   margin-bottom: 3em;
   .MuiSvgIcon-colorPrimary {
@@ -56,6 +56,7 @@ body {
 
 
 .get-started-button{
+  z-index: 1299;
   position: fixed;
   top: 0;
   right: 0;
@@ -76,11 +77,9 @@ body {
   right: 0;
   margin:1em;
   margin-top: 5em;
+  z-index: 1299;
   
-
-  
-  .MuiSvgIcon-colorPrimary{
-    
+  .MuiSvgIcon-colorPrimary{    
     font-size: 2em;
   }
 
@@ -739,6 +738,15 @@ body {
   @include flex-col();
   margin-top: 8vh;
   min-height: 100vh;
+  width: 100%;
+  .headline-text{
+    margin: 1em;
+  }
+  .signin-form-wrapper{
+    padding: 1em;
+    text-align: left;
+
+  }
 }
 
 
@@ -746,36 +754,63 @@ body {
   @include flex-col();
   margin-top: 8vh;
   min-height: 100vh;
-}
-
-.signup-form-wrapper{
-  padding: 1em;
-}
-
-.signin-form-wrapper{
-  padding: 1em;
-}
-
-.signup-names-flex {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-
-}
-
-.signup-names-flex input{
-  max-width: 300px;
-}
-
-.signin-button p{
-  margin-top: 1em;
+  width: 100%;
+  .headline-text{
+    margin: 1em;
+  }
+  .signup-form-wrapper{
+    padding: 1em;
+    text-align: left;
+  }
+  
 }
 
 /* dashboard */
 .dashboard {
   @include flex-col();
-  margin-top: 8vh;
   min-height: 100vh;
+  .dash-menu{
+    @include flex-col();
+    width: 100vw;
+    .AppBar{
+      left: 0;
+      top: 0;
+      width: 100vw;
+      z-index: 1301;
+      height: 4em;
+      .toolbar {
+        @include flex-row();
+        width: 100%;
+        justify-content: 'flex-end';
+        padding: 1em;
+      }
+    }
+    .appBarShift {
+      margin-left: 40vw;
+      width: 60vw;
+    }
+
+    .MuiAppBar-colorPrimary{
+      background-color: $color_1;
+    }
+    .drawer{ 
+      @include flex-col();  
+      width: 40vw;
+     
+    }
+    .drawerOpen {
+      width: 40vw;
+    }
+    .drawerClose {
+      overflow-x: 'hidden';
+      width: 20vw;
+    }
+  
+    .MuiDrawer-paper{
+      
+    }
+    
+  }
 
 }
 
