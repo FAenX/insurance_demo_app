@@ -18,7 +18,15 @@ class Profile extends React.Component {
     
     componentDidMount = () =>{
         this.tokens = JSON.parse(sessionStorage.getItem("tokens"))
-        this.fetchUser()
+        this.user = JSON.parse(sessionStorage.getItem("user"))
+        if (
+            this.user !== null && 
+            this.user !== undefined && 
+            this.user.length > 1)
+            {
+            this.fetchUser()
+        }
+        
     }
 
     async fetchUser(){
@@ -26,7 +34,7 @@ class Profile extends React.Component {
             backdrop:true,
         })
          
-         const request_refresh = fetch("/api/v1/users/token/refresh/", {
+        const request_refresh = fetch("/api/v1/users/token/refresh/", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -34,34 +42,50 @@ class Profile extends React.Component {
             body: JSON.stringify({refresh: this.tokens.refresh})
         }).then(res=>res.json()).catch(err=>err)
 
-        const response_refresh = await request_refresh.then(res=>{
+
+        const request = fetch("/api/v1/users/profile/", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.tokens.access}`
+                },
+        }).then(res=>res.json()).catch(err=>err)
+
+        const response = await request.then(res=>{
             this.setState({
                 backdrop:false,
             })
-           return res
+            if (res.code !== "token_not_valid"){
+                sessionStorage.setItem("user", JSON.stringify(res))
+            }
+            return res
         }).catch(err=>{
             this.setState({
                 backdrop:false,
             })
-           return err
+            return err
         })
 
-        let access = response_refresh
-        this.tokens[access]=response_refresh
+        console.log(response)
 
-        sessionStorage.setItem("tokens", JSON.stringify(this.tokens))
-        
-        console.log(this.tokens.access)
-    
-        
-        // const request = fetch("/api/v1/users/profile/", {
-        //     method: "GET",
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `Bearer ${this.tokens.access}`
-        //         },
-        // }).then(res=>res).catch(err=>err)
 
+
+        // const response_refresh = await request_refresh.then(res=>{
+        //     this.setState({
+        //         backdrop:false,
+        //     })
+        //    return res
+        // }).catch(err=>{
+        //     this.setState({
+        //         backdrop:false,
+        //     })
+        //    return err
+        // })
+
+        // const tokens = this.tokens
+        // const value = response_refresh.access
+        // tokens["access"]=value
+        // sessionStorage.setItem("tokens", JSON.stringify(tokens))
     }
 
     render(){

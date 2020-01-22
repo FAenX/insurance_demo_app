@@ -63,7 +63,7 @@ class DashMenu extends React.Component {
                       })}
                 >
                     <Toolbar
-                        className="toolbar"
+                        variant="dense"
                     >
                     <IconButton
                         color="inherit"
