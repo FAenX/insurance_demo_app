@@ -22,7 +22,7 @@ class Profile extends React.Component {
         this.tokens = JSON.parse(sessionStorage.getItem("tokens"))
         console.log(this.tokens)
         this.user = JSON.parse(sessionStorage.getItem("user"))
-        console.log(Object.keys(this.user))
+        console.log(this.user)
         if (
             this.user == null || 
             this.user === undefined ||
