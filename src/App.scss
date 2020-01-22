@@ -212,7 +212,6 @@ body {
 
 .nav-login{
   .MuiSvgIcon-colorPrimary{
-    color: $color_2;
     font-size: 3em;
   }
   
@@ -808,6 +807,11 @@ body {
       width: 100vw;
       z-index: 1301;
       height: 4em;
+      .toolbar{
+        @include flex-row();
+        justify-content: space-between;
+        align-items: baseline;
+      }
       
     }
     .appBarShift {

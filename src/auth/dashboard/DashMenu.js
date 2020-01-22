@@ -15,6 +15,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SecurityIcon from '@material-ui/icons/Security';
+import LoginButton from "../../components/LoginButton"
 
 
 
@@ -53,6 +54,7 @@ class DashMenu extends React.Component {
     };
 
     render(){
+        const loginBtn = <LoginButton />
         return (
            
             <div className="dash-menu">
@@ -64,6 +66,7 @@ class DashMenu extends React.Component {
                 >
                     <Toolbar
                         variant="dense"
+                        className="toolbar"
                     >
                     <IconButton
                         color="inherit"
@@ -77,6 +80,7 @@ class DashMenu extends React.Component {
                     <Typography variant="h6" noWrap>
                         Dashboard
                     </Typography>
+                    {loginBtn}
                         
                     </Toolbar>
                 </AppBar>

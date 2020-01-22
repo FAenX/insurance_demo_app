@@ -11,6 +11,7 @@ class Profile extends React.Component {
     constructor(props){
         super(props)
         this.state={
+            fetched: false,
             backdrop: false,
             profile: {},
         }
@@ -19,13 +20,22 @@ class Profile extends React.Component {
     
     componentDidMount = () =>{
         this.tokens = JSON.parse(sessionStorage.getItem("tokens"))
+        console.log(this.tokens)
         this.user = JSON.parse(sessionStorage.getItem("user"))
+        console.log(Object.keys(this.user))
         if (
-            this.user !== null && 
-            this.user !== undefined && 
-            this.user.length > 1)
+            this.user == null || 
+            this.user === undefined ||
+            Object.keys(this.user).length < 1)
             {
+            this.setState({
+                fetched: false
+            })
             this.fetchUser()
+        }else{
+            this.setState({
+                fetched: true
+            })
         }
         
     }
@@ -68,6 +78,9 @@ class Profile extends React.Component {
         })
 
         console.log(response)
+        this.setState({
+            fetched: true
+        })
 
 
 
@@ -92,8 +105,8 @@ class Profile extends React.Component {
     render(){
         const user = JSON.parse(sessionStorage.getItem("user"))
         let userDetails;
-        if (user !== null ){
-            userDetails = <Card variant="elevated" className="user-details">
+        if (this.state.fetched){
+            userDetails = <Card className="user-details">
                                     <List>
                                     <ListItem>{user.first_name}</ListItem>
                                     <hr className="divider" />
@@ -106,7 +119,7 @@ class Profile extends React.Component {
                                     
                                 </Card>
         }else{
-            userDetails = <Card variant="elevated" className="user-details">
+            userDetails = <Card className="user-details">
                                     <List>
                                     <ListItem>Login</ListItem>
                                     
