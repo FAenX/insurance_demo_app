@@ -6,7 +6,7 @@ import {Button} from "@material-ui/core"
 import VehicleDetails from "./VehicleDetails"
 import PersonalDetails from "./PersonalDetails"
 import Card from "@material-ui/core/Card"
-import SnackBar from "../helpers/SnackBar"
+import SnackBar from "./SnackBar"
 
 
 

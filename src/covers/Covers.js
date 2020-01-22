@@ -2,8 +2,8 @@ import React from 'react';
 import {withRouter} from "react-router-dom"
 import {Button, Paper} from "@material-ui/core"
 import imgPlaceholder from "../assets/images/img_placeholder.png"
-import GetStartedButton from "../utils/GetStartedButton"
-import FreeQuotationButton from "../utils/FreeQuotationButton"
+import GetStartedButton from "../components/GetStartedButton"
+import FreeQuotationButton from "../components/FreeQuotationButton"
 
 class Covers extends React.Component {
     constructor(props){

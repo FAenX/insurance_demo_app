@@ -24,6 +24,7 @@ import LoginButton from "./LoginButton"
 import imgPlaceholder from "./assets/images/img_placeholder.png"
 import Contacts from "./Contacts"
 import {Paper} from "@material-ui/core"
+import Backdrop from "./components/BackDrop"
 
 
 
@@ -40,14 +41,35 @@ class App extends React.Component {
       isLoggedIn: false,
 
       //backdrop
-      open: false
+      backdrop: false
     }
     this.fetchProductsAndSubCategories=this.fetchProductsAndSubCategories.bind(this)
+  }
+
+  componentDidMount=()=>{
+    this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
+    this.products = JSON.parse(sessionStorage.getItem("products"))
+    if (
+      this.subCategories!==null && 
+      this.subCategories !== undefined && 
+      this.subCategories.length > 0 &&
+      this.products!==null && 
+      this.products !== undefined && 
+      this.products.length > 0
+      ){
+      //
+    }else{
+      this.fetchProductsAndSubCategories()
+    }
   }
 
   
     // init session
     async fetchProductsAndSubCategories (){
+      this.setState({
+        backdrop:true,
+    })
+     
      
       const subCategories= fetch("/api/v1/products/sub-categories/", {
         method: "GET",   
@@ -69,6 +91,10 @@ class App extends React.Component {
 
       sessionStorage.setItem("products", JSON.stringify(prods))
       sessionStorage.setItem("sub_categories", JSON.stringify(subs))
+      this.setState({
+        backdrop:false,
+    })
+     
     }
 
    
@@ -91,67 +117,55 @@ class App extends React.Component {
   
 
   render(){
-    let subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
-    let products = JSON.parse(sessionStorage.getItem("products"))
-    if (
-      subCategories!==null && 
-      subCategories !== undefined && 
-      subCategories.length > 0 &&
-      products!==null && 
-      products !== undefined && 
-      products.length > 0
-      ){
-      //
-    }else{
-      this.fetchProductsAndSubCategories()
-    }
 
-  return (
-    <Router>
-      <SideNav 
-        isLoggedIn={this.state.isLoggedIn} 
-        drawer={this.state.isOpen} 
-        toggleDrawer={this.toggleDrawer}
-      />
-      <div className="App">
-        <Paper variant="elevation" elevation={5} className="top-nav">
-          <header className="App-header">
-            <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
-              <IconButton >
-                <MenuIcon />
-              </IconButton>
-            </div> 
-            <div className="logo">
-              <img alt="logo" src={imgPlaceholder}/>
-            </div>
-            <div className="nav-login" onClick={this.redirectToSignin}>
-            <LoginButton />
-            </div>
-          </header>
-        </Paper>
-      
-        <Switch>
-            <Route exact path='/' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-            <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-            <Route exact path='/signin' render = {(props) => <SignIn {...props} login={this.handleLoginLogout}/>}/>
-            <Route exact path='/signup' render = {(props) => <SignUp {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-            <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-            <Route exact path='/product' render = {(props) => <Product {...props} />}/>
-            <Route exact path='/cover' render = {(props) => <Cover {...props} />}/>
-            <Route exact path='/covers' render = {(props) => <Covers {...props} subCategories={this.state.subCategories}/>}/>
-            <Route exact path='/claim' render = {(props) => <Claim {...props} />}/>
-            <Route exact path='/about' render = {(props) => <WhoAreWe {...props} />}/>
-            <Route exact path='/info' render = {(props) => <EverythingYouNeedToKnow {...props} />}/>
-            <Route exact path='/rates' render = {(props) => <Rates {...props} />}/>
-            <Route exact path='/quotation' render = {(props) => <Quotation {...props} />}/>
-            <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />
-            <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
-        </Switch>
-      </div>
-      <Contacts/>
-      <Footer/>
-    </Router>
-  );
+
+    return (
+      <Router>
+        <SideNav 
+          isLoggedIn={this.state.isLoggedIn} 
+          drawer={this.state.isOpen} 
+          toggleDrawer={this.toggleDrawer}
+        />
+        <div className="App">
+          <Paper variant="elevation" elevation={5} className="top-nav">
+            <header className="App-header">
+              <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
+                <IconButton >
+                  <MenuIcon />
+                </IconButton>
+              </div> 
+              <div className="logo">
+                <img alt="logo" src={imgPlaceholder}/>
+              </div>
+              <div className="nav-login" onClick={this.redirectToSignin}>
+              <LoginButton />
+              </div>
+            </header>
+          </Paper>
+        
+          <Switch>
+              <Route exact path='/' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+              <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+              <Route exact path='/signin' render = {(props) => <SignIn {...props} login={this.handleLoginLogout}/>}/>
+              <Route exact path='/signup' render = {(props) => <SignUp {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+              <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+              <Route exact path='/product' render = {(props) => <Product {...props} />}/>
+              <Route exact path='/cover' render = {(props) => <Cover {...props} />}/>
+              <Route exact path='/covers' render = {(props) => <Covers {...props} />}/>
+              <Route exact path='/claim' render = {(props) => <Claim {...props} />}/>
+              <Route exact path='/about' render = {(props) => <WhoAreWe {...props} />}/>
+              <Route exact path='/info' render = {(props) => <EverythingYouNeedToKnow {...props} />}/>
+              <Route exact path='/rates' render = {(props) => <Rates {...props} />}/>
+              <Route exact path='/quotation' render = {(props) => <Quotation {...props} />}/>
+              <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />
+              <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
+          </Switch>
+        </div>
+        <Backdrop open={this.state.backdrop}/>
+        <Contacts/>
+        <Footer/>
+      </Router>
+    );
   }
 }
 

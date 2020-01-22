@@ -4,18 +4,17 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import HomeButton from "../../utils/HomeButton"
+import HomeButton from "../../components/HomeButton"
 import clsx from 'clsx';
-
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import ListItemIcon from "@material-ui/core/ListItemIcon"
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import SecurityIcon from '@material-ui/icons/Security';
 
 
 
@@ -103,28 +102,34 @@ class DashMenu extends React.Component {
                     <hr className="divider"></hr>
                     <List>
                     <ListItem button>
-                        <HomeButton />
-                        <ListItemText primary="Home" />
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Account" />
                     </ListItem>
                     <ListItem button>
-                        <HomeButton />
-                        <ListItemText primary="Home" />
+                    <ListItemIcon>
+                        <AttachMoneyIcon />
+                    </ListItemIcon>
+                        <ListItemText primary="Payment history" />
                     </ListItem>
+                    
                     <ListItem button>
-                        <HomeButton />
-                        <ListItemText primary="Home" />
+                    <ListItemIcon>
+                        <SecurityIcon />
+                    </ListItemIcon>
+                        <ListItemText primary="Insurance covers" />
                     </ListItem>
                     </List>
                     <hr className="divider"></hr>
                     <List>
                     <ListItem button>
-                        <HomeButton />
+                        <ListItemIcon>
+                            <HomeButton />
+                        </ListItemIcon>
                         <ListItemText primary="Home" />
                     </ListItem>
-                    <ListItem button>
-                        <HomeButton />
-                        <ListItemText primary="Home" />
-                    </ListItem>
+                    
                     
                     </List>
                     

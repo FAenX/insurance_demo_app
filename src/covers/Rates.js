@@ -4,7 +4,7 @@ import QuoteForm from "./QuoteForm"
 import {Paper, Button} from "@material-ui/core"
 import Filter9PlusIcon from '@material-ui/icons/Filter9Plus';
 import LoaderButton from "../helpers/LoaderButton";
-import SnackBar from "../helpers/SnackBar"
+import SnackBar from "../components/SnackBar"
 import SelectDialog from "../helpers/selectDialog"
 
 class Rates extends React.Component {

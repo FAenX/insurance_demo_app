@@ -39,6 +39,9 @@ body {
   .MuiSvgIcon-colorPrimary{
     color: $color_1;
   }
+  .MuiListItemIcon-root{
+    color: $color_2;
+  }
 }
 
 .next-arrow{
@@ -768,10 +771,34 @@ body {
 /* dashboard */
 .dashboard {
   @include flex-col();
-  min-height: 100vh;
+  height: 100vh;
+  width:100vw;
+  justify-content: flex-start;
+  .dashboard-wrapper{
+    @include flex-col();
+    width: 85vw;
+    margin-left: 15vw;
+    margin-top: 10vh;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .profile{
+      @include flex-col();
+      width: 100%;
+      .avatar{
+        height: 100px;
+        width: 100px;
+      }
+      .user-details{
+        width: 100vh;
+      }
+    }
+    
+  }
+  
   .dash-menu{
     @include flex-col();
     width: 100vw;
+    
     .AppBar{
       left: 0;
       top: 0;
@@ -791,6 +818,8 @@ body {
     .drawer{ 
       @include flex-col();  
       width: 40vw;
+      
+      
      
     }
     .drawerOpen {
@@ -798,6 +827,8 @@ body {
       align-items: baseline;
       justify-content: flex-start;
       width: 40vw;
+      background-color: $color_1;
+      color: $white;
       .MuiListItem-gutters{
        
         .home-button{
@@ -812,6 +843,10 @@ body {
         width: 100%;
         justify-content: flex-end;
         height: 4em;
+        .MuiIconButton-root{
+          color: $color_2;
+        }
+        
        
       }
     }
@@ -821,6 +856,7 @@ body {
       justify-content: flex-start;
       overflow: hidden;
       width: 12vw;
+      background-color: $color_1;
       .MuiListItem-gutters{
         
         .home-button{
@@ -841,47 +877,19 @@ body {
 
 }
 
-.dash-nav-item {
-  padding: 1em;
-}
 
-.dashboard-wrapper {
-  display: flex;
-  flex-flow: column;
-  min-width: 100vw;
-  min-height: 100vh;
-}
 
-.dashboard-nav{
-  margin: 1em;
-}
+/////////
 
-.dash-side-nav-items {
-  display: flex;
-  flex-flow: column;
-  font-weight: 600;  
-}
 
-.dashboard-main{
-  display: flex;
-  flex-flow: column;
-  padding: 2em;
-  font-weight: 600;
-  padding: 2em;
-  min-width: 100vw;
-}
 
-.profile {
-  display: flex;
-  flex-flow: column;
-}
 
-/*  */
 
-.covers-list {
-  display: flex;
-  flex-flow: column;
-}
+
+
+
+
+
 
 .cover {
   display: flex;

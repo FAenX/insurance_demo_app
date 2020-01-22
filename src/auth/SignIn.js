@@ -1,6 +1,9 @@
 import React from "react"
 import { Form, Alert } from "react-bootstrap"
 import {Button} from "@material-ui/core"
+import Backdrop from "../components/BackDrop"
+import SnackBar from "../components/SnackBar"
+
 
 class SignIn extends React.Component {
     constructor(props){
@@ -14,6 +17,8 @@ class SignIn extends React.Component {
             },
             creds: {},
             isLoading: false,
+            backdrop: false,
+            SnackBar: false,
         }
         this.submitForm = this.submitForm.bind(this)
     }
@@ -32,62 +37,31 @@ class SignIn extends React.Component {
 
     async submitForm (event) {
         event.preventDefault()
+        this.setState({
+            backdrop: true,
+        })
+        
         const url = "/api/v1/users/token/"
         const data = {email: this.state.userEmail, password: this.state.userPassword}
-        
-        
-        
         const request = fetch(url, {
             method: 'POST', 
             headers: {
             'Content-Type': 'application/json'
             },
             body: JSON.stringify(data) 
-        }).then(res=>{   
-           
-            if (res.status === 200){
-               res.json().then(data=>{
-                    this.setState({                        
-                        creds: data,
-                        style: {
-                            response: res.status,
-                            data: "success"
-                        }                    
-                   })
-                   this.props.login()
-                   sessionStorage.setItem("access", data.access) 
-                   sessionStorage.setItem("refresh", data.refresh)                          
-                   setTimeout(()=>{
-                       this.handleRedirectOnLogin()
-                   }, 1000)
+        }).then(res=>res.json()).catch(err=>err);
 
-               }).catch(err=>{
-                   console.log(err)
-               })
-           } else if (res.status === 401){
-               res.json().then(res=>{
-                   console.log(res)
-                   
+        const response = await request.then(res=>{            
+                console.log(res)               
                     this.setState({
-                        style: {
-                            response: res.detail
-                        }
-                    })
-
-
-               }).catch(err=>{
-                   console.log(err)
-               })
-           }
-            
-            
-            
-        }).catch(err=>{
-            console.log(err)
-        });
-
-        const response = await request
-        console.log(response)
+                        backdrop: false,
+                        SnackBar: true,
+                    })                    
+                    return res              
+                
+        })
+        sessionStorage.setItem("tokens", JSON.stringify(response))
+        console.log(response)        
         
     }
 
@@ -132,8 +106,12 @@ class SignIn extends React.Component {
 
         return(
             <div className="signin-wrapper">
-                
-           
+                <Backdrop open={this.state.backdrop}/>
+                <SnackBar 
+                    status="success" 
+                    message="Successfull"
+                    show={this.state.SnackBar}
+                />
                 <div>{alert}</div>
                 <div className="headline-text">
                     Sign In
