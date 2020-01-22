@@ -2,6 +2,7 @@ import React from "react"
 import {Card } from "@material-ui/core"
 import Avatar from '@material-ui/core/Avatar';
 import Backdrop from "../../components/BackDrop"
+import {List, ListItem} from "@material-ui/core"
 
 
 
@@ -89,15 +90,22 @@ class Profile extends React.Component {
     }
 
     render(){
+        const user = JSON.parse(sessionStorage.getItem("user"))
         return(
             <div className="profile">
                 <Backdrop open={this.state.backdrop}/>
                 <Avatar className="avatar"/>
-                <Card variant="outlined" className="user-details">
-                    <p>{this.state.profile.first_name}</p>
-                    <p>{this.state.profile.last_name}</p>
-                    <p>{this.state.profile.email}</p>
-                    <p>{this.state.profile.phone_number}</p>
+                <Card variant="elevated" className="user-details">
+                    <List>
+                       <ListItem>{user.first_name}</ListItem>
+                       <hr className="divider" />
+                       <ListItem>{user.last_name}</ListItem>
+                       <hr className="divider" />
+                       <ListItem>{user.email}</ListItem>
+                       <hr className="divider" />
+                       <ListItem>{user.phone_number}</ListItem>
+                    </List>
+                    
                 </Card>
             </div>
         )
