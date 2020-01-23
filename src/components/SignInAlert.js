@@ -6,7 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import SignInButton from "./SignInButton"
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import SignUpButton from "./SignInButton";
+import SignUpButton from "./SignUpButton";
 import HomeButton from "./HomeButton"
 
 

@@ -1,6 +1,6 @@
 import React from "react"
 import {Form, Alert} from "react-bootstrap"
-import LoaderButton from "../helpers/LoaderButton"
+import BackDrop from "../components/BackDrop"
 import {Button} from "@material-ui/core"
 
 
@@ -16,6 +16,7 @@ class SignUp extends React.Component {
                 response: "",
                 data:""
             },
+            backdrop: false,
         }
     }
 
@@ -31,11 +32,15 @@ class SignUp extends React.Component {
                 response: ""
             },
             
+            
         })
 
     }
 
     submitForm =(event) => {
+        this.setState({
+            backdrop: true
+        })
         event.preventDefault()
         const data = {
             email: this.state.userEmail,
@@ -138,6 +143,7 @@ class SignUp extends React.Component {
 
         return(
             <div className="signup-wrapper">
+                <BackDrop open={this.state.backdrop}/>
                 
                 
                     <div>{alert}</div>
@@ -172,9 +178,11 @@ class SignUp extends React.Component {
                                 <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
                             </Form.Group>
 
-                            <LoaderButton variant="primary" type="submit" desabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.submitForm}>
+                            <Button 
+                                type="submit" 
+                                onClick={this.submitForm}>
                                 Submit
-                            </LoaderButton>
+                            </Button> 
                         </Form>
                     </div>
                 
