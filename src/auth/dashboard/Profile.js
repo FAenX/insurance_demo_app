@@ -16,6 +16,7 @@ class Profile extends React.Component {
             profile: {},
         }
         this.fetchUser=this.fetchUser.bind(this)
+        this.refreshToken = this.refreshToken.bind(this)
     }
     
     componentDidMount = () =>{
@@ -39,21 +40,46 @@ class Profile extends React.Component {
         }
         
     }
-
-    async fetchUser(){
-        this.setState({
-            backdrop:true,
-        })
-         
+    async refreshToken(){
+       
         const request_refresh = fetch("/api/v1/users/token/refresh/", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
                 },
             body: JSON.stringify({refresh: this.tokens.refresh})
+
         }).then(res=>res.json()).catch(err=>err)
+        const response_refresh = await request_refresh.then(res=>{
+            this.setState({
+                backdrop:false,
+            })
+        return res
+        }).catch(err=>{
+            this.setState({
+                backdrop:false,
+            })
+        return err
+        })
 
+        //rewrite tokens to session
+        const tokens = this.tokens
+        
+        const value = response_refresh.access
+        tokens["access"]=value
+        sessionStorage.setItem("tokens", JSON.stringify(tokens))
+        ////
+        console.log(response_refresh) 
+        //this.fetchUser()
+        this.setState({
+            fetched: true
+        })
+    }
 
+    async fetchUser(){
+        this.setState({
+            backdrop:true,
+        })
         const request = fetch("/api/v1/users/profile/", {
             method: "GET",
             headers: {
@@ -68,38 +94,18 @@ class Profile extends React.Component {
             })
             if (res.code !== "token_not_valid"){
                 sessionStorage.setItem("user", JSON.stringify(res))
+                this.setState({
+                    fetched: true
+                })
             }
-            return res
+            this.refreshToken()
+            //return res
         }).catch(err=>{
-            this.setState({
-                backdrop:false,
-            })
+
             return err
         })
 
         console.log(response)
-        this.setState({
-            fetched: true
-        })
-
-
-
-        // const response_refresh = await request_refresh.then(res=>{
-        //     this.setState({
-        //         backdrop:false,
-        //     })
-        //    return res
-        // }).catch(err=>{
-        //     this.setState({
-        //         backdrop:false,
-        //     })
-        //    return err
-        // })
-
-        // const tokens = this.tokens
-        // const value = response_refresh.access
-        // tokens["access"]=value
-        // sessionStorage.setItem("tokens", JSON.stringify(tokens))
     }
 
     render(){
