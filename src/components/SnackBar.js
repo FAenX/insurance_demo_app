@@ -59,8 +59,8 @@ class SnackbarContentWrapper extends React.Component{
         }
         onClose={this.props.onClose}
         action={[
-          <IconButton key="close" aria-label="close" color="inherit" >
-            <CloseIcon className="" onClick={this.props.onClose}/>
+          <IconButton key="close" aria-label="close" color="inherit" onClick={this.props.onClose} >
+            <CloseIcon className="" />
           </IconButton>,
         ]}
       />

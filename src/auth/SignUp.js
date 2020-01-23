@@ -3,6 +3,7 @@ import {Form, Alert} from "react-bootstrap"
 import BackDrop from "../components/BackDrop"
 import {Button} from "@material-ui/core"
 import SnackBar from "../components/SnackBar"
+import {withRouter } from "react-router-dom";
 
 
 class SignUp extends React.Component {
@@ -57,12 +58,13 @@ class SignUp extends React.Component {
                 let response = this.state.response
                 response["status"]="success"
                 response["message"]="Successfully created"
-                console.log(response)
+                
                 this.setState({
                     response,
                     snackBar: true,
                     backdrop: false
                 })
+                return res.json().then(data=>data).catch(err=>err)
                 
             }else{
                 console.log("danger")
@@ -88,6 +90,8 @@ class SignUp extends React.Component {
             return err
         });
         console.log(response)
+        sessionStorage.setItem("user", JSON.stringify(response))
+        this.props.history.push("dashboard")
         
     }
 
@@ -176,4 +180,4 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp
+export default withRouter(SignUp)
