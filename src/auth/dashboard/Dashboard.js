@@ -1,10 +1,8 @@
 import React from "react"
 import {withRouter} from  "react-router-dom";
-import {Alert} from "react-bootstrap"
 import Profile from "./Profile"
 import FreeQuotationButton from "../../components/FreeQuotationButton"
 import MotorInsuranceButton from "../../components/MotorInsuranceButton"
-import {Paper} from "@material-ui/core"
 import DashMenu from "./DashMenu"
 
 

@@ -3,6 +3,7 @@ import {Card } from "@material-ui/core"
 import Avatar from '@material-ui/core/Avatar';
 import Backdrop from "../../components/BackDrop"
 import {List, ListItem} from "@material-ui/core"
+import SignInAlert from "../../components/SignInAlert"
 
 
 
@@ -75,65 +76,75 @@ class Profile extends React.Component {
     }
 
     async fetchUser(){
-        this.setState({
-            backdrop:true,
-        })
-        const request = fetch("/api/v1/users/profile/", {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.tokens.access}`
-                },
-        }).then(res=>res.json()).catch(err=>err)
-
-        const response = await request.then(res=>{
+        
+        if(this.tokens !== null){
             this.setState({
-                backdrop:false,
+                backdrop:true,
             })
-            if (res.code !== "token_not_valid"){
-                sessionStorage.setItem("user", JSON.stringify(res))
+            const request = fetch("/api/v1/users/profile/", {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.tokens.access}`
+                    },
+            }).then(res=>res.json()).catch(err=>err)
+    
+            const response = await request.then(res=>{
                 this.setState({
-                    fetched: true
+                    backdrop:false,
                 })
-            }else{
-                this.refreshToken()
-            }
-            
-            //return res
-        }).catch(err=>{
-
-            return err
-        })
-
-        console.log(response)
+                if (res.code !== "token_not_valid"){
+                    sessionStorage.setItem("user", JSON.stringify(res))
+                    this.setState({
+                        fetched: true
+                    })
+                }else{
+                    this.refreshToken()
+                }
+                
+                //return res
+            }).catch(err=>{
+                return err
+            })
+            console.log(response)
+        }
+        
     }
 
     render(){
+        //const tokens = JSON.parse(sessionStorage.getItem("tokens"))
         const user = JSON.parse(sessionStorage.getItem("user"))
         let userDetails;
+        if (
+            this.tokens == null || 
+            this.tokens === undefined ||
+            Object.keys(this.tokens).length < 1){
+            userDetails = <SignInAlert />
+
+        }
+        if (
+            this.user == null || 
+            this.user === undefined ||
+            Object.keys(this.user).length < 1){
+            userDetails = <SignInAlert />
+
+        }
+
         if (this.state.fetched){
             userDetails = <Card className="user-details">
-                                    <List>
-                                    <ListItem>{user.first_name} {user.last_name}</ListItem>
-                                    <hr className="divider" />
-                                    <ListItem>{user.email}</ListItem>
-                                    <hr className="divider" />
-                                    <ListItem>{user.phone_number}</ListItem>
-                                    <hr className="divider" />
-                                    <ListItem>{user.location}</ListItem>
-                                    </List>
-                                    
-                                    
-                                </Card>
-        }else{
-            userDetails = <Card className="user-details">
-                                    <List>
-                                    <ListItem>Login</ListItem>
-                                    
-                                    </List>
-                                    
-                                </Card>
+                                <List>
+                                <ListItem>{user.first_name} {user.last_name}</ListItem>
+                                <hr className="divider" />
+                                <ListItem>{user.email}</ListItem>
+                                <hr className="divider" />
+                                <ListItem>{user.phone_number}</ListItem>
+                                <hr className="divider" />
+                                <ListItem>{user.location}</ListItem>
+                                </List>
+                            </Card>
         }
+        
+        
 
         
         

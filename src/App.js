@@ -20,7 +20,7 @@ import Claim from "./claims/Claim"
 import WhoAreWe from "./whoarewe/WhoAreWe"
 import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeedToKnow"
 import dotenv from "dotenv"
-import LoginButton from "./components/LoginButton"
+import SignInButton from "./components/SignInButton"
 import imgPlaceholder from "./assets/images/img_placeholder.png"
 import Contacts from "./Contacts"
 import {Paper} from "@material-ui/core"
@@ -138,7 +138,7 @@ class App extends React.Component {
                 <img alt="logo" src={imgPlaceholder}/>
               </div>
               <div className="nav-login" onClick={this.redirectToSignin}>
-              <LoginButton />
+              <SignInButton />
               </div>
             </header>
           </Paper>
