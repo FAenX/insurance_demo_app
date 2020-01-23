@@ -3,6 +3,8 @@ $color_2: rgb(255, 81, 0);
 $white: #ffffff;
 $success_color: #3F9811;
 $color_3: #0023291f;
+$error_color: #ff0000;
+$warning_color: #cc9c00;
 
 @mixin fullscreen {
   min-width: 100vw;
@@ -218,9 +220,7 @@ body {
   
 } 
 
-.success-snackbar {
-  background-color: $success_color;
-}
+
 
 .sidenav {
   @include fullscreen();
@@ -765,7 +765,15 @@ body {
     padding: 1em;
     text-align: left;
   }
-  
+  .success {
+    background-color: $success_color;
+  }
+  .error{
+    background-color: $error_color;
+  }
+  .warning {
+    background-color: $warning_color;
+  }
 }
 
 /* dashboard */

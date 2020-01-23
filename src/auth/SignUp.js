@@ -2,46 +2,40 @@ import React from "react"
 import {Form, Alert} from "react-bootstrap"
 import BackDrop from "../components/BackDrop"
 import {Button} from "@material-ui/core"
+import SnackBar from "../components/SnackBar"
 
 
 class SignUp extends React.Component {
     constructor(props){
         super(props)
         this.state={
+            //form
             userEmail: "",
             userPassword: "",
             userFirstName: "",
             userLastName: "",
-            style: {
-                response: "",
-                data:""
+            response: {
+                status: "",
+                message: "",
             },
+            // feedback
             backdrop: false,
+            snackBar: false
+
         }
+        this.submitForm=this.submitForm.bind(this)
     }
 
     componentDidMount =()=>{
-
-        this.setState({
-            
-            userEmail: "",
-            userPassword: "",
-            userFirstName: "",
-            userLastName: "",
-            style: {
-                response: ""
-            },
-            
-            
-        })
-
+        
     }
 
-    submitForm =(event) => {
+    async submitForm (event) {
+        event.preventDefault()
         this.setState({
             backdrop: true
         })
-        event.preventDefault()
+        
         const data = {
             email: this.state.userEmail,
             password: this.state.userPassword,
@@ -50,51 +44,57 @@ class SignUp extends React.Component {
         }
         const url = "/api/v1/users/"
 
-        fetch(url, {
+        const request = fetch(url, {
             method: 'POST', 
             headers: {
             'Content-Type': 'application/json'
             },
             body: JSON.stringify(data) 
         }).then(res=>{
-            if (res.satus === 200 ){
-                res.json().then(data=>{
-
-                    console.log(data)
+            console.log(res.status)
+            if(res.status===400){
+                console.log("danger")
+                let response = this.state.response
+                response["status"]="error"
+                response["message"]="An error occurred"
+                console.log(response)
+                this.setState({
+                    response,
+                    snackBar: true,
+                    backdrop: false
                 })
-                .catch(err=>{
-                    
-                    console.log(err)
+                
+            }else if (res.status===201){
+                console.log("success")
+                let response = this.state.response
+                response["status"]="success"
+                response["message"]="Successfully created"
+                console.log(response)
+                this.setState({
+                    response,
+                    snackBar: true,
+                    backdrop: false
                 })
-
-            }else if (res.status === 400){
-                res.json().then(data=>{
-                    if (data.email) {
-                        this.setState({
-                            style: {
-                                response: res.status,
-                                data: data.email
-                            }
-                    })
-                    
-                    
-               
-                } else {
-                    this.setState({
-                        style: {
-                            response: res.status,
-                            data: "Form did not validate"
-                        }
-                    })
-                }
-            })
-        }
-        
+                
+            }
+            return res
             
-
-
-        }).catch(err=>console.log(err));
+        }).catch(err=>err)
         
+        const response = await request.then(res=>{
+            return res
+        }).catch(err=>{
+            //console.log(err)
+            return err
+        });
+        console.log(response)
+        
+    }
+
+    onCloseSnackBar=()=>{
+        this.setState({
+            snackBar: false
+        })
     }
 
     handleEmailChange = (event) =>{
@@ -130,22 +130,16 @@ class SignUp extends React.Component {
 
     render(){
 
-        let alert;
-
-        if (this.state.style.response === ""){
-            alert = ""
-        } else if(this.state.style.response === 200) {
-            alert = <Alert variant="success">{this.state.style.response}</Alert>
-        }  else {
-            alert = <Alert variant="danger">{this.state.style.data}</Alert>
-        }
-
+        let alert = <SnackBar 
+                        status={this.state.response.status}
+                        message={this.state.response.message}
+                        show={this.state.snackBar}
+                        onClose={this.onCloseSnackBar}
+                    />
 
         return(
             <div className="signup-wrapper">
                 <BackDrop open={this.state.backdrop}/>
-                
-                
                     <div>{alert}</div>
                     <div className="headline-text">
                         Sign Up
@@ -159,25 +153,16 @@ class SignUp extends React.Component {
                                 We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
-
                             <Form.Group>
-                            
-                                
                             <Form.Label>First name</Form.Label>
                             <Form.Control placeholder="First name" onChange={this.handleFirstNameChange}/>
-                        
                             <Form.Label>Last name</Form.Label>
                             <Form.Control placeholder="Last name" onChange={this.handleLastNameChange}/>
-                                    
-                                
-                            
                             </Form.Group>
-
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
                             </Form.Group>
-
                             <Button 
                                 type="submit" 
                                 onClick={this.submitForm}>
