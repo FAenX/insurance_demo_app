@@ -70,10 +70,8 @@ class Profile extends React.Component {
         sessionStorage.setItem("tokens", JSON.stringify(tokens))
         ////
         console.log(response_refresh) 
-        //this.fetchUser()
-        this.setState({
-            fetched: true
-        })
+        this.fetchUser()
+        
     }
 
     async fetchUser(){
@@ -97,8 +95,10 @@ class Profile extends React.Component {
                 this.setState({
                     fetched: true
                 })
+            }else{
+                this.refreshToken()
             }
-            this.refreshToken()
+            
             //return res
         }).catch(err=>{
 
@@ -114,14 +114,15 @@ class Profile extends React.Component {
         if (this.state.fetched){
             userDetails = <Card className="user-details">
                                     <List>
-                                    <ListItem>{user.first_name}</ListItem>
-                                    <hr className="divider" />
-                                    <ListItem>{user.last_name}</ListItem>
+                                    <ListItem>{user.first_name} {user.last_name}</ListItem>
                                     <hr className="divider" />
                                     <ListItem>{user.email}</ListItem>
                                     <hr className="divider" />
                                     <ListItem>{user.phone_number}</ListItem>
+                                    <hr className="divider" />
+                                    <ListItem>{user.location}</ListItem>
                                     </List>
+                                    
                                     
                                 </Card>
         }else{

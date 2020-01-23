@@ -54,15 +54,16 @@ class SignIn extends React.Component {
         const response = await request.then(res=>{            
                 console.log(res)               
                     this.setState({
-                        backdrop: false,
                         SnackBar: true,
-                    })                    
+                    })    
+                                    
                     return res              
                 
-        })
+        }).catch(err=>err)
+              
         sessionStorage.setItem("tokens", JSON.stringify(response))
-        console.log(response)        
-        
+        console.log(response)
+        this.handleRedirectOnLogin()  
     }
 
     handleEmailChange = (event) =>{
@@ -86,7 +87,10 @@ class SignIn extends React.Component {
     }
 
     handleRedirectOnLogin = () => {
-        this.props.history.push("/dashboard")
+        setTimeout(()=>{
+            this.props.history.push("/dashboard")
+        }, 1000)
+        
     }
 
     validateForm = ()=>{
@@ -145,10 +149,7 @@ class SignIn extends React.Component {
                         </Form.Group>
                         <div className="signin-button">
                         <Button 
-                            variant="primary" 
                             type="submit" 
-                            desabled={!this.validateForm()} 
-                            isLoading={this.state.isLoading} 
                             onClick={this.submitForm}>
                             Submit
                         </Button> 
