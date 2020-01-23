@@ -52,19 +52,7 @@ class SignUp extends React.Component {
             body: JSON.stringify(data) 
         }).then(res=>{
             console.log(res.status)
-            if(res.status===400){
-                console.log("danger")
-                let response = this.state.response
-                response["status"]="error"
-                response["message"]="An error occurred"
-                console.log(response)
-                this.setState({
-                    response,
-                    snackBar: true,
-                    backdrop: false
-                })
-                
-            }else if (res.status===201){
+            if (res.status===201){
                 console.log("success")
                 let response = this.state.response
                 response["status"]="success"
@@ -76,7 +64,19 @@ class SignUp extends React.Component {
                     backdrop: false
                 })
                 
-            }
+            }else{
+                console.log("danger")
+                let response = this.state.response
+                response["status"]="error"
+                response["message"]="An error occurred"
+                console.log(response)
+                this.setState({
+                    response,
+                    snackBar: true,
+                    backdrop: false
+                })
+                
+            } 
             return res
             
         }).catch(err=>err)
