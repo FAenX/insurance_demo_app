@@ -268,10 +268,13 @@ body {
   @include flex-col();
   @include fullscreen();
   position: relative;
-  font-weight: 700;
-  background-image: url(./assets/images/image1.png);
-  background-color: $color_1;
-  background-repeat: no-repeat;  
+  font-weight: 700;  
+  background-image: linear-gradient(to bottom, $color_1, $color_3);
+  
+  .cover-background{
+    background-image: url(./assets/images/image1.png);
+    background-repeat: no-repeat;  
+  }
   //home
 .home {
   @include flex-col();
@@ -1159,16 +1162,11 @@ body {
   table {
     
   }
-  .cover-page{
+  .cover-background{
     background-position-x: -10vh;
     background-position-y: 25vh;
   }  
 
-  .page2-cover {
-    background-position-x: -10vh;
-    background-position-y: 25vh;
-
-  }
   .page-headline-text {
     
 

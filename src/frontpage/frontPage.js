@@ -33,7 +33,9 @@ class FrontPage extends React.Component {
                 <GetStartedButton />
                 <FreeQuotationButton />
                 <div className="cover-page">
-                    <Home/>
+                    <div className="cover-background">
+                        <Home/>
+                    </div>
                 </div>
                 
                     <HowItWorks/>               
