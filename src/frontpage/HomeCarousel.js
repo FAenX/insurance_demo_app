@@ -3,7 +3,8 @@ import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
 
 
-class DashCarousel extends React.Component {
+
+export class HomeCarousel1 extends React.Component {
     render() {
         return (
             <Carousel 
@@ -11,6 +12,7 @@ class DashCarousel extends React.Component {
                 
                 infiniteLoop 
                 autoPlay 
+                interval={7200}
                 swipeable={true}
                 showIndicators={true}
                 showThumbs={false}
@@ -19,16 +21,56 @@ class DashCarousel extends React.Component {
                 width="100%"
             >
                 
-                <div className="content">
+                <div className="home-carousel1-slide1">
+                    
                      Content
                 </div>
 
-                <div className="content">
+                <div className="home-carousel1-slide2">
                        Content    
+                      
                 </div>
 
-                <div className="content">
-                                 
+                <div className="home-carousel1-slide3">
+                        Content  
+                               
+                </div>
+                
+            </Carousel>
+        );
+    }
+};
+
+export class HomeCarousel2 extends React.Component {
+    render() {
+        return (
+            <Carousel 
+                className="home-carousel"
+                
+                infiniteLoop 
+                autoPlay 
+                interval={7200}
+                swipeable={true}
+                showIndicators={true}
+                showThumbs={false}
+                showArrows={true}
+                showStatus={false}
+                width="100%"
+            >
+                
+                <div className="home-carousel2-slide1">
+                    
+                     Content
+                </div>
+
+                <div className="home-carousel2-slide2">
+                       Content    
+                      
+                </div>
+
+                <div className="home-carousel2-slide3">
+                        Content  
+                               
                 </div>
                 
             </Carousel>
@@ -36,4 +78,3 @@ class DashCarousel extends React.Component {
     }
 };
  
-export default DashCarousel;

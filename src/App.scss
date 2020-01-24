@@ -286,18 +286,70 @@ body {
     margin: 1em;
     margin-bottom: 1em;
     font-weight: 400;
-    font-size: 2.5em;
+    font-size: 2em;
   }
   .headline-subtext {
     width: 70%;
     
     .home-carousel{
       width: 100%; 
-      border: solid .05em $color_2;     
+      margin-bottom: 2em;   
+      padding: .05em;
+      border: solid .015em $color_2; 
+      
     }
+    
     .slide{
       background-color: $color_1;
       height: 20vh;
+      .home-carousel1-slide1{
+        height: 100%;
+        background-image: url(./assets/images/img_placeholder.png);
+        background-repeat: no-repeat;
+        background-position-x: 5em;
+        background-position-y: 1em;
+       
+      }   
+      .home-carousel1-slide2{
+        height: 100%;
+        background-image: url(./assets/images/img_placeholder.png);
+        background-repeat: no-repeat;
+        background-position-x: 5em;
+        background-position-y: 1em;
+       
+      }   
+      .home-carousel1-slide3{
+        height: 100%;
+        background-image: url(./assets/images/img_placeholder.png);
+        background-repeat: no-repeat;
+        background-position-x: 5em;
+        background-position-y: 1em;
+       
+      }   
+      .home-carousel2-slide1{
+        height: 100%;
+        background-image: url(./assets/images/img_placeholder.png);
+        background-repeat: no-repeat;
+        background-position-x: 5em;
+        background-position-y: 1em;
+       
+      }   
+      .home-carousel2-slide2{
+        height: 100%;
+        background-image: url(./assets/images/img_placeholder.png);
+        background-repeat: no-repeat;
+        background-position-x: 5em;
+        background-position-y: 1em;
+       
+      } 
+      .home-carousel2-slide3{
+        height: 100%;
+        background-image: url(./assets/images/img_placeholder.png);
+        background-repeat: no-repeat;
+        background-position-x: 5em;
+        background-position-y: 1em;
+       
+      }          
     } 
   }
   
@@ -362,7 +414,6 @@ body {
 
 /*why us*/
 .why-us {
-  @include fullscreen();
   @include flex-col();
   text-align: center;
 }
