@@ -6,6 +6,11 @@ $color_3: #0023291f;
 $error_color: #ff0000;
 $warning_color: #cc9c00;
 
+@keyframes rigthtoleft{
+  0%   {left:5em; top:5em;}
+  100% {left:0em; top:0em;}
+}
+
 @mixin fullscreen {
   width: 100vw;
   height: 100vh;
@@ -49,10 +54,10 @@ body {
 .next-arrow{
   position: fixed;
   bottom: 0;
-  right: 0;
+  left: 50%;
   z-index: 1299;  
   margin: 1em;
-  margin-bottom: 3em;
+  margin-bottom: 12em;
   .MuiSvgIcon-colorPrimary {
     
     font-size: 2em;
@@ -63,10 +68,10 @@ body {
 .get-started-button{
   z-index: 1299;
   position: fixed;
-  top: 0;
-  right: 0;
+  bottom: 0;
+  left: 25%;
   margin:1em;
-  margin-top: 10em;
+  margin-bottom: 12em;
  
 
   .MuiSvgIcon-colorPrimary{
@@ -78,10 +83,10 @@ body {
 
 .free-quotation-button{
   position: fixed;
-  top: 0;
-  right: 0;
+  bottom: 0;
+  left: 0;
   margin:1em;
-  margin-top: 5em;
+  margin-bottom: 12em;
   z-index: 1299;
   
   .MuiSvgIcon-colorPrimary{    
@@ -276,10 +281,7 @@ body {
     background-repeat: no-repeat;  
   }
 
-  @keyframes rigthtoleft{
-    0%   {left:200px;}
-    100% {left:0px;}
-  }
+ 
   //home
 .home {
   @include flex-col();
@@ -304,7 +306,8 @@ body {
     
     .home-carousel{
       width: 100%; 
-      margin-bottom: 2em;   
+      margin-bottom: 2em; 
+      margin-left: 1em;  
       padding: .05em;
       border: solid .015em $color_2; 
       
