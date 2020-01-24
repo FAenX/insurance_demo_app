@@ -644,9 +644,12 @@ body {
 
     .motor-insurance-benefits-list{
       @include flex-col();     
-      align-items: flex-start;
+      align-items: left;
+      width: 100%;
       .motor-insurance-benefits-list-item{
         @include flex-row();
+        width: 100%;
+        justify-content: left;
         .number{
           @include flex-col();  
           height: 3em;
