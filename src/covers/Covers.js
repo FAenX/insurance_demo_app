@@ -38,10 +38,10 @@ class Covers extends React.Component {
                 <FreeQuotationButton />
                 <div>{this.dataAlert}</div>
                 <div className="intro">
-                    <div className="headline-text">
+                    <div className="headline-text sliding-effect">
                         motor Insurance
                     </div>
-                    <div className="sub-text">
+                    <div className="sub-text sliding-effect8s">
                     This is insurance for a motor vehicle such as a car, 
                     which provides protection against loss in the event of an 
                     accident, theft, etc.
@@ -51,14 +51,14 @@ class Covers extends React.Component {
                     <div className="motor-insurance-highlights-img">
                         <img alt="" src={imgPlaceholder}></img>
                     </div>
-                    <div className="headline-text">
+                    <div className="headline-text sliding-effect">
                         What you will get
                     </div>
-                    <div className="sub-text">
+                    <div className="sub-text sliding-effect8s">
                     Our Motor insurance cover protects the insured against financial loss in the 
                     event that the motor vehicle is involved in an accident, burnt or stolen.
                     We offer 3 types of coverage: 
-                    <ul>
+                    <ul className="sliding-effect10s">
                         <li>Third Party: Covers third party bodily injury and property damage arising out of a vehicle accident.</li>
                         <li>Third party Fire & Theft: Cover extends to cover theft, fire, third party bodily injury and property damage.</li>
                         <li>Comprehensive: Covers third party liability and property damage to the vehicle i.e. damage arising out of fire, theft and accidental damage to the vehicle.</li>

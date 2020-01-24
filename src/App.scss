@@ -6,8 +6,8 @@ $color_3: #0023291f;
 $error_color: #ff0000;
 $warning_color: #cc9c00;
 
-@keyframes rigthtoleft{
-  0%   {left:5em; top:5em;}
+@keyframes righttoleft{
+  0%   {left:5em; top:0em;}
   100% {left:0em; top:0em;}
 }
 
@@ -34,6 +34,26 @@ $warning_color: #cc9c00;
  color: $color_1;
  background-color: $color_3;
  font-weight: 300;
+ width: 100vw;
+ overflow-x: hidden;
+}
+
+.sliding-effect{
+  position: relative;
+  animation: righttoleft 6s;
+  position: relative; 
+}
+
+.sliding-effect8s{
+  position: relative;
+  animation: righttoleft 8s;
+  position: relative; 
+}
+
+.sliding-effect10s{
+  position: relative;
+  animation: righttoleft 8s;
+  position: relative; 
 }
 
 body {
@@ -53,8 +73,8 @@ body {
 
 .next-arrow{
   position: fixed;
-  bottom: 0;
-  left: 50%;
+  top: 8em;
+  right: 0;
   z-index: 1299;  
   margin: 1em;
   margin-bottom: 12em;
@@ -68,10 +88,9 @@ body {
 .get-started-button{
   z-index: 1299;
   position: fixed;
-  bottom: 0;
-  left: 25%;
+  top: 4em;
+  right: 0;
   margin:1em;
-  margin-bottom: 12em;
  
 
   .MuiSvgIcon-colorPrimary{
@@ -83,10 +102,9 @@ body {
 
 .free-quotation-button{
   position: fixed;
-  bottom: 0;
-  left: 0;
+  top: 12em;
+  right: 0;
   margin:1em;
-  margin-bottom: 12em;
   z-index: 1299;
   
   .MuiSvgIcon-colorPrimary{    
@@ -293,7 +311,7 @@ body {
   .headline-text {
     @include flex-col();
     justify-content: space-between; 
-    animation: rigthtoleft 6s;
+    animation: righttoleft 6s;
     position: relative; 
     margin: 1em;
     margin-bottom: 1em;
@@ -313,11 +331,11 @@ body {
       
     }
     .home-carousel1{
-      animation: rigthtoleft 4s;
+      animation: righttoleft 4s;
       position: relative; 
     }
     .home-carousel2{
-      animation: rigthtoleft 2s;
+      animation: righttoleft 2s;
       position: relative; 
     }
     
@@ -393,6 +411,8 @@ body {
   @include flex-col(); 
 }
 
+
+
 .how-it-works-sub-header{
   @include flex-col();
   padding: 1.5em;  
@@ -405,6 +425,7 @@ body {
   font-size: 2em;
   font-weight: 300;
   border-left: $color_2 .05em solid;
+  
 }
 
 .how-it-works {

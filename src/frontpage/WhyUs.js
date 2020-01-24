@@ -58,7 +58,7 @@ class WhyUs extends React.Component {
     render(){
         return(
             <div className="why-us">
-                <div className="why-us-header">
+                <div className="why-us-header sliding-effect">
                 WE ARE THE MOST TRUSTED INSURANCE MARKET PLACE ONLINE
                 </div>
                 <WhyUsChild />

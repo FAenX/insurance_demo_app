@@ -1,7 +1,7 @@
 import React from "react"
 import {withRouter} from "react-router-dom";
 import imgPlaceholder from "../assets/images/img_placeholder.png"
-import {Button, Paper} from "@material-ui/core"
+import {Paper} from "@material-ui/core"
 
 
 class HowItWorksStep extends React.Component{
@@ -9,7 +9,7 @@ class HowItWorksStep extends React.Component{
     render(){
         return(
             <Paper variant="outlined" className="step">
-                    <div className="svg"><img alt="" src={this.props.img}/> </div>
+                    <div className="svg sliding-effect"><img alt="" src={this.props.img}/> </div>
                     <div className="step-text-wrapper">
                         <div className="step-header">{this.props.title}</div>
                         <div className="step-text">
@@ -49,18 +49,16 @@ class HowItWorks extends React.Component{
         return(
             <div className="how-it-works-wrapper">
                 <div className="how-it-works-sub-header">
-                    <div className="how-it-works-sub-header-text">
+                    <div className="how-it-works-sub-header-text sliding-effect">
                         How does it work?
                     </div>
                 </div>
                 <div className="how-it-works"> 
                     {
                         Object.keys(data).map(i=>{
-                            return <HowItWorksStep key={i} text={data[i]} title={i} img={imgPlaceholder}/>
+                            return <HowItWorksStep key={i} text={data[i]} title={i} img={imgPlaceholder} />
                         })
-                    } 
-                    <div className="get-started-button">
-                    </div>                
+                    }              
                 </div>
                 </div>
                 

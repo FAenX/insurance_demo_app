@@ -17,7 +17,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Product from './covers/Product';
 import Claim from "./claims/Claim";
 import WhoAreWe from "./whoarewe/WhoAreWe";
-import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeedToKnow";
 import dotenv from "dotenv";
 import SignInButton from "./components/SignInButton";
 import imgPlaceholder from "./assets/images/img_placeholder.png";
@@ -147,7 +146,6 @@ class App extends React.Component {
               <Route exact path='/covers' render = {(props) => <Covers {...props} />}/>
               <Route exact path='/claim' render = {(props) => <Claim {...props} />}/>
               <Route exact path='/about' render = {(props) => <WhoAreWe {...props} />}/>
-              <Route exact path='/info' render = {(props) => <EverythingYouNeedToKnow {...props} />}/>
               <Route exact path='/rates' render = {(props) => <Rates {...props} />}/>
               <Route exact path='/quotation' render = {(props) => <Quotation {...props} />}/>
               <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />
