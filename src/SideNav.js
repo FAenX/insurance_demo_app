@@ -4,7 +4,6 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import {Button} from "@material-ui/core"
 
 
 class SideBar extends React.Component {
@@ -69,11 +68,7 @@ class SideBar extends React.Component {
                         <ListItem button id="about" onClick={this.handleRedirectOnClick}>                       
                             <ListItemText  id="about" primary="Who are we"/>
                         </ListItem>
-                        <hr className="divider"></hr>
-                        <ListItem button id="signout" onClick={this.handleRedirectOnClick}>                        
-                            <ListItemText id="info" primary="Everything you need to know ..."/>
-                        </ListItem>                           
-                        <hr className="divider"></hr>            
+                        <hr className="divider"></hr>        
                         <ListItem button id="signup" onClick={this.handleRedirectOnClick}>                        
                             <ListItemText id="signup" primary="Sign up"/>
                         </ListItem>

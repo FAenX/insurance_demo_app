@@ -12,6 +12,7 @@ class ProvidersCarousel extends React.Component {
                 className="providers-carousel" 
                 infiniteLoop 
                 autoPlay 
+                transitionTime={1800}
                 swipeable={true}
                 showIndicators={false}
                 showThumbs={false}

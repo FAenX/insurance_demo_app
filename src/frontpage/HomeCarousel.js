@@ -13,6 +13,7 @@ export class HomeCarousel1 extends React.Component {
                 infiniteLoop 
                 autoPlay 
                 interval={30000}
+                transitionTime={1800}
                 swipeable={true}
                 showIndicators={true}
                 showThumbs={false}
@@ -49,6 +50,7 @@ export class HomeCarousel2 extends React.Component {
                 
                 infiniteLoop 
                 autoPlay 
+                transitionTime={1800}
                 interval={30000}
                 swipeable={true}
                 showIndicators={true}
