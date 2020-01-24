@@ -8,7 +8,7 @@ export class HomeCarousel1 extends React.Component {
     render() {
         return (
             <Carousel 
-                className="home-carousel"
+                className="home-carousel home-carousel1"
                 
                 infiniteLoop 
                 autoPlay 
@@ -45,7 +45,7 @@ export class HomeCarousel2 extends React.Component {
     render() {
         return (
             <Carousel 
-                className="home-carousel"
+                className="home-carousel home-carousel2"
                 
                 infiniteLoop 
                 autoPlay 

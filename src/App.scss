@@ -275,6 +275,11 @@ body {
     background-image: url(./assets/images/image1.png);
     background-repeat: no-repeat;  
   }
+
+  @keyframes rigthtoleft{
+    0%   {left:200px;}
+    100% {left:0px;}
+  }
   //home
 .home {
   @include flex-col();
@@ -285,11 +290,14 @@ body {
 
   .headline-text {
     @include flex-col();
-    justify-content: space-between;  
+    justify-content: space-between; 
+    animation: rigthtoleft 6s;
+    position: relative; 
     margin: 1em;
     margin-bottom: 1em;
     font-weight: 400;
     font-size: 2em;
+   
   }
   .headline-subtext {
     width: 70%;
@@ -300,6 +308,14 @@ body {
       padding: .05em;
       border: solid .015em $color_2; 
       
+    }
+    .home-carousel1{
+      animation: rigthtoleft 4s;
+      position: relative; 
+    }
+    .home-carousel2{
+      animation: rigthtoleft 2s;
+      position: relative; 
     }
     
     .slide{
