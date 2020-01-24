@@ -1,31 +1,30 @@
 import React from 'react';
 import './App.scss';
-import Rates from "./covers/Rates"
-import Cover from "./covers/Cover"
-import Quotation from "./covers/Quotation"
-import PaymentOptions from "./payments/PaymentOptions"
+import Rates from "./covers/Rates";
+import Cover from "./covers/Cover";
+import Quotation from "./covers/Quotation";
+import PaymentOptions from "./payments/PaymentOptions";
 import Mpesa from "./payments/Mpesa"
 import Covers from "./covers/Covers";
 import FrontPage from "./frontpage/frontPage";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import SideNav from "./SideNav"
-import Footer from "./Footer";
-import SignIn from "./auth/SignIn"
-import SignUp from "./auth/SignUp"
-import Dashboard from "./auth/dashboard/Dashboard"
-import IconButton from "@material-ui/core/IconButton"
-import MenuIcon from "@material-ui/icons/Menu"
+import SideNav from "./SideNav";
+import SignIn from "./auth/SignIn";
+import SignUp from "./auth/SignUp";
+import Dashboard from "./auth/dashboard/Dashboard";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
 import Product from './covers/Product';
-import Claim from "./claims/Claim"
-import WhoAreWe from "./whoarewe/WhoAreWe"
-import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeedToKnow"
-import dotenv from "dotenv"
-import SignInButton from "./components/SignInButton"
-import imgPlaceholder from "./assets/images/img_placeholder.png"
-import Contacts from "./Contacts"
-import {Paper} from "@material-ui/core"
-import Backdrop from "./components/BackDrop"
-
+import Claim from "./claims/Claim";
+import WhoAreWe from "./whoarewe/WhoAreWe";
+import EverythingYouNeedToKnow from "./everythingYouNeedToKnow/everythingYouNeedToKnow";
+import dotenv from "dotenv";
+import SignInButton from "./components/SignInButton";
+import imgPlaceholder from "./assets/images/img_placeholder.png";
+import {Paper} from "@material-ui/core";
+import Backdrop from "./components/BackDrop";
+import Footer from "./components/Footer";
+import Contacts from "./components/Contacts";
 
 
 dotenv.config()
@@ -34,12 +33,10 @@ dotenv.config()
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-     
+    this.state = {     
       //drawer
       isOpen: false,
       isLoggedIn: false,
-
       //backdrop
       backdrop: false
     }
@@ -112,13 +109,9 @@ class App extends React.Component {
         return;
     }
     this.setState({ isOpen: open });
-    };
-
-  
+  };
 
   render(){
-
-
     return (
       <Router>
         <SideNav 

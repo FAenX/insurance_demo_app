@@ -1,6 +1,6 @@
 import React from "react";
 import {withRouter} from "react-router-dom"
-import {Button} from "@material-ui/core"
+
 
 
 class Claim extends React.Component {
@@ -11,10 +11,7 @@ class Claim extends React.Component {
                 <div className="claims-body-wrapper">
                     <div className="headline">
                         Make a claim
-                    </div>                   
-                    
-                   
-                                       
+                    </div>          
                 </div>
             </div>      
         )

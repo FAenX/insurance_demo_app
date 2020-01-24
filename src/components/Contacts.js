@@ -1,7 +1,7 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
-import SocialMedia from "./frontpage/SocialMedia"
-import imgPlaceholder from "./assets/images/img_placeholder.png"
+import SocialMedia from "../frontpage/SocialMedia"
+import imgPlaceholder from "../assets/images/img_placeholder.png"
 
 class Contacts extends React.Component {
     render(){

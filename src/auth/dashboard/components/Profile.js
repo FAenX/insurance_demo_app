@@ -1,9 +1,10 @@
 import React from "react"
 import {Card } from "@material-ui/core"
 import Avatar from '@material-ui/core/Avatar';
-import Backdrop from "../../components/BackDrop"
+import Backdrop from "../../../components/BackDrop"
 import {List, ListItem} from "@material-ui/core"
-import SignInAlert from "../../components/SignInAlert"
+import SignInAlert from "../../../components/SignInAlert"
+import clsx from "clsx";
 
 
 
@@ -12,6 +13,7 @@ class Profile extends React.Component {
     constructor(props){
         super(props)
         this.state={
+            display: true,
             fetched: false,
             backdrop: false,
             profile: {},
@@ -137,19 +139,18 @@ class Profile extends React.Component {
                                 <hr className="divider" />
                                 <ListItem>{user.email}</ListItem>
                                 <hr className="divider" />
-                                <ListItem>{user.phone_number}</ListItem>
+                                <ListItem>Text</ListItem>
                                 <hr className="divider" />
-                                <ListItem>{user.location}</ListItem>
+                                <ListItem>Text</ListItem>
+                                <hr className="divider" />
                                 </List>
                             </Card>
         }
-        
-        
 
-        
-        
         return(
-            <div className="profile">
+            <div className={clsx("profile",{
+                "display-none": !this.state.display,
+            })}>
                 <Backdrop open={this.state.backdrop}/>
                 <Avatar className="avatar"/>
                 {userDetails}

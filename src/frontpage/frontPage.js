@@ -11,6 +11,7 @@ import MotorInsuranceButton from "../components/MotorInsuranceButton"
 
 
 
+
 class FrontPage extends React.Component {
     constructor(props){
         super(props)
@@ -28,8 +29,7 @@ class FrontPage extends React.Component {
 
         return(
             <div className="front-page">
-                <MotorInsuranceButton />
-                
+                <MotorInsuranceButton />                
                 <GetStartedButton />
                 <FreeQuotationButton />
                 <div className="cover-page">

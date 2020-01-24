@@ -1,5 +1,5 @@
 import React from "react"
-import { Form, Alert } from "react-bootstrap"
+import { Form } from "react-bootstrap"
 import {Button} from "@material-ui/core"
 import Backdrop from "../components/BackDrop"
 import SnackBar from "../components/SnackBar"
@@ -24,15 +24,7 @@ class SignIn extends React.Component {
     }
 
     componentDidMount =()=>{
-        this.setState({            
-            userEmail:"",
-            userPassword: "",           
-            style: {
-                response: ""
-            },
-            isLoading: false,
-            creds: {}
-        })
+        
     }
 
     async submitForm (event) {
@@ -51,19 +43,29 @@ class SignIn extends React.Component {
             body: JSON.stringify(data) 
         }).then(res=>res.json()).catch(err=>err);
 
-        const response = await request.then(res=>{            
-                console.log(res)               
-                    this.setState({
-                        SnackBar: true,
-                    })    
+        const response = await request.then(res=>{
+        if (res !== null &&
+            res !== undefined &&
+            Object.keys(res).length > 1)
+        {
+            sessionStorage.setItem("tokens", JSON.stringify(res))
+            setTimeout(()=>{
+                this.handleRedirectOnLogin()  
+            }, 1000)
+
+            this.setState({
+                SnackBar: true,
+            }) 
+        }                        
+                       
                                     
-                    return res              
+            return res              
                 
         }).catch(err=>err)
               
-        sessionStorage.setItem("tokens", JSON.stringify(response))
+       
         console.log(response)
-        this.handleRedirectOnLogin()  
+        
     }
 
     handleEmailChange = (event) =>{
@@ -98,21 +100,13 @@ class SignIn extends React.Component {
     }
 
     render(){
-        let alert;
-
-        if (this.state.style.response === ""){
-            alert = ""
-        } else if(this.state.style.response === 200) {
-            alert = <Alert variant="success">{this.state.style.data}</Alert>
-        }  else {
-            alert = <Alert variant="danger">{this.state.style.response}</Alert>
-        }
+        
 
         return(
             <div className="signin-wrapper">
                 <Backdrop open={this.state.backdrop}/>
                 <SnackBar 
-                    status="success" 
+                    variant="success" 
                     message="Successfull"
                     show={this.state.SnackBar}
                 />

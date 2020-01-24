@@ -1,5 +1,6 @@
 import React from "react"
 import {withRouter } from "react-router-dom";
+import HomeCarousel from "./HomeCarousel"
 
 
 class Home extends React.Component{
@@ -12,9 +13,9 @@ class Home extends React.Component{
                    
                 </div>
                 <div className="headline-subtext">
-                <p> Pay through a range of available payment options and download a printable copy of your insurance cover</p>
-                
+                <HomeCarousel />                
                 </div>
+                
                 
             </div>
         )

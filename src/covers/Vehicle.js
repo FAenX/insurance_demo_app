@@ -1,6 +1,5 @@
 import React from "react"
-import {withRouter} from "react-router-dom"
-import {Paper, List, ListItem} from "@material-ui/core"
+import {Paper, ListItem} from "@material-ui/core"
 
 class Vehicle extends React.Component {
     constructor(props){

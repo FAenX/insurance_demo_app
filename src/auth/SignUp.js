@@ -1,5 +1,5 @@
 import React from "react"
-import {Form, Alert} from "react-bootstrap"
+import {Form} from "react-bootstrap"
 import BackDrop from "../components/BackDrop"
 import {Button} from "@material-ui/core"
 import SnackBar from "../components/SnackBar"
@@ -44,7 +44,6 @@ class SignUp extends React.Component {
             last_name: this.state.userLastName
         }
         const url = "/api/v1/users/"
-
         const request = fetch(url, {
             method: 'POST', 
             headers: {
@@ -57,15 +56,13 @@ class SignUp extends React.Component {
                 console.log("success")
                 let response = this.state.response
                 response["status"]="success"
-                response["message"]="Successfully created"
-                
+                response["message"]="Successfully created"                
                 this.setState({
                     response,
                     snackBar: true,
                     backdrop: false
                 })
-                return res.json().then(data=>data).catch(err=>err)
-                
+                return res.json().then(data=>data).catch(err=>err)                
             }else{
                 console.log("danger")
                 let response = this.state.response
@@ -79,10 +76,8 @@ class SignUp extends React.Component {
                 })
                 
             } 
-            return res
-            
-        }).catch(err=>err)
-        
+            return res            
+        }).catch(err=>err)        
         const response = await request.then(res=>{
             return res
         }).catch(err=>{
@@ -90,9 +85,17 @@ class SignUp extends React.Component {
             return err
         });
         console.log(response)
-        sessionStorage.setItem("user", JSON.stringify(response))
-        this.props.history.push("dashboard")
-        
+        if (response !== null &&
+            response !== undefined &&
+            Object.keys(response).length > 1)
+            {
+                //sessionStorage.setItem("user", JSON.stringify(response))
+                setTimeout(()=>{
+                    this.props.history.push("signin") 
+                }, 1000)
+                
+            }
+               
     }
 
     onCloseSnackBar=()=>{
@@ -133,7 +136,6 @@ class SignUp extends React.Component {
     }
 
     render(){
-
         let alert = <SnackBar 
                         status={this.state.response.status}
                         message={this.state.response.message}
