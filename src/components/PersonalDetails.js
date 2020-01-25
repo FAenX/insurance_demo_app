@@ -12,8 +12,17 @@ class PersonalDetails extends React.Component{
                 <div className="swipeable-quote-form-sub-header sliding-effect8s">Personal details</div>
                     <div className="form-controls sliding-effect">
                     <TextField 
-                        id="name" 
-                        label="John Doe"
+                        id="first_name" 
+                        label="John"
+                        variant="outlined"
+                        onChange={this.props.userOnChangeListener}
+                        helperText="Full Name"
+                    />
+                    </div>
+                    <div className="form-controls sliding-effect">
+                    <TextField 
+                        id="last_name" 
+                        label="Doe"
                         variant="outlined"
                         onChange={this.props.userOnChangeListener}
                         helperText="Full Name"

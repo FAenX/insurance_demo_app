@@ -34,7 +34,8 @@ class MotorInsuranceQuoteForm extends React.Component{
                 tonnes: "",
             },
             user: {
-                name:"First name Last name",
+                first_name:"First name Last name",
+                last_name:"First name Last name",
                 email: "email@example.com",
                 phone: "0712 345 678",
                 location: "Nairobi"
