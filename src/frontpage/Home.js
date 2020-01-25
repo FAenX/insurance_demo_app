@@ -8,7 +8,7 @@ class Home extends React.Component{
     render(){
         return(
             <div className="home">
-                <div className="headline-text">
+                <div className="headline-text sliding-effect">
                      Buy Motor Vehicle Insurance directly from your Phone
                    
                 </div>

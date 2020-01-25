@@ -145,7 +145,6 @@ class SignUp extends React.Component {
 
         return(
             <div className="signup-wrapper">
-                <BackDrop open={this.state.backdrop}/>
                     <div>{alert}</div>
                     <div className="headline-text sliding-effect">
                         Sign Up
@@ -174,10 +173,13 @@ class SignUp extends React.Component {
                             </Form.Group>
                             <Button 
                                 type="submit" 
+                                variant="outlined" 
+                                color="primary" 
                                 className="sliding-effect10s"
                                 onClick={this.submitForm}>
                                 Submit
                             </Button> 
+                            <BackDrop open={this.state.backdrop}/>
                         </Form>
                     </div>
                 

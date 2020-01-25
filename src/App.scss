@@ -76,6 +76,19 @@ body {
   .MuiAppBar-colorPrimary{
     background-color: $color_1;
   }
+  .MuiButton-outlinedPrimary{
+    color: $color_1;
+  }
+  .MuiButton-outlined{
+    border: 1px  solid $color_2;
+  }
+  .headline-text{
+    font-size: 2em;
+    font-weight: 400;
+  }
+  .MuiButton-textPrimary{
+    color: $color_1;
+  }
 }
 
 .next-arrow{
@@ -347,8 +360,6 @@ body {
   .headline-text {
     @include flex-col();
     justify-content: space-between; 
-    animation: righttoleft 6s;
-    position: relative; 
     margin: 1em;
     margin-bottom: 1em;
     font-weight: 400;
@@ -367,12 +378,10 @@ body {
       
     }
     .home-carousel1{
-      animation: righttoleft 4s;
-      position: relative; 
+      
     }
     .home-carousel2{
-      animation: righttoleft 2s;
-      position: relative; 
+      
     }
     
     .slide{
@@ -902,8 +911,12 @@ body {
     .signin-button{
       @include flex-col();
       align-items: baseline;
+      .signup{
+        text-transform: capitalize;
+      }
       button{
         margin-top: 1em;
+
       }
     }
 

@@ -8,7 +8,7 @@ export class HomeCarousel1 extends React.Component {
     render() {
         return (
             <Carousel 
-                className="home-carousel home-carousel1"
+                className="home-carousel home-carousel1 sliding-effect8s"
                 
                 infiniteLoop 
                 autoPlay 
@@ -46,7 +46,7 @@ export class HomeCarousel2 extends React.Component {
     render() {
         return (
             <Carousel 
-                className="home-carousel home-carousel2"
+                className="home-carousel home-carousel2 sliding-effect10s"
                 
                 infiniteLoop 
                 autoPlay 

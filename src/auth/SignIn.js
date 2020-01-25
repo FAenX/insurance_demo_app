@@ -157,9 +157,9 @@ class SignIn extends React.Component {
                         </Button> 
                         <Button 
                             type="submit" 
-                            variant="outlined" 
+                            
                             color="primary" 
-                            className="sliding-effect10s"
+                            className="signup sliding-effect10s"
                             onClick={this.signUp}
                         >
                             Create account

@@ -129,7 +129,7 @@ class App extends React.Component {
               <div className="logo">
                 <img alt="logo" src={imgPlaceholder}/>
               </div>
-              <div className="nav-login" onClick={this.redirectToSignin}>
+              <div className="nav-login sliding-effect8s" onClick={this.redirectToSignin}>
               <SignInButton />
               </div>
             </header>

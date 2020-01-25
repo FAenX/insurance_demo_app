@@ -59,39 +59,72 @@ class SideBar extends React.Component {
                         <div className="close-btn">
                             <MenuOpenIcon color="primary" />
                         </div>
-                        <div className="sliding-effect appbar-title">Menu</div>
+                        <div className="sliding-effect8s appbar-title">Menu</div>
                     </AppBar>
                     <List>   
                         <hr className="divider"></hr>            
-                        <ListItem button  id="home" onClick={this.handleRedirectOnClick}>                       
+                        <ListItem 
+                            button  
+                            id="home" 
+                            className="sliding-effect" 
+                            onClick={this.handleRedirectOnClick}
+                        >                       
                             <ListItemText id="home" primary="Home"/>
                         </ListItem>
                         <hr className="divider"></hr>
-                        <ListItem button id="covers" onClick={this.handleRedirectOnClick}>                       
-                            <ListItemText  id="covers" primary="Motor insurance"/>
+                        <ListItem 
+                            button id="covers" 
+                            onClick={this.handleRedirectOnClick}
+                            className="sliding-effect" 
+                        >                       
+                        <ListItemText  id="covers" primary="Motor insurance"/>
                         </ListItem>
                         <hr className="divider"></hr>
-                        <ListItem button id="claim" onClick={this.handleRedirectOnClick}>                       
+                        <ListItem 
+                            button id="covers" 
+                            onClick={this.handleRedirectOnClick}
+                            className="sliding-effect" 
+                        >                         
                             <ListItemText  id="claim" primary="Make a claim"/>
                         </ListItem>
                         <hr className="divider"></hr>
-                        <ListItem button id="about" onClick={this.handleRedirectOnClick}>                       
+                        <ListItem 
+                            button id="covers" 
+                            onClick={this.handleRedirectOnClick}
+                            className="sliding-effect8s" 
+                        >                   
                             <ListItemText  id="about" primary="Who are we"/>
                         </ListItem>
                         <hr className="divider"></hr>        
-                        <ListItem button id="signup" onClick={this.handleRedirectOnClick}>                        
+                        <ListItem 
+                            button id="covers" 
+                            onClick={this.handleRedirectOnClick}
+                            className="sliding-effect8s" 
+                        >                        
                             <ListItemText id="signup" primary="Sign up"/>
                         </ListItem>
                         <hr className="divider"></hr>
-                        <ListItem button id="signin" onClick={this.handleRedirectOnClick}>                        
+                        <ListItem 
+                            button id="covers" 
+                            onClick={this.handleRedirectOnClick}
+                            className="sliding-effect10s" 
+                        >                     
                             <ListItemText id="signin" primary="Sign in"/>
                         </ListItem>
                         <hr className="divider"></hr>
-                        <ListItem button id="dashboard" onClick={this.handleRedirectOnClick}>                        
+                        <ListItem 
+                            button id="covers" 
+                            onClick={this.handleRedirectOnClick}
+                            className="sliding-effect10s" 
+                        >                          
                             <ListItemText id="dashboard" primary="Dashboard"/>
                         </ListItem>  
                         <hr className="divider"></hr>                   
-                        <ListItem button id="signout" onClick={this.handleSignOut}>                        
+                        <ListItem 
+                            button id="covers" 
+                            onClick={this.handleRedirectOnClick}
+                            className="sliding-effect10s" 
+                        >                            
                             <ListItemText id="signout" primary="Sign out" />
                         </ListItem> 
                         <hr className="divider"></hr>

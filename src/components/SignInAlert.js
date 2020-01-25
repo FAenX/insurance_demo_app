@@ -17,23 +17,33 @@ class SignInAlert extends React.Component{
    
 
         return (
-            <Dialog onClose={this.handleClose} aria-labelledby="simple-dialog-title" open={true}>
-            <DialogTitle id="simple-dialog-title">Oops! Session not found.</DialogTitle>
+            <Dialog 
+                onClose={this.handleClose} 
+                aria-labelledby="simple-dialog-title" 
+                open={true}
+                
+            >
+            <DialogTitle 
+                id="simple-dialog-title" 
+                className="sliding-effect10s"
+            >
+                Oops! Session not found.
+            </DialogTitle>
             <List>
                 
-                <ListItem button >
+                <ListItem button className="sliding-effect">
                     <ListItemIcon>
                         <SignInButton />
                     </ListItemIcon>                    
                     <ListItemText primary="Sign in" />
                 </ListItem>
-                <ListItem button >
+                <ListItem button className="sliding-effect8s">
                     <ListItemIcon>
                         <SignUpButton />
                     </ListItemIcon>                    
                     <ListItemText primary="Create account" />
                 </ListItem>
-                <ListItem button >
+                <ListItem button className="sliding-effect10s">
                     <ListItemIcon>
                         <HomeButton />
                     </ListItemIcon>                    
