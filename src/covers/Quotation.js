@@ -4,6 +4,9 @@ import {Paper} from "@material-ui/core"
 import OptionalBenefits from "./OptionalBenefits"
 import Prodiver from "./Provider"
 import Vehicle from "./Vehicle"
+import FreeQuotationButton from "../components/FreeQuotationButton"
+import GetStartedButton from "../components/GetStartedButton"
+import {filterByAlias} from "../helpers/js/dataManipulation"
 
 class Quotation extends React.Component {
     constructor(props){
@@ -28,22 +31,22 @@ class Quotation extends React.Component {
     render(){
         let vehicle = JSON.parse(sessionStorage.getItem("vehicle"))
         let response = JSON.parse(sessionStorage.getItem("response"))
-        let chosenProduct = JSON.parse(sessionStorage.getItem("chosen_product"))
-        if (chosenProduct==null&&vehicle==null){
-            chosenProduct={name: "no product chosen", alias: "no product chosen"}
-            vehicle={name: "no product chosen", alias: "no product chosen"}
-        }
-        const user = "user"
+        let products = JSON.parse(sessionStorage.getItem("products"))[0].products
+        let chosenProduct = filterByAlias(products, vehicle.cover)
+        
+        const user = JSON.parse(sessionStorage.getItem("user"))
         return(
-            <div className="quotation-page-wrapper">                
+            <div className="quotation-page-wrapper"> 
+            <FreeQuotationButton />
+            <GetStartedButton />               
                 <div className="quotation-body-wrapper">                   
-                        <div className="product-title">
-                        chosenProduct.name}
+                        <div className="product-title sliding-effect">
+                            {chosenProduct.name}
                         </div>                        
                             <div className="quotation-wrapper">
                                 <div elevation={3}className="quotation" >                            
-                                    <Paper variant="outlined" id="quotation-header">
-                                        Hi {user}, we have found 1 plan for your {vehicle.vehicleMake} {vehicle.vehicleModel}
+                                    <Paper variant="outlined" id="quotation-header" className="sliding-effect">
+                                        Hi {user.last_name}, we have found 1 plan for your {vehicle.vehicleMake} {vehicle.vehicleModel}
                                     </Paper>
                                     <div id="quotation-content">
                                         <Vehicle 
@@ -53,7 +56,7 @@ class Quotation extends React.Component {
                                             premium={response.premium}
                                         />
                                         <Prodiver 
-                                            chosenProduct={chosenProduct} 
+                                            //chosenProduct={chosenProduct} 
                                             premium={response.premium}
                                         /> 
                                     </div>                                                

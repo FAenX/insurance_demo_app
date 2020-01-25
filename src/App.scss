@@ -44,6 +44,7 @@ $warning_color: #cc9c00;
   position: relative; 
 }
 
+
 .sliding-effect8s{
   position: relative;
   animation: righttoleft 8s;
@@ -62,6 +63,9 @@ body {
     background-color: $color_2;
     height: 50px;
     width: 50px;
+  }
+  .MuiBackdrop-root{
+    //z-index: -1;
   }
   .MuiSvgIcon-colorPrimary{
     color: $color_1;
@@ -128,6 +132,7 @@ body {
   @include flex-col();
   background-image: linear-gradient(to top, $color_1, $color_3);
   align-items: baseline;
+  
   
   .request-button{
     @include flex-col();
@@ -742,7 +747,7 @@ body {
 /* quotation page */
 .quotation-page-wrapper {
   @include flex-col();
-  margin-top: 7vh;
+  margin-top: 4em;
   .quotation-body-wrapper{
     .product-title{
       @include flex-col();

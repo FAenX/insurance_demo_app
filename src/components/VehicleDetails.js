@@ -1,7 +1,6 @@
 import React from "react"
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import {Paper, Card}from "@material-ui/core"
+import {Paper, FormHelperText, FormControl}from "@material-ui/core"
 import {Select, MenuItem, InputLabel} from "@material-ui/core"
 
 class VehicleDetails extends React.Component{
@@ -22,8 +21,30 @@ class VehicleDetails extends React.Component{
             },
 
         ]
+        let tonnes;
+
+        if(this.props.vehicle.vehicleUse.startsWith("commercial")){
+            tonnes= 
+                <FormControl variant="outlined" className="form-controls sliding-effect">
+                    <InputLabel>vehicle load capacity</InputLabel>
+                    <Select
+                        name="tonnes"
+                        value={this.props.vehicle.tonnes}
+                        onChange={this.props.vehicleOnChangeListener}
+                        labelWidth={130}
+                    >
+                    <MenuItem value="3">3 tonnes and less</MenuItem>
+                    <MenuItem value="38">3-8 tonnes</MenuItem>
+                    <MenuItem value="810">8 to 10 tonnes</MenuItem>
+                    </Select>
+                    <FormHelperText>
+                        Ho many tonnes does your vehicle carry?
+                    </FormHelperText>
+                </FormControl>
+              
+        }
         return(
-            <Paper variant="elevated" elevation={3} className="swipeable-quote-form-form">
+            <Paper variant="elevation" elevation={3} className="swipeable-quote-form-form">
                 
                 <div className="swipeable-quote-form-content">
                 <div className="swipeable-quote-form-sub-header sliding-effect">Vehicle details</div>
@@ -31,8 +52,8 @@ class VehicleDetails extends React.Component{
                         <InputLabel  >
                             Vehicle use
                         </InputLabel>
-                        <Select                        
-                            id="vehicleUse"
+                        <Select
+                            name="vehicleUse" 
                             value={this.props.vehicle.vehicleUse}
                             onChange={this.props.vehicleOnChangeListener}
                             labelWidth={100}
@@ -41,14 +62,15 @@ class VehicleDetails extends React.Component{
                             <em>None</em>
                         </MenuItem>
                         {vehicleUseOpts.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
+                        <MenuItem key={option.value}  value={option.value}>
                             {option.label}
                         </MenuItem>
                         ))}
                         </Select>
                     </FormControl>
-
-                    <FormControl className="form-controls sliding-effect">
+                    {tonnes}
+                    
+                    <div className="form-controls sliding-effect">
                     <TextField 
                         id="vehicleMake" 
                         label="Vehicle make"
@@ -56,9 +78,9 @@ class VehicleDetails extends React.Component{
                         onChange={this.props.vehicleOnChangeListener}
                         helperText="Toyota"
                     />
-                    </FormControl>
+                    </div>
                    
-                    <FormControl className="form-controls sliding-effect">
+                    <div className="form-controls sliding-effect">
                     <TextField 
                         id="vehicleModel" 
                         label="Crown"
@@ -66,8 +88,8 @@ class VehicleDetails extends React.Component{
                         onChange={this.props.vehicleOnChangeListener}
                         helperText="Vehicle model"
                     />
-                    </FormControl>
-                    <FormControl className="form-controls sliding-effect8s">
+                    </div>
+                    <div className="form-controls sliding-effect8s">
                     <TextField 
                         id="vehicleValue" 
                         label="1,400,000"
@@ -75,8 +97,8 @@ class VehicleDetails extends React.Component{
                         onChange={this.props.vehicleOnChangeListener}
                         helperText="Vehicle Value"
                     />
-                    </FormControl>
-                    <FormControl className="form-controls sliding-effect10s">
+                    </div>
+                    <div className="form-controls sliding-effect10s">
                     <TextField 
                         id="yearOfManufacture" 
                         label="2020"
@@ -84,7 +106,7 @@ class VehicleDetails extends React.Component{
                         onChange={this.props.vehicleOnChangeListener}
                         helperText="year of manufacture"
                     />
-                    </FormControl>
+                    </div>
                     
                 </div>
             </Paper>

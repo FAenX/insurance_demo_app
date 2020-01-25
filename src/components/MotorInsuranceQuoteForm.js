@@ -2,11 +2,13 @@ import React from "react"
 import {withRouter} from "react-router-dom"
 import Drawer from '@material-ui/core/SwipeableDrawer';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import {Button, AppBar} from "@material-ui/core"
+import {Button, AppBar, Backdrop} from "@material-ui/core"
 import VehicleDetails from "./VehicleDetails"
 import PersonalDetails from "./PersonalDetails"
 import Card from "@material-ui/core/Card"
 import SnackBar from "./SnackBar"
+import InsuranceDetails from "./InsuranceDetails"
+import BackDrop from "./BackDrop"
 
 
 
@@ -17,10 +19,11 @@ class MotorInsuranceQuoteForm extends React.Component{
         this.state = {
             //snackbar
             showSnackBar: false,
+            BackDrop: false,
 
             vehicle: {
                 
-                cover: "privatethirdonly",
+                cover: "privatethirdpartyonly",
                 vehicleUse: "private",
                 vehicleMake: "Tesla",
                 vehicleModel: "Model Y",
@@ -46,7 +49,7 @@ class MotorInsuranceQuoteForm extends React.Component{
 
     async requestQuotation (){
         this.setState({
-            loading: true,
+            BackDrop: true,
         })
 
         const url = "api/v1/quotes/quote/";
@@ -73,11 +76,11 @@ class MotorInsuranceQuoteForm extends React.Component{
             
             this.setState({
                 showSnackBar: true,
-                loading: false,
+                BackDrop: false,
                 res,
             })
             setTimeout(()=>{this.props.history.push("/quotation")}, 3000)
-            sessionStorage.setItem("user", JSON.stringify(this.state.user))
+            sessionStorage.setItem("temp_user", JSON.stringify(this.state.user))
             sessionStorage.setItem("vehicle", JSON.stringify(this.state.vehicle))
             sessionStorage.setItem("response", JSON.stringify(this.state.res))
             
@@ -85,18 +88,31 @@ class MotorInsuranceQuoteForm extends React.Component{
             let res = this.state.res
             res["premium"]=response.data
             res["status"]="error"
-            res["message"]=response.error
+            res["message"]=`error ${response.error}`
             this.setState({
                 res,
                 showSnackBar: true,
-                loading: false,
+                BackDrop: false,
+            })
+        }else{
+            let res = this.state.res
+            res["premium"]=response.data
+            res["status"]="error"
+            res["message"]=`error ${response.error}`
+            this.setState({
+                res,
+                showSnackBar: true,
+                BackDrop: true,
             })
         }
     }
 
     vehicleOnChangeListener=(event)=>{
         const vehicle = this.state.vehicle
-        const name = event.target.id
+        let name = event.target.id
+        if (name === undefined){
+            name = event.target.name
+        }
         const value = event.target.value
         
         vehicle[name]=value
@@ -105,6 +121,18 @@ class MotorInsuranceQuoteForm extends React.Component{
             vehicle,
         })
         
+    }
+
+    insuranceChangeListener=(event)=>{
+        const vehicle = this.state.vehicle
+        let name = event.target.name
+        const value = event.target.value
+        
+        vehicle[name]=value
+
+        this.setState({
+            vehicle,
+        })
     }
 
     userOnChangeListener=(event)=>{
@@ -145,11 +173,15 @@ class MotorInsuranceQuoteForm extends React.Component{
                         user={this.state.user}
                         userOnChangeListener={this.userOnChangeListener}
                     />
-                    
                     <VehicleDetails 
                         vehicle={this.state.vehicle}
                         vehicleOnChangeListener={this.vehicleOnChangeListener}
                     />
+                    <InsuranceDetails 
+                        vehicle={this.state.vehicle}
+                        insuranceChangeListener={this.insuranceChangeListener}
+                    />
+
                     <Card variant="outlined" className="request-button">
                         <Button 
                             variant="contained" 
@@ -157,16 +189,19 @@ class MotorInsuranceQuoteForm extends React.Component{
                             onClick={this.requestQuotation}
                         >
                             Request
+                            
                         </Button>
                     </Card>
                     </div>
                        
                 </div>
+                <Backdrop open={this.state.BackDrop}/>
                 <SnackBar 
                     status={this.state.res.status} 
                     message={this.state.res.message} 
                     show={this.state.showSnackBar}
                 />
+               
             </Drawer>
         )
     }

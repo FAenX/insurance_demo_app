@@ -20,7 +20,7 @@ class OptionalBenefits extends React.Component {
     render(){
         const options = ["AA Membership/road rescue", "Political violence", "excess protector", "Forced ATM withdrawal"]
 
-        return(<Paper className="q-content" variant="outlined" id="optional-benefits">
+        return(<Paper className="q-content sliding-effect" variant="outlined" id="optional-benefits">
                 <div className="q-content-sub" variant="outlined">
                     <p>Optional Benefits </p>
                     <p>(Any optional benefit selected means additional premium)</p>                
@@ -64,7 +64,7 @@ class OptionalBenefits extends React.Component {
                 />
                 </ListItem>
                 {/* courtesy car option */}
-            <FormControl  className="">
+            <FormControl  className="sliding-effect">
                 <InputLabel>
                 Select Courtesy Car Option
                 </InputLabel>
