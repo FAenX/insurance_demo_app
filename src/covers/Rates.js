@@ -3,7 +3,6 @@ import {withRouter} from "react-router-dom"
 import QuoteForm from "./QuoteForm"
 import {Paper, Button} from "@material-ui/core"
 import Filter9PlusIcon from '@material-ui/icons/Filter9Plus';
-import LoaderButton from "../helpers/LoaderButton";
 import SnackBar from "../components/SnackBar"
 import SelectDialog from "../helpers/selectDialog"
 
@@ -126,14 +125,14 @@ class Rates extends React.Component {
                             show={this.state.showSnackBar}
                         />
 
-                        <LoaderButton 
+                        <Button 
                             status={this.state.status}
                             loading={this.state.loading} 
                             handleButtonClick={this.requestQuotation} 
                             disabled={!this.validateForm()}                           
                         >
                             Request
-                        </LoaderButton>
+                        </Button>
                        </div> 
                     </div>
                 </div>

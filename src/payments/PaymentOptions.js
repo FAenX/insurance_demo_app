@@ -5,7 +5,8 @@ import mastercard from "../assets/images/mastercard.png"
 import paypall from "../assets/images/download.jpeg"
 import crediCartPlaceHolder from "../assets/images/creditcardplaceholder.gif"
 import {withRouter} from "react-router-dom"
-import LoaderButton from "../helpers/LoaderButton"
+import {Button} from "@material-ui/core"
+
 
 class PaymentOptions extends React.Component {
     constructor(props){
@@ -88,9 +89,9 @@ class PaymentOptions extends React.Component {
                     <li>You will receive a confirmation SMS from MPESA</li>
 
             </ol>
-            <LoaderButton variant="primary" type="submit"  id="mpesa" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
+            <Button variant="primary" type="submit"  id="mpesa" isLoading={this.state.isLoading} onClick={this.handleSubmit}>
                 proceed
-            </LoaderButton>
+            </Button>
             </div>
 
         let cardPaymentOption = <div className="mastercard">
@@ -142,9 +143,9 @@ class PaymentOptions extends React.Component {
                 </div>
             </div>
             <div>
-            <LoaderButton variant="primary" type="submit" id="mastercard" disabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.handleSubmit}>
+            <Button variant="primary" type="submit" id="mastercard" disabled={!this.validateForm()} isLoading={this.state.isLoading} onClick={this.handleSubmit}>
                 proceed
-            </LoaderButton>
+            </Button>
             </div>
             </div>
         

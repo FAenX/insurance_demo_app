@@ -61,14 +61,15 @@ body {
   text-align: center;
   .MuiFab-primary{
     background-color: $color_2;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
   }
   .MuiBackdrop-root{
     //z-index: -1;
   }
   .MuiSvgIcon-colorPrimary{
     color: $color_1;
+    font-size: 1.5em;
   }
   .MuiListItemIcon-root{
     color: $color_2;
@@ -92,44 +93,36 @@ body {
 }
 
 .next-arrow{
+  @include flex-col();
+  align-items: flex-end;
   position: fixed;
-  top: 12em;
+  top: 16em;
   right: 0;
   z-index: 1299;  
   margin: 1em;
   margin-bottom: 12em;
-  .MuiSvgIcon-colorPrimary {
-    
-    font-size: 2em;
-  }
 }
 
 
 .get-started-button{
+  @include flex-col();
+  align-items: flex-end;
   z-index: 1299;
   position: fixed;
-  top: 4em;
+  top: 10em;
   right: 0;
   margin:1em;
- 
-
-  .MuiSvgIcon-colorPrimary{
-    
-    font-size: 2em;
-  }
 
 } 
 
 .free-quotation-button{
+  @include flex-col();
+  align-items: flex-end;
   position: fixed;
-  top: 8em;
+  top: 4em;
   right: 0;
   margin:1em;
   z-index: 1299;
-  
-  .MuiSvgIcon-colorPrimary{    
-    font-size: 2em;
-  }
 
 } 
 
