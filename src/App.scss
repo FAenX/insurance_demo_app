@@ -73,6 +73,9 @@ body {
   .MuiListItemIcon-root{
     color: $color_2;
   }
+  .MuiAppBar-colorPrimary{
+    background-color: $color_1;
+  }
 }
 
 .next-arrow{
@@ -262,6 +265,26 @@ body {
   @include fullscreen();
   color: $white;
   background-color: $color_1;
+  .MuiList-root{
+    margin-top: 5em;
+  }
+  .close-btn-wrapper {
+    @include flex-row();
+    width: 100%;    
+    background-color: $color_1;
+    justify-content: space-between;  
+    padding: 1em; 
+    .appbar-title{
+      font-size: 1.5rem;
+    }
+    .close-btn{
+      border: .05em solid $color_2;
+    } 
+    .MuiSvgIcon-colorPrimary{
+      color: $color_2;
+      font-size: 2.5em;
+    }    
+  }
 }
 
 .closebtn {
@@ -876,6 +899,13 @@ body {
   .signin-form-wrapper{
     padding: 1em;
     text-align: left;
+    .signin-button{
+      @include flex-col();
+      align-items: baseline;
+      button{
+        margin-top: 1em;
+      }
+    }
 
   }
 }

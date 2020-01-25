@@ -147,30 +147,34 @@ class SignUp extends React.Component {
             <div className="signup-wrapper">
                 <BackDrop open={this.state.backdrop}/>
                     <div>{alert}</div>
-                    <div className="headline-text">
+                    <div className="headline-text sliding-effect">
                         Sign Up
                     </div>
                     <div className="signup-form-wrapper">
                         <Form>
-                            <Form.Group controlId="formBasicEmail">
+                            <Form.Group 
+                                controlId="formBasicEmail"
+                                className="sliding-effect"
+                            >
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control type="email" placeholder="Enter email" onChange={this.handleEmailChange}/>
                                 <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group className="sliding-effect">
                             <Form.Label>First name</Form.Label>
                             <Form.Control placeholder="First name" onChange={this.handleFirstNameChange}/>
                             <Form.Label>Last name</Form.Label>
                             <Form.Control placeholder="Last name" onChange={this.handleLastNameChange}/>
                             </Form.Group>
-                            <Form.Group controlId="formBasicPassword">
+                            <Form.Group controlId="formBasicPassword" className="sliding-effect10s">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" onChange={this.handlePasswordChange}/>
                             </Form.Group>
                             <Button 
                                 type="submit" 
+                                className="sliding-effect10s"
                                 onClick={this.submitForm}>
                                 Submit
                             </Button> 

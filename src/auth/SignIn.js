@@ -98,6 +98,9 @@ class SignIn extends React.Component {
     validateForm = ()=>{
         return this.state.userEmail !== "" && this.state.userPassword !== "";
     }
+    signUp=()=>{
+        this.props.history.push("/signup")
+    }
 
     render(){
         
@@ -111,12 +114,12 @@ class SignIn extends React.Component {
                     show={this.state.SnackBar}
                 />
                 <div>{alert}</div>
-                <div className="headline-text">
+                <div className="headline-text sliding-effect">
                     Sign In
                 </div>
                 <div className="signin-form-wrapper">
                     <Form>
-                        <Form.Group controlId="formBasicEmail">
+                        <Form.Group controlId="formBasicEmail" className="sliding-effect">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control 
                                 type="email" 
@@ -129,25 +132,38 @@ class SignIn extends React.Component {
                         </Form.Group>
 
                         <Form.Group 
-                            controlId="formBasicPassword">
+                            controlId="formBasicPassword" className="sliding-effect">
                             <Form.Label>Password</Form.Label>
                             <Form.Control 
                                 type="password" 
                                 placeholder="Password" 
                                 onChange={this.handlePasswordChange}/>
                         </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox">
+                        <Form.Group controlId="formBasicCheckbox" className="sliding-effect8s">
                             <Form.Check 
                                 type="checkbox" 
-                                label="Check me out" />
+                                label="Check me out" 
+                            />
                         </Form.Group>
                         <div className="signin-button">
                         <Button 
                             type="submit" 
-                            onClick={this.submitForm}>
+                            variant="outlined" 
+                            color="primary" 
+                            onClick={this.submitForm}
+                            className="sliding-effect10s"
+                        >
                             Submit
                         </Button> 
-                        <p>Create account</p>
+                        <Button 
+                            type="submit" 
+                            variant="outlined" 
+                            color="primary" 
+                            className="sliding-effect10s"
+                            onClick={this.signUp}
+                        >
+                            Create account
+                        </Button>
                         </div>
                     </Form>
                 </div>
