@@ -6,7 +6,7 @@ import MotorInsuranceButton from "../../components/MotorInsuranceButton"
 import DashMenu from "./DashMenu"
 import PaymentHistory from "./components/PaymentHistory"
 import InsuranceCovers from "./components/InsuranceCovers"
-import DashCarousel from "./components/DashCarousel"
+
 
 
 
@@ -14,8 +14,6 @@ class Dashboard extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            paymentHistory: {},
-            insuranceCovers: {},
             active: "profile",
         }
     }
@@ -27,18 +25,32 @@ class Dashboard extends React.Component {
         return this.state.active
     }
 
+    changeListener=(active)=>{
+        this.setState({
+            active, 
+        })
+    }
+
     render(){
-        const profile = <Profile />
-        const paymentHistory = <PaymentHistory />
-        const insuranceCovers = <InsuranceCovers />
+       
+
+        const cards = {
+            profile: <Profile />,
+            paymentHistory: <PaymentHistory />,
+            insuranceCovers: <InsuranceCovers />
+
+        }
+        const active = cards[this.state.active]
+
+
 
         return(
             <div className="dashboard">
                 <FreeQuotationButton />
                 <MotorInsuranceButton /> 
                 <div className="dashboard-wrapper">
-                <DashMenu />
-                <DashCarousel />
+                <DashMenu changeListener={this.changeListener}/>
+                {active}
                 </div>
             </div>
         )

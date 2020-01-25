@@ -1,8 +1,8 @@
 import React from "react"
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import Card from "@material-ui/core/Card"
-import {Select, MenuItem, InputLabel, Menu} from "@material-ui/core"
+import {Paper, Card}from "@material-ui/core"
+import {Select, MenuItem, InputLabel} from "@material-ui/core"
 
 class VehicleDetails extends React.Component{
 
@@ -23,10 +23,11 @@ class VehicleDetails extends React.Component{
 
         ]
         return(
-            <div className="swipeable-quote-form-form">
-                <div className="swipeable-quote-form-sub-header">Vehicle details</div>
-                <Card variant="outlined" className="swipeable-quote-form-content">
-                    <FormControl variant="outlined" className="form-controls">
+            <Paper variant="elevated" elevation={3} className="swipeable-quote-form-form">
+                
+                <div className="swipeable-quote-form-content">
+                <div className="swipeable-quote-form-sub-header sliding-effect">Vehicle details</div>
+                    <FormControl variant="outlined" className="form-controls sliding-effect">
                         <InputLabel  >
                             Vehicle use
                         </InputLabel>
@@ -47,7 +48,7 @@ class VehicleDetails extends React.Component{
                         </Select>
                     </FormControl>
 
-                    <FormControl className="form-controls">
+                    <FormControl className="form-controls sliding-effect">
                     <TextField 
                         id="vehicleMake" 
                         label="Vehicle make"
@@ -57,7 +58,7 @@ class VehicleDetails extends React.Component{
                     />
                     </FormControl>
                    
-                    <FormControl className="form-controls">
+                    <FormControl className="form-controls sliding-effect">
                     <TextField 
                         id="vehicleModel" 
                         label="Crown"
@@ -66,7 +67,7 @@ class VehicleDetails extends React.Component{
                         helperText="Vehicle model"
                     />
                     </FormControl>
-                    <FormControl className="form-controls">
+                    <FormControl className="form-controls sliding-effect8s">
                     <TextField 
                         id="vehicleValue" 
                         label="1,400,000"
@@ -75,7 +76,7 @@ class VehicleDetails extends React.Component{
                         helperText="Vehicle Value"
                     />
                     </FormControl>
-                    <FormControl className="form-controls">
+                    <FormControl className="form-controls sliding-effect10s">
                     <TextField 
                         id="yearOfManufacture" 
                         label="2020"
@@ -85,8 +86,8 @@ class VehicleDetails extends React.Component{
                     />
                     </FormControl>
                     
-                </Card>
-            </div>
+                </div>
+            </Paper>
         )
     }
 }

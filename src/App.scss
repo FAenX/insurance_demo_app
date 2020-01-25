@@ -124,61 +124,68 @@ body {
 
 //motor insurance form 
 .swipeable-quote-form {
-  width: 80vw;
+  width: 100vw;
   @include flex-col();
+  background-image: linear-gradient(to top, $color_1, $color_3);
   align-items: baseline;
-  margin: .5em;
-
+  
   .request-button{
     @include flex-col();
     width: 95%;
     margin: 1em;
     padding: 1em;
-
     .MuiButton-containedPrimary{
       background-color: $color_2;
       width: 15em;
     }
   }
-
   .swipeable-quote-form-sub-header{
     font-size: 1.5em;
     text-transform: capitalize;
+    margin-bottom: 1em;
   }
-
   .close-btn-wrapper {
     @include flex-row();
-    width: 100%;
-    justify-content: flex-end; 
-  
+    width: 100%;    
+    background-color: $color_1;
+    justify-content: space-between;  
+    padding: 1em; 
+    .appbar-title{
+      font-size: 1.5rem;
+    }
     .close-btn{
       border: .05em solid $color_2;
     } 
-
     .MuiSvgIcon-colorPrimary{
       color: $color_2;
-      font-size: 2em;
-    }
-    
+      font-size: 2.5em;
+    }    
   }
-
-  .swipeable-quote-form-form{
+  .form{
     @include flex-col();
     width: 100%;
-    align-items: flex-start;
+    margin-top: 6em;
+    padding: 1em;
 
-    .swipeable-quote-form-content{
+    .swipeable-quote-form-form{
       @include flex-col();
       width: 100%;
+     
       padding: 1em;
-
-      //form controls
-    .form-controls {
-      width: 15em;
-      height: 6em;
-    }
+      margin-bottom: 1em;
+      .swipeable-quote-form-content{
+        @include flex-col();
+        width: 100%;
+        padding: 1em;
+        //form controls
+      .form-controls {
+        width: 15em;
+        height: 6em;
+      }
+      }
     }
   }
+  
 }
 
 
@@ -905,16 +912,7 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     overflow-y: scroll;
-    .dashcarousel{
-      width: 100%;
-      height: 100%;
-      .carousel{
-        height: 100%;
-        .slider-wrapper{
-          height: 100%;
-        }
-      }
-    }
+    
     .profile{
       @include flex-col();
       width: 100%;

@@ -52,6 +52,14 @@ class DashMenu extends React.Component {
             open: false,
         })
     };
+    handleClick=(event)=>{
+        event.preventDefault();
+        console.log(this.props)
+        console.log(this.state)
+        console.log(event.target.id)
+        
+        this.props.changeListener(event.target.id)
+    }
 
     render(){
         
@@ -105,20 +113,20 @@ class DashMenu extends React.Component {
                     </div>
                     <hr className="divider"></hr>
                     <List>
-                    <ListItem button>
+                    <ListItem button id="profile" onClick={this.handleClick}>
                         <ListItemIcon>
                             <AccountCircleIcon />
                         </ListItemIcon>
                         <ListItemText primary="Account" />
                     </ListItem>
-                    <ListItem button>
-                    <ListItemIcon>
-                        <AttachMoneyIcon />
-                    </ListItemIcon>
+                    <ListItem button id="paymentHistory" onClick={this.handleClick}>
+                        <ListItemIcon>
+                            <AttachMoneyIcon />
+                        </ListItemIcon>
                         <ListItemText primary="Payment history" />
                     </ListItem>
                     
-                    <ListItem button>
+                    <ListItem button id="insuranceCovers" onClick={this.handleClick}>
                     <ListItemIcon>
                         <SecurityIcon />
                     </ListItemIcon>

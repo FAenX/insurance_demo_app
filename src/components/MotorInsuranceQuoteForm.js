@@ -1,8 +1,8 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
 import Drawer from '@material-ui/core/SwipeableDrawer';
-import CloseIcon from '@material-ui/icons/Close';
-import {Button} from "@material-ui/core"
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
+import {Button, AppBar} from "@material-ui/core"
 import VehicleDetails from "./VehicleDetails"
 import PersonalDetails from "./PersonalDetails"
 import Card from "@material-ui/core/Card"
@@ -132,13 +132,15 @@ class MotorInsuranceQuoteForm extends React.Component{
                 <div  
                     className="swipeable-quote-form" 
                 >
-                    <div className="close-btn-wrapper" 
+                    <AppBar className="close-btn-wrapper" 
                         onClick={this.props.toggleDrawer(false)}
                     >
                         <div className="close-btn">
-                            <CloseIcon color="primary" />
+                            <MenuOpenIcon color="primary" />
                         </div>
-                    </div>
+                        <div className="sliding-effect appbar-title">Request Quotation</div>
+                    </AppBar>
+                    <div className="form">
                     <PersonalDetails 
                         user={this.state.user}
                         userOnChangeListener={this.userOnChangeListener}
@@ -157,6 +159,7 @@ class MotorInsuranceQuoteForm extends React.Component{
                             Request
                         </Button>
                     </Card>
+                    </div>
                        
                 </div>
                 <SnackBar 

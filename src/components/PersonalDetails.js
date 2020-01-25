@@ -1,16 +1,17 @@
 import React from "react"
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import Card from "@material-ui/core/Card"
+import { Paper, Card } from "@material-ui/core"
 
 class PersonalDetails extends React.Component{
 
     render(){
         return(
-            <div className="swipeable-quote-form-form">
-                <div className="swipeable-quote-form-sub-header">Personal details</div>
-                <Card variant="outlined" className="swipeable-quote-form-content">
-                    <FormControl className="form-controls">
+            <Paper variant="elevated" elevation={3} className="swipeable-quote-form-form">
+                
+                <div variant="outlined" className="swipeable-quote-form-content">
+                <div className="swipeable-quote-form-sub-header sliding-effect8s">Personal details</div>
+                    <FormControl className="form-controls sliding-effect">
                     <TextField 
                         id="name" 
                         label="John Doe"
@@ -19,7 +20,7 @@ class PersonalDetails extends React.Component{
                         helperText="Full Name"
                     />
                     </FormControl>
-                    <FormControl className="form-controls">
+                    <FormControl className="form-controls sliding-effect">
                     <TextField 
                         id="phone" 
                         label="07xx 5xx 6xx"
@@ -28,7 +29,7 @@ class PersonalDetails extends React.Component{
                         helperText="Mobile Number"
                     />
                     </FormControl>
-                    <FormControl className="form-controls">
+                    <FormControl className="form-controls sliding-effect8s">
                     <TextField 
                         id="email" 
                         label="email@example.com"
@@ -37,7 +38,7 @@ class PersonalDetails extends React.Component{
                         helperText="Email Address"
                     />
                     </FormControl>
-                    <FormControl className="form-controls">
+                    <FormControl className="form-controls sliding-effect10s">
                     <TextField 
                         id="location" 
                         label="Nairobi"
@@ -47,8 +48,8 @@ class PersonalDetails extends React.Component{
                     />
                     </FormControl>
                     
-                </Card>
-            </div>
+                </div>
+            </Paper>
         )
     }
 }
