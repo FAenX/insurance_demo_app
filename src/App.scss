@@ -749,6 +749,7 @@ body {
   @include flex-col();
   margin-top: 4em;
   .quotation-body-wrapper{
+    background-image: linear-gradient(to bottom, $color_1, $color_3);
     .product-title{
       @include flex-col();
       font-size: 1.5em;
