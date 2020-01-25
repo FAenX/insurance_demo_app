@@ -34,7 +34,14 @@ class Quotation extends React.Component {
         let products = JSON.parse(sessionStorage.getItem("products"))[0].products
         let chosenProduct = filterByAlias(products, vehicle.cover)
         
-        const user = JSON.parse(sessionStorage.getItem("user"))
+        let user = JSON.parse(sessionStorage.getItem("user"))
+        if (user==null ||
+            user===undefined ||
+            Object.keys(user).length < 1
+            ){
+                user = JSON.parse(sessionStorage.getItem("temp_user"))
+            }
+
         return(
             <div className="quotation-page-wrapper"> 
             <FreeQuotationButton />

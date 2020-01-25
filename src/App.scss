@@ -129,6 +129,7 @@ body {
 //motor insurance form 
 .swipeable-quote-form {
   width: 100vw;
+  //overflow-x: hidden;
   @include flex-col();
   background-image: linear-gradient(to top, $color_1, $color_3);
   align-items: baseline;
@@ -748,6 +749,8 @@ body {
 .quotation-page-wrapper {
   @include flex-col();
   margin-top: 4em;
+  width: 100vw;
+  overflow: hidden;
   .quotation-body-wrapper{
     background-image: linear-gradient(to bottom, $color_1, $color_3);
     .product-title{
