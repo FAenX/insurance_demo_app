@@ -40,20 +40,20 @@ $warning_color: #cc9c00;
 
 .sliding-effect{
   position: relative;
-  animation: righttoleft 6s;
+  animation: righttoleft .5s;
   position: relative; 
 }
 
 
 .sliding-effect8s{
   position: relative;
-  animation: righttoleft 8s;
+  animation: righttoleft 1s;
   position: relative; 
 }
 
 .sliding-effect10s{
   position: relative;
-  animation: righttoleft 8s;
+  animation: righttoleft 2s;
   position: relative; 
 }
 
@@ -752,7 +752,7 @@ body {
   width: 100vw;
   overflow: hidden;
   .quotation-body-wrapper{
-    background-image: linear-gradient(to bottom, $color_1, $color_3);
+    background-image: linear-gradient(to top, $color_1, $color_3);
     .product-title{
       @include flex-col();
       font-size: 1.5em;
