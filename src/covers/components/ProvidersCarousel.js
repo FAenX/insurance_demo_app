@@ -10,6 +10,10 @@ import Jubilee from "../../assets/images/jubilee.png"
 import Apa from "../../assets/images/apa.png"
 import Heritage from "../../assets/images/partners-heritage.png"
 
+const jp = "(+15yrs Special) Jubilee Motor"
+const ap = "(+15yrs Special) APA Motor"
+const hp = "(+15yrs Special) Heritage"
+
 
 class ProvidersCarousel extends React.Component {
     render() {
@@ -31,6 +35,7 @@ class ProvidersCarousel extends React.Component {
                         chosenProduct={this.props.chosenProduct} 
                         premium={this.props.premium}
                         image = {Jubilee}
+                        jp={jp}
                     />             
                 </div>
 
@@ -39,6 +44,7 @@ class ProvidersCarousel extends React.Component {
                         chosenProduct={this.props.chosenProduct} 
                         premium={this.props.premium}
                         image = {Apa}
+                        jp = {ap}
                     />               
                 </div>
 
@@ -47,6 +53,7 @@ class ProvidersCarousel extends React.Component {
                         chosenProduct={this.props.chosenProduct} 
                         premium={this.props.premium}
                         image={Heritage}
+                        jp = {hp}
                     />                    
                 </div>
                 

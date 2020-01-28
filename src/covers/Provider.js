@@ -92,12 +92,24 @@ class Provider extends React.Component {
     render(){
         return(<div  id="provider-details">
             <Paper variant="outlined" className="provider">
-                <div className="q-content-sub">(+15yrs Special) Jubilee Motor Private Third party Cover</div>
+                <div className="q-content-sub">
+                    {this.props.jp} {this.props.chosenProduct.name}
+                </div>
                 <hr className="divider"></hr>
                 <img alt="" src={this.props.image} />                 
-                <Button id="premium-button">KSH: {this.props.premium}</Button>
+                <Button 
+                    id="premium-button"
+                    variant="outlined"
+                >
+                    KSH: {this.props.premium}
+                </Button>
                 <hr className="divider"></hr>
-                <Button id="buy-button" variant="contained">Buy</Button>                
+                <Button 
+                    id="buy-button" 
+                    variant="contained"
+                >
+                    Buy
+                </Button>                
                 <Button 
                     id="details-button" 
                     variant="outlined"
