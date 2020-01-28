@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import {CalendarToday} from "@material-ui/icons"
 
 
 class OptionalBenefits extends React.Component {
@@ -20,21 +21,26 @@ class OptionalBenefits extends React.Component {
     render(){
         const options = ["AA Membership/road rescue", "Political violence", "excess protector", "Forced ATM withdrawal"]
 
-        return(<Paper className="q-content sliding-effect" variant="outlined" id="optional-benefits">
+        return(<Paper className="q-content " variant="outlined" id="optional-benefits">
                 <div className="q-content-sub" variant="outlined">
                     <p>Optional Benefits </p>
                     <p>(Any optional benefit selected means additional premium)</p>                
                 </div>
                 <hr className="divider"></hr>  
                  {/*ooptional benefits */}
-                 <div className="optional-benefits-listitems">
-            <List >
+        
+            <List  className="optional-benefits-listitems">            
             {options.map(value => {
             const labelId = `checkbox-list-label-${value}`;
 
             return(
                
-                <ListItem key={value} dense  button  onClick={this.handleSelect}>
+                <ListItem 
+                    key={value}  
+                    button  
+                    onClick={this.handleSelect}
+                    className="list-item"
+                >
                 <ListItemIcon>
                 <Checkbox
                     checked={false}
@@ -50,21 +56,17 @@ class OptionalBenefits extends React.Component {
             
                 )})}
             
-            <ListItem dense onClick={this.handleSelect} >
+            <ListItem onClick={this.handleSelect} >
                 <ListItemIcon>
-                <Checkbox
-                    edge="start"
-                    checked={false}
-                    tabIndex=""
-                    disableRipple
-                />
+                <CalendarToday />
+                
                 </ListItemIcon>
                 <ListItemText 
                     primary="Select Courtesy Car Option"
                 />
                 </ListItem>
                 {/* courtesy car option */}
-            <FormControl  className="sliding-effect">
+            <FormControl>
                 <InputLabel>
                 Select Courtesy Car Option
                 </InputLabel>
@@ -80,7 +82,6 @@ class OptionalBenefits extends React.Component {
                 </Select>
             </FormControl>
             </List>
-            </div>
         </Paper>
         )
     }
