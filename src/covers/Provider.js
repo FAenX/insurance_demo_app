@@ -1,7 +1,6 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
 import {Paper, Button, ListItem} from "@material-ui/core"
-import Jubilee from "../assets/images/jubilee.png"
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -64,7 +63,7 @@ class ProviderRates extends React.Component {
                     })}
                 >
                 <Paper variant="outlined" className="q-content" id="insurance-details">   
-                <ListItem button>Cover: <b>Cover Name</b></ListItem> 
+                <ListItem button>Cover: <b>{this.props.chosenProduct.name}</b></ListItem> 
                 <hr className="divider"></hr> 
                 <ListItem button>Cover to start from: <b>date</b></ListItem>
                 <hr className="divider"></hr>
@@ -95,7 +94,7 @@ class Provider extends React.Component {
             <Paper variant="outlined" className="provider">
                 <div className="q-content-sub">(+15yrs Special) Jubilee Motor Private Third party Cover</div>
                 <hr className="divider"></hr>
-                <img alt="" src={Jubilee} />                 
+                <img alt="" src={this.props.image} />                 
                 <Button id="premium-button">KSH: {this.props.premium}</Button>
                 <hr className="divider"></hr>
                 <Button id="buy-button" variant="contained">Buy</Button>                
@@ -109,7 +108,11 @@ class Provider extends React.Component {
 
             </Paper>
             
-            <ProviderRates premium={this.props.premium} show={this.state.showDetails}/>
+            <ProviderRates 
+                premium={this.props.premium} 
+                show={this.state.showDetails}
+                chosenProduct={this.props.chosenProduct}
+            />
         </div>
             
             

@@ -7,6 +7,7 @@ import Vehicle from "./Vehicle"
 import FreeQuotationButton from "../components/FreeQuotationButton"
 import GetStartedButton from "../components/GetStartedButton"
 import {filterByAlias} from "../helpers/js/dataManipulation"
+import ProvidersCarousel from "./components/ProvidersCarousel"
 
 class Quotation extends React.Component {
     constructor(props){
@@ -67,10 +68,13 @@ class Quotation extends React.Component {
                                         <OptionalBenefits 
                                             premium={response.premium}
                                         />
-                                        <Prodiver 
-                                            //chosenProduct={chosenProduct} 
+                                        
+                                        <ProvidersCarousel 
+                                            chosenProduct={chosenProduct} 
                                             premium={response.premium}
-                                        /> 
+                                        />
+                                        
+                                        
                                     </div>                                                
                                 </div>
                             </div>                     

@@ -811,7 +811,7 @@ body {
       @include flex-col();
       @include sliding-effect2s();
       font-size: 2em;
-      margin: 1em;
+      margin: .5em;
       color: $white;
     }
     .quotation-wrapper {  
@@ -829,13 +829,13 @@ body {
           font-size: 2.5em; 
         }  
         #quotation-content{
-          
           @include flex-col();              
           text-align:left;
           padding: 1em;
-          font-size: 1em;  
+          font-size: 1em;
+          width: 95%;           
           #vehicle-details{
-            padding: 1em;
+            width: 100%;
             @include sliding-effect1s(); 
           } 
           .q-content{
@@ -847,6 +847,7 @@ body {
             margin: 1em;
             background-color: $color_1;
             color: $white;
+            width: 100%;            
             .optional-benefits-listitems{
               @include flex-col();
               .list-item{

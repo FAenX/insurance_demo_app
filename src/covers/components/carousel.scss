@@ -1,0 +1,45 @@
+$color_2: rgb(255, 81, 0);
+$color_1: #002329;
+@mixin flex-col{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+.providers-carousel{
+    width: 100%; 
+    padding: 0;
+    .carousel{
+        .control-arrow{
+            padding: 1px;
+            margin: 0;   
+            @include flex-col();              
+        }
+        .control-arrow:hover{
+            background: none;
+        }
+        
+        .control-prev::before{
+            border-right: 20px solid $color_1;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            margin: 5px 5px;
+        }
+        .control-next::before{
+            border-left: 20px solid $color_1;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            margin: 5px 5px;
+        }
+        .slide{
+            background: inherit;
+        }
+    }
+    
+    
+    
+    
+    
+}
