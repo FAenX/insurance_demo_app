@@ -34,7 +34,7 @@ class Benefits extends React.Component {
             this.createData('windscreen damage', 50000),          
           ];
         return(
-                <TableContainer className="table-container sliding-effect" component={Paper}>
+                <TableContainer className="table-container " component={Paper}>
                     <Table className="">
                         <TableHead>
                         <TableRow>
@@ -61,7 +61,7 @@ class Benefits extends React.Component {
 class ProviderRates extends React.Component {
 
     render(){
-        return(<div className="provider-rates sliding-effect">
+        return(<div className="provider-rates ">
             <Paper variant="outlined" className="q-content" id="insurance-details">   
             <ListItem button>Cover: <b>Cover Name</b></ListItem> 
             <hr className="divider"></hr> 

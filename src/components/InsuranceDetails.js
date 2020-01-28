@@ -12,13 +12,19 @@ class InsuranceDetails extends React.Component{
     }
 
     render(){
+        const error=(value)=>{
+            if (value.length < 1){
+                return true
+            }
+            return false
+        }
         
         const products=JSON.parse(sessionStorage.getItem("products"))[0].products
         return(
             <Paper variant="elevation" elevation={3} className="swipeable-quote-form-form">
                 <div className="swipeable-quote-form-content">
-                <div className="swipeable-quote-form-sub-header sliding-effect">Select Insurance Cover</div>
-                <FormControl variant="outlined" className="form-controls sliding-effect">
+                <div className="swipeable-quote-form-sub-header ">Select Insurance Cover</div>
+                <FormControl variant="outlined" className="form-controls">
                         <InputLabel  >
                             Insurance Cover
                         </InputLabel>
@@ -27,6 +33,7 @@ class InsuranceDetails extends React.Component{
                             value={this.props.vehicle.cover}
                             onChange={this.props.insuranceChangeListener}
                             labelWidth={120}
+                            error={error(this.props.vehicle.cover)}
                         >
                         <MenuItem value="">
                             <em>None</em>

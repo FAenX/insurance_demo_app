@@ -11,9 +11,9 @@ class SignIn extends React.Component {
         this.state={
             userEmail: "",
             userPassword: "",          
-            style: {
-                response: "",
-                data: ""
+            response: {
+                message: "",
+                status: ""
             },
             creds: {},
             isLoading: false,
@@ -25,6 +25,12 @@ class SignIn extends React.Component {
 
     componentDidMount =()=>{
         
+    }
+
+    onCloseSnackBar=()=>{
+        this.setState({
+            snackBar: false
+        })
     }
 
     async submitForm (event) {
@@ -49,13 +55,19 @@ class SignIn extends React.Component {
             Object.keys(res).length > 1)
         {
             sessionStorage.setItem("tokens", JSON.stringify(res))
+            let response = this.state.response
+                response["status"]="success"
+                response["message"]="Successfully Logged in"                
+                this.setState({
+                    response,
+                    snackBar: true,
+                    backdrop: false
+                })
             setTimeout(()=>{
                 this.handleRedirectOnLogin()  
             }, 1000)
 
-            this.setState({
-                SnackBar: true,
-            }) 
+            
         }                        
                        
                                     
@@ -103,16 +115,17 @@ class SignIn extends React.Component {
     }
 
     render(){
-        
+        let alert = <SnackBar 
+                        status={this.state.response.status}
+                        message={this.state.response.message}
+                        show={this.state.snackBar}
+                        onClose={this.onCloseSnackBar}
+                    />
 
         return(
             <div className="signin-wrapper">
                 <Backdrop open={this.state.backdrop}/>
-                <SnackBar 
-                    variant="success" 
-                    message="Successfull"
-                    show={this.state.SnackBar}
-                />
+                
                 <div>{alert}</div>
                 <div className="headline-text sliding-effect">
                     Sign In

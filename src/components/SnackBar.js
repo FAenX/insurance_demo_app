@@ -19,16 +19,15 @@ class SnackbarContentWrapper extends React.Component{
 
   render(){
     let icon;
-    const error=(status)=>{
-      console.log(status)
-      if(status==="error"){
+    const error=(variant)=>{
+      if(variant==="error"){
         icon = <ErrorIcon />
         return true
       }
     }
 
-    const success =(status)=>{
-      if(status==="success"){
+    const success =(variant)=>{
+      if(variant==="success"){
         icon = <CheckCircleIcon />
         return true
       }

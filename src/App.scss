@@ -1,9 +1,9 @@
 $color_1: #002329;
 $color_2: rgb(255, 81, 0);
 $white: #ffffff;
-$success_color: #3F9811;
+$success_color: rgb(35, 105, 0);
 $color_3: #0023291f;
-$error_color: #ff0000;
+$error_color: #791200;
 $warning_color: #cc9c00;
 
 @keyframes righttoleft{
@@ -38,20 +38,20 @@ $warning_color: #cc9c00;
  overflow-x: hidden;
 }
 
-.sliding-effect{
+@mixin sliding-effect{
   position: relative;
   animation: righttoleft .5s;
   position: relative; 
 }
 
 
-.sliding-effect8s{
+@mixin sliding-effect1s{
   position: relative;
   animation: righttoleft 1s;
   position: relative; 
 }
 
-.sliding-effect10s{
+@mixin sliding-effect2s{
   position: relative;
   animation: righttoleft 2s;
   position: relative; 
@@ -92,11 +92,24 @@ body {
   }
 }
 
+.MuiSnackbar-root{
+  .success {
+    background-color: $success_color;
+  }
+  .error{
+    background-color: $error_color;
+  }
+  .warning {
+    background-color: $warning_color;
+  }
+}
+
+
 .next-arrow{
   @include flex-col();
   align-items: flex-end;
   position: fixed;
-  top: 16em;
+  top: 12em;
   right: 0;
   z-index: 1299;  
   margin: 1em;
@@ -109,7 +122,7 @@ body {
   align-items: flex-end;
   z-index: 1299;
   position: fixed;
-  top: 10em;
+  top: 8em;
   right: 0;
   margin:1em;
 
@@ -130,7 +143,7 @@ body {
   margin: 0em;
   padding: 0em;
   width: 100%;
-  background-color: $color_2
+  background-color: $color_2;
 }
 
 
@@ -138,7 +151,6 @@ body {
 //motor insurance form 
 .swipeable-quote-form {
   width: 100vw;
-  //overflow-x: hidden;
   @include flex-col();
   background-image: linear-gradient(to top, $color_1, $color_3);
   align-items: baseline;
@@ -146,6 +158,7 @@ body {
   
   .request-button{
     @include flex-col();
+    @include sliding-effect2s();
     width: 95%;
     margin: 1em;
     padding: 1em;
@@ -155,6 +168,7 @@ body {
     }
   }
   .swipeable-quote-form-sub-header{
+    @include sliding-effect1s();
     font-size: 1.5em;
     text-transform: capitalize;
     margin-bottom: 1em;
@@ -167,9 +181,11 @@ body {
     padding: 1em; 
     .appbar-title{
       font-size: 1.5rem;
+      @include sliding-effect1s();
     }
     .close-btn{
       border: .05em solid $color_2;
+      @include sliding-effect1s();
     } 
     .MuiSvgIcon-colorPrimary{
       color: $color_2;
@@ -196,6 +212,7 @@ body {
       .form-controls {
         width: 15em;
         height: 6em;
+        @include sliding-effect2s();
       }
       }
     }
@@ -225,8 +242,7 @@ body {
   z-index: 1;
 
   .App-header {
-    @include flex-row();
-    
+    @include flex-row();    
     background-color: $color_1;
     min-height: 5vh;
     width: 100vw;
@@ -261,6 +277,7 @@ body {
   .MuiSvgIcon-colorPrimary{
     font-size: 3em;
     color: $color_2;
+    @include sliding-effect2s();
   }
   
 } 
@@ -282,6 +299,7 @@ body {
     padding: 1em; 
     .appbar-title{
       font-size: 1.5rem;
+      @include sliding-effect2s();
     }
     .close-btn{
       border: .05em solid $color_2;
@@ -309,7 +327,6 @@ body {
 
 .nav-item {
   padding: 5px;
-
 }
 
 .nav-item:hover {
@@ -357,6 +374,7 @@ body {
     margin-bottom: 1em;
     font-weight: 400;
     font-size: 2em;
+    @include sliding-effect();
    
   }
   .headline-subtext {
@@ -371,9 +389,11 @@ body {
       
     }
     .home-carousel1{
+      @include sliding-effect();
       
     }
     .home-carousel2{
+      @include sliding-effect2s();
       
     }
     
@@ -454,6 +474,7 @@ body {
 .how-it-works-sub-header{
   @include flex-col();
   padding: 1.5em;  
+  @include sliding-effect();
 }
 
 .how-it-works-sub-header-text{
@@ -463,6 +484,7 @@ body {
   font-size: 2em;
   font-weight: 300;
   border-left: $color_2 .05em solid;
+  @include sliding-effect1s();
   
 }
 
@@ -928,15 +950,6 @@ body {
   .signup-form-wrapper{
     padding: 1em;
     text-align: left;
-  }
-  .success {
-    background-color: $success_color;
-  }
-  .error{
-    background-color: $error_color;
-  }
-  .warning {
-    background-color: $warning_color;
   }
 }
 

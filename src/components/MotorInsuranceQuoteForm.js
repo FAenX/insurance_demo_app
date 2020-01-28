@@ -2,7 +2,7 @@ import React from "react"
 import {withRouter} from "react-router-dom"
 import Drawer from '@material-ui/core/SwipeableDrawer';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import {Button, AppBar, Backdrop} from "@material-ui/core"
+import {Button, AppBar} from "@material-ui/core"
 import VehicleDetails from "./VehicleDetails"
 import PersonalDetails from "./PersonalDetails"
 import Card from "@material-ui/core/Card"
@@ -19,7 +19,8 @@ class MotorInsuranceQuoteForm extends React.Component{
         this.state = {
             //snackbar
             showSnackBar: false,
-            BackDrop: false,
+            //user
+            loggedIn: false,
 
             vehicle: {
                 
@@ -34,25 +35,44 @@ class MotorInsuranceQuoteForm extends React.Component{
                 tonnes: "",
             },
             user: {
-                first_name:"First name Last name",
-                last_name:"First name Last name",
-                email: "email@example.com",
-                phone: "0712 345 678",
-                location: "Nairobi"
+                first_name:"",
+                last_name:"",
+                email: "",
+                phone: "",
+                location: ""
             },
             res: {
-                premium: ""
+                premium: "",
+                status: "",
+                message: ""
             }
         }
 
         this.requestQuotation = this.requestQuotation.bind(this)
     }
 
-    async requestQuotation (){
-        this.setState({
-            BackDrop: true,
-        })
+    componentDidMount=()=>{
+        let user = JSON.parse(sessionStorage.getItem("user"))
+        if (
+            user !== null&&
+            user !== undefined &&
+            Object.keys(user).length > 1
+            ){
+           this.setState({
+               user,
+               loggedIn: true
+           })
+        }
+    }
 
+    //snackbar
+    onCloseSnackBar=()=>{
+        this.setState({
+            showSnackBar: false
+        })
+    }
+
+    async requestQuotation (){
         const url = "api/v1/quotes/quote/";
         const request =fetch(url, {
             method: 'POST',  
@@ -76,11 +96,14 @@ class MotorInsuranceQuoteForm extends React.Component{
             res["message"]="Request was sucessfull"
             
             this.setState({
-                showSnackBar: true,
-                BackDrop: false,
                 res,
+                showSnackBar: true,
             })
-            setTimeout(()=>{this.props.history.push("/quotation")}, 3000)
+            
+            setTimeout(()=>{
+                this.props.history.push("/quotation")
+                this.props.closeDrawer()
+            }, 1000)
             sessionStorage.setItem("temp_user", JSON.stringify(this.state.user))
             sessionStorage.setItem("vehicle", JSON.stringify(this.state.vehicle))
             sessionStorage.setItem("response", JSON.stringify(this.state.res))
@@ -148,16 +171,24 @@ class MotorInsuranceQuoteForm extends React.Component{
         })
         
     }
-
-
-   
     render(){
+        let alert = <SnackBar 
+                        status={this.state.res.status}
+                        message={this.state.res.message}
+                        show={this.state.showSnackBar}
+                        onClose={this.onCloseSnackBar}
+                    />
+        
+        
         return(
             <Drawer 
                 open={this.props.open}
+                // open={true}
                 onClose={this.props.toggleDrawer(false)}
                 onOpen={this.props.toggleDrawer(true)}
+                
             >
+                <div>{alert}</div>
                 <div  
                     className="swipeable-quote-form" 
                 >
@@ -167,12 +198,13 @@ class MotorInsuranceQuoteForm extends React.Component{
                         <div className="close-btn">
                             <MenuOpenIcon color="primary" />
                         </div>
-                        <div className="sliding-effect appbar-title">Request Quotation</div>
+                        <div className=" appbar-title">Request Quotation</div>
                     </AppBar>
                     <div className="form">
                     <PersonalDetails 
                         user={this.state.user}
                         userOnChangeListener={this.userOnChangeListener}
+                        loggedIn={this.state.loggedIn}
                     />
                     <VehicleDetails 
                         vehicle={this.state.vehicle}
@@ -196,12 +228,7 @@ class MotorInsuranceQuoteForm extends React.Component{
                     </div>
                        
                 </div>
-                <Backdrop open={this.state.BackDrop}/>
-                <SnackBar 
-                    status={this.state.res.status} 
-                    message={this.state.res.message} 
-                    show={this.state.showSnackBar}
-                />
+                
                
             </Drawer>
         )

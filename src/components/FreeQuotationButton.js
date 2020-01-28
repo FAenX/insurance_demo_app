@@ -12,9 +12,6 @@ class FreeQuotationButton extends React.Component{
          
           //drawer
           isOpen: false,
-    
-          //snackbar
-          open: false
         }
        
       }
@@ -25,13 +22,18 @@ class FreeQuotationButton extends React.Component{
         })
     }
 
-     //toggle drawer
-     toggleDrawer = (open) => event => {
-        if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        this.setState({ isOpen: open });
-    };
+    //toggle drawer
+  toggleDrawer = (open) => event => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+    }
+    this.setState({ isOpen: open });
+  };
+
+  closeDrawer = ()=> {
+    this.setState({ isOpen: false });
+  };
+
 
 
     render(){
@@ -40,6 +42,7 @@ class FreeQuotationButton extends React.Component{
                 <MotorInsuranceQuoteForm 
                     open={this.state.isOpen} 
                     toggleDrawer={this.toggleDrawer}
+                    closeDrawer={this.closeDrawer}
                 />
                 <Fab color="primary" aria-label="add">
                     <GetAppIcon 

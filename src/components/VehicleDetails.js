@@ -23,15 +23,24 @@ class VehicleDetails extends React.Component{
         ]
         let tonnes;
 
+        const error=(value)=>{
+            if (value.length < 1){
+                return true
+            }
+            return false
+        }
+
         if(this.props.vehicle.vehicleUse.startsWith("commercial")){
             tonnes= 
-                <FormControl variant="outlined" className="form-controls sliding-effect">
+                <FormControl variant="outlined" className="form-controls ">
                     <InputLabel>vehicle load capacity</InputLabel>
                     <Select
                         name="tonnes"
                         value={this.props.vehicle.tonnes}
                         onChange={this.props.vehicleOnChangeListener}
                         labelWidth={130}
+                        error={error(this.props.vehicle.tonnes)}
+
                     >
                     <MenuItem value="3">3 tonnes and less</MenuItem>
                     <MenuItem value="38">3-8 tonnes</MenuItem>
@@ -47,8 +56,8 @@ class VehicleDetails extends React.Component{
             <Paper variant="elevation" elevation={3} className="swipeable-quote-form-form">
                 
                 <div className="swipeable-quote-form-content">
-                <div className="swipeable-quote-form-sub-header sliding-effect">Vehicle details</div>
-                    <FormControl variant="outlined" className="form-controls sliding-effect">
+                <div className="swipeable-quote-form-sub-header">Vehicle details</div>
+                    <FormControl variant="outlined" className="form-controls">
                         <InputLabel  >
                             Vehicle use
                         </InputLabel>
@@ -57,6 +66,7 @@ class VehicleDetails extends React.Component{
                             value={this.props.vehicle.vehicleUse}
                             onChange={this.props.vehicleOnChangeListener}
                             labelWidth={100}
+                            error={error(this.props.vehicle.vehicleUse)}
                         >
                         <MenuItem value="">
                             <em>None</em>
@@ -70,42 +80,59 @@ class VehicleDetails extends React.Component{
                     </FormControl>
                     {tonnes}
                     
-                    <div className="form-controls sliding-effect">
+                    <div className="form-controls">
                     <TextField 
                         id="vehicleMake" 
                         label="Vehicle make"
                         variant="outlined"
+                        value={this.props.vehicle.vehicleMake}
                         onChange={this.props.vehicleOnChangeListener}
                         helperText="Toyota"
+                        error={error(this.props.vehicle.vehicleMake)}
                     />
                     </div>
                    
-                    <div className="form-controls sliding-effect">
+                    <div className="form-controls">
                     <TextField 
                         id="vehicleModel" 
                         label="Crown"
                         variant="outlined"
+                        value={this.props.vehicle.vehicleModel}
                         onChange={this.props.vehicleOnChangeListener}
                         helperText="Vehicle model"
+                        error={error(this.props.vehicle.vehicleModel)}
                     />
                     </div>
-                    <div className="form-controls sliding-effect8s">
+                    <div className="form-controls">
                     <TextField 
                         id="vehicleValue" 
                         label="1,400,000"
                         variant="outlined"
                         onChange={this.props.vehicleOnChangeListener}
                         helperText="Vehicle Value"
+                        value={this.props.vehicle.vehicleValue}
+                        error={error(this.props.vehicle.vehicleValue)}
+                        
                     />
                     </div>
-                    <div className="form-controls sliding-effect10s">
-                    <TextField 
-                        id="yearOfManufacture" 
-                        label="2020"
-                        variant="outlined"
-                        onChange={this.props.vehicleOnChangeListener}
-                        helperText="year of manufacture"
-                    />
+                    <div className="form-controls">
+                    <FormControl variant="outlined" className="form-controls">
+                        <InputLabel  >
+                            Vehicle use
+                        </InputLabel>
+                        <Select
+                            name="yearOfManufacture" 
+                            helperText="year of manufacture"
+                            value={this.props.vehicle.yearOfManufacture}
+                            onChange={this.props.vehicleOnChangeListener}
+                            labelWidth={100}
+                            error={error(this.props.vehicle.yearOfManufacture)}
+                        >
+                        <MenuItem value=""><em>None</em></MenuItem>
+                        <MenuItem value={2020}><em>2020</em></MenuItem>
+                       
+                        </Select>
+                    </FormControl>
                     </div>
                     
                 </div>

@@ -53,7 +53,7 @@ class SignUp extends React.Component {
         }).then(res=>{
             console.log(res.status)
             if (res.status===201){
-                console.log("success")
+                
                 let response = this.state.response
                 response["status"]="success"
                 response["message"]="Successfully created"                
@@ -64,11 +64,11 @@ class SignUp extends React.Component {
                 })
                 return res.json().then(data=>data).catch(err=>err)                
             }else{
-                console.log("danger")
+                
                 let response = this.state.response
                 response["status"]="error"
                 response["message"]="An error occurred"
-                console.log(response)
+                
                 this.setState({
                     response,
                     snackBar: true,
