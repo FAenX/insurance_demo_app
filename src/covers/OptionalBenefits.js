@@ -56,9 +56,17 @@ class OptionalBenefits extends React.Component {
             
                 )})}
             
-            <ListItem onClick={this.handleSelect} >
+            <ListItem 
+                onClick={this.handleSelect}
+                className="list-item"
+                button 
+            >
                 <ListItemIcon>
-                <CalendarToday />
+                <Checkbox
+                    checked={false}
+                    tabIndex=""
+                    disableRipple
+                />
                 
                 </ListItemIcon>
                 <ListItemText 

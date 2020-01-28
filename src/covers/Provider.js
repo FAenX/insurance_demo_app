@@ -8,6 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import clsx from "clsx"
 
 
 class Benefits extends React.Component {
@@ -26,15 +27,10 @@ class Benefits extends React.Component {
     render(){
         const rows = [
             this.createData('windscreen damage', 50000), 
-            this.createData('windscreen damage', 50000), 
-            this.createData('windscreen damage', 50000), 
-            this.createData('windscreen damage', 50000), 
-            this.createData('windscreen damage', 50000), 
-            this.createData('windscreen damage', 50000), 
-            this.createData('windscreen damage', 50000),          
+            this.createData('Headlights damage', 50000),       
           ];
         return(
-                <TableContainer className="table-container " component={Paper}>
+                <TableContainer className="table-container" component={Paper}>
                     <Table className="">
                         <TableHead>
                         <TableRow>
@@ -44,7 +40,7 @@ class Benefits extends React.Component {
                         </TableHead>
                         <TableBody>
                         {rows.map(row => (
-                            <TableRow key={`row.benefit`}>
+                            <TableRow key={row.benefit}>
                             <TableCell component="th" scope="row">
                                 {row.benefit}
                             </TableCell>
@@ -61,23 +57,38 @@ class Benefits extends React.Component {
 class ProviderRates extends React.Component {
 
     render(){
-        return(<div className="provider-rates ">
-            <Paper variant="outlined" className="q-content" id="insurance-details">   
-            <ListItem button>Cover: <b>Cover Name</b></ListItem> 
-            <hr className="divider"></hr> 
-            <ListItem button>Cover to start from: <b>date</b></ListItem>
-            <hr className="divider"></hr>
-            <ListItem button>Premium KSH: <b>{this.props.premium}</b></ListItem>
-            <hr className="divider"></hr>                                                    
-            </Paper>
+        return(<div 
+                    className={clsx("",{
+                        "display-none": !this.props.show,
+                        "provider-rates": this.props.show
+                    })}
+                >
+                <Paper variant="outlined" className="q-content" id="insurance-details">   
+                <ListItem button>Cover: <b>Cover Name</b></ListItem> 
+                <hr className="divider"></hr> 
+                <ListItem button>Cover to start from: <b>date</b></ListItem>
+                <hr className="divider"></hr>
+                <ListItem button>Premium KSH: <b>{this.props.premium}</b></ListItem>
+                <hr className="divider"></hr>                                                    
+                </Paper>
            
                 <Benefits />
             
-            </div>
+                </div>
         )
     }
 }
 class Provider extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={
+            showDetails: false
+        }
+    }
+    showDetails=(event)=>{
+        event.preventDefault()
+        this.setState({showDetails: !this.state.showDetails})
+    }
 
     render(){
         return(<div  id="provider-details">
@@ -88,11 +99,17 @@ class Provider extends React.Component {
                 <Button id="premium-button">KSH: {this.props.premium}</Button>
                 <hr className="divider"></hr>
                 <Button id="buy-button" variant="contained">Buy</Button>                
-                <Button id="details-button" variant="outlined">view details</Button>
+                <Button 
+                    id="details-button" 
+                    variant="outlined"
+                    onClick={this.showDetails}
+                >
+                    view details
+                </Button>
 
             </Paper>
             
-            <ProviderRates premium={this.props.premium}/>
+            <ProviderRates premium={this.props.premium} show={this.state.showDetails}/>
         </div>
             
             
