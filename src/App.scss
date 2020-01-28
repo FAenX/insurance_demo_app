@@ -44,6 +44,25 @@ $warning_color: #cc9c00;
  
 }
 
+.sliding-effect{
+  position: relative;
+  animation: righttoleft .5s;
+  
+}
+
+
+.sliding-effect1s{
+  position: relative;
+  animation: righttoleft 1s;
+ 
+}
+
+.sliding-effect2s{
+  position: relative;
+  animation: righttoleft 2s;
+  
+}
+
 @mixin sliding-effect{
   position: relative;
   animation: righttoleft .5s;
@@ -316,35 +335,6 @@ body {
   }
 }
 
-.closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-
-}
-
-.nav-items {
-  padding: 2em;
-  font-weight: 600;
-}
-
-.nav-item {
-  padding: 5px;
-}
-
-.nav-item:hover {
-  background-color: $color_1;
-
-}
-
-.menu {
-  width: 30px;
-  height: 5px;
-  background-color: $white;
-  margin: 6px 0;
-}
 
 .front-page {
   @include flex-col();
@@ -671,6 +661,7 @@ body {
   }
 
   .headline-text {
+    @include sliding-effect();
     @include flex-col(); 
     font-size: 1.5em;
     margin: 2em;
@@ -685,6 +676,7 @@ body {
 
   .sub-text {  
     @include flex-col();
+    @include sliding-effect1s();
     text-align: left;
     margin: 3em;
     line-height: 2em;
@@ -696,6 +688,7 @@ body {
     background-color: $white;
 
     .motor-insurance-highlights-img{
+      @include sliding-effect2s();
       height: 20em;
       @include flex-col();
     }
@@ -708,6 +701,7 @@ body {
     padding: 2em;
 
     .motor-insurance-benefits-list{
+      @include sliding-effect2s();
       @include flex-col();     
       align-items: left;
       width: 100%;
@@ -728,55 +722,6 @@ body {
   }
   
 
-  
-}
-
-//rates
-.rates {
-  @include flex-col();
-  margin-top: 5em;
-  .rates-wrapper {
-    @include flex-col();
-  }
-  .rates-title-wrapper {
-    text-align: left;
-    font-size: 1.5em;
-    margin: 2em;
-  }
-  
-  .rates-title {
-    padding-left: 1.5em;
-    border-left: $color_2 .1em solid;
-    text-transform: capitalize;
-  
-  }
-
-  .rates-form-wrapper {
-    @include flex-col();
-    background-color: $white;
-  }
-  
-  .rates-form {
-    @include flex-col();
-    justify-content: left;
-    text-align: left;
-    .quote-form-header{
-      @include flex-col();
-      width: 100vw;
-      text-align: left;
-      font-weight: 400;
-      font-size: 1.5em;
-      padding-left: 1em;
-      padding: 1em;
-      .quote-form-nav {
-       @include flex-row();
-       
-      }
-    }
-  }  
-  .rates-submit-button-wrapper{
-    margin: 2em;
-  }
   
 }
 
@@ -944,15 +889,18 @@ body {
   min-height: 100vh;
   width: 100%;
   .headline-text{
+    @include sliding-effect();
     margin: 1em;
   }
   .signin-form-wrapper{
+    @include sliding-effect1s();
     padding: 1em;
     text-align: left;
     .signin-button{
       @include flex-col();
       align-items: baseline;
       .signup{
+        @include sliding-effect2s();
         text-transform: capitalize;
       }
       button{
@@ -971,9 +919,11 @@ body {
   min-height: 100vh;
   width: 100%;
   .headline-text{
+    @include sliding-effect();
     margin: 1em;
   }
   .signup-form-wrapper{
+    @include sliding-effect2s();
     padding: 1em;
     text-align: left;
   }
@@ -1123,128 +1073,12 @@ body {
     
   }
   
-  
-    .MuiDrawer-paper{
-      
-    }
     
   }
 
 }
 
 
-
-/////////
-
-
-
-
-
-
-
-
-
-
-
-.cover {
-  display: flex;
-  flex-direction: column;
-  margin: 2em;
-}
-
-.covers {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-}
-
-.covers-wrapper {
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.cover-scope {
-  text-align: left;
-  padding: 1em;
-}
-
-.cover-scope h2 {
-  margin: .5em;
-  font-size: 1em;
-}
-
-.cover-scope div{
-  text-align: left;
-  margin: .5em;
-  font-size: 1em;
-}
-
-.payments-page {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  flex-grow: 3;
-  
-}
-
-.payments-page div:nth-of-type(1) {flex-grow: 3;}
-.payments-page  div:nth-of-type(2) {flex-grow: 1;}
-
-.payment-options {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  text-align: left;
-  margin: 2em;
-  
-}
-
-.payment-options img {
-  width: 50px;
-  height: 50px;
-}
-
-.p-option {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  text-align: left;
-  
-}
-
-.mastercard {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-
-.mastercard img {
-  width: 300px;
-  height: 200px;
-}
-
-#creditcardinfo {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-
-#creditcardinfodate {
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: space-between;
-}
 
 @media screen and (max-width: 450px)  {
   .cover-page{    

@@ -91,7 +91,7 @@ class SideBar extends React.Component {
                         <ListItem 
                             button id="covers" 
                             onClick={this.handleRedirectOnClick}
-                            className="sliding-effect8s" 
+                            className="sliding-effect1s" 
                         >                   
                             <ListItemText  id="about" primary="Who are we"/>
                         </ListItem>
@@ -99,7 +99,7 @@ class SideBar extends React.Component {
                         <ListItem 
                             button id="covers" 
                             onClick={this.handleRedirectOnClick}
-                            className="sliding-effect8s" 
+                            className="sliding-effect1s" 
                         >                        
                             <ListItemText id="signup" primary="Sign up"/>
                         </ListItem>
@@ -107,7 +107,7 @@ class SideBar extends React.Component {
                         <ListItem 
                             button id="covers" 
                             onClick={this.handleRedirectOnClick}
-                            className="sliding-effect10s" 
+                            className="sliding-effect2s" 
                         >                     
                             <ListItemText id="signin" primary="Sign in"/>
                         </ListItem>
@@ -115,7 +115,7 @@ class SideBar extends React.Component {
                         <ListItem 
                             button id="covers" 
                             onClick={this.handleRedirectOnClick}
-                            className="sliding-effect10s" 
+                            className="sliding-effect2s" 
                         >                          
                             <ListItemText id="dashboard" primary="Dashboard"/>
                         </ListItem>  
@@ -123,7 +123,7 @@ class SideBar extends React.Component {
                         <ListItem 
                             button id="covers" 
                             onClick={this.handleRedirectOnClick}
-                            className="sliding-effect10s" 
+                            className="sliding-effect2s" 
                         >                            
                             <ListItemText id="signout" primary="Sign out" />
                         </ListItem> 
