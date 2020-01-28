@@ -30,7 +30,9 @@ $warning_color: #cc9c00;
   align-items: center;
 }
 
-
+.display-none{
+  display: none;
+}
 
 #root {
  color: $color_1;
@@ -38,9 +40,7 @@ $warning_color: #cc9c00;
  font-weight: 300;
  width: 100vw;
  overflow-x: hidden;
- .display-none{
-  display: none;
-}
+ 
  
 }
 
