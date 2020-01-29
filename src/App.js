@@ -144,13 +144,13 @@ class App extends React.Component {
                 </div>
               </header>
             </Paper>
-        </Router>
+       
         <div 
           className={clsx("main",{
             "display-none": this.state.loading
           })}
         >
-        <Router>
+       
         <SideNav 
           isLoggedIn={this.state.isLoggedIn} 
           drawer={this.state.isOpen} 
@@ -177,8 +177,9 @@ class App extends React.Component {
           </Switch>
         <Contacts/>
         <Footer/>
-        </Router>
+        
         </div>
+        </Router>
         <Backdrop open={this.state.backdrop}/>
        </div>
     );
