@@ -6,6 +6,15 @@ $color_3: #0023291f;
 $error_color: #791200;
 $warning_color: #cc9c00;
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes righttoleft{
   0%   {left:5em; top:0em;}
   100% {left:0em; top:0em;}
@@ -28,6 +37,24 @@ $warning_color: #cc9c00;
   flex-flow: row;
   justify-content: center;
   align-items: center;
+}
+
+.App {
+  @include flex-col();
+  font-family: Open Sans,Roboto,Oxygen,Ubuntu,Cantarell,Lato,Helvetica Neue,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+
+.loader{
+  @include flex-col()
+  img{
+    animation: spin 3s ;
+    animation-iteration-count: infinite; 
+  }
+  
+  
 }
 
 .display-none{
@@ -154,12 +181,16 @@ body {
 
 .free-quotation-button{
   @include flex-col();
+  
   align-items: flex-end;
   position: fixed;
   top: 4em;
   right: 0;
   margin:1em;
   z-index: 1299;
+  button{
+    animation: spin 5s;
+  }
 
 } 
 
@@ -208,8 +239,10 @@ body {
       @include sliding-effect1s();
     }
     .close-btn{
+      
       border: .05em solid $color_2;
       @include sliding-effect1s();
+      animation: spin 3s;
     } 
     .MuiSvgIcon-colorPrimary{
       color: $color_2;
@@ -253,11 +286,6 @@ body {
   border: $color_2 solid .005em;
 }
 
-.App {
-  @include flex-col();
-  font-family: Open Sans,Roboto,Oxygen,Ubuntu,Cantarell,Lato,Helvetica Neue,sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
 
 .top-nav{
   @include flex-col();
@@ -277,6 +305,7 @@ body {
     //border-bottom: .05em solid $color_2;
   
     .menu-icon {
+      animation: spin 3s;
       padding: none;
       border: 1px solid $color_2;
   
@@ -286,6 +315,7 @@ body {
     }
   
     .logo{
+      
       img{
         height: 4em;
         width: 4em;
@@ -298,10 +328,12 @@ body {
 
 
 .nav-login{
+ 
   .MuiSvgIcon-colorPrimary{
     font-size: 3em;
     color: $color_2;
     @include sliding-effect2s();
+    
   }
   
 } 

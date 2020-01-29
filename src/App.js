@@ -24,6 +24,7 @@ import {Paper} from "@material-ui/core";
 import Backdrop from "./components/BackDrop";
 import Footer from "./components/Footer";
 import Contacts from "./components/Contacts";
+import clsx from 'clsx';
 
 
 dotenv.config()
@@ -32,7 +33,9 @@ dotenv.config()
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {     
+    this.state = {  
+      //loader
+      loading: true,   
       //drawer
       isOpen: false,
       isLoggedIn: false,
@@ -43,6 +46,11 @@ class App extends React.Component {
   }
 
   componentDidMount=()=>{
+    setTimeout(()=>{
+      this.setState({
+        loading: false
+      })
+    }, 5000)
     this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
     this.products = JSON.parse(sessionStorage.getItem("products"))
     if (
@@ -112,29 +120,45 @@ class App extends React.Component {
 
   render(){
     return (
-      <Router>
+      <div className="App">
+        <div className={clsx("loader",{
+            "display-none": !this.state.loading
+          })}>
+          <img alt="logo" src={imgPlaceholder}/>
+          <div className="loading-text">Loading....</div>
+          <div className="loading-text">Name Insurance</div>
+        </div>
+        <Router>
+            <Paper variant="elevation" elevation={5} className="top-nav">
+              <header className="App-header">
+                <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
+                  <IconButton >
+                    <MenuIcon />
+                  </IconButton>
+                </div> 
+                <div className="logo">
+                  <img alt="logo" src={imgPlaceholder}/>
+                </div>
+                <div className="nav-login sliding-effect8s" onClick={this.redirectToSignin}>
+                <SignInButton />
+                </div>
+              </header>
+            </Paper>
+        </Router>
+        <div 
+          className={clsx("main",{
+            "display-none": this.state.loading
+          })}
+        >
+        <Router>
         <SideNav 
           isLoggedIn={this.state.isLoggedIn} 
           drawer={this.state.isOpen} 
           toggleDrawer={this.toggleDrawer}
         />
-        <div className="App">
-          <Paper variant="elevation" elevation={5} className="top-nav">
-            <header className="App-header">
-              <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
-                <IconButton >
-                  <MenuIcon />
-                </IconButton>
-              </div> 
-              <div className="logo">
-                <img alt="logo" src={imgPlaceholder}/>
-              </div>
-              <div className="nav-login sliding-effect8s" onClick={this.redirectToSignin}>
-              <SignInButton />
-              </div>
-            </header>
-          </Paper>
         
+          
+          
           <Switch>
               <Route exact path='/' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
               <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
@@ -151,11 +175,12 @@ class App extends React.Component {
               <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />
               <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
           </Switch>
-        </div>
-        <Backdrop open={this.state.backdrop}/>
         <Contacts/>
         <Footer/>
-      </Router>
+        </Router>
+        </div>
+        <Backdrop open={this.state.backdrop}/>
+       </div>
     );
   }
 }
