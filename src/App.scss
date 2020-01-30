@@ -64,12 +64,17 @@ $warning_color: #cc9c00;
   display: none;
 }
 
+.wide-screen{
+  @include display-none();
+}
+
 #root {
  color: $color_1;
  background-color: $color_3;
  font-weight: 300;
  width: 100vw;
  overflow-x: hidden;
+ 
  
  
 }
@@ -157,8 +162,6 @@ body {
     background-color: $warning_color;
   }
 }
-
-
 
 
 .divider {
@@ -399,6 +402,7 @@ body {
   font-weight: 700;  
   background-image: linear-gradient(to bottom, $color_1, $color_3);
   
+  
   .cover-background{
     background-image: url(./assets/images/image1.png);
     background-repeat: no-repeat;  
@@ -407,12 +411,13 @@ body {
  
   //home
 .home {
+  
   @include flex-col();
   @include fullscreen();
   align-items: baseline;
   text-align: left; 
   color: $white; 
-
+  
   .headline-text {
     @include flex-col();
     justify-content: space-between; 
@@ -1130,36 +1135,11 @@ body {
 
 }
 
-.wide-screen{
-  display: none;
-}
-
 
 @media screen and (max-width: 450px)  {
-  .cover-page{    
-    
-  }
-
-  .home {    
-   
-  }
-  .headline-text {       
-    
-    
-  }
-  .headline-subtext {
-    
-   
-  }
-  .home-buttons{
-    
-  }
   
   .home-buttons button {
     font-size: 1em;
-  }
-  .why-us-child img{
-    
   }
   .vehicle-controls {
     width: 10em;
@@ -1169,38 +1149,24 @@ body {
 
 
  @media screen and (max-width: 600px)  {
-  .home{
-    
-  }
-
-  table {
-    
-  }
+   
   .cover-background{
     background-position-x: -10vh;
     background-position-y: 25vh;
   }  
 
-  .page-headline-text {
-    
-
-  }
-
-  .headline-text{   
-    
-  }
-
-  .headline-subtext{
-    
-  }
-  .product-description-wrapper{
-    
-  }
+  
 }
 
 
 
 @media screen and (min-width: 800px)  {
+  .mobile-screen{
+    @include display-none();
+  }
+  .wide-screen{
+    display: block;
+  }
   .front-page {
     @include flex-col();
     .next-arrow{
@@ -1265,9 +1231,10 @@ body {
             @include flex-row();
           }
         }
-        .home-button{
-          
+        .home-button{          
+          .wide-screen{
             @include flex-row();
+          }
           
         }
     }
@@ -1295,12 +1262,11 @@ body {
   .cover-page { 
     //home
   .home {
+   
+    .mobile-screen{
+      @include display-none();
+    }
     .headline-text {
-      width: 40vw;
-      margin: 1em;
-      margin-bottom: 1em;
-      font-weight: 400;
-      font-size: 2.5em;
       @include sliding-effect();
      
     }
@@ -1329,48 +1295,38 @@ body {
         background-color: $color_1;
         height: 50vh;
         .home-carousel1-slide1{
-          height: 100%;
-          
+        
+          background-position-x: 50%;
+          background-position-y: 50%;
          
         }   
         .home-carousel1-slide2{
-          height: 100%;
-          background-image: url(./assets/images/img_placeholder.png);
-          background-repeat: no-repeat;
-          background-position-x: 5em;
-          background-position-y: 1em;
+          
+          background-position-x: 50%;
+          background-position-y: 50%;
          
         }   
         .home-carousel1-slide3{
-          height: 100%;
-          background-image: url(./assets/images/img_placeholder.png);
-          background-repeat: no-repeat;
-          background-position-x: 5em;
-          background-position-y: 1em;
+         
+          background-position-x: 50%;
+          background-position-y: 50%;
          
         }   
         .home-carousel2-slide1{
-          height: 100%;
-          background-image: url(./assets/images/img_placeholder.png);
-          background-repeat: no-repeat;
-          background-position-x: 5em;
-          background-position-y: 1em;
+          
+          background-position-x: 50%;
+          background-position-y: 50%;
          
         }   
         .home-carousel2-slide2{
-          height: 100%;
-          background-image: url(./assets/images/img_placeholder.png);
-          background-repeat: no-repeat;
-          background-position-x: 5em;
-          background-position-y: 1em;
+         
+          background-position-x: 50%;
+          background-position-y: 50%;
          
         } 
         .home-carousel2-slide3{
-          height: 100%;
-          background-image: url(./assets/images/img_placeholder.png);
-          background-repeat: no-repeat;
-          background-position-x: 5em;
-          background-position-y: 1em;
+          background-position-x: 50%;
+          background-position-y: 50%;
          
         }          
       } 

@@ -13,11 +13,13 @@ class HomeButton extends React.Component{
     render(){
         return(
             <div className="home-button "> 
-            <HomeIcon color="primary" onClick={this.handleClickedBnt}/>
+                <div className="mobile-screen">
+                    <HomeIcon color="primary" onClick={this.handleClickedBnt}/>                    
+                </div>
                 <div className="wide-screen">
                     <HomeIcon color="primary" onClick={this.handleClickedBnt}/>
                     <div className="nav-title">Home</div>  
-            </div>
+                </div>
              
              
             </div>
