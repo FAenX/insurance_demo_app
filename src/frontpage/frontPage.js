@@ -7,6 +7,7 @@ import WhyUs from "./WhyUs"
 import GetStartedButton from "../components/GetStartedButton"
 import FreeQuotationButton from "../components/FreeQuotationButton"
 import MotorInsuranceButton from "../components/MotorInsuranceButton"
+import "./Style.scss"
 
 
 
