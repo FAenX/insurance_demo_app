@@ -50,7 +50,7 @@ class FreeQuotationButton extends React.Component{
                         onClick={this.handleClickedBnt}
                     />
                 </Fab>  
-                <FormHelperText>Get free quotation</FormHelperText>
+                <FormHelperText className="button-text">Get free quotation</FormHelperText>
 
                 
                 

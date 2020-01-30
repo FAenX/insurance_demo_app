@@ -38,6 +38,9 @@ $warning_color: #cc9c00;
   justify-content: center;
   align-items: center;
 }
+@mixin display-none{
+  display: none;
+}
 
 .App {
   @include flex-col();
@@ -156,43 +159,7 @@ body {
 }
 
 
-.next-arrow{
-  @include flex-col();
-  align-items: flex-end;
-  position: fixed;
-  top: 12em;
-  right: 0;
-  z-index: 1299;  
-  margin: 1em;
-  margin-bottom: 12em;
-}
 
-
-.get-started-button{
-  @include flex-col();
-  align-items: flex-end;
-  z-index: 1299;
-  position: fixed;
-  top: 8em;
-  right: 0;
-  margin:1em;
-
-} 
-
-.free-quotation-button{
-  @include flex-col();
-  
-  align-items: flex-end;
-  position: fixed;
-  top: 4em;
-  right: 0;
-  margin:1em;
-  z-index: 1299;
-  button{
-    animation: spin 5s;
-  }
-
-} 
 
 .divider {
   margin: 0em;
@@ -302,7 +269,30 @@ body {
     color: $color_2;
     padding-right: 1em;
     padding-left: 1em;
-    //border-bottom: .05em solid $color_2;
+    .nav-buttons{
+      @include flex-row();
+      .next-arrow{
+        @include display-none()
+      }
+      
+      
+      .get-started-button{
+       @include display-none();
+      
+      } 
+      
+      .free-quotation-button{
+       @include display-none();
+      
+      } 
+    }
+    .nav-login{
+      .MuiSvgIcon-colorPrimary{
+        font-size: 3em;
+        color: $color_2;
+        @include sliding-effect2s();
+      }
+    } 
   
     .menu-icon {
       animation: spin 3s;
@@ -327,16 +317,7 @@ body {
 
 
 
-.nav-login{
- 
-  .MuiSvgIcon-colorPrimary{
-    font-size: 3em;
-    color: $color_2;
-    @include sliding-effect2s();
-    
-  }
-  
-} 
+
 
 
 
@@ -370,6 +351,43 @@ body {
 
 .front-page {
   @include flex-col();
+  .next-arrow{
+    @include flex-col();
+    align-items: flex-end;
+    position: fixed;
+    top: 12em;
+    right: 0;
+    z-index: 1299;  
+    margin: 1em;
+    margin-bottom: 12em;
+  }
+  
+  
+  .get-started-button{
+    @include flex-col();
+    align-items: flex-end;
+    z-index: 1299;
+    position: fixed;
+    top: 8em;
+    right: 0;
+    margin:1em;
+  
+  } 
+  
+  .free-quotation-button{
+    @include flex-col();
+    
+    align-items: flex-end;
+    position: fixed;
+    top: 4em;
+    right: 0;
+    margin:1em;
+    z-index: 1299;
+    button{
+      animation: spin 5s;
+    }
+  
+  } 
   
 }
 
@@ -1179,10 +1197,78 @@ body {
 
 
 
-@media screen and (min-width: 600px)  {
-  .cover-page {    
-    .cover-background{
+@media screen and (min-width: 800px)  {
+  .front-page {
+    @include flex-col();
+    .next-arrow{
+      @include display-none();
     }
+    .get-started-button{
+      @include display-none();
+    } 
+    
+    .free-quotation-button{
+      @include display-none();
+    } 
+    
+  }
+  .top-nav{
+    .App-header {
+      .nav-buttons{
+        @include flex-row();
+        .next-arrow{
+          @include flex-col();
+          align-items: flex-end;
+          position: relative;
+          margin: 1em;
+          .button-text{
+            display: none;
+          }
+        }
+        .get-started-button{
+          @include flex-col();
+          align-items: flex-end;
+          position: relative;
+          margin:1em;
+          .button-text{
+            display: none;
+          }
+        } 
+        .free-quotation-button{
+          @include flex-col();
+          align-items: flex-end;
+          position: relative;
+          margin:1em;
+          .button-text{
+            display: none;
+          }
+          button{
+            animation: spin 5s;
+          }
+      }
+    }
+      .nav-login{
+        .MuiSvgIcon-colorPrimary{
+          font-size: 3em;
+          color: $color_2;
+          @include sliding-effect2s();
+        }
+      } 
+      .menu-icon {
+        @include display-none();
+      }
+      .logo{
+        img{
+          height: 4em;
+          width: 4em;
+        }
+      }
+      
+    }
+  }
+  
+  
+  .cover-page { 
     //home
   .home {
     .headline-text {

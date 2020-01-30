@@ -17,7 +17,7 @@ class MotorInsuranceButton extends React.Component{
                 <Fab color="primary" aria-label="add">             
                     <ArrowForwardIcon color="primary" onClick={this.handleClickedBnt}/>               
                 </Fab> 
-                <FormHelperText>Motor insurance</FormHelperText>   
+                <FormHelperText className="button-text">Motor insurance</FormHelperText>   
             </div>
         )
     }

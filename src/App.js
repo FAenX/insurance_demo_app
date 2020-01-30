@@ -25,6 +25,9 @@ import Backdrop from "./components/BackDrop";
 import Footer from "./components/Footer";
 import Contacts from "./components/Contacts";
 import clsx from 'clsx';
+import GetStartedButton from "./components/GetStartedButton"
+import FreeQuotationButton from "./components/FreeQuotationButton"
+import MotorInsuranceButton from "./components/MotorInsuranceButton"
 
 
 dotenv.config()
@@ -139,8 +142,13 @@ class App extends React.Component {
                 <div className="logo">
                   <img alt="logo" src={imgPlaceholder}/>
                 </div>
-                <div className="nav-login sliding-effect8s" onClick={this.redirectToSignin}>
-                <SignInButton />
+                <div className="nav-buttons">
+                  <MotorInsuranceButton />                
+                  <GetStartedButton />
+                  <FreeQuotationButton />
+                </div>
+                <div className="nav-login" onClick={this.redirectToSignin}>
+                  <SignInButton />
                 </div>
               </header>
             </Paper>

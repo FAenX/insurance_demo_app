@@ -17,7 +17,7 @@ class GetStartedButton extends React.Component{
              <Fab color="primary" aria-label="add">
              <PersonAddIcon color="primary" onClick={this.handleClickedBnt}/>
                 </Fab> 
-                <FormHelperText>Sign Up</FormHelperText>     
+                <FormHelperText className="button-text">Sign Up</FormHelperText>     
             
               
                   
