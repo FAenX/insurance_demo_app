@@ -9,15 +9,12 @@ class Home extends React.Component{
         return(
             <div className="home">
                 <div className="headline-text">
-                <div className="wide-screen">
-                    
+                    <div className="wide-screen">
                         Buy Motor Vehicle Insurance directly from the comfort of your Vehicle
-                </div>
-                <div className="mobile-screen">
-                    
-                        Buy Motor Vehicle Insurance directly from your Phone                   
-                   
-                </div>
+                    </div>
+                    <div className="mobile-screen">
+                        Buy Motor Vehicle Insurance directly from your Phone  
+                    </div>
                 </div>
                 <div className="headline-subtext">
                 <HomeCarousel1 />  

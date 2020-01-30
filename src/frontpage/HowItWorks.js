@@ -8,15 +8,15 @@ class HowItWorksStep extends React.Component{
     
     render(){
         return(
-            <Paper variant="outlined" className="step">
-                    <div className="svg sliding-effect"><img alt="" src={this.props.img}/> </div>
+            <div className="step">
+                    <div className="svg"><img alt="" src={this.props.img}/> </div>
                     <div className="step-text-wrapper">
                         <div className="step-header">{this.props.title}</div>
                         <div className="step-text">
                        {this.props.text}
                         </div>
                     </div>
-            </Paper>
+            </div>
         )
     }
 }
@@ -56,7 +56,12 @@ class HowItWorks extends React.Component{
                 <div className="how-it-works"> 
                     {
                         Object.keys(data).map(i=>{
-                            return <HowItWorksStep key={i} text={data[i]} title={i} img={imgPlaceholder} />
+                            return <HowItWorksStep 
+                                        key={i} 
+                                        text={data[i]} 
+                                        title={i} 
+                                        img={imgPlaceholder} 
+                                    />
                         })
                     }              
                 </div>
