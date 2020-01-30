@@ -11,8 +11,7 @@ class Home extends React.Component{
                 <div className="headline-text">
                 <div className="wide-screen">
                     
-                        Buy Motor Vehicle Insurance directly from your Laptop
-                   
+                        Buy Motor Vehicle Insurance directly from the comfort of your Vehicle
                 </div>
                 <div className="mobile-screen">
                     
