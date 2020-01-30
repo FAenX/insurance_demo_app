@@ -28,6 +28,7 @@ import clsx from 'clsx';
 import GetStartedButton from "./components/GetStartedButton"
 import FreeQuotationButton from "./components/FreeQuotationButton"
 import MotorInsuranceButton from "./components/MotorInsuranceButton"
+import HomeButton from "./components/HomeButton"
 
 
 dotenv.config()
@@ -143,6 +144,7 @@ class App extends React.Component {
                   <img alt="logo" src={imgPlaceholder}/>
                 </div>
                 <div className="nav-buttons">
+                  <HomeButton />
                   <MotorInsuranceButton />                
                   <GetStartedButton />
                   <FreeQuotationButton />

@@ -1130,6 +1130,9 @@ body {
 
 }
 
+.wide-screen{
+  display: none;
+}
 
 
 @media screen and (max-width: 450px)  {
@@ -1216,6 +1219,13 @@ body {
     .App-header {
       .nav-buttons{
         @include flex-row();
+        .MuiSvgIcon-colorPrimary{
+          color: $color_2
+        }
+        .home-button{
+          margin-right: 1em;
+          
+        }
         .next-arrow{
           @include flex-col();
           align-items: flex-end;
@@ -1223,6 +1233,9 @@ body {
           margin: 1em;
           .button-text{
             display: none;
+          }
+          .wide-screen{
+            @include flex-row();
           }
         }
         .get-started-button{
@@ -1232,6 +1245,9 @@ body {
           margin:1em;
           .button-text{
             display: none;
+          }
+          .wide-screen{
+            @include flex-row();
           }
         } 
         .free-quotation-button{
@@ -1245,7 +1261,15 @@ body {
           button{
             animation: spin 5s;
           }
-      }
+          .wide-screen{
+            @include flex-row();
+          }
+        }
+        .home-button{
+          
+            @include flex-row();
+          
+        }
     }
       .nav-login{
         .MuiSvgIcon-colorPrimary{

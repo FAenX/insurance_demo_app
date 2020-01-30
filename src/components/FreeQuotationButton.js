@@ -44,13 +44,24 @@ class FreeQuotationButton extends React.Component{
                     toggleDrawer={this.toggleDrawer}
                     closeDrawer={this.closeDrawer}
                 />
-                <Fab color="primary" aria-label="add">
+                <Fab color="primary" aria-label="add" className="button-text">
                     <GetAppIcon 
                         color="primary" 
                         onClick={this.handleClickedBnt}
                     />
                 </Fab>  
+                    
                 <FormHelperText className="button-text">Get free quotation</FormHelperText>
+
+                {/* wide screen   */}
+                <div className="wide-screen">
+                    <GetAppIcon 
+                        color="primary" 
+                        onClick={this.handleClickedBnt}
+                        
+                    />
+                    <div className="nav-title">Quotation</div>  
+                </div>  
 
                 
                 
