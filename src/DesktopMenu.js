@@ -10,6 +10,8 @@ import AppBar from "@material-ui/core/AppBar"
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import ListItemText from "@material-ui/core/ListItemText"
 import {withRouter} from "react-router-dom";
+import SignInButton from "./components/SignInButton";
+import GetStartedButton from "./components/GetStartedButton"
 
 
 
@@ -59,6 +61,10 @@ class DesktopMenu extends React.Component {
                         >
                             <MenuOpenIcon />
                         </IconButton>
+                        <div className="user-buttons">
+                            <GetStartedButton />
+                            <SignInButton />
+                        </div>
                     </ToolBar>
                 </AppBar>
                 

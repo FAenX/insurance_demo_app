@@ -42,6 +42,8 @@ $warning_color: #cc9c00;
   display: none;
 }
 
+
+
 .sliding-effect{
   position: relative;
   animation: righttoleft .5s;
@@ -100,13 +102,7 @@ $warning_color: #cc9c00;
   
 }
 
-.display-none{
-  display: none;
-}
 
-.wide-screen{
-  @include display-none();
-}
 
 #root {
  color: $color_1;
@@ -114,6 +110,13 @@ $warning_color: #cc9c00;
  font-weight: 300;
  width: 100vw;
  overflow-x: hidden;
+ .display-none{
+    display: none;
+  }
+
+  .wide-screen{
+    display: none;
+  }
  
  
  
@@ -248,16 +251,6 @@ body {
   }
   
 }
-
-
-
-.svg {
-  @include flex-col();
-  height: 15em;
-  width: 15em;
-  border: $color_2 solid .005em;
-}
-
 
 .top-nav{
   @include flex-col();
@@ -996,11 +989,13 @@ body {
 ////
 //@include
 @media screen and (min-width: 700px)  {
-  .mobile-screen{
-    @include display-none();
-  }
-  .wide-screen{
-    display: block;
+  #root{
+    .mobile-screen{
+      @include display-none();
+    }
+    .wide-screen{
+      display: flex;
+    }
   }
   
   .top-nav{
@@ -1022,9 +1017,7 @@ body {
           .button-text{
             display: none;
           }
-          .wide-screen{
-            @include flex-row();
-          }
+          
         }
         .get-started-button{
           @include flex-col();
@@ -1034,9 +1027,7 @@ body {
           .button-text{
             display: none;
           }
-          .wide-screen{
-            @include flex-row();
-          }
+          
         } 
         .free-quotation-button{
           @include flex-col();
@@ -1049,14 +1040,10 @@ body {
           button{
             animation: spin 5s;
           }
-          .wide-screen{
-            @include flex-row();
-          }
+          
         }
         .home-button{          
-          .wide-screen{
-            @include flex-row();
-          }
+         
           
         }
     }

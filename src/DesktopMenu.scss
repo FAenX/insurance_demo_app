@@ -100,6 +100,20 @@ $warning_color: #cc9c00;
             font-size: 1.5em;
             color: $color_2;
         }
+        .user-buttons{
+            @include flex-row();
+            width: 50vw;
+            justify-content: space-around;
+            .nav-button{
+                @include flex-row();
+                //font-size: 1.5em;
+                width: 7em;
+                justify-content: space-between;
+                color: $color_2;
+                font-weight: 600;
+                text-transform: capitalize;
+            }
+        }
       }
       
     }

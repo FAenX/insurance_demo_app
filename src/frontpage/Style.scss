@@ -295,6 +295,11 @@ $warning_color: #cc9c00;
     @include flex-col();
     padding: 1em;
     margin: 1em;
+    .svg {
+      @include flex-col();
+      height: 15em;
+      width: 15em;
+    }
   }
   
   
