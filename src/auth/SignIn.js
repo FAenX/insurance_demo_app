@@ -1,8 +1,11 @@
 import React from "react"
 import { Form } from "react-bootstrap"
-import {Button} from "@material-ui/core"
+import {Button, Drawer} from "@material-ui/core"
 import Backdrop from "../components/BackDrop"
 import SnackBar from "../components/SnackBar"
+import FreeQuotationButton from "../components/FreeQuotationButton"
+import clsx from "clsx";
+import {withRouter} from "react-router-dom"
 
 
 class SignIn extends React.Component {
@@ -63,6 +66,7 @@ class SignIn extends React.Component {
                     snackBar: true,
                     backdrop: false
                 })
+                this.props.successListener()
             setTimeout(()=>{
                 this.handleRedirectOnLogin()  
             }, 1000)
@@ -123,9 +127,18 @@ class SignIn extends React.Component {
                     />
 
         return(
+            <Drawer 
+            anchor="top"
+            open={this.props.open}
+            variant="persistent"
+            className={clsx("drawer", {
+                "drawerOpen": this.props.open,
+                "drawerClose": !this.props.open,
+              })}
+            >
             <div className="signin-wrapper">
                 <Backdrop open={this.state.backdrop}/>
-                
+               
                 <div>{alert}</div>
                 <div className="headline-text sliding-effect">
                     Sign In
@@ -182,9 +195,10 @@ class SignIn extends React.Component {
                 </div>
            
             </div>
+           </Drawer>
         )
     }
 
 }
 
-export default SignIn;
+export default withRouter(SignIn);

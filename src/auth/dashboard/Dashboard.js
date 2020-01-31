@@ -5,6 +5,7 @@ import FreeQuotationButton from "../../components/FreeQuotationButton"
 import DashMenu from "./DashMenu"
 import PaymentHistory from "./components/PaymentHistory"
 import InsuranceCovers from "./components/InsuranceCovers"
+import "./DashBoard.scss"
 
 
 class Dashboard extends React.Component {

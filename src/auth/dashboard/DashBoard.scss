@@ -1,0 +1,281 @@
+$color_1: #002329;
+$color_2: rgb(255, 81, 0);
+$white: #ffffff;
+$success_color: rgb(35, 105, 0);
+$color_3: #002329cb;
+$error_color: #791200;
+$warning_color: #cc9c00;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes righttoleft{
+  0%   {left:5em; top:0em;}
+  100% {left:0em; top:0em;}
+}
+
+@mixin fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin flex-col{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+@mixin display-none{
+  display: none;
+}
+
+.sliding-effect{
+  position: relative;
+  animation: righttoleft .5s;
+  
+}
+
+
+.sliding-effect1s{
+  position: relative;
+  animation: righttoleft 1s;
+ 
+}
+
+.sliding-effect2s{
+  position: relative;
+  animation: righttoleft 2s;
+  
+}
+
+@mixin sliding-effect{
+  position: relative;
+  animation: righttoleft .5s;
+  
+}
+
+
+@mixin sliding-effect1s{
+  position: relative;
+  animation: righttoleft 1s;
+ 
+}
+
+@mixin sliding-effect2s{
+  position: relative;
+  animation: righttoleft 2s;
+  
+}
+/* sign in sign up*/
+.signin-wrapper {
+    @include flex-col();
+    margin-top: 4rem;
+    width: 100%;
+    
+    .free-quotation-button{
+      position: fixed;
+      top: 4em;
+      right: 0;
+    }
+    .headline-text{
+      @include sliding-effect();
+      margin: 1em;
+    }
+    .signin-form-wrapper{
+      @include sliding-effect1s();
+      padding: 1em;
+      text-align: left;
+      .signin-button{
+        @include flex-col();
+        align-items: baseline;
+        .signup{
+          @include sliding-effect2s();
+          text-transform: capitalize;
+        }
+        button{
+          margin-top: 1em;
+  
+        }
+      }
+  
+    }
+  }
+  
+  
+  .signup-wrapper {
+    @include flex-col();
+    margin-top: 8vh;
+    min-height: 100vh;
+    width: 100%;
+    .headline-text{
+      @include sliding-effect();
+      margin: 1em;
+    }
+    .signup-form-wrapper{
+      @include sliding-effect2s();
+      padding: 1em;
+      text-align: left;
+    }
+  }
+  
+  /* dashboard */
+  .dashboard {
+    @include flex-col();
+    height: 100vh;
+    width:100vw;
+    justify-content: flex-start;
+   
+    .dashboard-wrapper{
+      @include flex-col();
+      width: 85vw;
+      height: 100vh;
+      margin-left: 15vw;
+      margin-top: 10vh;
+      margin-right: 1em; 
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow-y: scroll;
+      
+      .profile{
+        @include flex-col();
+        width: 100%;
+        margin: .5em;
+        .avatar{
+          height: 100px;
+          width: 100px;
+          margin: 1em;
+        }
+        .user-details{
+          width: 100%;
+          text-align: left;
+          padding: 1em;
+          
+        }
+      }
+      .payment-history{
+        @include flex-col();
+        width: 100%;
+        padding: 1em;
+        margin: .5em;
+        text-align: left;
+        .content{
+          width: 100%;
+        }
+        
+      }
+      .insurance-covers{
+        @include flex-col();
+        width: 100%;
+        padding: 1em;
+        margin: .5em;
+        text-align: left;
+        .content{
+          width: 100%;
+        }
+        
+      }
+      .display-none{
+        display: none;
+      }
+      
+      
+      .dash-menu{
+        @include flex-col();
+        width: 100vw;      
+        .AppBar{
+          left: 0;
+          top: 0;
+          width: 100vw;
+          z-index: 1301;
+          height: 4em;
+          .toolbar{
+            @include flex-row();
+            justify-content: space-between;
+            align-items: baseline;
+          }
+          
+        }
+        .appBarShift {
+          margin-left: 40vw;
+          width: 60vw;
+        }
+    
+        .MuiAppBar-colorPrimary{
+          background-color: $color_1;
+        }
+        .drawer{ 
+          @include flex-col();  
+          width: 40vw;
+          
+          .MuiDrawer-paper{
+            
+            position: absolute;
+          }       
+        }
+        .drawerOpen {
+          @include flex-col();
+          align-items: baseline;
+          justify-content: flex-start;
+          width: 40vw;
+          background-color: $color_1;
+          color: $white;
+          .MuiListItem-gutters{
+           
+            .home-button{
+              margin-right: 1em;
+              .MuiSvgIcon-colorPrimary{
+                color: $color_2
+              }
+            }
+          }
+          .toolbar {
+            @include flex-row();
+            width: 100%;
+            justify-content: flex-end;
+            height: 4em;
+            .MuiIconButton-root{
+              color: $color_2;
+            }
+            
+           
+          }
+        }
+        .drawerClose {
+          @include flex-col();
+          align-items: baseline;
+          justify-content: flex-start;
+          overflow: hidden;
+          width: 12vw;
+          background-color: $color_1;
+          .MuiListItem-gutters{
+            
+            .home-button{
+              margin-right: 1em;
+              .MuiSvgIcon-colorPrimary{
+                color: $color_2
+              }
+            }
+          }
+          
+        }
+      
+      
+    }
+    
+      
+    }
+  
+  }
