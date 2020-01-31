@@ -1,27 +1,32 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
+import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import clsx from 'clsx';
+import "./DesktopMenu.scss"
+import ToolBar from "@material-ui/core/Toolbar"
 import AppBar from "@material-ui/core/AppBar"
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
+import ListItemText from "@material-ui/core/ListItemText"
+import {withRouter} from "react-router-dom";
 
 
-class SideBar extends React.Component {
 
+
+
+class DesktopMenu extends React.Component {
     constructor(props){
         super(props)
-        this.state={
-            active: "",
-            style: {
-                display: "none"
-            },
-            left: false,
-
+        this.state = {
+            open: true,
         }
-        
     }
+
+    togglerDrawer=()=>{
+        this.setState({open: !this.state.open})
+    }
+  
 
     //redirect to id
     handleRedirectOnClick = (event)=>{
@@ -31,36 +36,41 @@ class SideBar extends React.Component {
         }else{
             target = event.target.parentNode.id
         }
-       
+        this.setState({open: !this.state.open})
         this.props.history.push(`/${target}`)
     }
 
-    handleSignOut=(event)=>{
-        this.props.history.push("/home")
-    }
-    
     render(){
-    return (
         
-        <SwipeableDrawer
-            open={this.props.drawer}
-            onClose={this.props.toggleDrawer(false)}
-            onOpen={this.props.toggleDrawer(true)}
-        >
-            <div  
-            className="sidenav" 
-            role="presentation"  
-            onClick={this.props.toggleDrawer(false)} 
-            onKeyDown={this.props.toggleDrawer(false)}
-            >
-                <AppBar className="close-btn-wrapper" 
-                        onClick={this.props.toggleDrawer(false)}
+        return (
+           
+            <div className="desktop-menu">
+                <AppBar
+                    className="AppBar"
+                >
+                    <ToolBar
+                        variant="dense"
+                        className="toolbar"
                     >
-                        <div className="close-btn">
-                            <MenuOpenIcon color="primary" />
-                        </div>
-                        <div className="sliding-effect8s appbar-title">Menu</div>
-                    </AppBar>
+                        <IconButton
+                            color="inherit"
+                            onClick={this.togglerDrawer}
+                            edge="start"
+                        >
+                            <MenuOpenIcon />
+                        </IconButton>
+                    </ToolBar>
+                </AppBar>
+                
+                <Drawer 
+                open={this.state.open}
+                variant="persistent"
+                className={clsx("drawer", {
+                    "drawerOpen": this.state.open,
+                    "drawerClose": !this.state.open,
+                  })}
+                >
+                    
                     <List>   
                         <hr className="divider"></hr>            
                         <ListItem 
@@ -97,46 +107,24 @@ class SideBar extends React.Component {
                         </ListItem>
                         <hr className="divider"></hr>        
                         <ListItem 
-                            button id="signup" 
-                            onClick={this.handleRedirectOnClick}
-                            className="sliding-effect1s" 
-                        >                        
-                            <ListItemText id="signup" primary="Sign up"/>
-                        </ListItem>
-                        <hr className="divider"></hr>
-                        <ListItem 
-                            button id="signin" 
-                            onClick={this.handleRedirectOnClick}
-                            className="sliding-effect2s" 
-                        >                     
-                            <ListItemText id="signin" primary="Sign in"/>
-                        </ListItem>
-                        <hr className="divider"></hr>
-                        <ListItem 
-                            button id="dashboard" 
+                            button id="covers" 
                             onClick={this.handleRedirectOnClick}
                             className="sliding-effect2s" 
                         >                          
                             <ListItemText id="dashboard" primary="Dashboard"/>
                         </ListItem>  
                         <hr className="divider"></hr>                   
-                        <ListItem 
-                            button id="signout" 
-                            onClick={this.handleRedirectOnClick}
-                            className="sliding-effect2s" 
-                        >                            
-                            <ListItemText id="signout" primary="Sign out" />
-                        </ListItem> 
-                        <hr className="divider"></hr>
+                        
                         </List>
                        
+                    
+                </Drawer>
             </div>
             
-        </SwipeableDrawer>
-        
-        
-    );
+            
+            
+        );
     }
 }
 
-export default withRouter(SideBar);
+export default withRouter(DesktopMenu);

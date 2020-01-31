@@ -20,7 +20,7 @@ import WhoAreWe from "./whoarewe/WhoAreWe";
 import dotenv from "dotenv";
 import SignInButton from "./components/SignInButton";
 import imgPlaceholder from "./assets/images/img_placeholder.png";
-import {Paper} from "@material-ui/core";
+import {AppBar} from "@material-ui/core";
 import Backdrop from "./components/BackDrop";
 import Footer from "./components/Footer";
 import Contacts from "./components/Contacts";
@@ -29,6 +29,8 @@ import GetStartedButton from "./components/GetStartedButton"
 import FreeQuotationButton from "./components/FreeQuotationButton"
 import MotorInsuranceButton from "./components/MotorInsuranceButton"
 import HomeButton from "./components/HomeButton"
+import DesktopMenu from "./DesktopMenu"
+
 
 
 dotenv.config()
@@ -132,9 +134,10 @@ class App extends React.Component {
           <div className="loading-text">Loading....</div>
           <div className="loading-text">Name Insurance</div>
         </div>
-        <Router>
-            <Paper variant="elevation" elevation={5} className="top-nav">
-              <header className="App-header">
+        <Router>            
+              <AppBar className={clsx("App-header",{
+                  "appBarShift": true,
+              })}>
                 <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
                   <IconButton >
                     <MenuIcon />
@@ -152,12 +155,14 @@ class App extends React.Component {
                 <div className="nav-login" onClick={this.redirectToSignin}>
                   <SignInButton />
                 </div>
-              </header>
-            </Paper>
+              </AppBar>
+            
+            <DesktopMenu />
        
         <div 
           className={clsx("main",{
-            "display-none": this.state.loading
+            "display-none": this.state.loading,
+            "mainShift": true
           })}
         >
        

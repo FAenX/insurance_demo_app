@@ -1,0 +1,175 @@
+$color_1: #002329;
+$color_2: rgb(255, 81, 0);
+$white: #ffffff;
+$success_color: rgb(35, 105, 0);
+$color_3: #0023291f;
+$error_color: #791200;
+$warning_color: #cc9c00;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes righttoleft{
+  0%   {left:5em; top:0em;}
+  100% {left:0em; top:0em;}
+}
+
+@mixin fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin flex-col{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+@mixin display-none{
+  display: none;
+}
+
+.sliding-effect{
+  position: relative;
+  animation: righttoleft .5s;
+  
+}
+
+
+.sliding-effect1s{
+  position: relative;
+  animation: righttoleft 1s;
+ 
+}
+
+.sliding-effect2s{
+  position: relative;
+  animation: righttoleft 2s;
+  
+}
+
+@mixin sliding-effect{
+  position: relative;
+  animation: righttoleft .5s;
+  
+}
+
+
+@mixin sliding-effect1s{
+  position: relative;
+  animation: righttoleft 1s;
+ 
+}
+
+@mixin sliding-effect2s{
+  position: relative;
+  animation: righttoleft 2s;
+  
+}
+
+
+
+
+.desktop-menu{
+    @include flex-col();
+    width: 100vw;      
+    .AppBar{
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 4em;
+      z-index: 1301;
+      .toolbar{
+        @include flex-row();
+        height: 5em;
+        justify-content: space-between;
+        .MuiSvgIcon-root{
+            font-size: 1.5em;
+            color: $color_2;
+        }
+      }
+      
+    }
+    .appBarShift {
+      
+    }
+
+    .MuiAppBar-colorPrimary{
+      background-color: $color_1;
+    }
+    .drawer{ 
+      @include flex-col();  
+      width: 10em;
+      
+      .MuiDrawer-paper{
+        position: fixed;
+        top: 4em;
+        background-color: $color_1;
+        width: 10em;
+      }       
+    }
+    .drawerOpen {
+      width: 10em;
+      .MuiListItem-gutters{
+       
+        .home-button{
+          margin-right: 1em;
+          .MuiSvgIcon-colorPrimary{
+            color: $color_2
+          }
+        }
+      }
+      .toolbar {
+        @include flex-row();
+        width: 100%;
+        justify-content: flex-end;
+        height: 4em;
+        .MuiIconButton-root{
+          color: $color_2;
+        }
+        
+       
+      }
+    }
+    .drawerClose {
+      @include flex-col();
+      align-items: baseline;
+      justify-content: flex-start;
+      overflow: hidden;
+      width: 10em;
+      
+      .MuiListItem-gutters{
+        
+        .home-button{
+          margin-right: 1em;
+          .MuiSvgIcon-colorPrimary{
+            color: $color_2
+          }
+        }
+      }
+      
+    }
+  
+  
+}
+
+//smaller screen display none
+@media screen and (max-width: 700px)  {
+    .desktop-menu{
+        display: none;
+    }
+    
+}

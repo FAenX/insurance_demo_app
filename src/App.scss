@@ -268,7 +268,7 @@ body {
   .App-header {
     @include flex-row();    
     background-color: $color_1;
-    min-height: 5vh;
+    min-height: 10vh;
     width: 100vw;
     justify-content: space-between;
     color: $color_2;
@@ -995,27 +995,14 @@ body {
 // 800--> screen size
 ////
 //@include
-@media screen and (min-width: 800px)  {
+@media screen and (min-width: 700px)  {
   .mobile-screen{
     @include display-none();
   }
   .wide-screen{
     display: block;
   }
-  .front-page {
-    @include flex-col();
-    .next-arrow{
-      @include display-none();
-    }
-    .get-started-button{
-      @include display-none();
-    } 
-    
-    .free-quotation-button{
-      @include display-none();
-    } 
-    
-  }
+  
   .top-nav{
     .App-header {
       .nav-buttons{

@@ -1,6 +1,8 @@
 import React from "react"
 import {withRouter } from "react-router-dom";
 import HomeIcon from '@material-ui/icons/Home';
+import IconButton from "@material-ui/core/IconButton"
+import Button from "@material-ui/core/Button"
 
 
 class HomeButton extends React.Component{
@@ -17,8 +19,15 @@ class HomeButton extends React.Component{
                     <HomeIcon color="primary" onClick={this.handleClickedBnt}/>                    
                 </div>
                 <div className="wide-screen">
-                    <HomeIcon color="primary" onClick={this.handleClickedBnt}/>
-                    <div className="nav-title">Home</div>  
+                    <Button onClick={this.handleClickedBnt}>
+                        <div className="nav-home-button-label">
+                            <HomeIcon color="primary" />
+                            <div className="nav-title">Home</div>  
+                        </div>
+                    
+                    </Button>
+                    
+                    
                 </div>
              
              

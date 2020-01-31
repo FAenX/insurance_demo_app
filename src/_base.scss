@@ -1,0 +1,81 @@
+$color_1: #002329;
+$color_2: rgb(255, 81, 0);
+$white: #ffffff;
+$success_color: rgb(35, 105, 0);
+$color_3: #0023291f;
+$error_color: #791200;
+$warning_color: #cc9c00;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes righttoleft{
+  0%   {left:5em; top:0em;}
+  100% {left:0em; top:0em;}
+}
+
+@mixin fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin flex-col{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+@mixin display-none{
+  display: none;
+}
+
+.sliding-effect{
+  position: relative;
+  animation: righttoleft .5s;
+  
+}
+
+
+.sliding-effect1s{
+  position: relative;
+  animation: righttoleft 1s;
+ 
+}
+
+.sliding-effect2s{
+  position: relative;
+  animation: righttoleft 2s;
+  
+}
+
+@mixin sliding-effect{
+  position: relative;
+  animation: righttoleft .5s;
+  
+}
+
+
+@mixin sliding-effect1s{
+  position: relative;
+  animation: righttoleft 1s;
+ 
+}
+
+@mixin sliding-effect2s{
+  position: relative;
+  animation: righttoleft 2s;
+  
+}

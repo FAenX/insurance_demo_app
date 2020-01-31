@@ -13,6 +13,7 @@ import "./Style.scss"
 
 
 
+
 class FrontPage extends React.Component {
     constructor(props){
         super(props)
@@ -30,6 +31,7 @@ class FrontPage extends React.Component {
 
         return(
             <div className="front-page">
+                
                 <MotorInsuranceButton />                
                 <GetStartedButton />
                 <FreeQuotationButton />
