@@ -15,11 +15,9 @@ render(){
         <div className="login-button">                
         {/* //mobile screen */}
           <div className="mobile-screen">
-            <Fab color="primary" aria-label="add" className="button-text">
-            <PersonIcon color="primary" onClick={this.handleClickedBnt}/>
-            </Fab> 
             
-            <FormHelperText className="button-text">Sign in</FormHelperText> 
+            <PersonIcon color="primary" onClick={this.handleClickedBnt}/>
+            
           </div>      
             {/* wide screen   */}
             <Button className="nav-button wide-screen" onClick={this.handleClickedBnt}>

@@ -146,12 +146,7 @@ class App extends React.Component {
                 <div className="logo">
                   <img alt="logo" src={imgPlaceholder}/>
                 </div>
-                <div className="nav-buttons">
-                  <HomeButton />
-                  <MotorInsuranceButton />                
-                  <GetStartedButton />
-                  <FreeQuotationButton />
-                </div>
+                
                 <div className="nav-login" onClick={this.redirectToSignin}>
                   <SignInButton />
                 </div>
@@ -162,7 +157,7 @@ class App extends React.Component {
         <div 
           className={clsx("main",{
             "display-none": this.state.loading,
-            "mainShift": true
+            
           })}
         >
        

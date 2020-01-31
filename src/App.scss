@@ -107,7 +107,7 @@ $warning_color: #cc9c00;
 #root {
  color: $color_1;
  background-color: $color_3;
- font-weight: 300;
+ font-weight: 400;
  width: 100vw;
  overflow-x: hidden;
  .display-none{
@@ -389,77 +389,11 @@ body {
   
 }
 
-
-
-
-/*why us*/
-.why-us {
-  @include flex-col();
-  text-align: center;
-}
-
-.why-us-header {
-  @include flex-col();
-  margin: .75em;
-  text-align: left;
-  text-transform: uppercase;
-  padding-left: 1em;
-  font-size: 2em;
-  font-weight: 300; 
-  border-left: 1em solid $color_2;
-}
-
-.why-us-text {
-  margin: .5em;
-  
-}
-
-.why-us-child {
-  @include flex-col();
-  margin: .5em;
-  padding: 1em;
-  font-weight: 300;
-  letter-spacing: .02em;
-  background-color: $white;
-}
-
-
-/* providers carousel */
-.providers-wrapper{
-
-  background-color: $white;
-
-  .providers-carousel{
-    @include flex-col();
-    padding: 3em;
-   }
-   
-  .provider{
-    @include flex-col();
-  }
-  
-  .providers-headline {
-    @include flex-col();
-    margin: 1em;
-    
-    .providers-heading {
-      @include flex-col();
-      font-size: 2em;
-      text-transform: uppercase;
-    }
-    .providers-sub-heading {
-      @include flex-col();
-      font-size: 1.2em;
-      font-weight: 300;
-    }
-  }
-}
-
 /* contacts */
 .contacts-wrapper {
   @include flex-col();
-  width: 100vw;
-  align-items: baseline;
+  //width: 100vw;
+  
   border-top: $color_2 .05em solid;
   background-color: $color_1;
   color: $white;
@@ -476,7 +410,6 @@ body {
   align-items: baseline;
   text-align: left;
   padding-left: 1em;
-  font-weight: 300;
   margin: 2em;
   
 }
@@ -532,80 +465,6 @@ body {
 }
 
 
-/* motor-insurance */
-.motor-insurance {
-  @include flex-col();
-  margin-top: 4em;
-  width: 100vw;
-
-  .intro {
-    margin-top: 2em;
-  }
-
-  .headline-text {
-    @include sliding-effect();
-    @include flex-col(); 
-    font-size: 1.5em;
-    margin: 2em;
-    align-items: baseline;
-    font-weight: 400;
-    border-left: .5em $color_2 solid;
-    padding-left: 1em;
-    text-align: left;
-    text-transform: capitalize;
-    
-  }
-
-  .sub-text {  
-    @include flex-col();
-    @include sliding-effect1s();
-    text-align: left;
-    margin: 3em;
-    line-height: 2em;
-    letter-spacing: .1em;  
-    
-  }
-
-  .motor-insurance-highlights{
-    background-color: $white;
-
-    .motor-insurance-highlights-img{
-      @include sliding-effect2s();
-      height: 20em;
-      @include flex-col();
-    }
-  }
-  .motor-insurance-benefits{
-    @include flex-col();
-    align-items:baseline;
-    text-align: left;
-    margin: 1em;
-    padding: 2em;
-
-    .motor-insurance-benefits-list{
-      @include sliding-effect2s();
-      @include flex-col();     
-      align-items: left;
-      width: 100%;
-      .motor-insurance-benefits-list-item{
-        @include flex-row();
-        width: 100%;
-        justify-content: left;
-        .number{
-          @include flex-col();  
-          height: 3em;
-          width: 3em;
-          border-radius: 50%;
-          margin: 1em;
-          border: .05em solid $color_2;
-        }
-      }
-    }
-  }
-  
-
-  
-}
 
 
 /* quotation request form */

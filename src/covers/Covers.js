@@ -2,10 +2,10 @@ import React from 'react';
 import {withRouter} from "react-router-dom"
 import {Paper} from "@material-ui/core"
 import imgPlaceholder from "../assets/images/img_placeholder.png"
-import GetStartedButton from "../components/GetStartedButton"
 import FreeQuotationButton from "../components/FreeQuotationButton"
 import {List, ListItem, ListItemIcon} from "@material-ui/core"
 import {CheckCircleOutlineRounded} from "@material-ui/icons"
+import "./Covers.scss"
 
 class Covers extends React.Component {
     constructor(props){
@@ -36,7 +36,6 @@ class Covers extends React.Component {
 
         return(
             <div className="motor-insurance">
-                <GetStartedButton />
                 <FreeQuotationButton />
                 <div>{this.dataAlert}</div>
                 <div className="intro">

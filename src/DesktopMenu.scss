@@ -102,8 +102,9 @@ $warning_color: #cc9c00;
         }
         .user-buttons{
             @include flex-row();
-            width: 50vw;
+            width: 20vw;
             justify-content: space-around;
+            margin-right: 1em;
             .nav-button{
                 @include flex-row();
                 //font-size: 1.5em;
@@ -133,6 +134,7 @@ $warning_color: #cc9c00;
         top: 4em;
         background-color: $color_1;
         width: 10em;
+        color: $color_2;
       }       
     }
     .drawerOpen {

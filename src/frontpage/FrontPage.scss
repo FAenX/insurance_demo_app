@@ -98,21 +98,7 @@ $warning_color: #cc9c00;
         color: $color_2;
         padding-right: 1em;
         padding-left: 1em;
-        .nav-buttons{
-          @include flex-row();
-          .next-arrow{
-            @include display-none()
-          }
-        .get-started-button{
-         @include display-none();
         
-        } 
-        
-        .free-quotation-button{
-         @include display-none();
-        
-        } 
-      }
       .nav-login{
         .MuiSvgIcon-colorPrimary{
           font-size: 2em;
@@ -307,16 +293,79 @@ $warning_color: #cc9c00;
     margin: 1em;
     border-bottom: $color_2 solid .05em;
     font-size: 1.5em;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: capitalize;
   }
   
   .step-text {
-    font-weight: 300;
     letter-spacing: .05em;
   }
 
-  @media screen and (min-width: 700px)  {
+  /*why us*/
+.why-us-wrapper{
+  .why-us {
+    @include flex-col();
+    text-align: center;
+    .why-us-header {
+      @include flex-col();
+      margin: .75em;
+      text-align: left;
+      text-transform: uppercase;
+      padding-left: 1em;
+      font-size: 2em;
+      border-left: 1em solid $color_2;
+    }
+    .why-us-text {
+      margin: .5em;
+      .why-us-child {
+        @include flex-col();
+        margin: .5em;
+        padding: 1em;
+        letter-spacing: .02em;
+        background-color: $white;
+      }
+    }
+    
+  }
+}
+/* providers carousel */
+.providers-wrapper{
+
+  background-color: $white;
+
+  .providers-carousel{
+    @include flex-col();
+    padding: 3em;
+   }
+   
+  .provider{
+    @include flex-col();
+  }
+  
+  .providers-headline {
+    @include flex-col();
+    margin: 1em;
+    
+    .providers-heading {
+      @include flex-col();
+      font-size: 2em;
+      text-transform: uppercase;
+    }
+    .providers-sub-heading {
+      @include flex-col();
+      font-size: 1.2em;
+    }
+  }
+}
+
+
+
+
+
+
+
+//wide screen
+ @media screen and (min-width: 700px)  {
     
     .front-page {
       @include flex-col();
@@ -339,12 +388,8 @@ $warning_color: #cc9c00;
         }
       }
     }
-    
-     
-    
     .cover-page { 
         .cover-background{
-           
             background-position-x: 5em;
             background-position-y: 10em; 
         }
@@ -356,16 +401,11 @@ $warning_color: #cc9c00;
         line-height: 1.5em;
         font-size: 3.5em;
         width: 50vw;
-        
-         
         }
         .headline-subtext {
-          
           @include flex-col();
           justify-content: space-around;
           width: 40vw;
-          
-          
           .home-carousel{
             width: 50vw;
             width: 30vw; 
@@ -373,116 +413,160 @@ $warning_color: #cc9c00;
             margin-left: 1em;  
             padding: .05em;
             border: solid .015em $color_2; 
-            
           }
-          
           .slide{
             background-color: $color_1;
             height: 20vh;
             .home-carousel1-slide1{
-            
               background-position-x: 50%;
               background-position-y: 50%;
-             
             }   
             .home-carousel1-slide2{
-              
               background-position-x: 50%;
               background-position-y: 50%;
-             
             }   
             .home-carousel1-slide3{
-             
               background-position-x: 50%;
               background-position-y: 50%;
-             
             }   
             .home-carousel2-slide1{
-              
               background-position-x: 50%;
               background-position-y: 50%;
-             
             }   
             .home-carousel2-slide2{
-             
               background-position-x: 50%;
               background-position-y: 50%;
-             
             } 
             .home-carousel2-slide3{
               background-position-x: 50%;
               background-position-y: 50%;
-             
             }          
           } 
         }
-        
       }
-      
-        
-      }
+    }
     .how-it-works-wrapper {
-        
-        width: 100vw;
+        @include flex-col();
         .how-it-works-sub-header{
-
             .how-it-works-sub-header-text{
                 font-size: 3em;
-
-        
             }
         }
-        
         .how-it-works {
+           
+            @include flex-col();
             background: transparent;
-            display: grid;
-            grid-template-rows: auto;
-            
-            
-            
+           
             .step {
                @include flex-row();
                justify-content: space-between;
-               padding-right: 5em;
-               padding-left: 5em;
                 align-items: center;
                 background: transparent;
-                width: 100vw;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding-top: 0px;
+                padding-bottom: 0px;
                 
-               
+                
                 .svg{
-                    width: 500px;
+                    padding: 1em;
+                    width: 400px;
                     height: 300px;
-                    
-                    
                 }
                 .step-text-wrapper {
                     .step-header{
-                    
-        
+                      width: 30vw;
+                      font-weight: 600;
+                      font-size: 2em;
                     }
                     .step-text{
-                        width: 40vw;
+                        width: 30vw;
+                        font-weight: 400;
                     }
                 }
                 
               }
         }
-        .how-it-works > div:nth-child(1){
-           
-        }
         .how-it-works > div:nth-child(2){
            flex-direction: row-reverse;
         }
-        .how-it-works > div:nth-child(3){
-           
-        }
         .how-it-works > div:nth-child(4){
             flex-direction: row-reverse;
+        } 
+      }
+       /*why us*/
+      .why-us-wrapper{
+        background-color: $white;
+        margin-top: 5em;
+        padding: 1em;
+        .why-us {
+          @include flex-row();
+          align-items: baseline;
+          height: 60vh;
+          .why-us-header {
+            @include flex-col();
+            font-weight: 600;
+            width: 25vw;
+            margin: 1em;
+          }
+          .why-us-text {
+            @include flex-row();
+            align-items: baseline;
+            flex-wrap: wrap;
+            
+            width: 65vw;
+            
+            
+            .why-us-child {
+              @include flex-col();
+              justify-content: flex-start;
+              width: 20vw;
+              height: 50vh;
+              font-size: .75em;
+              
+              overflow: auto;
+              
+            }
+          }
+          
         }
-        .how-it-works > div:nth-child(5){
-           
-        }      
+      }
+      /* providers carousel */
+      .providers-wrapper{
+        @include flex-col();
+        
+
+        .providers-carousel{
+         //height: 250px;
+         .slide{
+           height: 150px;
+         }
+        }
+        
+        .provider{
+          @include flex-col();
+          img{
+            height: 150px;
+            width: 250px;
+          }
+        }
+        
+        .providers-headline {
+          @include flex-col();
+          width: 40vw;
+          margin: 1.5em;
+          font-weight: 600;
+          
+          .providers-heading {
+            @include flex-col();
+            font-size: 2em;
+            text-transform: uppercase;
+          }
+          .providers-sub-heading {
+            @include flex-col();
+            font-size: 1.2em;
+          }
+        }
       }
       
   }

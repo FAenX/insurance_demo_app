@@ -7,7 +7,7 @@ import WhyUs from "./WhyUs"
 import GetStartedButton from "../components/GetStartedButton"
 import FreeQuotationButton from "../components/FreeQuotationButton"
 import MotorInsuranceButton from "../components/MotorInsuranceButton"
-import "./Style.scss"
+import "./FrontPage.scss"
 
 
 
@@ -43,7 +43,7 @@ class FrontPage extends React.Component {
                 
                     <HowItWorks/>               
                 
-                <div>
+                <div className="why-us-wrapper">
                     <WhyUs />
                 </div> 
                 <div>

@@ -113,7 +113,8 @@ class SideBar extends React.Component {
                         </ListItem>
                         <hr className="divider"></hr>
                         <ListItem 
-                            button id="dashboard" 
+                            button 
+                            id="dashboard" 
                             onClick={this.handleRedirectOnClick}
                             className="sliding-effect2s" 
                         >                          
