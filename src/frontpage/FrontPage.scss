@@ -3,7 +3,7 @@ $color_1: #00161a;
 $color_2: rgb(255, 81, 0);
 $white: #ffffff;
 $success_color: rgb(35, 105, 0);
-$color_3: #0023291f;
+$color_3: #002329;
 $error_color: #791200;
 $warning_color: #cc9c00;
 
@@ -130,6 +130,9 @@ $warning_color: #cc9c00;
 }
 .front-page {
   @include flex-col();
+  .button-text{
+    color: $white;
+  }
   .next-arrow{
     @include flex-col();
     align-items: flex-end;
@@ -157,13 +160,14 @@ $warning_color: #cc9c00;
     @include flex-col();
     align-items: flex-end;
     position: fixed;
-    top: 4em;
+    top: 3.5em;
     right: 0;
     margin:1em;
     z-index: 1299;
     button{
       animation: spin 5s;
     }
+    
   
   } 
   
@@ -203,7 +207,7 @@ $warning_color: #cc9c00;
       font-weight: 600;
       font-size: 2em;
       @include sliding-effect();
-      color: $color_1;
+      color: $color_2;
      
     }
     .headline-subtext {
@@ -398,15 +402,8 @@ $warning_color: #cc9c00;
   }
 }
 
-
-
-
-
-
-
 //wide screen
  @media screen and (min-width: 700px)  {
-    
     .front-page {
       @include flex-col();
       .next-arrow{
@@ -415,7 +412,6 @@ $warning_color: #cc9c00;
       .get-started-button{
         @include display-none();
       } 
-      
     }
     #root{
       .App{
@@ -432,19 +428,22 @@ $warning_color: #cc9c00;
       .home {
         @include flex-row();        
         .headline-text {
+         
         margin: .5em;
-        @include sliding-effect();
+        @include sliding-effect2s();
         line-height: 1.5em;
         font-size: 3.5em;
         width: 50vw;
         }
         .headline-subtext {
+          position: relative;
+          top: 2em;
           @include flex-col();
-          justify-content: space-around;
+          justify-content: center;
           width: 40vw;
           .home-carousel{
-            width: 50vw;
-            width: 30vw; 
+            //height: 50vh;
+            width: 40vw; 
             margin-bottom: 2em; 
             margin-left: 1em;  
             padding: .05em;
@@ -452,7 +451,7 @@ $warning_color: #cc9c00;
           }
           .slide{
             background-color: $color_1;
-            height: 20vh;
+            height: 40vh;
             .home-carousel1-slide1{
               background-position-x: 50%;
               background-position-y: 50%;

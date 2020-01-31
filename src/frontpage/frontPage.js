@@ -10,10 +10,6 @@ import MotorInsuranceButton from "../components/MotorInsuranceButton"
 import "./FrontPage.scss"
 
 
-
-
-
-
 class FrontPage extends React.Component {
     constructor(props){
         super(props)
@@ -34,6 +30,7 @@ class FrontPage extends React.Component {
                 
                 <MotorInsuranceButton />                
                 <GetStartedButton />
+                
                 <FreeQuotationButton />
                 <div className="cover-page">
                     <div className="cover-background">

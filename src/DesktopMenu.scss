@@ -2,7 +2,7 @@ $color_1: #002329;
 $color_2: rgb(255, 81, 0);
 $white: #ffffff;
 $success_color: rgb(35, 105, 0);
-$color_3: #0023291f;
+$color_3: #002329cb;
 $error_color: #791200;
 $warning_color: #cc9c00;
 
@@ -132,7 +132,7 @@ $warning_color: #cc9c00;
       .MuiDrawer-paper{
         position: fixed;
         top: 4em;
-        background-color: $color_1;
+        background-color: $color_3;
         width: 10em;
         color: $color_2;
       }       
