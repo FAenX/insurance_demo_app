@@ -2,7 +2,6 @@ import React from 'react';
 import {withRouter} from "react-router-dom";
 import {Paper} from "@material-ui/core"
 import OptionalBenefits from "./OptionalBenefits"
-import Prodiver from "./Provider"
 import Vehicle from "./Vehicle"
 import FreeQuotationButton from "../components/FreeQuotationButton"
 import GetStartedButton from "../components/GetStartedButton"
@@ -50,7 +49,7 @@ class Quotation extends React.Component {
 
         return(
             <div className="quotation-page-wrapper"> 
-            <FreeQuotationButton />
+                <FreeQuotationButton />
                   {getStartedButton}
                 <div className="quotation-body-wrapper">                   
                         <div className="product-title sliding-effect">

@@ -128,6 +128,46 @@ $warning_color: #cc9c00;
     }
   }
 }
+.front-page {
+  @include flex-col();
+  .next-arrow{
+    @include flex-col();
+    align-items: flex-end;
+    position: fixed;
+    top: 12em;
+    right: 0;
+    z-index: 1299;  
+    margin: 1em;
+    margin-bottom: 12em;
+  }
+  
+  
+  .get-started-button{
+    @include flex-col();
+    align-items: flex-end;
+    z-index: 1299;
+    position: fixed;
+    top: 8em;
+    right: 0;
+    margin:1em;
+  
+  } 
+  
+  .free-quotation-button{
+    @include flex-col();
+    align-items: flex-end;
+    position: fixed;
+    top: 4em;
+    right: 0;
+    margin:1em;
+    z-index: 1299;
+    button{
+      animation: spin 5s;
+    }
+  
+  } 
+  
+}
   
   .cover-page {
     @include flex-col();
@@ -373,10 +413,6 @@ $warning_color: #cc9c00;
         @include display-none();
       }
       .get-started-button{
-        @include display-none();
-      } 
-      
-      .free-quotation-button{
         @include display-none();
       } 
       

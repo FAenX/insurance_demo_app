@@ -53,7 +53,7 @@ class VehicleDetails extends React.Component{
               
         }
         return(
-            <Paper variant="elevation" elevation={3} className="swipeable-quote-form-form">
+            <Paper variant="outlined" className="swipeable-quote-form-form">
                 
                 <div className="swipeable-quote-form-content">
                 <div className="swipeable-quote-form-sub-header">Vehicle details</div>

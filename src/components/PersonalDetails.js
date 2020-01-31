@@ -13,7 +13,7 @@ class PersonalDetails extends React.Component{
         }
         
         return(
-            <Paper variant="elevation" elevation={3} className="swipeable-quote-form-form">
+            <Paper variant="outlined" className="swipeable-quote-form-form">
                 
                 <div variant="outlined" className="swipeable-quote-form-content">
                 <div className="swipeable-quote-form-sub-header ">Personal details</div>

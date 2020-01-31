@@ -48,6 +48,7 @@ class OurPatners extends React.Component{
                     <div className="providers-heading">Our Insurance Patners</div>
                     <div className="providers-sub-heading">With over 12 insurers to choose from, Name works actively to find an ideal plan for you</div>
                 </div>
+                
                 <ProvidersCarouselLong 
                     providers={this.state.providers}
                     heritage={heritage}

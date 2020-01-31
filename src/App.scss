@@ -176,26 +176,26 @@ body {
   background-color: $color_2;
 }
 
-
+::-webkit-scrollbar{
+  display: none;
+}
 
 //motor insurance form 
 .swipeable-quote-form {
   width: 100vw;
   @include flex-col();
-  background-image: linear-gradient(to top, $color_1, $color_3);
+  background-image: linear-gradient(to bottom, $color_1, $color_3);
   align-items: baseline;
-  
-  
   .request-button{
-    @include flex-col();
+   
     @include sliding-effect2s();
-    width: 95%;
+    width: 70%;
     margin: 1em;
     padding: 1em;
-    .MuiButton-containedPrimary{
+    
       background-color: $color_2;
       width: 15em;
-    }
+   
   }
   .swipeable-quote-form-sub-header{
     @include sliding-effect1s();
@@ -233,7 +233,7 @@ body {
     .swipeable-quote-form-form{
       @include flex-col();
       width: 100%;
-     
+     background: transparent;
       padding: 1em;
       margin-bottom: 1em;
       .swipeable-quote-form-content{
@@ -347,48 +347,6 @@ body {
 }
 
 
-.front-page {
-  @include flex-col();
-  .next-arrow{
-    @include flex-col();
-    align-items: flex-end;
-    position: fixed;
-    top: 12em;
-    right: 0;
-    z-index: 1299;  
-    margin: 1em;
-    margin-bottom: 12em;
-  }
-  
-  
-  .get-started-button{
-    @include flex-col();
-    align-items: flex-end;
-    z-index: 1299;
-    position: fixed;
-    top: 8em;
-    right: 0;
-    margin:1em;
-  
-  } 
-  
-  .free-quotation-button{
-    @include flex-col();
-    
-    align-items: flex-end;
-    position: fixed;
-    top: 4em;
-    right: 0;
-    margin:1em;
-    z-index: 1299;
-    button{
-      animation: spin 5s;
-    }
-  
-  } 
-  
-}
-
 /* contacts */
 .contacts-wrapper {
   @include flex-col();
@@ -480,129 +438,6 @@ body {
   }
 }
 
-
-
-
-/* quotation page */
-.quotation-page-wrapper {
-  @include flex-col();
-  margin-top: 4em;
-  width: 100vw;
-  overflow: hidden;
-  
-  .quotation-body-wrapper{
-    background-image: linear-gradient(to bottom, $color_1, $color_3);
-    
-    .product-title{
-      @include flex-col();
-      @include sliding-effect2s();
-      font-size: 2em;
-      margin: .5em;
-      color: $white;
-    }
-    .quotation-wrapper {  
-      @include flex-col();
-      
-      .quotation {
-        @include flex-col();
-        
-        
-        #quotation-header{
-          @include flex-col(); 
-          @include sliding-effect();          
-          padding: .5em;
-          margin: .5em;
-          font-size: 2.5em; 
-          width: 100vw;
-        }  
-        #quotation-content{
-          @include flex-col();              
-          text-align:left;
-          padding: 1em;
-          font-size: 1em;
-          width: 100vw;
-          #vehicle-details{
-            width: 100%;
-            @include sliding-effect1s(); 
-          } 
-          .q-content{
-            padding: 1em;
-          }
-          #optional-benefits{
-            @include sliding-effect2s(); 
-            @include flex-col();
-            margin: 1em;
-            background-color: $color_1;
-            color: $white;
-            width: 100%;            
-            .optional-benefits-listitems{
-              @include flex-col();
-              .list-item{
-                @include flex-row();
-              }
-            }  
-            .q-content-sub{
-              padding: 1em;
-              font-weight: 400;
-              p{
-                display: inline;
-              }
-              p:nth-child(1){
-                font-size: 1.5em;
-                font-weight: 600;
-              }
-            }
-          }
-          #provider-details{
-            @include flex-col();
-            width: 100%;            
-            padding: 1em;
-            
-            .provider{
-              @include flex-col();
-              padding: 1em;
-              img{
-                width:100%;
-              }
-              .q-content-sub{
-                padding: 1em;
-                font-weight: 400;
-              }
-              #premium-button{
-                margin: 1em;
-                width: 50%;
-              } 
-              #buy-button{
-                margin: 1em;
-                width: 50%;
-                background-color: $color_2;
-              } 
-              #details-button{
-                margin: 1em;
-                width: 50%;
-              } 
-            }
-            
-            
-            .provider-rates{
-              @include flex-col();
-              margin-top: 1em;
-              
-
-              #insurance-details{
-                width: 100%;
-                margin-bottom: 1em;
-              }
-              .table-container{
-                overflow: scroll;
-              }
-            }
-          }
-        }      
-      }      
-    }
-  }
-}
 
 //claims page
 .claims-wrapper{
@@ -848,6 +683,24 @@ body {
 ////
 //@include
 @media screen and (min-width: 700px)  {
+  .swipeable-quote-form {
+    width: 40vw;
+    .form{
+     
+  
+      .swipeable-quote-form-form{
+        
+        .swipeable-quote-form-content{
+         
+          //form controls
+        .form-controls {
+         
+          
+        }
+        }
+      }
+    }
+  }
   #root{
     .mobile-screen{
       @include display-none();

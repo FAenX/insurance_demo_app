@@ -215,8 +215,9 @@ class MotorInsuranceQuoteForm extends React.Component{
                         insuranceChangeListener={this.insuranceChangeListener}
                     />
 
-                    <Card variant="outlined" className="request-button">
+                    
                         <Button 
+                            className="request-button"
                             variant="contained" 
                             color="primary"
                             onClick={this.requestQuotation}
@@ -224,7 +225,7 @@ class MotorInsuranceQuoteForm extends React.Component{
                             Request
                             
                         </Button>
-                    </Card>
+                   
                     </div>
                        
                 </div>
