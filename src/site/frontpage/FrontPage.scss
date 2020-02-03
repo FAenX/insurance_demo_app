@@ -1,92 +1,4 @@
-
-$color_1: #00161a;
-$color_2: rgb(255, 81, 0);
-$white: #ffffff;
-$success_color: rgb(35, 105, 0);
-$color_3: #002329;
-$error_color: #791200;
-$warning_color: #cc9c00;
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes righttoleft{
-  0%   {left:5em; top:0em;}
-  100% {left:0em; top:0em;}
-}
-
-@mixin fullscreen {
-  width: 100vw;
-  height: 100vh;
-}
-
-@mixin flex-col{
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin flex-row{
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-}
-@mixin display-none{
-  display: none;
-}
-.sliding-effect{
-    position: relative;
-    animation: righttoleft .5s;
-    
-  }
-  
-  
-  .sliding-effect1s{
-    position: relative;
-    animation: righttoleft 1s;
-   
-  }
-  
-  .sliding-effect2s{
-    position: relative;
-    animation: righttoleft 2s;
-    
-  }
-  
-  @mixin sliding-effect{
-    position: relative;
-    animation: righttoleft .5s;
-    
-  }
-  
-  
-  @mixin sliding-effect1s{
-    position: relative;
-    animation: righttoleft 1s;
-   
-  }
-  
-  @mixin sliding-effect2s{
-    position: relative;
-    animation: righttoleft 2s;
-    
-  }
-  .display-none{
-    display: none;
-  }
-
-  .wide-screen{
-    @include display-none();
-  }
-
+@import "../../base";
   #root{
     .App{ 
       .App-header {        
@@ -167,8 +79,6 @@ $warning_color: #cc9c00;
     button{
       animation: spin 5s;
     }
-    
-  
   } 
   
 }
@@ -183,16 +93,14 @@ $warning_color: #cc9c00;
     
     
     .cover-background{
-        background-image: url(../assets/images/image1.png);
+        background-image: url(../../assets/images/image1.png);
         background-repeat: no-repeat; 
         background-position-x: -20em;
         background-position-y: 10em; 
     }
-  
    
     //home
   .home {
-    
     @include flex-col();
     @include fullscreen();
     align-items: baseline;
@@ -235,7 +143,7 @@ $warning_color: #cc9c00;
         height: 20vh;
         .home-carousel1-slide1{
           height: 100%;
-          background-image: url(../assets/images/img_placeholder.png);
+          background-image: url(../../assets/images/img_placeholder.png);
           background-repeat: no-repeat;
           background-position-x: 5em;
           background-position-y: 1em;
@@ -243,7 +151,7 @@ $warning_color: #cc9c00;
         }   
         .home-carousel1-slide2{
           height: 100%;
-          background-image: url(../assets/images/img_placeholder.png);
+          background-image: url(../../assets/images/img_placeholder.png);
           background-repeat: no-repeat;
           background-position-x: 5em;
           background-position-y: 1em;
@@ -251,7 +159,7 @@ $warning_color: #cc9c00;
         }   
         .home-carousel1-slide3{
           height: 100%;
-          background-image: url(../assets/images/img_placeholder.png);
+          background-image: url(../../assets/images/img_placeholder.png);
           background-repeat: no-repeat;
           background-position-x: 5em;
           background-position-y: 1em;
@@ -259,7 +167,7 @@ $warning_color: #cc9c00;
         }   
         .home-carousel2-slide1{
           height: 100%;
-          background-image: url(../assets/images/img_placeholder.png);
+          background-image: url(../../assets/images/img_placeholder.png);
           background-repeat: no-repeat;
           background-position-x: 5em;
           background-position-y: 1em;
@@ -267,7 +175,7 @@ $warning_color: #cc9c00;
         }   
         .home-carousel2-slide2{
           height: 100%;
-          background-image: url(../assets/images/img_placeholder.png);
+          background-image: url(../../assets/images/img_placeholder.png);
           background-repeat: no-repeat;
           background-position-x: 5em;
           background-position-y: 1em;
@@ -275,7 +183,7 @@ $warning_color: #cc9c00;
         } 
         .home-carousel2-slide3{
           height: 100%;
-          background-image: url(../assets/images/img_placeholder.png);
+          background-image: url(../../assets/images/img_placeholder.png);
           background-repeat: no-repeat;
           background-position-x: 5em;
           background-position-y: 1em;

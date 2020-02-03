@@ -3,9 +3,9 @@ import {withRouter} from "react-router-dom";
 import {Paper} from "@material-ui/core"
 import OptionalBenefits from "./OptionalBenefits"
 import Vehicle from "./Vehicle"
-import FreeQuotationButton from "../components/FreeQuotationButton"
-import GetStartedButton from "../components/GetStartedButton"
-import {filterByAlias} from "../helpers/js/dataManipulation"
+import FreeQuotationButton from "../../components/FreeQuotationButton"
+import GetStartedButton from "../../components/GetStartedButton"
+import {filterByAlias} from "../../helpers/js/dataManipulation"
 import ProvidersCarousel from "./components/ProvidersCarousel"
 
 class Quotation extends React.Component {

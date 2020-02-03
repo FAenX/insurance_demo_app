@@ -1,8 +1,8 @@
 import React from 'react';
 import {withRouter} from "react-router-dom"
 import {Paper} from "@material-ui/core"
-import imgPlaceholder from "../assets/images/img_placeholder.png"
-import FreeQuotationButton from "../components/FreeQuotationButton"
+import imgPlaceholder from "../../assets/images/img_placeholder.png"
+import FreeQuotationButton from "../../components/FreeQuotationButton"
 import {List, ListItem, ListItemIcon} from "@material-ui/core"
 import {CheckCircleOutlineRounded} from "@material-ui/icons"
 import "./Covers.scss"

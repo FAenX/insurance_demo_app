@@ -10,8 +10,8 @@ import AppBar from "@material-ui/core/AppBar"
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import ListItemText from "@material-ui/core/ListItemText"
 import {withRouter} from "react-router-dom";
-import SignInButton from "./components/SignInButton";
-import GetStartedButton from "./components/GetStartedButton"
+import SignInButton from "../../components/SignInButton";
+import GetStartedButton from "../../components/GetStartedButton"
 
 
 

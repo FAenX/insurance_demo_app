@@ -1,37 +1,14 @@
 import React from 'react';
 import './App.scss';
-import Rates from "./covers/Rates";
-import Cover from "./covers/Cover";
-import Quotation from "./covers/Quotation";
-import PaymentOptions from "./payments/PaymentOptions";
-import Mpesa from "./payments/Mpesa"
-import Covers from "./covers/Covers";
-import FrontPage from "./frontpage/frontPage";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import SideNav from "./SideNav";
-import SignIn from "./auth/SignIn";
-import SignUp from "./auth/SignUp";
 import Dashboard from "./auth/dashboard/Dashboard";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Product from './covers/Product';
-import Claim from "./claims/Claim";
-import WhoAreWe from "./whoarewe/WhoAreWe";
 import dotenv from "dotenv";
-import SignInButton from "./components/SignInButton";
 import imgPlaceholder from "./assets/images/img_placeholder.png";
-import {AppBar} from "@material-ui/core";
 import Backdrop from "./components/BackDrop";
 import Footer from "./components/Footer";
-import Contacts from "./components/Contacts";
 import clsx from 'clsx';
-import GetStartedButton from "./components/GetStartedButton"
-import FreeQuotationButton from "./components/FreeQuotationButton"
-import MotorInsuranceButton from "./components/MotorInsuranceButton"
-import HomeButton from "./components/HomeButton"
-import DesktopMenu from "./DesktopMenu"
-
-
+import Site from "./site/Site"
+import "./Components.scss"
 
 dotenv.config()
 
@@ -134,25 +111,7 @@ class App extends React.Component {
           <div className="loading-text">Loading....</div>
           <div className="loading-text">Name Insurance</div>
         </div>
-        <Router>            
-              <AppBar className={clsx("App-header",{
-                  "appBarShift": true,
-              })}>
-                <div className="menu-icon" onClick={this.toggleDrawer(true)}> 
-                  <IconButton >
-                    <MenuIcon />
-                  </IconButton>
-                </div> 
-                <div className="logo">
-                  <img alt="logo" src={imgPlaceholder}/>
-                </div>
-                
-                <div className="nav-login" onClick={this.redirectToSignin}>
-                  <SignInButton />
-                </div>
-              </AppBar>
-            
-            <DesktopMenu />
+        <Router>
        
         <div 
           className={clsx("main",{
@@ -161,30 +120,12 @@ class App extends React.Component {
           })}
         >
        
-        <SideNav 
-          isLoggedIn={this.state.isLoggedIn} 
-          drawer={this.state.isOpen} 
-          toggleDrawer={this.toggleDrawer}
-        />
         
-          
-          
           <Switch>
-              <Route exact path='/' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-              <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-              <Route exact path='/signup' render = {(props) => <SignUp {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+              <Route exact path='/' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+              <Route exact path='/home' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
               <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-              <Route exact path='/product' render = {(props) => <Product {...props} />}/>
-              <Route exact path='/cover' render = {(props) => <Cover {...props} />}/>
-              <Route exact path='/covers' render = {(props) => <Covers {...props} />}/>
-              <Route exact path='/claim' render = {(props) => <Claim {...props} />}/>
-              <Route exact path='/about' render = {(props) => <WhoAreWe {...props} />}/>
-              <Route exact path='/rates' render = {(props) => <Rates {...props} />}/>
-              <Route exact path='/quotation' render = {(props) => <Quotation {...props} />}/>
-              <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />
-              <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
           </Switch>
-        <Contacts/>
         <Footer/>
         
         </div>

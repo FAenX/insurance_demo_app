@@ -1,0 +1,195 @@
+$primary-color: #00233a;
+$primary-color2:#73ff00;
+$primary-color3:#ffffff;
+@mixin flex-col{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@keyframes spinY {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinX {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+}
+
+
+
+@keyframes righttoleft{
+  0%   {left:5em; top:0em;}
+  100% {left:0em; top:0em;}
+}
+
+
+.under-construction-wrapper{
+    width: 100vw;
+    @include flex-col();
+    header{
+      @include flex-col();
+    }
+    .top-nav {
+      @include flex-row();
+      width: 100%;
+      justify-content: space-between;
+      //min-height: 8vh;
+      .top-nav-menu-icon{
+        .MuiSvgIcon-root{
+          fill: $primary-color2;
+          font-size: 1.5em;
+        }
+      }
+    }
+   
+  .under-construction-wrapper-body{
+    @include flex-col();
+    background: none;
+    padding: 1em;
+    background-color: $primary-color;
+    min-height: 100vh;
+    width: 100vw;
+    .under-construction{
+      @include flex-col();
+      padding: 1em;
+      .logo{
+        img{
+          height: 4em;
+          width: 12em;
+        }        
+      }
+      .flip{
+        animation: spinX 5s ;
+        animation-iteration-count: infinite;        
+      }
+      .text-content{
+        @include flex-col();
+        margin: 1em;        
+        font-weight: 300;       
+        #company-name{
+          font-size: 2em;
+          font-weight: 600;
+          text-transform: capitalize; 
+          color: $primary-color2;         
+        }
+        #company-motto{
+          font-size: 1em;
+          font-weight: 200;  
+          color: $primary-color3; 
+          margin-bottom: 1em;          
+        }
+        #site-info{
+          color: $primary-color2; 
+          font-size: 2em;  
+        }
+      }
+      .contacts{
+        @include flex-col();
+        color: $primary-color3; 
+        width: 90%;
+        
+        
+        
+        .phone-numbers{
+          @include flex-col();
+          width: 70%;
+          .phone-number-header{
+            @include flex-col();
+            font-size: 1.2em;
+            
+          }
+          #phone-number{
+            width: 100%;
+            @include flex-col();
+            align-items: baseline;
+            .contact{
+              @include flex-row();
+              justify-content: space-between;
+              .MuiIcon-root{
+                
+              }
+              
+            }
+          }
+        }
+        .social-media{
+          @include flex-row();
+          width: 50%;
+          justify-content: space-around;
+          margin: 1em;
+        }
+        .facebook{
+          animation: spin 3s ;
+              
+        }
+        .twitter{
+          animation: spin 3s ;
+                
+        }
+        .whatsapp{
+          animation: spin 3s ;
+              
+        }
+        .instagram{
+          animation: spin 3s ;
+            
+        }
+      }
+      
+    }       
+  
+  }
+} 
+
+@media screen and (min-width: 700px)  {
+    .under-construction-wrapper{
+      .under-construction-wrapper-body{
+        .under-construction{
+          .logo{ 
+            img{
+              height: 6em;
+              width: 18em;
+            }
+          }
+        }
+      }
+    }
+    .mobile-screen{
+      display: none;
+    }
+    .wide-screen{
+      .MuiPaper-root{
+        background: transparent;
+        border-color: $primary-color2;
+      }
+      
+    }
+  }
+  
+  @media screen and (max-width: 700px)  {
+    .wide-screen{
+      display: none;
+    }
+  }
+  
+  
+  

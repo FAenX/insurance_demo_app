@@ -1,88 +1,4 @@
-$color_1: #002329;
-$color_2: rgb(255, 81, 0);
-$white: #ffffff;
-$success_color: rgb(35, 105, 0);
-$color_3: #0023291f;
-$error_color: #791200;
-$warning_color: #cc9c00;
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes righttoleft{
-  0%   {left:5em; top:0em;}
-  100% {left:0em; top:0em;}
-}
-
-@mixin fullscreen {
-  width: 100vw;
-  height: 100vh;
-}
-
-@mixin flex-col{
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin flex-row{
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-}
-@mixin display-none{
-  display: none;
-}
-
-
-
-.sliding-effect{
-  position: relative;
-  animation: righttoleft .5s;
-  
-}
-
-
-.sliding-effect1s{
-  position: relative;
-  animation: righttoleft 1s;
- 
-}
-
-.sliding-effect2s{
-  position: relative;
-  animation: righttoleft 2s;
-  
-}
-
-@mixin sliding-effect{
-  position: relative;
-  animation: righttoleft .5s;
-  
-}
-
-
-@mixin sliding-effect1s{
-  position: relative;
-  animation: righttoleft 1s;
- 
-}
-
-@mixin sliding-effect2s{
-  position: relative;
-  animation: righttoleft 2s;
-  
-}
-
-
+@import "./base";
 
 .App {
   @include flex-col();
@@ -93,17 +9,12 @@ $warning_color: #cc9c00;
 
 
 .loader{
-  @include flex-col()
+  @include flex-col();
   img{
     animation: spin 3s ;
     animation-iteration-count: infinite; 
   }
-  
-  
 }
-
-
-
 #root {
  color: $color_1;
  background-color: $color_3;
@@ -113,17 +24,10 @@ $warning_color: #cc9c00;
  .display-none{
     display: none;
   }
-
   .wide-screen{
     display: none;
   }
- 
- 
- 
 }
-
-
-
 body {
   text-align: center;
   .MuiFab-primary{
@@ -178,173 +82,6 @@ body {
 
 ::-webkit-scrollbar{
   display: none;
-}
-
-//motor insurance form 
-.swipeable-quote-form {
-  width: 100vw;
-  @include flex-col();
-  background-image: linear-gradient(to bottom, $color_1, $color_3);
-  align-items: baseline;
-  .request-button{
-   
-    @include sliding-effect2s();
-    width: 70%;
-    margin: 1em;
-    padding: 1em;
-    
-      background-color: $color_2;
-      width: 15em;
-   
-  }
-  .swipeable-quote-form-sub-header{
-    @include sliding-effect1s();
-    font-size: 1.5em;
-    text-transform: capitalize;
-    margin-bottom: 1em;
-  }
-  .close-btn-wrapper {
-    @include flex-row();
-    width: 100%;    
-    background-color: $color_1;
-    justify-content: space-between;  
-    padding: 1em; 
-    .appbar-title{
-      font-size: 1.5rem;
-      @include sliding-effect1s();
-    }
-    .close-btn{
-      
-      border: .05em solid $color_2;
-      @include sliding-effect1s();
-      animation: spin 3s;
-    } 
-    .MuiSvgIcon-colorPrimary{
-      color: $color_2;
-      font-size: 2.5em;
-    }    
-  }
-  .form{
-    @include flex-col();
-    width: 100%;
-    margin-top: 6em;
-    padding: 1em;
-
-    .swipeable-quote-form-form{
-      @include flex-col();
-      width: 100%;
-     background: transparent;
-      padding: 1em;
-      margin-bottom: 1em;
-      .swipeable-quote-form-content{
-        @include flex-col();
-        width: 100%;
-        padding: 1em;
-        //form controls
-      .form-controls {
-        width: 15em;
-        height: 6em;
-        @include sliding-effect2s();
-      }
-      }
-    }
-  }
-  
-}
-
-.top-nav{
-  @include flex-col();
-  position: fixed;
-  top: 0;
-  z-index: 1;
-
-  .App-header {
-    @include flex-row();    
-    background-color: $color_1;
-    min-height: 10vh;
-    width: 100vw;
-    justify-content: space-between;
-    color: $color_2;
-    padding-right: 1em;
-    padding-left: 1em;
-    z-index: 1300;
-    .nav-buttons{
-      @include flex-row();
-      .next-arrow{
-        @include display-none()
-      }
-      
-      
-      .get-started-button{
-       @include display-none();
-      
-      } 
-      
-      .free-quotation-button{
-       @include display-none();
-      
-      } 
-    }
-    .nav-login{
-      .MuiSvgIcon-colorPrimary{
-        font-size: 3em;
-        color: $color_2;
-        @include sliding-effect2s();
-      }
-    } 
-  
-    .menu-icon {
-      animation: spin 3s;
-      padding: none;
-      border: 1px solid $color_2;
-  
-      button {
-        color: $color_2;
-      }
-    }
-  
-    .logo{
-      
-      img{
-        height: 4em;
-        width: 4em;
-      }
-    }
-    
-  }
-}
-
-
-
-
-
-
-
-.sidenav {
-  @include fullscreen();
-  color: $white;
-  background-color: $color_1;
-  .MuiList-root{
-    margin-top: 5em;
-  }
-  .close-btn-wrapper {
-    @include flex-row();
-    width: 100%;    
-    background-color: $color_1;
-    justify-content: space-between;  
-    padding: 1em; 
-    .appbar-title{
-      font-size: 1.5rem;
-      @include sliding-effect2s();
-    }
-    .close-btn{
-      border: .05em solid $color_2;
-    } 
-    .MuiSvgIcon-colorPrimary{
-      color: $color_2;
-      font-size: 2.5em;
-    }    
-  }
 }
 
 
@@ -404,62 +141,6 @@ body {
   border-radius: 50%;
 }
 
-/* footer */
-.footer-wrapper {
-  @include flex-col();
-  min-height:5vh;
-  color: $color_1;
-  background-color: $white; 
-  width: 100vw;
-  footer{
-    font-weight: 600;
-    padding: .5em;
-    font-size: .75em;    
-    display: inline;
-    a{
-      color: $color_2;
-    }
-  }
-  
-}
-
-
-
-
-/* quotation request form */
-.quote-form-wrapper{
-  @include flex-col();
-  .quote-form {
-    @include flex-row();
-    flex-wrap: wrap;
-    margin: 1em;
-  }
-  .quote-form-nav svg{
-    cursor: pointer;
-  }
-}
-
-
-//claims page
-.claims-wrapper{
-  @include flex-col();
-  margin-top: 8vh;
-  min-height: 100vh;
-}
-
-.who-are-we-wrapper{
-  @include flex-col();
-  margin-top: 8vh;
-  min-height: 100vh;
-}
-
-.everythingyouneedtoknow-wrapper{
-  @include flex-col();
-  margin-top: 8vh;
-  min-height: 100vh;
-}
-
-
 
 
 
@@ -490,101 +171,17 @@ body {
 ////
 //@include
 @media screen and (min-width: 700px)  {
-  .swipeable-quote-form {
-    width: 40vw;
-    .form{
-     
   
-      .swipeable-quote-form-form{
-        
-        .swipeable-quote-form-content{
-         
-          //form controls
-        .form-controls {
-         
-          
-        }
-        }
-      }
-    }
-  }
   #root{
     .mobile-screen{
-      @include display-none();
+     display: none;
     }
     .wide-screen{
       display: flex;
     }
   }
   
-  .top-nav{
-    .App-header {
-      .nav-buttons{
-        @include flex-row();
-        .MuiSvgIcon-colorPrimary{
-          color: $color_2
-        }
-        .home-button{
-          margin-right: 1em;
-          
-        }
-        .next-arrow{
-          @include flex-col();
-          align-items: flex-end;
-          position: relative;
-          margin: 1em;
-          .button-text{
-            display: none;
-          }
-          
-        }
-        .get-started-button{
-          @include flex-col();
-          align-items: flex-end;
-          position: relative;
-          margin:1em;
-          .button-text{
-            display: none;
-          }
-          
-        } 
-        .free-quotation-button{
-          @include flex-col();
-          align-items: flex-end;
-          position: relative;
-          margin:1em;
-          .button-text{
-            display: none;
-          }
-          button{
-            animation: spin 5s;
-          }
-          
-        }
-        .home-button{          
-         
-          
-        }
-    }
-      .nav-login{
-        .MuiSvgIcon-colorPrimary{
-          font-size: 3em;
-          color: $color_2;
-          @include sliding-effect2s();
-        }
-      } 
-      .menu-icon {
-        @include display-none();
-      }
-      .logo{
-        img{
-          height: 4em;
-          width: 4em;
-        }
-      }
-      
-    }
-  }
+  
   
   
   

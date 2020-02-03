@@ -1,0 +1,7 @@
+//claims page
+.claims-wrapper{
+    @include flex-col();
+    margin-top: 8vh;
+    min-height: 100vh;
+  }
+  

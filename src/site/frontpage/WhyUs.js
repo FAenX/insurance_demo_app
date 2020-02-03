@@ -1,6 +1,6 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
-import imgPlaceholder from "../assets/images/img_placeholder.png"
+import imgPlaceholder from "../../assets/images/img_placeholder.png"
 import {Paper} from "@material-ui/core"
 
 class WhyUsChild extends React.Component {

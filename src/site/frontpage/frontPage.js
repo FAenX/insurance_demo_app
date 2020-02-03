@@ -4,9 +4,9 @@ import Home from "./Home"
 import HowItWorks from './HowItWorks'
 import OurPatners from "./OurPatners"
 import WhyUs from "./WhyUs"
-import GetStartedButton from "../components/GetStartedButton"
-import FreeQuotationButton from "../components/FreeQuotationButton"
-import MotorInsuranceButton from "../components/MotorInsuranceButton"
+import GetStartedButton from "../../components/GetStartedButton"
+import FreeQuotationButton from "../../components/FreeQuotationButton"
+import MotorInsuranceButton from "../../components/MotorInsuranceButton"
 import "./FrontPage.scss"
 
 

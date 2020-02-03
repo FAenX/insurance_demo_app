@@ -6,9 +6,9 @@ import { Carousel } from 'react-responsive-carousel';
 
 
 //should be dynamic
-import Jubilee from "../../assets/images/jubilee.png"
-import Apa from "../../assets/images/apa.png"
-import Heritage from "../../assets/images/partners-heritage.png"
+import Jubilee from "../../../assets/images/jubilee.png"
+import Apa from "../../../assets/images/apa.png"
+import Heritage from "../../../assets/images/partners-heritage.png"
 
 const jp = "(+15yrs Special) Jubilee Motor"
 const ap = "(+15yrs Special) APA Motor"

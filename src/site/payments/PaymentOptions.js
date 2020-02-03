@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, Alert, Form} from "react-bootstrap"
-import mpesaLogo from "../assets/images/mpesa.png"
-import mastercard from "../assets/images/mastercard.png"
-import paypall from "../assets/images/download.jpeg"
-import crediCartPlaceHolder from "../assets/images/creditcardplaceholder.gif"
+import mpesaLogo from "../../assets/images/mpesa.png"
+import mastercard from "../../assets/images/mastercard.png"
+import paypall from "../../assets/images/download.jpeg"
+import crediCartPlaceHolder from "../../assets/images/creditcardplaceholder.gif"
 import {withRouter} from "react-router-dom"
 import {Button} from "@material-ui/core"
 

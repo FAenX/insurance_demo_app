@@ -1,0 +1,139 @@
+@import "../../base";
+
+.mobile-navigation{
+  @include flex-col();
+  width: 100vw;      
+  .AppBar{
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 4em;
+    z-index: 1300;
+    .toolbar{
+      @include flex-row();
+      height: 5em;
+      justify-content: space-between;
+      .MuiSvgIcon-root{
+          font-size: 1.5em;
+          color: $color_2;
+      }
+      .user-buttons{
+          @include flex-row();
+          width: 20vw;
+          justify-content: space-around;
+          margin-right: 1em;
+          .MuiDrawer-paper{
+            width: 100vw;
+          }
+          
+          .nav-button{
+              @include flex-row();
+              //font-size: 1.5em;
+              width: 7em;
+              justify-content: space-between;
+              color: $color_2;
+              font-weight: 600;
+              text-transform: capitalize;
+          }
+      }
+    }
+    
+  }
+  
+
+  .MuiAppBar-colorPrimary{
+    background-color: $color_1;
+  }
+  .drawer{ 
+    @include flex-col();  
+    //width: 10em;
+    
+    .MuiDrawer-paper{
+      position: fixed;
+      top: 4em;
+      background-color: $color_3;
+      width: 100vw;
+      color: $color_2;
+    }       
+  }
+  .drawerOpen {
+    //width: 10em;
+    .MuiListItem-gutters{
+     
+      .home-button{
+        margin-right: 1em;
+        .MuiSvgIcon-colorPrimary{
+          color: $color_2
+        }
+      }
+    }
+    .toolbar {
+      @include flex-row();
+      width: 100%;
+      justify-content: flex-end;
+      height: 4em;
+      .MuiIconButton-root{
+        color: $color_2;
+      }
+      
+     
+    }
+  }
+  .drawerClose {
+    @include flex-col();
+    align-items: baseline;
+    justify-content: flex-start;
+    overflow: hidden;
+   
+    
+    .MuiListItem-gutters{
+      
+      .home-button{
+        margin-right: 1em;
+        .MuiSvgIcon-colorPrimary{
+          color: $color_2
+        }
+      }
+    }
+    
+  }
+
+  
+  
+  
+}
+
+.sidenav {
+  @include fullscreen();
+  color: $white;
+  background-color: $color_1;
+  .MuiList-root{
+    margin-top: 5em;
+  }
+  .close-btn-wrapper {
+    @include flex-row();
+    width: 100%;    
+    background-color: $color_1;
+    justify-content: space-between;  
+    padding: 1em; 
+    .appbar-title{
+      font-size: 1.5rem;
+      @include sliding-effect2s();
+    }
+    .close-btn{
+      border: .05em solid $color_2;
+    } 
+    .MuiSvgIcon-colorPrimary{
+      color: $color_2;
+      font-size: 2.5em;
+    }    
+  }
+}
+
+//smaller screen display none
+@media screen and (min-width: 700px)  {
+  .mobile-navigation{
+      display: none;
+  }
+  
+}

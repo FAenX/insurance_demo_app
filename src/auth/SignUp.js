@@ -1,9 +1,10 @@
 import React from "react"
 import {Form} from "react-bootstrap"
 import BackDrop from "../components/BackDrop"
-import {Button} from "@material-ui/core"
+import {Button, Drawer} from "@material-ui/core"
 import SnackBar from "../components/SnackBar"
 import {withRouter } from "react-router-dom";
+import clsx from "clsx"
 
 
 class SignUp extends React.Component {
@@ -144,6 +145,15 @@ class SignUp extends React.Component {
                     />
 
         return(
+            <Drawer 
+            anchor="top"
+            open={this.props.open}
+            variant="persistent"
+            className={clsx("drawer", {
+                "drawerOpen": this.props.open,
+                "drawerClose": !this.props.open,
+              })}
+            >
             <div className="signup-wrapper">
                     <div>{alert}</div>
                     <div className="headline-text sliding-effect">
@@ -183,7 +193,8 @@ class SignUp extends React.Component {
                         </Form>
                     </div>
                 
-            </div>
+                </div>
+            </Drawer>
         )
     }
 }

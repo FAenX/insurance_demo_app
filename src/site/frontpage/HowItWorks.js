@@ -1,7 +1,6 @@
 import React from "react"
 import {withRouter} from "react-router-dom";
-import imgPlaceholder from "../assets/images/img_placeholder.png"
-import {Paper} from "@material-ui/core"
+import imgPlaceholder from "../../assets/images/img_placeholder.png"
 
 
 class HowItWorksStep extends React.Component{
