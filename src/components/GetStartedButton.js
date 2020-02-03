@@ -31,22 +31,17 @@ class GetStartedButton extends React.Component{
                 successListener={this.successListener}
             />
             {/* //mobile screen */}
-            <div className="mobile-screen">
-            <Fab color="primary" aria-label="add" className="button-text">
-                <PersonAddIcon color="primary" onClick={this.handleClickedBnt}/>
-            </Fab> 
-            
-            <FormHelperText className="button-text">Sign Up</FormHelperText> 
+            <div className="mobile-screen button-text" >
+              <FormHelperText>Sign Up</FormHelperText> 
+              <Fab color="primary" aria-label="add" onClick={this.handleClickedBnt}>
+                  <PersonAddIcon color="primary"/>
+              </Fab> 
             </div>      
             {/* wide screen   */}
-            <Button className="nav-button wide-screen" onClick={this.handleClickedBnt}>
+            <Button className="wide-screen nav-button" onClick={this.handleClickedBnt}>
                 <PersonAddIcon color="primary" />   
                 <div className="nav-title">Sign Up</div>  
-            </Button>      
-            
-              
-                  
-                
+            </Button> 
             </div>
         )
     }

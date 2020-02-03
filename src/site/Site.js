@@ -84,8 +84,6 @@ class Site extends React.Component {
               <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
           </Switch>
         <Contacts/>
-        <Footer/>
-        
         </div>
         </Router>
         {/* <Backdrop open={this.state.backdrop}/> */}

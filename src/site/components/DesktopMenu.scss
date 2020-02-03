@@ -19,7 +19,7 @@
         }
         .user-buttons{
             @include flex-row();
-            width: 20vw;
+            
             justify-content: space-around;
             margin-right: 1em;
             .MuiDrawer-paper{
@@ -29,11 +29,14 @@
             .nav-button{
                 @include flex-row();
                 //font-size: 1.5em;
-                width: 7em;
+                
                 justify-content: space-between;
                 color: $color_2;
                 font-weight: 600;
                 text-transform: capitalize;
+                .nav-title{
+                  margin-left: .5em;
+                }
             }
         }
       }

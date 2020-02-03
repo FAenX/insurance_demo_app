@@ -29,8 +29,7 @@ class FrontPage extends React.Component {
             <div className="front-page">
                 
                 <MotorInsuranceButton />                
-                <GetStartedButton />
-                
+                <GetStartedButton />                
                 <FreeQuotationButton />
                 <div className="cover-page">
                     <div className="cover-background">

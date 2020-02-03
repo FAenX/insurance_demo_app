@@ -2,7 +2,7 @@ import React from "react"
 import {withRouter } from "react-router-dom";
 import GetAppIcon from '@material-ui/icons/GetApp';
 import MotorInsuranceQuoteForm from "./MotorInsuranceQuoteForm"
-import {Fab, FormHelperText} from '@material-ui/core';
+import {Fab, FormHelperText, Button} from '@material-ui/core';
 
 class FreeQuotationButton extends React.Component{
 
@@ -39,20 +39,33 @@ class FreeQuotationButton extends React.Component{
     render(){
         return(
             <div className="free-quotation-button">
-                {/* mobile screen */}
+                
                 <MotorInsuranceQuoteForm 
                     open={this.state.isOpen} 
                     toggleDrawer={this.toggleDrawer}
                     closeDrawer={this.closeDrawer}
                 />
-                 <FormHelperText className="button-text">Get free quotation</FormHelperText>
-                <Fab color="primary" aria-label="add" className="button-text" onClick={this.handleClickedBnt}>
-                    <GetAppIcon 
-                        color="primary"                         
-                    />
-                </Fab>                     
-               
+                {/* mobile screen */}
+                <div className="mobile-screen button-text">
+                    <FormHelperText>Get free quotation</FormHelperText>
+                    <Fab color="primary" aria-label="add" onClick={this.handleClickedBnt}>
+                        <GetAppIcon 
+                            color="primary"                         
+                        />
+                    </Fab>
+                </div>      
+                {/* wide screen   */}
                 
+                <Button className="nav-button wide-screen" onClick={this.handleClickedBnt}>
+                        <GetAppIcon 
+                            color="primary"                         
+                        />
+                    <div className="nav-title">Get a free quotation</div>  
+                </Button> 
+                
+              
+                
+                    
             </div>
         )
     }

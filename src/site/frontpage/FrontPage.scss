@@ -43,7 +43,11 @@
 .front-page {
   @include flex-col();
   .button-text{
-    color: $white;
+    @include flex-col();
+    align-items: flex-end;
+    p{
+      color: $white;
+    }
   }
   .next-arrow{
     @include flex-col();
@@ -89,7 +93,7 @@
     position: relative;
     top: 5vh;
     font-weight: 700;  
-    background-color: $color_3;
+    background-color: $color_1;
     
     
     .cover-background{
@@ -201,7 +205,8 @@
 .how-it-works-wrapper {
     @include flex-col(); 
     position: relative;
-    top: 3rem;
+    top: 3em;
+  
   }
   
   
@@ -318,6 +323,9 @@
         @include display-none();
       }
       .get-started-button{
+        @include display-none();
+      } 
+      .free-quotation-button{
         @include display-none();
       } 
     }
@@ -439,18 +447,19 @@
       }
        /*why us*/
       .why-us-wrapper{
-        background-color: $white;
-        margin-top: 5em;
+        background-color: $color_3;
+        position: relative;
+        top: 4em;
         padding: 1em;
         .why-us {
           @include flex-row();
-          align-items: baseline;
           height: 60vh;
           .why-us-header {
             @include flex-col();
             font-weight: 600;
             width: 25vw;
             margin: 1em;
+            color: $color_2;
           }
           .why-us-text {
             @include flex-row();
@@ -477,6 +486,8 @@
       /* providers carousel */
       .providers-wrapper{
         @include flex-col();
+        position: relative;
+        top: 3em;
         
 
         .providers-carousel{

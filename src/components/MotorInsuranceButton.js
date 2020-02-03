@@ -14,11 +14,12 @@ class MotorInsuranceButton extends React.Component{
     render(){
         return(
             <div className="next-arrow" >
-                <Fab color="primary" aria-label="add" className="button-text mobile-screen">             
-                    <ArrowForwardIcon color="primary" onClick={this.handleClickedBnt}/>               
-                </Fab> 
-                <FormHelperText className="button-text">Motor insurance</FormHelperText> 
-
+                <div className="mobile-screen button-text">
+                    <FormHelperText>Motor insurance</FormHelperText> 
+                    <Fab color="primary" aria-label="add" onClick={this.handleClickedBnt}>             
+                        <ArrowForwardIcon color="primary"/>               
+                    </Fab> 
+                </div>
                 {/* wide screen   */}
                 <div className="wide-screen"> 
                     <Button onClick={this.handleClickedBnt}>
