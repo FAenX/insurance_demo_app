@@ -87,7 +87,6 @@ class VehicleDetails extends React.Component{
                         variant="outlined"
                         value={this.props.vehicle.vehicleMake}
                         onChange={this.props.vehicleOnChangeListener}
-                        helperText="Toyota"
                         error={error(this.props.vehicle.vehicleMake)}
                     />
                     </div>
@@ -99,7 +98,6 @@ class VehicleDetails extends React.Component{
                         variant="outlined"
                         value={this.props.vehicle.vehicleModel}
                         onChange={this.props.vehicleOnChangeListener}
-                        helperText="Vehicle model"
                         error={error(this.props.vehicle.vehicleModel)}
                     />
                     </div>
@@ -109,7 +107,6 @@ class VehicleDetails extends React.Component{
                         label="1,400,000"
                         variant="outlined"
                         onChange={this.props.vehicleOnChangeListener}
-                        helperText="Vehicle Value"
                         value={this.props.vehicle.vehicleValue}
                         error={error(this.props.vehicle.vehicleValue)}
                         
@@ -122,7 +119,6 @@ class VehicleDetails extends React.Component{
                         </InputLabel>
                         <Select
                             name="yearOfManufacture" 
-                            helperText="year of manufacture"
                             value={this.props.vehicle.yearOfManufacture}
                             onChange={this.props.vehicleOnChangeListener}
                             labelWidth={100}

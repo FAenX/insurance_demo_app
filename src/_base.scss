@@ -2,19 +2,28 @@ $color_1: #002329;
 $color_2: rgb(255, 81, 0);
 $white: #ffffff;
 $success_color: rgb(35, 105, 0);
-$color_3: #002329cc;
+$color_3: #002329e7;
 $error_color: #791200;
 $warning_color: #cc9c00;
 
-@keyframes spin {
+
+@keyframes spinY {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} 
 
+@keyframes spinX {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+}
 @keyframes righttoleft{
   0%   {left:5em; top:0em;}
   100% {left:0em; top:0em;}

@@ -15,7 +15,7 @@ class PersonalDetails extends React.Component{
         return(
             <Paper variant="outlined" className="swipeable-quote-form-form">
                 
-                <div variant="outlined" className="swipeable-quote-form-content">
+                <div className="swipeable-quote-form-content">
                 <div className="swipeable-quote-form-sub-header ">Personal details</div>
                     <div className="form-controls">
                     <TextField 
@@ -46,7 +46,6 @@ class PersonalDetails extends React.Component{
                         variant="outlined"
                         value={this.props.user.phone}
                         onChange={this.props.userOnChangeListener}
-                        helperText="Mobile Number"
                         // error={error(this.props.user.phone)}
                         disabled={this.props.loggedIn}
                     />
@@ -58,7 +57,6 @@ class PersonalDetails extends React.Component{
                         variant="outlined"
                         value={this.props.user.email}
                         onChange={this.props.userOnChangeListener}
-                        helperText="Email Address"
                         error={error(this.props.user.email)}
                         disabled={this.props.loggedIn}
                     />

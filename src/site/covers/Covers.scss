@@ -89,27 +89,45 @@ $warning_color: #cc9c00;
 /* motor-insurance */
 .motor-insurance {
     @include flex-col();
-    margin-top: 4em;
+    //-color: $;
     width: 100vw;
+    
+    .motor-insurance-section:nth-child(1){
+      flex-direction: row-reverse;
+      
+    }
+    .motor-insurance-section{
+      @include flex-row();
+      
+      .section-text{
+        width: 40vw;
+        background-color: $color_3;
+      }
+      .motor-insurance-highlights-img{
+        @include flex-col();
+        width: 40vw;
+        height: 30vw;
+      }
+    }
+    
     .free-quotation-button{
-        position: fixed;
-        top: 5em;
-        right: 0;
+        display: none;
     }
   
     .intro {
       margin-top: 2em;
+      
     }
   
     .headline-text {
       @include sliding-effect();
       @include flex-col(); 
-      font-size: 1.5em;
+      font-size: 2em;
       margin: 2em;
       align-items: baseline;
-      font-weight: 400;
+      font-weight: 600;
       border-left: .5em $color_2 solid;
-      padding-left: 1em;
+      padding-left: .5em;
       text-align: left;
       text-transform: capitalize;
       
@@ -118,36 +136,43 @@ $warning_color: #cc9c00;
     .sub-text {  
       @include flex-col();
       @include sliding-effect1s();
+      margin-left: 5em;
       text-align: left;
       margin: 3em;
       line-height: 2em;
-      letter-spacing: .1em;  
-      
+      letter-spacing: .1em;        
     }
   
     .motor-insurance-highlights{
-      background-color: $white;
-  
-      .motor-insurance-highlights-img{
-        @include sliding-effect2s();
-        height: 20em;
-        @include flex-col();
+      background-color: $white;  
+      .motor-insurance-section{
+        @include flex-row();
+        
+        .section-text{
+          width: 40vw;
+        }
+        .motor-insurance-highlights-img{
+          @include sliding-effect2s();
+          @include flex-col();
+          width: 40vw;
+          height: 50vw;
+        }
       }
     }
     .motor-insurance-benefits{
-      @include flex-col();
-      align-items:baseline;
+      @include flex-row();
+      flex-wrap: wrap;
       text-align: left;
-      margin: 1em;
       padding: 2em;
-  
       .motor-insurance-benefits-list{
+        margin: 1em;
         @include sliding-effect2s();
         @include flex-col();     
         align-items: left;
         width: 100%;
         .motor-insurance-benefits-list-item{
           @include flex-row();
+         
           width: 100%;
           justify-content: left;
           .number{
@@ -179,11 +204,10 @@ $warning_color: #cc9c00;
 }
   
   .quotation-body-wrapper{
-    background-image: linear-gradient(to bottom, $color_1, $color_3);
-    
+   background-color: $color_1;
     .product-title{
       @include flex-col();
-      @include sliding-effect2s();
+      @include sliding-effect1s();
       font-size: 2em;
       margin: .5em;
       color: $white;
@@ -193,8 +217,6 @@ $warning_color: #cc9c00;
       
       .quotation {
         @include flex-col();
-        
-        
         #quotation-header{
           @include flex-col(); 
           @include sliding-effect();          
@@ -291,4 +313,36 @@ $warning_color: #cc9c00;
     }
   }
 }
+
+@media screen and (max-width: 700px)  {
+  .motor-insurance{
+    .motor-insurance-highlights{
+      background-color: $white; 
+      width: 100vw; 
+      .motor-insurance-section{
+        @include flex-col();
+        
+        .section-text{
+          width: 100vw;
+        }
+        .motor-insurance-highlights-img{
+          @include sliding-effect2s();
+          @include flex-col();
+          width: 100vw;
+          height: 50vw;
+        }
+      }
+    }
+    .motor-insurance-section:nth-child(1){
+      flex-direction: column;
+      
+    }
+    .motor-insurance-section{
+      @include flex-col();
+      .section-text{
+        width: 100vw;
+      }
+    }
+  }
   
+}

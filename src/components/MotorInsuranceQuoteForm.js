@@ -21,9 +21,7 @@ class MotorInsuranceQuoteForm extends React.Component{
             showSnackBar: false,
             //user
             loggedIn: false,
-
             vehicle: {
-                
                 cover: "privatethirdpartyonly",
                 vehicleUse: "private",
                 vehicleMake: "Tesla",

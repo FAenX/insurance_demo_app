@@ -4,10 +4,9 @@
 .swipeable-quote-form {
     width: 100vw;
     @include flex-col();
-    background-image: linear-gradient(to bottom, $color_1, $color_3);
+    background-color: $color_1;
     align-items: baseline;
     .request-button{
-     
       @include sliding-effect2s();
       width: 70%;
       margin: 1em;
@@ -47,18 +46,41 @@
       width: 100%;
       margin-top: 6em;
       padding: 1em;
-  
+      .MuiFormLabel-root{
+        color: $color_2;
+      }
+      .MuiInputBase-root{
+        color: $white;
+        font-weight: 500;
+      }
+      .MuiFormHelperText-root{
+        color: $color_2;
+      }
+      
+      .Mui-error{
+        color: red;
+      }
+      
+      
       .swipeable-quote-form-form{
         @include flex-col();
         width: 100%;
-       background: transparent;
+        background-color: $color_3;
+        
+        
         padding: 1em;
         margin-bottom: 1em;
+        
         .swipeable-quote-form-content{
           @include flex-col();
+          color: $color_2;
           width: 100%;
           padding: 1em;
           //form controls
+          .swipeable-quote-form-sub-header{
+            font-weight: 700;
+          }
+          
         .form-controls {
           width: 15em;
           height: 6em;

@@ -1,13 +1,15 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
+import {WhatsApp, Facebook, Twitter} from "@material-ui/icons"
 
 
 class SocialMedia extends React.Component {
     render(){
         return(
             <div className="social-media">                
-                <div className="fa fa-facebook"/>
-                <div className="fa fa-twitter"/>
+                <WhatsApp />
+                <Facebook />
+                <Twitter />
             </div>
         )
     }

@@ -82,9 +82,8 @@ $warning_color: #cc9c00;
 /* sign in sign up*/
 .signin-wrapper {
     @include flex-col();
-    margin-top: 4rem;
     width: 100%;
-    
+    min-height: 60vh;
     .free-quotation-button{
       position: fixed;
       top: 4em;
@@ -117,8 +116,7 @@ $warning_color: #cc9c00;
   
   .signup-wrapper {
     @include flex-col();
-    margin-top: 8vh;
-    min-height: 100vh;
+    min-height: 60vh;
     width: 100%;
     .headline-text{
       @include sliding-effect();
