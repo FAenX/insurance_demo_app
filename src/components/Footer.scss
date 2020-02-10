@@ -1,0 +1,23 @@
+@import "../base";
+  
+  
+  /* footer */
+  .footer-wrapper {
+    @include flex-col();
+    position: relative;
+    top: 3em;
+    min-height:5vh;
+    color: $color_1;
+    background-color: $white; 
+    width: 100vw;
+    footer{
+      font-weight: 600;
+      padding: .5em;
+      font-size: .75em;    
+      display: inline;
+      a{
+        color: $color_2;
+      }
+    }
+    
+  }

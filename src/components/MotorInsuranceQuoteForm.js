@@ -5,9 +5,9 @@ import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import {Button, AppBar} from "@material-ui/core"
 import VehicleDetails from "./VehicleDetails"
 import PersonalDetails from "./PersonalDetails"
-import Card from "@material-ui/core/Card"
 import SnackBar from "./SnackBar"
 import InsuranceDetails from "./InsuranceDetails"
+import "./MotorInsuranceQuoteForm.scss"
 
 
 
@@ -181,9 +181,10 @@ class MotorInsuranceQuoteForm extends React.Component{
         return(
             <Drawer 
                 open={this.props.open}
-                // open={true}
+                anchor="top"
                 onClose={this.props.toggleDrawer(false)}
                 onOpen={this.props.toggleDrawer(true)}
+                className="swipable-quoteform-drawer"
                 
             >
                 <div>{alert}</div>

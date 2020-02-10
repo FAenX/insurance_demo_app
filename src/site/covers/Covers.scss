@@ -3,6 +3,8 @@
 /* motor-insurance */
 .motor-insurance {
     @include flex-col();
+    position: relative;
+    top: 3em;
     //-color: $;
     width: 100vw;
     
@@ -16,6 +18,7 @@
       .section-text{
         width: 40vw;
         background-color: $color_3;
+        color: $color_2;
       }
       .motor-insurance-highlights-img{
         @include flex-col();
@@ -108,7 +111,8 @@
   /* quotation page */
 .quotation-page-wrapper {
   @include flex-col();
-  margin-top: 7vh;
+  position: relative;
+  top: 3em;
   width: 100vw;
   overflow: hidden;
   

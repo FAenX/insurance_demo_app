@@ -203,7 +203,7 @@
   
 /* how it works */
 .how-it-works-wrapper {
-    background-image: url(../../assets/images/image1.png);
+    //background-image: url(../../assets/images/image1.png);
     background-repeat: no-repeat;
     @include flex-col(); 
     position: relative;
