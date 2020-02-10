@@ -1,0 +1,62 @@
+@import "../../../base";
+.provider{
+    @include flex-col();
+    #provider-details{
+        @include flex-row();
+        //justify-content: space-around;
+        //width: 100vw;  
+        flex-flow: row-reverse;
+        border: 1px solid $color_2;          
+        padding: 1em;
+        
+        .provider{
+          @include flex-col();
+          padding: 1em;
+          width: 35%;
+          height: 60vh;
+          
+          img{
+            width:100%;
+          }
+          .q-content-sub{
+            padding: 1em;
+            font-weight: 400;
+          }
+          #premium-button{
+            margin: 1em;
+            width: 50%;
+          } 
+          #buy-button{
+            margin: 1em;
+            width: 50%;
+            background-color: $color_2;
+          } 
+          #details-button{
+            margin: 1em;
+            width: 50%;
+          } 
+        }
+        
+        
+        .provider-rates{
+          @include flex-col();
+        //   justify-content: space-between;
+          width: 35%;
+          padding: 1em;
+          #insurance-details{ 
+            //width: 40%;
+            height: 60vh;
+            }
+          
+          }
+          .table-container{
+            //@include flex-col();
+            width: 35%;
+            height: 60vh;
+            padding: 1em;
+            table{
+              width: 20vw;
+            }
+        }
+      }
+}

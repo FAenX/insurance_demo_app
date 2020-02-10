@@ -8,6 +8,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import clsx from "clsx"
+import OptionalBenefits from "./OptionalBenefits"
+import "./Provider.scss"
 
 
 class Benefits extends React.Component {
@@ -58,8 +60,8 @@ class ProviderRates extends React.Component {
     render(){
         return(<div 
                     className={clsx("",{
-                        "display-none": !this.props.show,
-                        "provider-rates": this.props.show
+                        "display-none": false,
+                        "provider-rates": true
                     })}
                 >
                 <Paper variant="outlined" className="q-content" id="insurance-details">   
@@ -71,7 +73,10 @@ class ProviderRates extends React.Component {
                 <hr className="divider"></hr>                                                    
                 </Paper>
            
-                <Benefits />
+                
+                {/* <OptionalBenefits 
+                    premium={this.props.premium}
+                />    */}
             
                 </div>
         )
@@ -125,6 +130,8 @@ class Provider extends React.Component {
                 show={this.state.showDetails}
                 chosenProduct={this.props.chosenProduct}
             />
+            <Benefits />
+                  
         </div>
             
             

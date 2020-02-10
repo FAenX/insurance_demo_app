@@ -1,5 +1,5 @@
 import React from "react";
-import Provider from "../Provider"
+import Provider from "./Provider"
 import "react-responsive-carousel/lib/styles/carousel.css";
 import "./carousel.scss"
 import { Carousel } from 'react-responsive-carousel';
@@ -9,6 +9,9 @@ import { Carousel } from 'react-responsive-carousel';
 import Jubilee from "../../../assets/images/jubilee.png"
 import Apa from "../../../assets/images/apa.png"
 import Heritage from "../../../assets/images/partners-heritage.png"
+
+
+
 
 const jp = "(+15yrs Special) Jubilee Motor"
 const ap = "(+15yrs Special) APA Motor"
@@ -27,7 +30,7 @@ class ProvidersCarousel extends React.Component {
                 showThumbs={false}
                 showArrows={true}
                 showStatus={true}
-                width="100%"
+                width="90vw"
             >
                 
                 <div className="provider">
@@ -36,7 +39,8 @@ class ProvidersCarousel extends React.Component {
                         premium={this.props.premium}
                         image = {Jubilee}
                         jp={jp}
-                    />             
+                    /> 
+                        
                 </div>
 
                 <div className="provider">
@@ -45,7 +49,8 @@ class ProvidersCarousel extends React.Component {
                         premium={this.props.premium}
                         image = {Apa}
                         jp = {ap}
-                    />               
+                    />  
+                                 
                 </div>
 
                 <div className="provider">
@@ -54,7 +59,8 @@ class ProvidersCarousel extends React.Component {
                         premium={this.props.premium}
                         image={Heritage}
                         jp = {hp}
-                    />                    
+                    />  
+                                     
                 </div>
                 
             </Carousel>

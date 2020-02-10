@@ -51,13 +51,13 @@ class Site extends React.Component {
   render(){
     return (
       <div className="App">
-        <div className={clsx("loader",{
+        {/* <div className={clsx("loader",{
             "display-none": !this.state.loading
           })}>
           <img alt="logo" src={imgPlaceholder}/>
           <div className="loading-text">Loading....</div>
           <div className="loading-text">Name Insurance</div>
-        </div>
+        </div> */}
         <Router>            
               
             <MobileNavigation 
@@ -69,7 +69,7 @@ class Site extends React.Component {
        
         <div 
           className={clsx("main",{
-            "display-none": this.state.loading,
+            "display-none": false,
             
           })}
         >
@@ -86,7 +86,7 @@ class Site extends React.Component {
         <Contacts/>
         </div>
         </Router>
-        {/* <Backdrop open={this.state.backdrop}/> */}
+        <Footer/>
        </div>
     );
   }

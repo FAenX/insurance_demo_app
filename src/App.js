@@ -3,10 +3,7 @@ import './App.scss';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Dashboard from "./auth/dashboard/Dashboard";
 import dotenv from "dotenv";
-import imgPlaceholder from "./assets/images/img_placeholder.png";
 import Backdrop from "./components/BackDrop";
-import Footer from "./components/Footer";
-import clsx from 'clsx';
 import Site from "./site/Site"
 import "./Components.scss"
 
@@ -104,29 +101,29 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <div className={clsx("loader",{
-            "display-none": !this.state.loading
+        {/* <div className={clsx("loader",{
+            "display-none": true
           })}>
           <img alt="logo" src={imgPlaceholder}/>
           <div className="loading-text">Loading....</div>
           <div className="loading-text">Name Insurance</div>
-        </div>
+        </div> */}
         <Router>
        
         <div 
-          className={clsx("main",{
-            "display-none": this.state.loading,
+          className="main"
+          // className={clsx("main",{
+          //   "display-none": false,
             
-          })}
+          // })}
         >
        
         
           <Switch>
-              <Route exact path='/' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-              <Route exact path='/home' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
               <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+              <Route exact path='/*' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           </Switch>
-        <Footer/>
+        
         
         </div>
         </Router>

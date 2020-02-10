@@ -1,9 +1,8 @@
 import React from 'react';
 import {withRouter} from "react-router-dom";
 import {Paper} from "@material-ui/core"
-import OptionalBenefits from "./OptionalBenefits"
+import OptionalBenefits from "./components/OptionalBenefits"
 import Vehicle from "./Vehicle"
-import FreeQuotationButton from "../../components/FreeQuotationButton"
 import GetStartedButton from "../../components/GetStartedButton"
 import {filterByAlias} from "../../helpers/js/dataManipulation"
 import ProvidersCarousel from "./components/ProvidersCarousel"
@@ -34,13 +33,13 @@ class Quotation extends React.Component {
         
         let user = JSON.parse(sessionStorage.getItem("user"))
         
-        let getStartedButton;
+       
         if (user==null ||
             user===undefined ||
             Object.keys(user).length < 1
             ){
                 user = JSON.parse(sessionStorage.getItem("temp_user"))
-                getStartedButton = <GetStartedButton />     
+                  
 
         }
 
@@ -48,9 +47,7 @@ class Quotation extends React.Component {
         
 
         return(
-            <div className="quotation-page-wrapper"> 
-                <FreeQuotationButton />
-                  {getStartedButton}
+            <div className="quotation-page-wrapper">
                 <div className="quotation-body-wrapper">                   
                         <div className="product-title sliding-effect">
                             {chosenProduct.name}
@@ -64,9 +61,6 @@ class Quotation extends React.Component {
                                         <Vehicle 
                                             vehicle={vehicle}
                                         />                                    
-                                        <OptionalBenefits 
-                                            premium={response.premium}
-                                        />
                                         
                                         <ProvidersCarousel 
                                             chosenProduct={chosenProduct} 

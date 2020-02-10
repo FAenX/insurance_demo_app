@@ -9,6 +9,7 @@ $color_1: #002329;
 
 
 .providers-carousel{
+    @include flex-col();
     width: 100%; 
     padding: 0;
     .carousel{

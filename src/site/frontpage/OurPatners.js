@@ -1,5 +1,5 @@
 import React from "react"
-import {ProvidersCarousel, ProvidersCarouselLong} from "./ProvidersCarousel"
+import {ProvidersCarousel, ProvidersCarouselLong} from "./components/ProvidersCarousel"
 import apa from "../../assets/images/apa.png";
 import jubilee from "../../assets/images/partners-jubilee.png"
 import heritage from "../../assets/images/partners-heritage.png";
