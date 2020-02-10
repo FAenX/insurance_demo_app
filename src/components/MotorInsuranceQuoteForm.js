@@ -181,6 +181,7 @@ class MotorInsuranceQuoteForm extends React.Component{
         return(
             <Drawer 
                 open={this.props.open}
+                variant="persistent"
                 anchor="top"
                 onClose={this.props.toggleDrawer(false)}
                 onOpen={this.props.toggleDrawer(true)}

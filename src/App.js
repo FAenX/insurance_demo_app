@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import Backdrop from "./components/BackDrop";
 import Site from "./site/Site"
 import "./Components.scss"
+import imgPlaceholder from "./assets/images/img_placeholder.png";
+import clsx from 'clsx';
 
 dotenv.config()
 
@@ -15,7 +17,7 @@ class App extends React.Component {
     super(props);
     this.state = {  
       //loader
-      loading: true,   
+      loading: false,   
       //drawer
       isOpen: false,
       isLoggedIn: false,
@@ -52,6 +54,7 @@ class App extends React.Component {
     async fetchProductsAndSubCategories (){
       this.setState({
         backdrop:true,
+        loading: true,
     })
      
      
@@ -70,13 +73,21 @@ class App extends React.Component {
               console.log(err)
           })  
 
-      const subs = await subCategories.then(data=>data.json()).catch(err=>err) 
-      const prods = await products.then(data=>data.json()).catch(err=>err)
+      const subs = await subCategories.then(data=>{        
+        sessionStorage.setItem("sub_categories", JSON.stringify(data))
+        return data.json()
+      }).catch(err=>err) 
+      const prods = await products.then(data=>{        
+        sessionStorage.setItem("products", JSON.stringify(data))
+        return data.json()
+      }).catch(err=>err)
 
-      sessionStorage.setItem("products", JSON.stringify(prods))
-      sessionStorage.setItem("sub_categories", JSON.stringify(subs))
+      console.log(subs)
+      console.log(prods)
+     
       this.setState({
         backdrop:false,
+        loading: false,
     })
      
     }
@@ -85,7 +96,7 @@ class App extends React.Component {
   //handle logout
   handleLoginLogout =()=>{
     this.setState({
-      isLoggedIn: true
+      isLoggedIn: false
     })
   }
 
@@ -101,21 +112,21 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        {/* <div className={clsx("loader",{
-            "display-none": true
+        <div className={clsx("loader",{
+            "display-none": this.state.loading
           })}>
           <img alt="logo" src={imgPlaceholder}/>
           <div className="loading-text">Loading....</div>
           <div className="loading-text">Name Insurance</div>
-        </div> */}
+        </div>
         <Router>
        
         <div 
-          className="main"
-          // className={clsx("main",{
-          //   "display-none": false,
+          // className="main"
+          className={clsx("main",{
+            "display-none": !this.state.loading,
             
-          // })}
+          })}
         >
        
         

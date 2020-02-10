@@ -9,7 +9,6 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Claim from "./claims/Claim";
 import WhoAreWe from "./whoarewe/WhoAreWe";
 import dotenv from "dotenv";
-import imgPlaceholder from "../assets/images/img_placeholder.png";
 import Footer from "../components/Footer";
 import Contacts from "./contacts/Contacts";
 import clsx from 'clsx';
