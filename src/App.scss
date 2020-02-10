@@ -26,6 +26,9 @@
   }
 }
 body {
+  .display-none{
+    display: none;
+  }
   text-align: center;
   .MuiFab-primary{
     background-color: $color_2;

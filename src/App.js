@@ -17,12 +17,10 @@ class App extends React.Component {
     super(props);
     this.state = {  
       //loader
-      loading: false,   
+      loading: true,   
       //drawer
       isOpen: false,
       isLoggedIn: false,
-      //backdrop
-      backdrop: false
     }
     this.fetchProductsAndSubCategories=this.fetchProductsAndSubCategories.bind(this)
   }
@@ -52,11 +50,7 @@ class App extends React.Component {
   
     // init session
     async fetchProductsAndSubCategories (){
-      this.setState({
-        backdrop:true,
-        loading: true,
-    })
-     
+         
      
       const subCategories= fetch("/api/v1/products/sub-categories/", {
         method: "GET",   
@@ -74,15 +68,16 @@ class App extends React.Component {
           })  
 
       const subs = await subCategories.then(data=>{        
-        sessionStorage.setItem("sub_categories", JSON.stringify(data))
+        
         return data.json()
       }).catch(err=>err) 
       const prods = await products.then(data=>{        
-        sessionStorage.setItem("products", JSON.stringify(data))
+       
         return data.json()
       }).catch(err=>err)
 
-      console.log(subs)
+      sessionStorage.setItem("sub_categories", JSON.stringify(subs))
+      sessionStorage.setItem("products", JSON.stringify(prods))
       console.log(prods)
      
       this.setState({
@@ -110,38 +105,42 @@ class App extends React.Component {
   };
 
   render(){
+    let site; 
+    if (this.state.loading){
+        site =  <Backdrop open={this.state.loading}/> 
+    }else{
+      site = <div 
+                className="main"
+              >       
+                <Router>
+                  <Switch>
+                      <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+                      <Route exact path='/*' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+                  </Switch>
+                </Router>
+              </div>
+    }
+
     return (
       <div className="App">
         <div className={clsx("loader",{
-            "display-none": this.state.loading
+            "display-none": !this.state.loading
           })}>
           <img alt="logo" src={imgPlaceholder}/>
           <div className="loading-text">Loading....</div>
           <div className="loading-text">Name Insurance</div>
         </div>
-        <Router>
        
-        <div 
-          // className="main"
-          className={clsx("main",{
-            "display-none": !this.state.loading,
-            
-          })}
-        >
-       
-        
-          <Switch>
-              <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-              <Route exact path='/*' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-          </Switch>
+       {site}
         
         
-        </div>
-        </Router>
-        <Backdrop open={this.state.backdrop}/>
+        
        </div>
     );
   }
 }
 
 export default  App;
+
+
+
