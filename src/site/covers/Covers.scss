@@ -17,7 +17,7 @@
       
       .section-text{
         width: 40vw;
-        background-color: $color_3;
+        background-color: $color_1;
         color: $color_2;
       }
       .motor-insurance-highlights-img{
@@ -32,7 +32,7 @@
     }
   
     .intro {
-      margin-top: 2em;
+      //margin-top: 2em;
       
     }
   
@@ -76,6 +76,9 @@
         }
       }
     }
+    .motor-insurance-benefits div{
+      margin: 1em;
+    }
     .motor-insurance-benefits{
       @include flex-row();
       flex-wrap: wrap;
@@ -108,113 +111,81 @@
     
   }
 
-  /* quotation page */
-.quotation-page-wrapper {
-  @include flex-col();
-  position: relative;
-  top: 3em;
-  width: 100vw;
-  overflow: hidden;
-  
-  .quotation-body-wrapper{
-   background-color: $color_1;
-    .product-title{
-      @include flex-col();
-      @include sliding-effect1s();
-      font-size: 2em;
-      margin: .5em;
-      color: $white;
-    }
-    .quotation-wrapper {  
-      @include flex-col();
-      
-      .quotation {
-        @include flex-col();
-        #quotation-header{
-          
-          @include flex-col(); 
-          @include sliding-effect();          
-          padding: .5em;
-          margin: .5em;
-          font-size: 1em; 
-          width: 40vw;
-        }  
-        #quotation-content{
-          
-          @include flex-col(); 
-          // flex-flow: row-reverse;             
-          text-align:left;
-          padding: 1em;
-          font-size: 1em;
-          width: 100vw;
-          #vehicle-details{
-            display: none;
-          } 
-          .q-content{
-            padding: 1em;
-          }
-          #optional-benefits{
-            width: 50em;
-            @include sliding-effect2s(); 
-            @include flex-col();
-            margin: 1em;
-            background-color: $color_2;
-            color: $white;
-                        
-            .optional-benefits-listitems{
-              @include flex-col();
-              .list-item{
-                @include flex-row();
-              }
-            }  
-            .q-content-sub{
-              padding: 1em;
-              font-weight: 400;
-              p{
-                display: inline;
-              }
-              p:nth-child(1){
-                font-size: 1.5em;
-                font-weight: 600;
-              }
-            }
-          }
-         
-        }      
-      }      
-    }
-  }
-}
 
 @media screen and (max-width: 700px)  {
   .motor-insurance{
-    .motor-insurance-highlights{
-      background-color: $white; 
-      width: 100vw; 
-      .motor-insurance-section{
-        @include flex-col();
-        
-        .section-text{
-          width: 100vw;
-        }
-        .motor-insurance-highlights-img{
-          @include sliding-effect2s();
-          @include flex-col();
-          width: 100vw;
-          height: 50vw;
-        }
-      }
-    }
+  
+    width: 100%;
+    margin-right: 0;
     .motor-insurance-section:nth-child(1){
       flex-direction: column;
       
     }
+    
     .motor-insurance-section{
       @include flex-col();
+      width: 100%;
       .section-text{
-        width: 100vw;
+        width: 100%;
+       
+      }
+      .motor-insurance-highlights-img{
+        @include flex-col();
+        width: 100%;
+        height: 40vh;
+      }
+    }
+    
+    .free-quotation-button{
+        display: none;
+    }
+  
+    .intro {
+      
+      padding: 1em;
+      
+    }
+  
+    .headline-text {
+      
+    }
+  
+    .sub-text {  
+      
+    }
+  
+    .motor-insurance-highlights{
+      background-color: $white;  
+      .motor-insurance-section{
+        @include flex-col();
+        padding: 1em;
+        
+        .section-text{
+          width: 100%;
+        }
+        .motor-insurance-highlights-img{
+          @include sliding-effect2s();
+          @include flex-col();
+          width: 40vw;
+          height: 50vh;
+        }
+      }
+    }
+    .motor-insurance-benefits div{
+      margin: 1em;
+    }
+    .motor-insurance-benefits{
+     
+      .motor-insurance-benefits-list{
+       
+        .motor-insurance-benefits-list-item{
+         
+          .number{
+            
+          }
+        }
       }
     }
   }
-  
+    
 }

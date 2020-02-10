@@ -1,0 +1,80 @@
+@import "../../base";
+
+  /* quotation page */
+  .quotation-page-wrapper {
+    @include flex-col();
+    position: relative;
+    top: 3em;
+    width: 100vw;
+    overflow: hidden;
+    
+    .quotation-body-wrapper{
+     background-color: $color_1;
+      .product-title{
+        @include flex-col();
+        @include sliding-effect1s();
+        font-size: 2em;
+        margin: .5em;
+        color: $white;
+      }
+      .quotation-wrapper {  
+        @include flex-col();
+        
+        .quotation {
+          @include flex-col();
+          #quotation-header{
+            
+            @include flex-col(); 
+            @include sliding-effect();          
+            padding: .5em;
+            margin: .5em;
+            font-size: 1em; 
+            width: 40vw;
+          }  
+          #quotation-content{
+            
+            @include flex-col(); 
+            // flex-flow: row-reverse;             
+            text-align:left;
+            padding: 1em;
+            font-size: 1em;
+            width: 100vw;
+            #vehicle-details{
+              display: none;
+            } 
+            .q-content{
+              padding: 1em;
+            }
+            #optional-benefits{
+              width: 50em;
+              @include sliding-effect2s(); 
+              @include flex-col();
+              margin: 1em;
+              background-color: $color_2;
+              color: $white;
+                          
+              .optional-benefits-listitems{
+                @include flex-col();
+                .list-item{
+                  @include flex-row();
+                }
+              }  
+              .q-content-sub{
+                padding: 1em;
+                font-weight: 400;
+                p{
+                  display: inline;
+                }
+                p:nth-child(1){
+                  font-size: 1.5em;
+                  font-weight: 600;
+                }
+              }
+            }
+           
+          }      
+        }      
+      }
+    }
+  }
+  

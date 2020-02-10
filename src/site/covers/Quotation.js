@@ -1,11 +1,10 @@
 import React from 'react';
 import {withRouter} from "react-router-dom";
 import {Paper} from "@material-ui/core"
-import OptionalBenefits from "./components/OptionalBenefits"
 import Vehicle from "./Vehicle"
-import GetStartedButton from "../../components/GetStartedButton"
 import {filterByAlias} from "../../helpers/js/dataManipulation"
 import ProvidersCarousel from "./components/ProvidersCarousel"
+import "./Quotation.scss"
 
 class Quotation extends React.Component {
     constructor(props){

@@ -65,7 +65,10 @@
       }
       
       .Mui-error{
-        color: red;
+        color: rgb(184, 18, 18);
+      }
+      .MuiOutlinedInput-notchedOutline{
+        border-color: $color_2;
       }
       
       
@@ -96,4 +99,23 @@
         }
       }
     }
+  }
+
+  @media screen and (max-width: 700px)  {
+    .swipeable-quote-form {
+      .request-button{
+        position: relative;
+       
+        width: 150px;
+        margin: .5em;
+        margin-top: 2em;
+        padding: .5em;
+        background-color: $color_2;
+        
+    }
+      .form{
+        @include flex-col();
+      }
+    }
+    
   }
