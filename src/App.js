@@ -3,7 +3,6 @@ import './App.scss';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Dashboard from "./auth/dashboard/Dashboard";
 import dotenv from "dotenv";
-import Backdrop from "./components/BackDrop";
 import Site from "./site/Site"
 import "./Components.scss"
 import imgPlaceholder from "./assets/images/img_placeholder.png";
@@ -26,11 +25,7 @@ class App extends React.Component {
   }
 
   componentDidMount=()=>{
-    setTimeout(()=>{
-      this.setState({
-        loading: false
-      })
-    }, 5000)
+    
     this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
     this.products = JSON.parse(sessionStorage.getItem("products"))
     if (
@@ -40,9 +35,17 @@ class App extends React.Component {
       this.products!==null && 
       this.products !== undefined && 
       this.products.length > 0
+      
       ){
-      //
+        this.setState({
+          loading: false
+        })
     }else{
+     
+        this.setState({
+          loading: true
+        })
+    
       this.fetchProductsAndSubCategories()
     }
   }
@@ -50,8 +53,6 @@ class App extends React.Component {
   
     // init session
     async fetchProductsAndSubCategories (){
-         
-     
       const subCategories= fetch("/api/v1/products/sub-categories/", {
         method: "GET",   
                       
@@ -79,6 +80,7 @@ class App extends React.Component {
       sessionStorage.setItem("sub_categories", JSON.stringify(subs))
       sessionStorage.setItem("products", JSON.stringify(prods))
       console.log(prods)
+      
      
       this.setState({
         backdrop:false,
@@ -105,10 +107,10 @@ class App extends React.Component {
   };
 
   render(){
-    let site; 
-    if (this.state.loading){
-        site =  <Backdrop open={this.state.loading}/> 
-    }else{
+    const products = JSON.parse(sessionStorage.getItem("products"))
+    let site;
+    if( products && products.length > 0)
+    {
       site = <div 
                 className="main"
               >       
@@ -120,16 +122,21 @@ class App extends React.Component {
                 </Router>
               </div>
     }
+    else
+    {
+      site =  <div className={clsx("loader",{
+                  "display-none": false
+                })}>
+                <img alt="logo" src={imgPlaceholder}/>
+                <div className="loading-text">Loading....</div>
+                <div className="loading-text">Name Insurance</div>
+              </div>
+    } 
+   
 
     return (
       <div className="App">
-        <div className={clsx("loader",{
-            "display-none": !this.state.loading
-          })}>
-          <img alt="logo" src={imgPlaceholder}/>
-          <div className="loading-text">Loading....</div>
-          <div className="loading-text">Name Insurance</div>
-        </div>
+       
        
        {site}
         
