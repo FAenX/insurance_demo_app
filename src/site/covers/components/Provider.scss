@@ -60,3 +60,33 @@
         }
       }
 }
+
+@media screen and (max-width: 700px)  {
+  .provider{
+    @include flex-col();
+    #provider-details{
+        @include flex-col();
+        //justify-content: space-around;
+        //width: 100vw;  
+        flex-flow: column;
+        .provider{
+          
+          width: 100%;
+          
+        }
+        .provider-rates{
+          width: 100%;
+          
+          }
+          .table-container{
+            //@include flex-col();
+            width: 100%;
+            
+            table{
+              width: 20vw;
+            }
+        }
+      }
+}
+
+}

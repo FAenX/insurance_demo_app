@@ -4,9 +4,6 @@ import Home from "./Home"
 import HowItWorks from './HowItWorks'
 import OurPatners from "./OurPatners"
 import WhyUs from "./WhyUs"
-import GetStartedButton from "../../components/GetStartedButton"
-import FreeQuotationButton from "../../components/FreeQuotationButton"
-import MotorInsuranceButton from "../../components/MotorInsuranceButton"
 import "./FrontPage.scss"
 
 
@@ -27,10 +24,6 @@ class FrontPage extends React.Component {
 
         return(
             <div className="front-page">
-                
-                <MotorInsuranceButton />                
-                <GetStartedButton />                
-                <FreeQuotationButton />
                 <div className="cover-page">
                     <div className="cover-background">
                         <Home/>

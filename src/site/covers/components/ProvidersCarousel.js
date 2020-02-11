@@ -24,8 +24,10 @@ class ProvidersCarousel extends React.Component {
             <Carousel 
                 className="providers-carousel" 
                 infiniteLoop 
-                transitionTime={1000}
-                swipeable={true}
+                transitionTime={3000}
+                swipeable={false}
+                stopOnHover={true}
+                swipeScrollTolerance={5}
                 showIndicators={true}
                 showThumbs={false}
                 showArrows={true}

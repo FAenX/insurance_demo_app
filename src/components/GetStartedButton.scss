@@ -1,0 +1,36 @@
+@import "../base";
+
+.get-started-button{
+    width: 200px;
+   .button-text{
+    width: 200px;
+    text-transform: capitalize;
+    color: $color-2;
+   }
+}
+
+@media screen and (max-width: 600px)  {
+   
+    
+    .get-started-button{
+        @include flex-col();
+       
+       
+        .button-text{
+            @include flex-row();
+            //width: 200px;
+            text-transform: capitalize;
+            justify-content: space-between;
+            color: $color-2;
+            width: 10em;
+            height: 6em;
+            .MuiFormHelperText-root{
+                color: $white;
+            }
+        }
+        button{
+            z-index: 1300;
+        }
+    
+  }
+}

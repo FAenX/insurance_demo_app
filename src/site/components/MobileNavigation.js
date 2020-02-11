@@ -8,7 +8,9 @@ import {AppBar} from "@material-ui/core"
 import Logo from "../../assets/images/img_placeholder.png"
 import {MenuOpen} from "@material-ui/icons"
 import "./MobileNavigation.scss"
-import SignInButton from "../../components/SignInButton";
+import {LoginButtonMobile} from "../../components/SignInButton";
+import {GetStartedButtonMobile} from "../../components/GetStartedButton"
+import {FreeQuotationButtonMobile} from "../../components/FreeQuotationButton"
 import IconButton from '@material-ui/core/IconButton';
 import {withRouter} from "react-router-dom"
 
@@ -42,6 +44,8 @@ class SideNavigation extends React.Component {
     render(){
         return(
             <div className="mobile-navigation">
+                <FreeQuotationButtonMobile />
+                <GetStartedButtonMobile />
                <AppBar className={clsx("App-header",{
                   "appBarShift": true,
                 })}>
@@ -55,7 +59,7 @@ class SideNavigation extends React.Component {
                     </div>
                     
                     <div className="nav-login" onClick={this.redirectToSignin}>
-                    <SignInButton />
+                    <LoginButtonMobile />
                     </div>
                 </AppBar>
                 

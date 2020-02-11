@@ -1,0 +1,25 @@
+@import "../base";
+
+.login-button{
+   
+    
+    width: 200px;
+   .button-text{
+    width: 200px;
+    text-transform: capitalize;
+    color: $color-2;
+   }
+}
+
+@media screen and (max-width: 600px)  {
+   
+    
+    .login-button{
+        @include flex-col();
+        width: 4em;
+        height: 4em;
+       
+        
+    }
+    
+  }

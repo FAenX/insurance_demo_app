@@ -21,9 +21,7 @@
  font-weight: 400;
  width: 100vw;
  overflow-x: hidden;
-  .wide-screen{
-    display: none;
-  }
+ 
 }
 body {
   .display-none{
@@ -100,12 +98,21 @@ body {
  }
 
 
- @media screen and (max-width: 600px)  {
+ @media screen and (max-width: 700px)  {
    
   .cover-background{
     background-position-x: -10vh;
     background-position-y: 25vh;
-  }  
+  }
+  
+  #root{
+    .mobile-screen{
+     display: flex;
+    }
+    .wide-screen{
+      display: none;
+    }
+  }
 
   
 }

@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
-import SignInButton from "./SignInButton"
+import {LoginButtonMobile} from "./SignInButton"
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import SignUpButton from "./SignUpButton";
 import HomeButton from "./HomeButton"
@@ -33,7 +33,7 @@ class SignInAlert extends React.Component{
                 
                 <ListItem button className="sliding-effect">
                     <ListItemIcon>
-                        <SignInButton />
+                        <LoginButtonMobile />
                     </ListItemIcon>                    
                     <ListItemText primary="Sign in" />
                 </ListItem>

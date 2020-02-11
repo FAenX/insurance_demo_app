@@ -5,7 +5,7 @@
     @include flex-col();
     position: relative;
     top: 3em;
-    width: 100vw;
+    
     overflow: hidden;
     
     .quotation-body-wrapper{
@@ -77,4 +77,6 @@
       }
     }
   }
+
+  @media screen and (max-width: 700px)  {}
   

@@ -1,7 +1,6 @@
 import React from "react"
 import {withRouter} from  "react-router-dom";
 import Profile from "./components/Profile"
-import FreeQuotationButton from "../../components/FreeQuotationButton"
 import DashMenu from "./DashMenu"
 import PaymentHistory from "./components/PaymentHistory"
 import InsuranceCovers from "./components/InsuranceCovers"
@@ -44,7 +43,6 @@ class Dashboard extends React.Component {
 
         return(
             <div className="dashboard">
-                <FreeQuotationButton />
                 <div className="dashboard-wrapper">
                 <DashMenu changeListener={this.changeListener}/>
                 {active}
