@@ -4,6 +4,7 @@ import proxy from 'express-http-proxy';
 import compression from 'compression';
 import helmet from "helmet"
 import cors from "cors"
+import http from 'http';
 
 const app = express();
 const backendUrl = "http://kiprono123456.pythonanywhere.com/";
@@ -39,4 +40,5 @@ app.get("/*", (req, res)=> {
 });
 
 // default Heroku PORT
-app.listen(process.env.PORT || 5000);
+const server = http.createServer(app);
+server.listen(process.env.PORT || 5000);
