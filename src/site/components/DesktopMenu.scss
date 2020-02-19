@@ -15,7 +15,7 @@
         justify-content: space-between;
         .MuiSvgIcon-root{
             font-size: 1.5em;
-            color: $color_2;
+            color: $color_3;
         }
         .nav-buttons{
           @include flex-row();
@@ -45,9 +45,9 @@
       .MuiDrawer-paper{
         position: fixed;
         top: 4em;
-        background-color: $color_3;
+        background-color: $color_2;
         width: 10em;
-        color: $color_2;
+        color: $color_3;
       }       
     }
     .drawerOpen {
@@ -57,7 +57,7 @@
         .home-button{
           margin-right: 1em;
           .MuiSvgIcon-colorPrimary{
-            color: $color_2
+            color: $color_3
           }
         }
       }
@@ -85,7 +85,7 @@
         .home-button{
           margin-right: 1em;
           .MuiSvgIcon-colorPrimary{
-            color: $color_2
+            color: $color_3
           }
         }
       }

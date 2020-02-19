@@ -1,7 +1,7 @@
 import React from "react"
 import PersonIcon from '@material-ui/icons/Person';
 import {Button} from '@material-ui/core';
-import SignIn from "../auth/SignIn"
+import SignIn from "../site/auth/SignIn"
 import "./SignInButton.scss"
 
 export class LoginButtonDesktop extends React.Component{
@@ -30,7 +30,7 @@ render(){
           />              
        
             {/* wide screen   */}
-            <Button className="button-text" onClick={this.handleClickedBnt}>
+            <Button variant="outlined" className="button-text" onClick={this.handleClickedBnt}>
                 <PersonIcon color="primary" />  
                 <div className="button-title">Sign in</div>  
             </Button>      

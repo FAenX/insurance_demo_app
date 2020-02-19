@@ -217,8 +217,8 @@ class MotorInsuranceQuoteForm extends React.Component{
 
                     
                         <Button 
+                            variant="outlined"
                             className="request-button"
-                            variant="contained" 
                             color="primary"
                             onClick={this.requestQuotation}
                         >

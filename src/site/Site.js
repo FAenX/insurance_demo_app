@@ -14,6 +14,7 @@ import Contacts from "./contacts/Contacts";
 import clsx from 'clsx';
 import DesktopMenu from "./components/DesktopMenu"
 import MobileNavigation from "./components/MobileNavigation"
+import Dashboard from "./auth/dashboard/Dashboard";
 
 
 
@@ -73,7 +74,6 @@ class Site extends React.Component {
           })}
         >
           <Switch>
-              <Route exact path='/' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
               <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
               <Route exact path='/covers' render = {(props) => <Covers {...props} />}/>
               <Route exact path='/claim' render = {(props) => <Claim {...props} />}/>
@@ -81,8 +81,10 @@ class Site extends React.Component {
               <Route exact path='/quotation' render = {(props) => <Quotation {...props} />}/>
               <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />
               <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
+              <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
+              <Route exact path='/*' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
           </Switch>
-        <Contacts/>
+          <Contacts/>
         </div>
         </Router>
         <Footer/>

@@ -1,4 +1,6 @@
 //claims page
+@import "../../base";
+
 .claims-wrapper{
     @include flex-col();
     margin-top: 8vh;

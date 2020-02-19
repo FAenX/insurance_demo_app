@@ -1,7 +1,7 @@
 import React from "react"
 import {withRouter} from  "react-router-dom";
 import Profile from "./components/Profile"
-import DashMenu from "./DashMenu"
+import DashMenu from "./components/DashMenu"
 import PaymentHistory from "./components/PaymentHistory"
 import InsuranceCovers from "./components/InsuranceCovers"
 import "./DashBoard.scss"
@@ -29,23 +29,18 @@ class Dashboard extends React.Component {
     }
 
     render(){
-       
-
         const cards = {
             profile: <Profile />,
             paymentHistory: <PaymentHistory />,
             insuranceCovers: <InsuranceCovers />
-
         }
+
         const active = cards[this.state.active]
-
-
-
         return(
             <div className="dashboard">
                 <div className="dashboard-wrapper">
                 <DashMenu changeListener={this.changeListener}/>
-                {active}
+                {/* {active} */}
                 </div>
             </div>
         )

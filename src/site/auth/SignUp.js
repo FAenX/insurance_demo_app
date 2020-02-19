@@ -1,10 +1,11 @@
 import React from "react"
 import {Form} from "react-bootstrap"
-import BackDrop from "../components/BackDrop"
+import BackDrop from "../../components/BackDrop"
 import {Button, Drawer} from "@material-ui/core"
-import SnackBar from "../components/SnackBar"
+import SnackBar from "../../components/SnackBar"
 import {withRouter } from "react-router-dom";
 import clsx from "clsx"
+import "./SignUp.scss"
 
 
 class SignUp extends React.Component {

@@ -1,0 +1,35 @@
+@import "../../base";
+
+.signin-wrapper {
+    @include flex-col();
+    width: 100%;
+    min-height: 60vh;
+    .free-quotation-button{
+      position: fixed;
+      top: 4em;
+      right: 0;
+    }
+    .headline-text{
+      @include sliding-effect();
+      margin: 1em;
+    }
+    .signin-form-wrapper{
+      @include sliding-effect1s();
+      padding: 1em;
+      text-align: left;
+      .signin-button{
+        @include flex-col();
+        align-items: baseline;
+        .signup{
+          @include sliding-effect2s();
+          text-transform: capitalize;
+        }
+        button{
+          margin-top: 1em;
+  
+        }
+      }
+  
+    }
+  }
+  

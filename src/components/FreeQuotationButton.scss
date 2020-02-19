@@ -3,9 +3,9 @@
 .free-quotation-button{
     width: 200px;
    .button-text{
-    width: 200px;
+   
     text-transform: capitalize;
-    color: $color-2;
+    color: $color_3;
    }
 }
 
@@ -21,7 +21,7 @@
             //width: 200px;
             text-transform: capitalize;
             justify-content: space-between;
-            color: $color-2;
+            color: $color_3;
             width: 10em;
             height: 6em;
             .MuiFormHelperText-root{

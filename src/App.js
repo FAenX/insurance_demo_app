@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import Dashboard from "./auth/dashboard/Dashboard";
+
 import dotenv from "dotenv";
 import Site from "./site/Site"
 import "./Components.scss"
@@ -116,7 +116,6 @@ class App extends React.Component {
               >       
                 <Router>
                   <Switch>
-                      <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
                       <Route exact path='/*' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
                   </Switch>
                 </Router>

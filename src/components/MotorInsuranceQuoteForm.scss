@@ -7,8 +7,9 @@
 .swipeable-quote-form {
    width: 100%;
     @include flex-col();
-    background-color: $color_3;
+    background-color: $color_2;
     align-items: baseline;
+    height: 100vh;
     .request-button{
         position: fixed;
         bottom: 7em;
@@ -16,7 +17,7 @@
         width: 150px;
         margin: .5em;
         padding: .5em;
-        background-color: $color_2;
+        background-color: $color_3;
         
     }
     .swipeable-quote-form-sub-header{
@@ -37,12 +38,12 @@
       }
       .close-btn{
         
-        border: .05em solid $color_2;
+        border: .05em solid $color_3;
         @include sliding-effect1s();
         animation: spin 3s;
       } 
       .MuiSvgIcon-colorPrimary{
-        color: $color_2;
+        color: $color_3;
         font-size: 2.5em;
       }    
     }
@@ -54,21 +55,21 @@
       margin-top: 4em;
       padding: 1em;
       .MuiFormLabel-root{
-        color: $color_2;
+        color: $color_3;
       }
       .MuiInputBase-root{
         color: $white;
         font-weight: 500;
       }
       .MuiFormHelperText-root{
-        color: $color_2;
+        color: $color_3;
       }
       
       .Mui-error{
-        color: rgb(184, 18, 18);
+        color: rgb(255, 255, 255);
       }
       .MuiOutlinedInput-notchedOutline{
-        border-color: $color_2;
+        border-color: $color_3;
       }
       
       
@@ -83,7 +84,7 @@
         
         .swipeable-quote-form-content{
           @include flex-col();
-          color: $color_2;
+          color: $color_3;
           width: 90%;
           padding: 1em;
           //form controls
@@ -110,7 +111,7 @@
         margin: .5em;
         margin-top: 2em;
         padding: .5em;
-        background-color: $color_2;
+        
         
     }
       .form{

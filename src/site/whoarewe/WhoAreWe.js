@@ -1,6 +1,7 @@
 import React from "react";
 import {withRouter} from "react-router-dom"
 import {Button} from "@material-ui/core"
+import "./WhoAreWe.scss"
 
 
 class WhoAreWe extends React.Component {

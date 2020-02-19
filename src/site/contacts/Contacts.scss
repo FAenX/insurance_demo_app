@@ -3,11 +3,10 @@
 /* contacts */
 .contacts-wrapper {
     @include flex-col();
-    //width: 100vw;
+    width: 100vw;
     position: relative;
     top: 3em;
-    
-    border-top: $color_2 .05em solid;
+    border-top: $color_3 .05em solid;
     background-color: $color_1;
     color: $white;
   }
@@ -16,7 +15,7 @@
     @include flex-col();
     flex-wrap: wrap;
     margin: 2em;
-    border: $color_2 solid .05em;
+    border: $color_3 solid .05em;
     
   }
   .contacts {
@@ -26,16 +25,16 @@
     align-items: baseline;
     text-align: left;
     padding-left: 1em;
-    margin: 2em;
+
     
   }
   /* social media */
   .social-media {
-    @include flex-row();
+    @include flex-col();
     min-height: 5vh;
     .MuiSvgIcon-root{
       margin: .5em;
-      color: $color_2;
+      color: $color_3;
       font-size: 2em;
     }
   }

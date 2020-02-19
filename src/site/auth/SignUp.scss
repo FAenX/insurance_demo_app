@@ -1,0 +1,18 @@
+@import "../../base";
+
+/* sign in sign up*/  
+  .signup-wrapper {
+    @include flex-col();
+    min-height: 60vh;
+    width: 100%;
+    .headline-text{
+      @include sliding-effect();
+      margin: 1em;
+    }
+    .signup-form-wrapper{
+      @include sliding-effect2s();
+      padding: 1em;
+      text-align: left;
+    }
+  }
+  

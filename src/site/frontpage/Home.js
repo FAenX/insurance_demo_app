@@ -1,6 +1,6 @@
 import React from "react"
 import {withRouter } from "react-router-dom";
-import {HomeCarousel1, HomeCarousel2} from "./HomeCarousel"
+import {HomeCarousel1} from "./HomeCarousel"
 
 
 class Home extends React.Component{
@@ -16,7 +16,7 @@ class Home extends React.Component{
                 </div>
                 <div className="headline-subtext">
                 <HomeCarousel1 />  
-                <HomeCarousel2 />  
+                
                             
                 </div>
                 

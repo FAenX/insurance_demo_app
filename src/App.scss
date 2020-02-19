@@ -4,7 +4,6 @@
   @include flex-col();
   font-family: Open Sans,Roboto,Oxygen,Ubuntu,Cantarell,Lato,Helvetica Neue,sans-serif;
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
 }
 
 
@@ -16,8 +15,6 @@
   }
 }
 #root {
- color: $color_1;
- background-color: $white;
  font-weight: 400;
  width: 100vw;
  overflow-x: hidden;
@@ -29,16 +26,16 @@ body {
   }
   text-align: center;
   .MuiFab-primary{
-    background-color: $color_2;
+    background-color: $color_3;
     height: 40px;
     width: 40px;
   }
   .MuiSvgIcon-colorPrimary{
-    color: $color_1;
+    color: $color_3;
     font-size: 1.5em;
   }
   .MuiListItemIcon-root{
-    color: $color_2;
+    color: $color_3;
   }
   .MuiAppBar-colorPrimary{
     background-color: $color_1;
@@ -47,14 +44,14 @@ body {
     color: $color_1;
   }
   .MuiButton-outlined{
-    border: 1px  solid $color_2;
+    border: 1px  solid $color_3;
   }
   .headline-text{
     font-size: 2em;
     font-weight: 400;
   }
   .MuiButton-textPrimary{
-    color: $color_1;
+    color: $color_3;
   }
 }
 
@@ -75,7 +72,7 @@ body {
   margin: 0em;
   padding: 0em;
   width: 100%;
-  background-color: $color_2;
+  background-color: $color_3;
 }
 
 ::-webkit-scrollbar{

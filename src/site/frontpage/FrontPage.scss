@@ -44,7 +44,7 @@
       font-weight: 600;
       font-size: 2em;
       @include sliding-effect();
-      color: $color_2;
+      color: $color_3;
      
     }
     .headline-subtext {
@@ -55,7 +55,7 @@
         margin-bottom: 2em; 
         margin-left: 1em;  
         padding: .05em;
-        border: solid .015em $color_2; 
+        border: solid .015em $color_3; 
         
       }
       .home-carousel1{
@@ -145,14 +145,13 @@
     min-height: 10vh;
     font-size: 2em;
     font-weight: 400;
-    border-left: $color_2 .1em solid;
+    border-left: $color_3 .1em solid;
     @include sliding-effect1s();
     
   }
   
   .how-it-works {
     @include flex-col();
-    background-color: $white; 
     text-align: center;
   }
   
@@ -170,7 +169,7 @@
   
   .step-header{
     margin: 1em;
-    border-bottom: $color_2 solid .05em;
+    border-bottom: $color_3 solid .05em;
     font-size: 1.5em;
     font-weight: 600;
     text-transform: capitalize;
@@ -194,7 +193,7 @@
       text-transform: uppercase;
       padding-left: 1em;
       font-size: 2em;
-      border-left: 1em solid $color_2;
+      border-left: 1em solid $color_3;
     }
     .why-us-text {
       margin: .5em;
@@ -357,7 +356,7 @@
       }
        /*why us*/
       .why-us-wrapper{
-        background-color: $color_3;
+        background-color: $color_2;
         position: relative;
         top: 4em;
         padding: 1em;
@@ -369,7 +368,7 @@
             font-weight: 600;
             width: 25vw;
             margin: 1em;
-            color: $color_2;
+            color: $color_3;
           }
           .why-us-text {
             @include flex-row();

@@ -1,0 +1,5 @@
+@import "../base";
+
+.main{
+    @include flex-col();
+}

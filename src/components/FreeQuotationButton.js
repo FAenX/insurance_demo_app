@@ -47,7 +47,7 @@ export class FreeQuotationButtonDesktop extends React.Component{
                 />
                 {/* wide screen   */}
                 
-                <Button className="button-text" onClick={this.handleClickedBnt}>
+                <Button variant="outlined" className="button-text" onClick={this.handleClickedBnt}>
                         <GetAppIcon 
                             color="primary"                         
                         />

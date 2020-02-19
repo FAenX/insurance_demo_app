@@ -1,3 +1,5 @@
+@import "../../base";
+
 .who-are-we-wrapper{
     @include flex-col();
     margin-top: 8vh;
