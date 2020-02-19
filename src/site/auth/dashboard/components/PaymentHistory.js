@@ -1,7 +1,8 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
-import {Card, ListItem, List} from "@material-ui/core"
+import {Card, ListItem, List, Toolbar} from "@material-ui/core"
 import clsx from 'clsx';
+import PaymentIcon from '@material-ui/icons/Payment';
 
 
 class PaymentHistory extends React.Component{
@@ -14,10 +15,13 @@ class PaymentHistory extends React.Component{
 
     render(){
         return(
-            <Card className={clsx("payment-history", {
+            <Card variant="outlined" className={clsx("payment-history", {
                 "display-none": !this.state.display,
             })}>
-                <div>Payment History</div>
+                <Toolbar className="heading">
+                    Payment History
+                    <PaymentIcon />
+                </Toolbar>
                 <div className="content">
                     <List>
                     <ListItem>Text</ListItem>

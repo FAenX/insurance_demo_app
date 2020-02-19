@@ -2,6 +2,7 @@
 
 .App {
   @include flex-col();
+  min-height: 100vh;
   font-family: Open Sans,Roboto,Oxygen,Ubuntu,Cantarell,Lato,Helvetica Neue,sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -10,7 +11,7 @@
 .loader{
   @include flex-col();
   img{
-    animation: spin 3s ;
+    animation: spinY 3s ;
     animation-iteration-count: infinite; 
   }
 }

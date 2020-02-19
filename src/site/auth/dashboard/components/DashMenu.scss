@@ -1,0 +1,56 @@
+@import "../../../../base";
+
+.dash-menu{
+    @include flex-col();
+    width: 70vw;
+    .heading{
+        @include flex-row();
+        justify-content: space-between;
+        background-color: $color_1;
+        color: $color_3;
+        width: 100%;
+        font-size: 1.5em;
+        .MuiSvgIcon-root{
+            font-size: 2em;
+        }
+    }
+    .profile{
+        @include flex-col();
+        width: 100%;
+        margin: 1em;
+        
+        .avatar{
+          height: 60px;
+          width: 60px;
+          margin: 1em;
+        }
+        .user-details{
+          width: 100%;
+          text-align: left;
+          padding: 1em;
+          
+        }
+      }
+      .payment-history{
+        @include flex-col();
+        width: 100%;
+        padding: 1em;
+        margin: 1em;
+        text-align: left;
+        .content{
+          width: 100%;
+        }
+        
+      }
+      .insurance-covers{
+        @include flex-col();
+        width: 100%;
+        padding: 1em;
+        margin: 1em;
+        text-align: left;
+        .content{
+          width: 100%;
+        }
+        
+      }
+}

@@ -1,10 +1,11 @@
 import React from "react"
-import {Card } from "@material-ui/core"
+import {Card, Toolbar } from "@material-ui/core"
 import Avatar from '@material-ui/core/Avatar';
 import Backdrop from "../../../../components/BackDrop"
 import {List, ListItem} from "@material-ui/core"
 import SignInAlert from "../../../../components/SignInAlert"
 import clsx from "clsx";
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 
 
@@ -133,7 +134,7 @@ class Profile extends React.Component {
         }
 
         if (this.state.fetched){
-            userDetails = <Card className="user-details">
+            userDetails = <Card variant="outlined" className="user-details">
                                 <List>
                                 <ListItem>{user.first_name} {user.last_name}</ListItem>
                                 <hr className="divider" />
@@ -152,7 +153,13 @@ class Profile extends React.Component {
                 "display-none": !this.state.display,
             })}>
                 <Backdrop open={this.state.backdrop}/>
-                <Avatar className="avatar"/>
+                
+                
+                    <Toolbar className="heading">
+                        Profile
+                        <VerifiedUserIcon />
+                    </Toolbar>
+                
                 {userDetails}
                 
             </div>

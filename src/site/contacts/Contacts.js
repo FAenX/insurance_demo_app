@@ -13,21 +13,22 @@ class Contacts extends React.Component {
                 </div>
                 <div className="contacts">
                     <div className="section">
-                    <h1>Office 1</h1>
+                    
                     <p>(020)555 555</p>
                     <p>(020)555 555</p>
                     </div>
                     <div className="section">
-                    <h1>Office 2</h1>
+                    
                     <p>(020)555 555</p>
                     <p>(020)555 555</p>
                     </div>
-                    <div className="section">
-                    <SocialMedia/>
-                    </div>
+                    
+                   
+                   
                     
                     
                 </div>
+                <SocialMedia/>
                
                     
               

@@ -7,6 +7,7 @@
     position: relative;
     top: 3em;
     border-top: $color_3 .05em solid;
+    border-bottom: $color_3 .05em solid;
     background-color: $color_1;
     color: $white;
   }
@@ -19,18 +20,23 @@
     
   }
   .contacts {
-    width: 50vw;
+    width: 30vw;
     @include flex-row();
     justify-content: space-between;
     align-items: baseline;
     text-align: left;
+    
     padding-left: 1em;
+    .section{
+
+      font-size: 1em;
+    }
 
     
   }
   /* social media */
   .social-media {
-    @include flex-col();
+    @include flex-row();
     min-height: 5vh;
     .MuiSvgIcon-root{
       margin: .5em;

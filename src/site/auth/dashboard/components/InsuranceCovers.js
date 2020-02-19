@@ -1,8 +1,9 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
-import {Card} from "@material-ui/core"
+import {Card, Toolbar} from "@material-ui/core"
 import clsx from 'clsx';
 import { List, ListItem } from "@material-ui/core"
+import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 
 
 class InsuranceCovers extends React.Component{
@@ -15,10 +16,14 @@ class InsuranceCovers extends React.Component{
 
     render(){
         return(
-            <Card className={clsx("insurance-covers", {
+            <Card variant="outlined" className={clsx("insurance-covers ", {
                 "display-none": !this.state.display,
             })}>
-                <div>Insurance Covers</div>
+
+                    <Toolbar className="heading">
+                       Insurance Covers
+                        <EmojiTransportationIcon />
+                    </Toolbar>
                 <div className="content">
                     <List>
                     <ListItem>Text</ListItem>

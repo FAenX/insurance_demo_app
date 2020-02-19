@@ -5,64 +5,13 @@
     @include flex-col();
     position: relative;
     top: 4em;
-    height: 100vh;
     width:100vw;
-    justify-content: flex-start;
-   
     .dashboard-wrapper{
       @include flex-col();
       width: 100vw;
-      height: 100vh;
-      align-items: flex-start;
-      justify-content: flex-start;
-      overflow-y: scroll;
-      
-      .profile{
-        @include flex-col();
-        width: 100%;
-        
-        .avatar{
-          height: 100px;
-          width: 100px;
-          margin: 1em;
-        }
-        .user-details{
-          width: 100%;
-          text-align: left;
-          padding: 1em;
-          
-        }
-      }
-      .payment-history{
-        @include flex-col();
-        width: 100%;
-        padding: 1em;
-        margin: .5em;
-        text-align: left;
-        .content{
-          width: 100%;
-        }
-        
-      }
-      .insurance-covers{
-        @include flex-col();
-        width: 100%;
-        padding: 1em;
-        margin: .5em;
-        text-align: left;
-        .content{
-          width: 100%;
-        }
-        
-      }
       .display-none{
         display: none;
       }
-      
-      
-     
-    
-      
     }
   
   }
