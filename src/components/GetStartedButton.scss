@@ -4,7 +4,7 @@
     
    .button-text{
     text-transform: capitalize;
-    color: $color-3;
+    color: $color_3;
    }
 }
 
@@ -17,10 +17,10 @@
        
         .button-text{
             @include flex-row();
-            //width: 200px;
+            width: 200px;
             text-transform: capitalize;
             justify-content: space-between;
-            color: $color-3;
+            color: $color_1;
             width: 10em;
             height: 6em;
             .MuiFormHelperText-root{

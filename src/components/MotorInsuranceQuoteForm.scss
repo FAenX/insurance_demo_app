@@ -2,14 +2,15 @@
 
 //motor insurance form 
 .swipable-quoteform-drawer{
-    width: 100vw
+    width: 100vw;
+    
 }
 .swipeable-quote-form {
    width: 100%;
     @include flex-col();
     background-color: $color_2;
     align-items: baseline;
-    height: 100vh;
+   
     .request-button{
         position: fixed;
         bottom: 7em;
@@ -29,7 +30,7 @@
     .close-btn-wrapper {
       @include flex-row();
       width: 100%;    
-      //background-color: $color_1;
+     color: $color_3;
       justify-content: space-between;  
       padding: 1em; 
       .appbar-title{
@@ -104,6 +105,7 @@
 
   @media screen and (max-width: 700px)  {
     .swipeable-quote-form {
+      
       .request-button{
         position: relative;
        
@@ -119,4 +121,9 @@
       }
     }
     
+  }
+  @media screen and (min-width: 700px)  {
+    .swipeable-quote-form {
+      height: 100vh;
+    }
   }
