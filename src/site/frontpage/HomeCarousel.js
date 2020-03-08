@@ -1,7 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
-
+import "./HomeCarousel.scss"
 
 
 export class HomeCarousel1 extends React.Component {
@@ -12,8 +12,8 @@ export class HomeCarousel1 extends React.Component {
                 
                 infiniteLoop 
                 autoPlay 
-                interval={30000}
-                transitionTime={1800}
+                interval={5000}
+                transitionTime={1000}
                 swipeable={true}
                 showIndicators={true}
                 showThumbs={false}

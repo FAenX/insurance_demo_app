@@ -1,0 +1,60 @@
+@import "../../base";
+
+/* how it works */
+.page-wrapper {
+    @include flex-col(); 
+    position: relative;
+    top: 3em;
+    width: 100vw;
+    .page-header {
+        @include flex-col();
+        width: 400px;
+        height: 50px;
+        // &::before{
+        &::after {
+          content: '';
+          width: 100%;
+          height: 100%;
+          border: 1px solid black;
+          z-index: -1;
+          
+        }
+        &:hover {
+          &::after{
+        //   &::before {
+            animation: clipMe 3s;
+          }
+        }
+      
+      }
+}
+  
+.how-it-works {
+    @include flex-row();
+    flex-wrap: wrap;
+    text-align: center;
+}
+  
+  .step {
+    width: 300px;
+    @include flex-col();
+    margin: 1em;
+    .svg {
+      @include flex-col();
+      height: 15em;
+      width: 15em;
+    }
+  }
+  
+  
+  .step-text {
+    letter-spacing: .05em;
+  }
+
+
+  
+
+  @keyframes clipMe {
+    0%{width: 1%; height: 1%; }
+    100%{width: 100%; height: 100%; }
+  }

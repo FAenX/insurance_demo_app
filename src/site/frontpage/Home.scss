@@ -1,0 +1,25 @@
+ @import "../../base";
+ //home
+ .home {
+    @include flex-col();    
+    .headline-text {
+      @include flex-col();
+      justify-content: space-around;
+      @include sliding-effect();
+      height: 70vh;
+     
+    }
+    .headline-subtext {
+      width: 40%;
+      
+      .home-carousel{
+        width: 100%; 
+        border: solid .015em $color_3; 
+        
+      }
+      
+    }
+    
+  }
+
+

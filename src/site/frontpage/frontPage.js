@@ -7,41 +7,26 @@ import WhyUs from "./WhyUs"
 import "./FrontPage.scss"
 
 
-class FrontPage extends React.Component {
-    constructor(props){
-        super(props)
-        this.state={
-            providers: ""
+const FrontPage =()=> {
 
-        }
-    }
-
-    handleClick=(event)=>{
-        event.preventDefault()
-        this.props.history.push("/covers")
-    }
-    render(){
-
-        return(
-            <div className="front-page">
-                <div className="cover-page">
-                    <div className="cover-background">
-                        <Home/>
-                    </div>
+    return(
+        <div className="front-page">
+            <div className="cover-page">
+                <div className="cover-background">
+                    <Home/>
                 </div>
-                
-                    <HowItWorks/>               
-                
-                <div className="why-us-wrapper">
-                    <WhyUs />
-                </div> 
-                <div>
-                    <OurPatners/>
-                </div> 
-               
-                
             </div>
-        )
-    }
+                <HowItWorks/>  
+            <div className="why-us-wrapper">
+                <WhyUs />
+            </div> 
+            <div>
+                <OurPatners/>
+            </div> 
+            
+            
+        </div>
+    )
+
 }
 export default withRouter(FrontPage)

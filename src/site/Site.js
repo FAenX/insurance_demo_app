@@ -1,17 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Site.scss';
 import Quotation from "./covers/Quotation";
 import PaymentOptions from "./payments/PaymentOptions";
 import Mpesa from "./payments/Mpesa"
-import Covers from "./covers/Covers";
 import FrontPage from "./frontpage/frontPage";
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Claim from "./claims/Claim";
 import WhoAreWe from "./whoarewe/WhoAreWe";
 import dotenv from "dotenv";
 import Footer from "../components/Footer";
 import Contacts from "./contacts/Contacts";
-import clsx from 'clsx';
 import DesktopMenu from "./components/DesktopMenu"
 import MobileNavigation from "./components/MobileNavigation"
 import Dashboard from "./auth/dashboard/Dashboard";
@@ -20,77 +18,30 @@ import Dashboard from "./auth/dashboard/Dashboard";
 
 dotenv.config()
 
-
-class Site extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {  
-      isOpen: false,
-      isOpenMobile: false
-
-    }
-   
-  }
-
-  //handle logout
-  handleLoginLogout =()=>{
-    this.setState({
-      isLoggedIn: true
-    })
-  }
-
-
-  //toggle drawer
-  toggleDrawer = (open) => event => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-        return;
-    }
-    this.setState({ isOpenMobile: open });
-  };
-
-  render(){
+const Site =(props)=>{
+  
     return (
       <div className="App">
-        {/* <div className={clsx("loader",{
-            "display-none": !this.state.loading
-          })}>
-          <img alt="logo" src={imgPlaceholder}/>
-          <div className="loading-text">Loading....</div>
-          <div className="loading-text">Name Insurance</div>
-        </div> */}
-        <Router>            
-              
-            <MobileNavigation 
-            
-            />
-            <DesktopMenu 
-              
-            />
+        <Router> 
+            <MobileNavigation  />
+            <DesktopMenu  />
        
-        <div 
-          className={clsx("main",{
-            "display-none": false,
-            
-          })}
-        >
-          <Switch>
-              <Route exact path='/home' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-              <Route exact path='/covers' render = {(props) => <Covers {...props} />}/>
+              <Route exact path='/home' render = {(props) => <FrontPage {...props} />}/>
               <Route exact path='/claim' render = {(props) => <Claim {...props} />}/>
               <Route exact path='/about' render = {(props) => <WhoAreWe {...props} />}/>
               <Route exact path='/quotation' render = {(props) => <Quotation {...props} />}/>
               <Route exact path='/payment-options' render = {(props) => <PaymentOptions {...props} />} />
               <Route exact path='/mpesa' render = {(props) => <Mpesa {...props} />}/>
-              <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-              <Route exact path='/*' render = {(props) => <FrontPage {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-          </Switch>
+              <Route exact path='/dashboard' render = {(props) => <Dashboard {...props} />}/>
+              <Route exact path='/*' render = {(props) => <FrontPage {...props} />}/>
+         
           <Contacts/>
-        </div>
+       
         </Router>
         <Footer/>
        </div>
     );
-  }
+ 
 }
 
 export default Site;
