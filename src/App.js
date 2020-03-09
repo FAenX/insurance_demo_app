@@ -16,6 +16,7 @@ class App extends React.Component {
     super(props);
     this.state = {  
       //loader
+       //loader
       loading: true,   
       //drawer
       isOpen: false,
