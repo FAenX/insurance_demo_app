@@ -53,10 +53,10 @@ class VehicleDetails extends React.Component{
               
         }
         return(
-            <Paper variant="outlined" className="swipeable-quote-form-form">
+            <Paper variant="outlined" className="quote-form">
                 
-                <div className="swipeable-quote-form-content">
-                <div className="swipeable-quote-form-sub-header">Vehicle details</div>
+               
+                <div className="quote-form-sub-header">Vehicle details</div>
                     <FormControl variant="outlined" className="form-controls">
                         <InputLabel  >
                             Vehicle use
@@ -130,8 +130,6 @@ class VehicleDetails extends React.Component{
                         </Select>
                     </FormControl>
                     </div>
-                    
-                </div>
             </Paper>
         )
     }

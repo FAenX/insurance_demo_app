@@ -1,5 +1,4 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
 import {Paper} from "@material-ui/core"
 import Vehicle from "./Vehicle"
 import {filterByAlias} from "../../helpers/js/dataManipulation"
@@ -76,4 +75,4 @@ class Quotation extends React.Component {
     }
 }
 
-export default withRouter(Quotation);
+export default Quotation;

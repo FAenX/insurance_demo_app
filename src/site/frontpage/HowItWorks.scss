@@ -1,16 +1,17 @@
 @import "../../base";
 
+@keyframes underline-text{
+  0%{width: 1%; height: 1%; }
+  100%{width: 100%; height: 100%; }
+}
+
 /* how it works */
 .page-wrapper {
     @include flex-col(); 
-    position: relative;
-    top: 3em;
     width: 100vw;
     .page-header {
         @include flex-col();
-        width: 400px;
-        height: 50px;
-        // &::before{
+        
         &::after {
           content: '';
           width: 100%;
@@ -21,8 +22,8 @@
         }
         &:hover {
           &::after{
-        //   &::before {
-            animation: clipMe 3s;
+            animation: underline-text 3s;
+            cursor: pointer;
           }
         }
       
@@ -33,28 +34,40 @@
     @include flex-row();
     flex-wrap: wrap;
     text-align: center;
+    width: 100vw;
 }
   
   .step {
-    width: 300px;
+    width: 150px;
+    height: 225px;
+    overflow: hidden;
     @include flex-col();
     margin: 1em;
+    font-size: .5em;
+    .svg {
+      @include flex-col();
+      height: 70px;
+      width: 70px;
+      img{
+        height: 70px;
+        width: 70px;
+      }
+    }
+  }
+  .stepMax{
+    width: 300px;
+    height: 400px;
+    font-size: 1em;
     .svg {
       @include flex-col();
       height: 15em;
       width: 15em;
+      img{
+        height: 150px;
+        width: 150px;
+      }
     }
   }
   
   
-  .step-text {
-    letter-spacing: .05em;
-  }
-
-
   
-
-  @keyframes clipMe {
-    0%{width: 1%; height: 1%; }
-    100%{width: 100%; height: 100%; }
-  }

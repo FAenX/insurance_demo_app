@@ -5,55 +5,18 @@
   
 }
   
-  .cover-page {
-    @include flex-col();
-    background-color: $color_1;
-    
-    
-    .cover-background{
-        background-image: url(../../assets/images/image1.png);
-        background-repeat: no-repeat; 
-        background-position-x: -20em;
-        background-position-y: 10em; 
-    }
-   
-   
-  
-    
-  }  
-  
+.cover-page {
+  @include flex-col();
+  background-color: $color_1;  
+  background-image: url(../../assets/images/image1.png);
+  background-repeat: no-repeat; 
+  background-position-x: -20em;
+  background-position-y: 10em; 
+  transition: height .5s;   
+
+} 
 
 
-  
-/* providers carousel */
-.providers-wrapper{
-
-  background-color: $white;
-
-  .providers-carousel{
-    @include flex-col();
-    padding: 3em;
-   }
-   
-  .provider{
-    @include flex-col();
-  }
-  
-  .providers-headline {
-    @include flex-col();
-    margin: 1em;
-    
-    .providers-heading {
-      @include flex-col();
-      font-size: 2em;
-      text-transform: uppercase;
-    }
-    .providers-sub-heading {
-      @include flex-col();
-      font-size: 1.2em;
-    }
-  }
-}
 
 //wide screen
  @media screen and (min-width: 700px)  {

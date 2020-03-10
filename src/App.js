@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './App.scss';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
-
 import dotenv from "dotenv";
-import Site from "./site/Site"
 import "./Components.scss"
 import imgPlaceholder from "./assets/images/img_placeholder.png";
 import clsx from 'clsx';
+import MainPage from "./site/frontpage/frontPage";
+import Footer from "./components/Footer"
 
 dotenv.config()
 
@@ -36,17 +35,13 @@ const App =()=> {
     sessionStorage.setItem("products", JSON.stringify(prods))    
     setLoading(false)
   }
-
-  
   const products = JSON.parse(sessionStorage.getItem("products"))
+  
   const toggleLoading=(props)=>{
     if( products && products.length > 0)
     {
-     return (<div  className="main">       
-                <Router>
-                      <Route exact path='/*' render = {(props) => <Site {...props}/>}/>
-                </Router>
-              </div>
+     return (    
+              <MainPage />
      )
     }
     return  (<div className={clsx("loader",{
@@ -63,6 +58,7 @@ const App =()=> {
     return (
       <div className="App">
         {toggleLoading()}
+        <Footer />
       </div>
     );
 }

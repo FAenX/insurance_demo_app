@@ -1,16 +1,9 @@
 import React from "react"
-import {withRouter} from "react-router-dom"
-import Drawer from '@material-ui/core/SwipeableDrawer';
-import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import {Button, AppBar} from "@material-ui/core"
-import VehicleDetails from "./VehicleDetails"
-import PersonalDetails from "./PersonalDetails"
+import VehicleDetails from "./quoteFormComponents/VehicleDetails"
+import PersonalDetails from "./quoteFormComponents/PersonalDetails"
 import SnackBar from "./SnackBar"
-import InsuranceDetails from "./InsuranceDetails"
+import InsuranceDetails from "./quoteFormComponents/InsuranceDetails"
 import "./MotorInsuranceQuoteForm.scss"
-
-
-
 
 class MotorInsuranceQuoteForm extends React.Component{
 
@@ -179,27 +172,8 @@ class MotorInsuranceQuoteForm extends React.Component{
         
         
         return(
-            <Drawer 
-                open={this.props.open}
-                variant="persistent"
-                anchor="top"
-                onClose={this.props.toggleDrawer(false)}
-                onOpen={this.props.toggleDrawer(true)}
-                className="swipable-quoteform-drawer"
-                
-            >
-                <div>{alert}</div>
-                <div  
-                    className="swipeable-quote-form" 
-                >
-                    <AppBar className="close-btn-wrapper" 
-                        onClick={this.props.toggleDrawer(false)}
-                    >
-                        <div className="close-btn">
-                            <MenuOpenIcon color="primary" />
-                        </div>
-                        <div className=" appbar-title">Request Quotation</div>
-                    </AppBar>
+                    <>
+                    {alert}
                     <div className="form">
                     <PersonalDetails 
                         user={this.state.user}
@@ -213,27 +187,14 @@ class MotorInsuranceQuoteForm extends React.Component{
                     <InsuranceDetails 
                         vehicle={this.state.vehicle}
                         insuranceChangeListener={this.insuranceChangeListener}
+                        handleSubmit={this.requestQuotation}
                     />
-
-                    
-                        <Button 
-                            variant="outlined"
-                            className="request-button"
-                            color="primary"
-                            onClick={this.requestQuotation}
-                        >
-                            Request
-                            
-                        </Button>
-                   
                     </div>
+                    </>
                        
-                </div>
-                
-               
-            </Drawer>
+             
         )
     }
 }
 
-export default withRouter(MotorInsuranceQuoteForm)
+export default MotorInsuranceQuoteForm

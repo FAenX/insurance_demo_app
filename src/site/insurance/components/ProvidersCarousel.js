@@ -35,35 +35,7 @@ class ProvidersCarousel extends React.Component {
                 width="90vw"
             >
                 
-                <div className="provider">
-                    <Provider 
-                        chosenProduct={this.props.chosenProduct} 
-                        premium={this.props.premium}
-                        image = {Jubilee}
-                        jp={jp}
-                    /> 
-                        
-                </div>
-
-                <div className="provider">
-                    <Provider 
-                        chosenProduct={this.props.chosenProduct} 
-                        premium={this.props.premium}
-                        image = {Apa}
-                        jp = {ap}
-                    />  
-                                 
-                </div>
-
-                <div className="provider">
-                    <Provider 
-                        chosenProduct={this.props.chosenProduct} 
-                        premium={this.props.premium}
-                        image={Heritage}
-                        jp = {hp}
-                    />  
-                                     
-                </div>
+               
                 
             </Carousel>
         );

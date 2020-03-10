@@ -15,15 +15,14 @@ const Partners =props=>{
     const scrollListener =()=>{
         
         const {scrollTop, clientHeight } = document.documentElement
-        console.log((scrollTop/clientHeight)*100)
-        console.log(scrollTop)
+        // console.log((scrollTop/clientHeight)*100)
+        // console.log(scrollTop)
         setPositionY(scrollTop)
     }
    
     const partnersStyle={
-        width: "50%",
+        width: "60%",
         height: "40vh",
-        margin: "1em"
     }
     const imgStyle={
         height: "75px",

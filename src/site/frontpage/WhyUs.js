@@ -1,8 +1,8 @@
-import React from "react"
-import {withRouter} from "react-router-dom"
+import React, {useState, useEffect}from "react"
 import imgPlaceholder from "../../assets/images/img_placeholder.png"
 import {Paper} from "@material-ui/core"
 import "./WhyUs.scss"
+import clsx from "clsx"
 
 const how = "Name Insurance inc makes use of cutting-edge technology to provide our" 
             +"customers with the best deal. Our web services are managed and run"
@@ -13,20 +13,36 @@ const how1 = "Once you buy the right policy after you’ve done the compare insu
             
 
 const WhyUsChild =()=> {
-        return(
-            <div id="whoweare" className="why-us-text">
-                <Paper variant="outlined" className="why-us-child">
-                    <div className="svg"><img alt="" src={imgPlaceholder}/></div>
-                    <div className="step-header">Tailor Made Quotes</div>
-                    <div className="step-text">{how}</div>
-                </Paper>
-                <Paper variant="outlined" className="why-us-child">
-                    <div className="svg"><img alt="" src={imgPlaceholder}/></div>
-                    <div className="step-header">Immediate Delivery</div>
-                    <div className="step-text">{how1}</div>
-                </Paper>
-            </div>
-        )
+    const [positionY, setPositionY] = useState(0)
+    useEffect(()=>{
+        window.addEventListener("scroll", watchScrolling);
+    })
+
+    const watchScrolling = () => {
+        const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
+        const winScroll = document.body.scrollTop || scrollTop;
+        const winHeight = scrollHeight - clientHeight;
+        const scrolled = (winScroll / winHeight) * 100;
+        setPositionY(scrolled)
+    };
+
+    const transition={
+        transition: "width .5s, height .5s"
+    }
+    return(
+        <div className="why-us-text">
+            <Paper style={transition} variant="outlined" className={clsx("why-us-child", {"show": positionY>35})}>
+                <div className="svg"><img alt="" src={imgPlaceholder}/></div>
+                <div className="step-header">Tailor Made Quotes</div>
+                <div className="step-text">{how}</div>
+            </Paper>
+            <Paper style={transition} variant="outlined" className={clsx("why-us-child", {"show": positionY>35})}>
+                <div className="svg"><img alt="" src={imgPlaceholder}/></div>
+                <div className="step-header">Immediate Delivery</div>
+                <div className="step-text">{how1}</div>
+            </Paper>
+        </div>
+    )
     
 }
 
@@ -38,6 +54,7 @@ const WhyUs =()=> {
         textTransform: "uppercase",
         paddingLeft: "1em",
         fontSize: "2em",
+        color: "white",
     }
    
     return(
@@ -51,4 +68,4 @@ const WhyUs =()=> {
 
 }
 
-export default withRouter(WhyUs)
+export default WhyUs

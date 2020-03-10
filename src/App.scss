@@ -19,6 +19,8 @@
  font-weight: 400;
  width: 100vw;
  overflow-x: hidden;
+ color: $color_1;
+ 
  
 }
 body {
@@ -67,77 +69,7 @@ body {
     background-color: $warning_color;
   }
 }
-
-
-.divider {
-  margin: 0em;
-  padding: 0em;
-  width: 100%;
-  background-color: $color_3;
-}
-
-::-webkit-scrollbar{
-  //display: none;
-}
-
-
-
-
-
-@media screen and (max-width: 450px)  {
-  
-  .home-buttons button {
-    font-size: 1em;
-  }
-  .vehicle-controls {
-    width: 10em;
-  }
-  
- }
-
-
- @media screen and (max-width: 700px)  {
-   
-  .cover-background{
-    background-position-x: -10vh;
-    background-position-y: 25vh;
-  }
-  
-  #root{
-    .mobile-screen{
-     display: flex;
-    }
-    .wide-screen{
-      display: none;
-    }
-  }
-
-  
-}
-
-
-// 800--> screen size
-////
-//@include
-@media screen and (min-width: 700px)  {
-  
-  #root{
-    .mobile-screen{
-     display: none;
-    }
-    .wide-screen{
-      display: flex;
-    }
-  }
-  
-  
-  
-  
-  
-  
- 
-  
-}
+@media screen and (max-width: 600px)  {}
 
 
   

@@ -1,7 +1,7 @@
-import React from "react"
-import {withRouter} from "react-router-dom";
+import React, {useEffect, useState} from "react"
 import imgPlaceholder from "../../assets/images/img_placeholder.png"
 import "./HowItWorks.scss"
+import clsx from "clsx"
 
 const data = {
     "browse":"Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
@@ -10,9 +10,29 @@ const data = {
 }
 
 const HowItWorksStep =props=>{
+    const [positionY, setPositionY] = useState(0)
+    useEffect(()=>{
+        window.addEventListener("scroll", watchScrolling);
+    })
+
+    const watchScrolling = () => {
+        const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
+        const winScroll = document.body.scrollTop || scrollTop;
+        const winHeight = scrollHeight - clientHeight;
+        const scrolled = (winScroll / winHeight) * 100;
+        setPositionY(scrolled)
+    };
+
+   const transition={
+        transition: "width .5s, height .5s"
+   }
+
+   
     return(
-        <div className="step">
-                <div className="svg"><img alt="" src={props.img}/> </div>
+        <div style={transition} className={clsx("step",{"stepMax": positionY>16})}>
+                <div style={transition} className="svg">
+                    <img  style={transition} alt="" src={props.img}/> 
+                </div>
                 <div className="step-text-wrapper">
                     <div className="step-header">{props.title}</div>
                     <div className="step-text"> {props.text} </div>
@@ -24,10 +44,12 @@ const HowItWorksStep =props=>{
 
 const HowItWorks =()=>{
    const headerStyle={
-       fontSize: "2.5em",
-       margin: ".5em",
-       fontWeight: "600",
-       textTransform: "capitalize",
+        fontSize: "2.5em",
+        margin: ".5em",
+        fontWeight: "600",
+        textTransform: "capitalize",
+        width: "400px",
+        height: "50px"
    }
     return(
         <div className="page-wrapper">
@@ -53,6 +75,6 @@ const HowItWorks =()=>{
   
 }
 
-export default withRouter(HowItWorks);
+export default HowItWorks;
 
 

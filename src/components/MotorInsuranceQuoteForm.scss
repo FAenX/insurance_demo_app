@@ -1,60 +1,15 @@
 @import "../base";
 
 //motor insurance form 
-.swipable-quoteform-drawer{
-    width: 100vw;
-    
-}
-.swipeable-quote-form {
-   width: 100%;
-    @include flex-col();
-    background-color: $color_2;
-    align-items: baseline;
-   
-    .request-button{
-        position: fixed;
-        bottom: 7em;
-        right: 4em;
-        width: 150px;
-        margin: .5em;
-        padding: .5em;
-        background-color: $color_3;
-        
-    }
-    .swipeable-quote-form-sub-header{
-      @include sliding-effect1s();
-      font-size: 1.5em;
-      text-transform: capitalize;
-      margin-bottom: 1em;
-    }
-    .close-btn-wrapper {
-      @include flex-row();
-      width: 100%;    
-     color: $color_3;
-      justify-content: space-between;  
-      padding: 1em; 
-      .appbar-title{
-        font-size: 1.5rem;
-        @include sliding-effect1s();
-      }
-      .close-btn{
-        
-        border: .05em solid $color_3;
-        @include sliding-effect1s();
-        animation: spin 3s;
-      } 
-      .MuiSvgIcon-colorPrimary{
-        color: $color_3;
-        font-size: 2.5em;
-      }    
-    }
+
     .form{
       @include flex-row();
-      justify-content: space-around;
+      flex-wrap: wrap;
       align-items: baseline;
-      width: 100%;
+      width: 100vw;
       margin-top: 4em;
       padding: 1em;
+      
       .MuiFormLabel-root{
         color: $color_3;
       }
@@ -74,56 +29,12 @@
       }
       
       
-      .swipeable-quote-form-form{
-        @include flex-col();
-        width: 100%;
-        background-color: $color_1;
-        margin: .5em;
-        
-        padding: 1em;
-        margin-bottom: 1em;
-        
-        .swipeable-quote-form-content{
-          @include flex-col();
-          color: $color_3;
-          width: 90%;
-          padding: 1em;
-          //form controls
-          .swipeable-quote-form-sub-header{
-            font-weight: 700;
-          }
-          
-        .form-controls {
-          width: 15em;
-          height: 6em;
-          @include sliding-effect2s();
-        }
-        }
-      }
+      
     }
-  }
+  
 
   @media screen and (max-width: 700px)  {
-    .swipeable-quote-form {
-      
-      .request-button{
-        position: relative;
-       
-        width: 150px;
-        margin: .5em;
-        margin-top: 2em;
-        padding: .5em;
-        
-        
-    }
-      .form{
-        @include flex-col();
-      }
-    }
-    
-  }
-  @media screen and (min-width: 700px)  {
-    .swipeable-quote-form {
-      height: 100vh;
+    .form{
+      @include flex-col();
     }
   }
