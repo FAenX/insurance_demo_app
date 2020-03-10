@@ -4,10 +4,6 @@
 .contacts-wrapper {
     @include flex-col();
     width: 100vw;
-    position: relative;
-    top: 3em;
-    border-top: $color_3 .05em solid;
-    border-bottom: $color_3 .05em solid;
     background-color: $color_1;
     color: $white;
   }

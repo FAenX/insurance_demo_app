@@ -24,7 +24,7 @@ const HowItWorksStep =props=>{
     };
 
    const transition={
-        transition: "width .5s, height .5s"
+        transition: "width .25s, height .25s"
    }
 
    

@@ -50,8 +50,18 @@ const Navigation=props=>{
                 />
             </div>
             <div>
-                <NavButton id="signup" title="Create Account" icon={<SupervisedUserCircle />}/>
-                <NavButton id="signin" title="Sign In" icon={<VerifiedUser />} />
+                <NavButton 
+                    id="signup" 
+                    title="Create Account" 
+                    icon={<SupervisedUserCircle />}
+                    navigate={props.navigate}
+                />
+                <NavButton 
+                    id="signin" 
+                    title="Sign In" 
+                    icon={<VerifiedUser />} 
+                    navigate={props.navigate}
+                />
             </div>
             </div>
     )

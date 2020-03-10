@@ -1,204 +1,174 @@
-import React from "react"
-import { Form } from "react-bootstrap"
-import {Button, Drawer} from "@material-ui/core"
+import React,{useState} from "react"
+import {Button, TextField, Paper} from "@material-ui/core"
 import Backdrop from "../../components/BackDrop"
 import SnackBar from "../../components/SnackBar"
-import clsx from "clsx";
-import {withRouter} from "react-router-dom"
 import "./SignIn.scss"
+import {GTranslate, Facebook, PersonAddSharp, PersonOutline} from "@material-ui/icons"
 
-
-class SignIn extends React.Component {
-    constructor(props){
-        super(props)
-        this.state={
-            userEmail: "",
-            userPassword: "",          
-            response: {
-                message: "",
-                status: ""
-            },
-            creds: {},
-            isLoading: false,
-            backdrop: false,
-            SnackBar: false,
-        }
-        this.submitForm = this.submitForm.bind(this)
+const ActionButton=props=>{
+    const buttonStyle={
+        textTransform: "capitalize",
+        color: "inherit",
+        margin: "1em"
     }
 
-    componentDidMount =()=>{
-        
-    }
+    return <Button 
+                style={buttonStyle} 
+                onClick={props.onClick}
+                variant={props.variant}
+            >
+               
+                {props.icon}
+                {props.title}
+            </Button>
+}
 
-    onCloseSnackBar=()=>{
-        this.setState({
-            snackBar: false
-        })
-    }
+const SocialLogin=props=>{
+    return <ActionButton variant={"outlined"} {...props}/>
+}
 
-    async submitForm (event) {
-        event.preventDefault()
-        this.setState({
-            backdrop: true,
-        })
-        
+
+const LoginForm =props=>{
+    const fieldStyle={
+        margin: ".5em",
+    }
+    return <>
+            <TextField 
+                style={fieldStyle}
+                id="email" 
+                label="Email"
+                variant="outlined"
+                value={props.email}
+                onChange={props.handleEmailChange}
+                // error={error(props.user.first_name)}
+                disabled={props.loggedIn}
+            />
+            <TextField 
+                style={fieldStyle}
+                id="password" 
+                label="Password"
+                variant="outlined"
+                value={props.password}
+                onChange={props.handlePasswordChange}
+                // error={error(props.user.first_name)}
+                disabled={props.loggedIn}
+            />
+            </>
+}
+
+
+const SignIn =props=> {
+    const [userEmail, setEmail] = useState("")
+    const [userPassword, setPassword] = useState("")
+    const [response, setResponse] = useState({message: "", status: ""})
+    const [backdrop, setBackdrop] = useState(false)
+    const [snackbar, setSnackbar] = useState(false)
+   
+
+    const submitForm =async()=> {
+        setBackdrop(true)
         const url = "/api/v1/users/token/"
-        const data = {email: this.state.userEmail, password: this.state.userPassword}
-        const request = fetch(url, {
+        const data = {email: userEmail, password: userPassword}
+        const request = await fetch(url, {
             method: 'POST', 
             headers: {
             'Content-Type': 'application/json'
             },
             body: JSON.stringify(data) 
-        }).then(res=>res.json()).catch(err=>err);
+        })
 
-        const response = await request.then(res=>{
-        if (res !== null &&
-            res !== undefined &&
-            Object.keys(res).length > 1)
-        {
-            sessionStorage.setItem("tokens", JSON.stringify(res))
-            let response = this.state.response
-                response["status"]="success"
-                response["message"]="Successfully Logged in"                
-                this.setState({
-                    response,
-                    snackBar: true,
-                    backdrop: false
-                })
-                this.props.successListener()
-            setTimeout(()=>{
-                this.handleRedirectOnLogin()  
-            }, 1000)
-
-            
-        }                        
-                       
-                                    
-            return res              
-                
-        }).catch(err=>err)
-              
-       
-        console.log(response)
+        const response = await request.json()
         
+        if (response !== null &&
+            response !== undefined &&
+            Object.keys(response).length > 1)
+        {
+            sessionStorage.setItem("tokens", JSON.stringify(response))
+            let res = response
+            res["status"]="success"
+            res["message"]="Successfully Logged in"                
+            setResponse(res)
+            setSnackbar(true)
+            setBackdrop(false)
+            props.successListener()
+                
+            setTimeout(()=>{
+                handleRedirectOnLogin()  
+            }, 1000)
+        }                                                  
+        return response 
     }
 
-    handleEmailChange = (event) =>{
+    const handleEmailChange = (event) =>{
         event.preventDefault()
-        console.log(event.target.value)
-        this.setState({
-            
-                userEmail: event.target.value
-            
-        })
+        setEmail(event.target.value)
     }
 
-    handlePasswordChange = (event) =>{
+    const handlePasswordChange = (event) =>{
         event.preventDefault()
         console.log(event.target.value)
-        this.setState({         
-                userPassword: event.target.value        
-           
-        })
+        setPassword(event.target.value)
     
     }
 
-    handleRedirectOnLogin = () => {
+    const handleRedirectOnLogin = () => {
         setTimeout(()=>{
-            this.props.history.push("/dashboard")
+            props.history.push("/dashboard")
         }, 1000)
         
     }
 
-    validateForm = ()=>{
-        return this.state.userEmail !== "" && this.state.userPassword !== "";
+    const validateForm = ()=>{
+        return userEmail !== "" && userPassword !== "";
     }
-    signUp=()=>{
-        this.props.history.push("/signup")
+    const signUp=()=>{
+        props.history.push("/signup")
     }
 
-    render(){
-        let alert = <SnackBar 
-                        status={this.state.response.status}
-                        message={this.state.response.message}
-                        show={this.state.snackBar}
-                        onClose={this.onCloseSnackBar}
+    const closeSnackBar=()=>{
+        setSnackbar(false)
+    }
+
+    const alert = <SnackBar 
+                    status={response.status}
+                    message={response.message}
+                    show={snackbar}
+                    onClose={closeSnackBar}
+                />
+
+    return(
+        
+        <div className="signin-wrapper">
+            <Backdrop open={backdrop}/>
+            {alert}
+            
+            <Paper variant="outlined" className="signin-form-wrapper">
+                    <div className="headline-text sliding-effect">
+                        Sign In
+                    </div>
+                    <LoginForm 
+                        email={userEmail} 
+                        password={userPassword}
+                        handleEmailChange={handleEmailChange}
+                        handlePasswordChange={handlePasswordChange}
                     />
 
-        return(
-            <Drawer 
-            anchor="top"
-            open={this.props.open}
-            variant="persistent"
-            className={clsx("drawer", {
-                "drawerOpen": this.props.open,
-                "drawerClose": !this.props.open,
-              })}
-            >
-            <div className="signin-wrapper">
-                <Backdrop open={this.state.backdrop}/>
-               
-                <div>{alert}</div>
-                <div className="headline-text sliding-effect">
-                    Sign In
-                </div>
-                <div className="signin-form-wrapper">
-                    <Form>
-                        <Form.Group controlId="formBasicEmail" className="sliding-effect">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control 
-                                type="email" 
-                                placeholder="Enter email" 
-                                onChange={this.handleEmailChange}/>
-                            <Form.Text 
-                                className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
-                        </Form.Group>
+                    <div className="buttons">
+                        <ActionButton onClick={submitForm} title={"login"} icon={<PersonOutline />}/>
+                        <ActionButton onClick={signUp} title={"create account"} icon={<PersonAddSharp />}/>
+                    </div>
+                    <div className="social-auth">
+                        <SocialLogin onClick={signUp} title={"Google"} icon={<GTranslate />}/>
+                        <SocialLogin onClick={signUp} title={"FaceBook"} icon={<Facebook />}/>
+                    </div>
+                    
+            </Paper>
+        
+        </div>
+        
+    )
 
-                        <Form.Group 
-                            controlId="formBasicPassword" className="sliding-effect">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control 
-                                type="password" 
-                                placeholder="Password" 
-                                onChange={this.handlePasswordChange}/>
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox" className="sliding-effect8s">
-                            <Form.Check 
-                                type="checkbox" 
-                                label="Check me out" 
-                            />
-                        </Form.Group>
-                        <div className="signin-button">
-                        <Button 
-                            type="submit" 
-                            variant="outlined" 
-                            color="primary" 
-                            onClick={this.submitForm}
-                            className="sliding-effect10s"
-                        >
-                            Submit
-                        </Button> 
-                        <Button 
-                            type="submit" 
-                            
-                            color="primary" 
-                            className="signup sliding-effect10s"
-                            onClick={this.signUp}
-                        >
-                            Create account
-                        </Button>
-                        </div>
-                    </Form>
-                </div>
-           
-            </div>
-           </Drawer>
-        )
-    }
 
 }
 
-export default withRouter(SignIn);
+export default SignIn;

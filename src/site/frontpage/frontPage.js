@@ -7,6 +7,8 @@ import "./FrontPage.scss"
 import DesktopMenu from "../components/DesktopMenu" 
 import Contacts from "../contacts/Contacts"
 import QuotationForm from "../../components/MotorInsuranceQuoteForm"
+import SignIn from "../auth/SignIn";
+import SignUp from "../auth/SignUp";
 
 
 const MainPage =()=> {
@@ -27,6 +29,10 @@ const MainPage =()=> {
             return <QuotationForm />
         }else if(page === "about"){
             // return 
+        }else if(page === "signin"){
+            return <SignIn />
+        }else if(page === "signup"){
+            return <SignUp />
         }
     }
 
