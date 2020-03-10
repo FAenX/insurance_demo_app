@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import BackDrop from "../../components/BackDrop"
-import {Button, TextField, Paper} from "@material-ui/core"
+import {Button, TextField, Paper, Dialog} from "@material-ui/core"
 import SnackBar from "../../components/SnackBar"
 import "./SignUp.scss"
 import {GTranslate, Facebook, PersonAddSharp, PersonOutline} from "@material-ui/icons"
@@ -75,6 +75,23 @@ const SignUpForm =props=>{
             </>
 }
 
+const AlertDialog=props=> {
+  
+    return (
+      
+        <Dialog
+          open={props.open}
+          keepMounted
+          onClose={props.handleClose}
+        >
+          <ActionButton title="Get a quotation for your vehicle" onClick={()=>{props.loginRedirect("quotation")}}/>
+          <ActionButton title="Dashboard" onClick={()=>{props.loginRedirect("dashboard")}} />
+              
+        </Dialog>
+      
+    );
+  }
+
 
 
 
@@ -86,6 +103,7 @@ const SignUp =props=> {
     const [snackbar, setSnackbar] = useState(false)
     const [userFirstName, setFirstName] = useState("")
     const [userLastName, setLastName]=useState("")
+    const [redirectAlert, setRedirectAlert] = useState(false)
    
 
     const submitForm=async()=>{
@@ -105,21 +123,46 @@ const SignUp =props=> {
             body: JSON.stringify(data) 
         })
 
-        const response = await request.json()
+        console.log(request)
+       
 
-        if (response.status===201){
-            setResponse["status"]="success"
-            setResponse["message"]="Successfully created"                
-            setBackdrop(false)
+        if(request.status===201){
+            let res = response
+            res["status"]="success"
+            res["message"]="Successfully created"              
+            setResponse(res)
             setSnackbar(true)
-        }else{
-            setResponse["status"]="error"
-            setResponse["message"]="An error occured" 
             setBackdrop(false)
+            setRedirectAlert(true)
+            const data = await request.json()
+            props.signUpListener(data)                                                          
+            return data
+
+        }else if(request.status === 400){
+            const data = await request.json()
+            if(data.email){
+                let res = response
+                res["status"]="warning"
+                res["message"]="You are already registered!! Please log in."
+                setResponse(res)
+                setSnackbar(true)
+                setBackdrop(false) 
+                props.signUpListener(request.status)
+                return response    
+            }
+        }
+        else if(request.status === 500){
+            let res = response
+            res["status"]="warning"
+            res["message"]="Check your internet connection."                
+            setResponse(res)
             setSnackbar(true)
-        } 
-        return response           
-               
+            setBackdrop(false)
+            setRedirectAlert(true)
+            props.signUpListener(request.status)
+            return response 
+        }
+
     }
 
     const onCloseSnackBar=()=>{
@@ -162,7 +205,7 @@ const SignUp =props=> {
         <div className="signup-wrapper">
                 <div>{alert}</div>
                 <BackDrop open={backdrop}/>
-                
+                <AlertDialog loginRedirect={props.signUpRedirect} open={redirectAlert} onClose={()=>setRedirectAlert(false)} />
                 <Paper variant="outlined" className="signup-form-wrapper">
                     <div className="headline-text sliding-effect">
                         Sign Up

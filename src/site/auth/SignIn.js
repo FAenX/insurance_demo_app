@@ -1,5 +1,5 @@
 import React,{useState} from "react"
-import {Button, TextField, Paper} from "@material-ui/core"
+import {Button, TextField, Paper, Dialog} from "@material-ui/core"
 import Backdrop from "../../components/BackDrop"
 import SnackBar from "../../components/SnackBar"
 import "./SignIn.scss"
@@ -56,6 +56,23 @@ const LoginForm =props=>{
             </>
 }
 
+const AlertDialog=props=> {
+  
+    return (
+      
+        <Dialog
+          open={props.open}
+          keepMounted
+          onClose={props.handleClose}
+        >
+          <ActionButton title="Get a quotation for your vehicle" onClick={()=>{props.loginRedirect("quotation")}}/>
+          <ActionButton title="Dashboard" onClick={()=>{props.loginRedirect("dashboard")}} />
+              
+        </Dialog>
+      
+    );
+  }
+
 
 const SignIn =props=> {
     const [userEmail, setEmail] = useState("")
@@ -63,6 +80,7 @@ const SignIn =props=> {
     const [response, setResponse] = useState({message: "", status: ""})
     const [backdrop, setBackdrop] = useState(false)
     const [snackbar, setSnackbar] = useState(false)
+    const [redirectAlert, setRedirectAlert] = useState(false)
    
 
     const submitForm =async()=> {
@@ -77,26 +95,44 @@ const SignIn =props=> {
             body: JSON.stringify(data) 
         })
 
-        const response = await request.json()
-        
-        if (response !== null &&
-            response !== undefined &&
-            Object.keys(response).length > 1)
-        {
-            sessionStorage.setItem("tokens", JSON.stringify(response))
+
+        console.log(request)
+        if(request.status===200){
             let res = response
             res["status"]="success"
             res["message"]="Successfully Logged in"                
             setResponse(res)
             setSnackbar(true)
             setBackdrop(false)
-            props.successListener()
-                
-            setTimeout(()=>{
-                handleRedirectOnLogin()  
-            }, 1000)
-        }                                                  
-        return response 
+            setRedirectAlert(true)
+            const data = await request.json()
+            props.loginListener(data)                                                          
+            return data 
+
+        }else if(request.status === 401){
+            let res = response
+            res["status"]="warning"
+            res["message"]="You must be new here!! Please Sign Up."                
+            setResponse(res)
+            setSnackbar(true)
+            setBackdrop(false)
+            // setRedirectAlert(true)
+            props.loginListener(request.status)
+            return response 
+        }
+        else if(request.status === 500){
+            let res = response
+            res["status"]="warning"
+            res["message"]="Check your internet connection."                
+            setResponse(res)
+            setSnackbar(true)
+            setBackdrop(false)
+            // setRedirectAlert(true)
+            props.loginListener(request.status)
+            return response 
+        }
+
+        
     }
 
     const handleEmailChange = (event) =>{
@@ -111,36 +147,24 @@ const SignIn =props=> {
     
     }
 
-    const handleRedirectOnLogin = () => {
-        setTimeout(()=>{
-            props.history.push("/dashboard")
-        }, 1000)
-        
-    }
-
     const validateForm = ()=>{
         return userEmail !== "" && userPassword !== "";
     }
-    const signUp=()=>{
-        props.history.push("/signup")
-    }
 
-    const closeSnackBar=()=>{
-        setSnackbar(false)
-    }
 
-    const alert = <SnackBar 
+    const snackbarAlert = <SnackBar 
                     status={response.status}
                     message={response.message}
                     show={snackbar}
-                    onClose={closeSnackBar}
+                    onClose={()=>{setSnackbar(false)}}
                 />
 
     return(
         
         <div className="signin-wrapper">
             <Backdrop open={backdrop}/>
-            {alert}
+            {snackbarAlert}
+            <AlertDialog loginRedirect={props.loginRedirect} open={redirectAlert} onClose={()=>setRedirectAlert(false)} />
             
             <Paper variant="outlined" className="signin-form-wrapper">
                     <div className="headline-text sliding-effect">
@@ -155,11 +179,11 @@ const SignIn =props=> {
 
                     <div className="buttons">
                         <ActionButton onClick={submitForm} title={"login"} icon={<PersonOutline />}/>
-                        <ActionButton onClick={signUp} title={"create account"} icon={<PersonAddSharp />}/>
+                        <ActionButton onClick={submitForm} title={"create account"} icon={<PersonAddSharp />}/>
                     </div>
                     <div className="social-auth">
-                        <SocialLogin onClick={signUp} title={"Google"} icon={<GTranslate />}/>
-                        <SocialLogin onClick={signUp} title={"FaceBook"} icon={<Facebook />}/>
+                        <SocialLogin onClick={submitForm} title={"Google"} icon={<GTranslate />}/>
+                        <SocialLogin onClick={submitForm} title={"FaceBook"} icon={<Facebook />}/>
                     </div>
                     
             </Paper>

@@ -3,11 +3,6 @@ import imgPlaceholder from "../../assets/images/img_placeholder.png"
 import "./HowItWorks.scss"
 import clsx from "clsx"
 
-const data = {
-    "browse":"Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
-    "request quotation": "Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
-    "make payment": "Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
-}
 
 const HowItWorksStep =props=>{
     const [positionY, setPositionY] = useState(0)
@@ -42,6 +37,25 @@ const HowItWorksStep =props=>{
  
 }
 
+const Steps=()=>{
+    const data = {
+        "browse":"Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
+        "request quotation": "Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
+        "make payment": "Occaecati aut in dolores. Fugit nihil sunt quia quia et vitae earum. Sed odio eum quae maxime nostrum excepturi cupiditate porro. Excepturi ut repudiandae optio ducimus sint odit aspernatur.",
+    }
+    
+    return (
+        Object.keys(data).map(i=>{
+            return <HowItWorksStep 
+                        key={i} 
+                        text={data[i]} 
+                        title={i} 
+                        img={imgPlaceholder} 
+                    />
+        })
+    )           
+}
+
 const HowItWorks =()=>{
    const headerStyle={
         fontSize: "2.5em",
@@ -57,16 +71,7 @@ const HowItWorks =()=>{
                 How does it work?
             </div>
                 <div className="how-it-works"> 
-                    {
-                        Object.keys(data).map(i=>{
-                            return <HowItWorksStep 
-                                        key={i} 
-                                        text={data[i]} 
-                                        title={i} 
-                                        img={imgPlaceholder} 
-                                    />
-                        })
-                    }              
+                    <Steps />
                 </div>
             </div>
             
