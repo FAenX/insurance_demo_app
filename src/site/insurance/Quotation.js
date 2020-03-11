@@ -5,6 +5,19 @@ import {filterByAlias} from "../../helpers/js/dataManipulation"
 import "./Quotation.scss"
 import Provider from "./components/Provider"
 
+
+//should be dynamic
+import Jubilee from "../../assets/images/jubilee.png"
+import Apa from "../../assets/images/apa.png"
+import Heritage from "../../assets/images/partners-heritage.png"
+
+
+
+
+const jp = "(+15yrs Special) Jubilee Motor"
+const ap = "(+15yrs Special) APA Motor"
+const hp = "(+15yrs Special) Heritage"
+
 const Quotation =props=> {
     
     const handleSubmit = () =>{
@@ -35,37 +48,43 @@ const Quotation =props=> {
 
     return(
         <div className="quotation-page-wrapper">                          
-                    <div className="product-title sliding-effect">
-                        {chosenProduct.name}
-                    </div>                        
-                        <div className="quotation-wrapper">
-                                <Paper variant="outlined" id="quotation-header">
-                                    Hi {user.last_name}, we have found 1 plan for your {vehicle.vehicleMake} {vehicle.vehicleModel}
-                                </Paper>
-                            <div className="quotation" >   
-                                <Vehicle 
-                                    vehicle={vehicle}
-                                />                            
-                                
-                                <div id="quotation-content">      
-                                    
-                                    <Provider 
-                                        chosenProduct={chosenProduct} 
-                                        premium={response.data}
-                                    />
-                                    <Provider 
-                                        chosenProduct={chosenProduct} 
-                                        premium={response.data}
-                                    />
-                                    <Provider 
-                                        chosenProduct={chosenProduct} 
-                                        premium={response.data}
-                                    />
-                                    
-                                    
-                                </div>                                                
-                            </div>
-                        </div>                     
+        <div className="product-title sliding-effect">
+            {chosenProduct.name}
+        </div>                        
+            <div className="quotation-wrapper">
+                    <Paper variant="outlined" id="quotation-header">
+                        Hi {user.last_name}, we have found 1 plan for your {vehicle.vehicleMake} {vehicle.vehicleModel}
+                    </Paper>
+                <div className="quotation" >   
+                    <Vehicle 
+                        vehicle={vehicle}
+                    />                            
+                    
+                    <div id="quotation-content">      
+                        
+                        <Provider 
+                            chosenProduct={chosenProduct} 
+                            premium={response.data}
+                            jp={jp}
+                            image={Jubilee}
+                        />
+                        <Provider 
+                            chosenProduct={chosenProduct} 
+                            premium={response.data}
+                            jp={ap}
+                            image={Apa}
+                        />
+                        <Provider 
+                            chosenProduct={chosenProduct} 
+                            premium={response.data}
+                            jp={hp}
+                            image={Heritage}
+                        />
+                        
+                        
+                    </div>                                                
+                </div>
+            </div>                     
          
         </div>
     )

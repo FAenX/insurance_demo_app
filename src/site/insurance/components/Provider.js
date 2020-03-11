@@ -1,5 +1,5 @@
 import React from "react"
-import {Paper, Button, ListItem} from "@material-ui/core"
+import {Paper, Button, ListItem, Divider} from "@material-ui/core"
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import clsx from "clsx"
 import OptionalBenefits from "./OptionalBenefits"
 import "./Provider.scss"
+
 
 
 const Benefits =props=> {
@@ -49,12 +50,12 @@ const ProviderRates =props=> {
                 })}
             >
             <Paper variant="outlined" className="q-content" id="insurance-details">   
-            <ListItem button>Cover: <b>{props.chosenProduct.name}</b></ListItem> 
-            <hr className="divider"></hr> 
-            <ListItem button>Cover to start from: <b>date</b></ListItem>
-            <hr className="divider"></hr>
-            <ListItem button>Premium KSH: <b>{props.premium}</b></ListItem>
-            <hr className="divider"></hr>                                                    
+                <ListItem button>Cover: <b>{props.chosenProduct.name}</b></ListItem> 
+                <Divider />
+                <ListItem button>Cover to start from: <b>date</b></ListItem>
+                <Divider />
+                <ListItem button>Premium KSH: <b>{props.premium}</b></ListItem>
+                <Divider />                                     
             </Paper>
         
             
@@ -74,50 +75,58 @@ const Provider =props=> {
     }
 
     const providerStyle={
+        display: "flex",
+        flexFlow: "column",
         width: "300px", 
         height: "300px",
-        margin: ".5em"
+        margin: ".5em",
+        textAlign: "center"
+    }
+
+    const providerImage={
+        width: "200px", 
+        height: "100px",
+        margin: ".15em"
     }
 
     
     return(<div  id="provider-details">
-        <Paper style={providerStyle} variant="outlined" className="provider">
-            <div className="q-content-sub">
-                {props.jp} {props.chosenProduct.name}
-            </div>
-            <hr className="divider"></hr>
-            <img alt="" src={props.image} />                 
-            <Button 
-                id="premium-button"
-                variant="outlined"
-            >
-                KSH: {props.premium}
-            </Button>
-            <hr className="divider"></hr>
-            <Button 
-                id="buy-button" 
-                variant="contained"
-            >
-                Buy
-            </Button>                
-            <Button 
-                id="details-button" 
-                variant="outlined"
-                // onClick={this.showDetails}
-            >
-                view details
-            </Button>
+            <Paper style={providerStyle} variant="outlined" className="provider">
+                <div className="">
+                    {props.jp} 
+                    {props.chosenProduct.name}
+                </div>
+                <img alt="" src={props.image} style={providerImage}/>                 
+                <Button 
+                    id="premium-button"
+                    variant="outlined"
+                >
+                    KSH: {props.premium}
+                </Button>
+                <Button 
+                    id="buy-button" 
+                    variant="contained"
+                >
+                    Buy
+                </Button>                
+                <Button 
+                    id="details-button" 
+                    variant="outlined"
+                    // onClick={this.showDetails}
+                >
+                    view details
+                </Button>
 
-        </Paper>
-        
-        <ProviderRates 
-            premium={props.premium} 
-            // show={this.state.showDetails}
-            chosenProduct={props.chosenProduct}
-        />
-        <Benefits />
-                
-    </div>
+            </Paper>
+            
+            <ProviderRates 
+                premium={props.premium} 
+                // show={this.state.showDetails}
+                chosenProduct={props.chosenProduct}
+            />
+            <Benefits />
+                    
+        </div>
         
         
     )
