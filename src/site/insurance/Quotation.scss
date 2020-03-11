@@ -3,55 +3,46 @@
   /* quotation page */
   .quotation-page-wrapper {
     @include flex-col();
-    position: relative;
-    top: 3em;
-    
     overflow: hidden;
-    
-    .quotation-body-wrapper{
-     background-color: $color_1;
       .product-title{
         @include flex-col();
         @include sliding-effect1s();
-        font-size: 2em;
+        font-size: 1.5em;
         margin: .5em;
-        color: $white;
+        color: inherit;
       }
       .quotation-wrapper {  
         @include flex-col();
+        padding: 1em;
         
+        #quotation-header{
+          @include flex-col(); 
+          @include sliding-effect();          
+          padding: 1em;
+          font-size: 1em; 
+          width: 40vw;
+        }  
         .quotation {
-          @include flex-col();
-          #quotation-header{
-            
-            @include flex-col(); 
-            @include sliding-effect();          
-            padding: .5em;
-            margin: .5em;
-            font-size: 1em; 
-            width: 40vw;
-          }  
+          @include flex-row();
+          // flex-wrap: wrap;
+          padding: .5em;
+          align-items: baseline;
+          width: 100vw;
+          
           #quotation-content{
-            
-            @include flex-col(); 
+            @include flex-row(); 
+            flex-wrap: wrap;
             // flex-flow: row-reverse;             
             text-align:left;
             padding: 1em;
             font-size: 1em;
-            width: 100vw;
-            #vehicle-details{
-              display: none;
-            } 
+            
             .q-content{
               padding: 1em;
             }
             #optional-benefits{
-              width: 50em;
               @include sliding-effect2s(); 
               @include flex-col();
-              margin: 1em;
-              background-color: $color_2;
-              color: $white;
                           
               .optional-benefits-listitems{
                 @include flex-col();
@@ -75,7 +66,7 @@
           }      
         }      
       }
-    }
+   
   }
 
   @media screen and (max-width: 700px)  {}
