@@ -1,0 +1,12 @@
+@import "../../../base";
+
+.vehicle {
+    position: absolute;
+    left: .5em;
+}
+
+@media screen and (max-width: 600px)  {
+    .vehicle {
+        position: static;
+    }
+}

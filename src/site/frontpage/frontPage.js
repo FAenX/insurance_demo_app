@@ -4,7 +4,7 @@ import HowItWorks from './HowItWorks'
 import OurPatners from "./OurPatners"
 import WhyUs from "./WhyUs"
 import "./FrontPage.scss"
-import DesktopMenu from "../components/DesktopMenu" 
+import DesktopMenu from "../components/MainNavigation" 
 import Contacts from "../contacts/Contacts"
 import QuotationForm from "../../components/MotorInsuranceQuoteForm"
 import SignIn from "../auth/SignIn";

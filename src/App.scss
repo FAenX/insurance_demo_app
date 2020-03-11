@@ -22,6 +22,10 @@
  color: $color_1; 
 }
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 body {
   color: inherit;
   .display-none{

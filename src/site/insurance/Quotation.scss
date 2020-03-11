@@ -1,73 +1,91 @@
 @import "../../base";
 
-  /* quotation page */
-  .quotation-page-wrapper {
-    @include flex-col();
-    overflow: hidden;
-      .product-title{
-        @include flex-col();
-        @include sliding-effect1s();
-        font-size: 1.5em;
-        margin: .5em;
-        color: inherit;
-      }
-      .quotation-wrapper {  
-        @include flex-col();
+/* quotation page */
+.quotation-page-wrapper {
+  @include flex-col();
+  overflow: hidden;
+    .product-title{
+      @include flex-col();
+      @include sliding-effect1s();
+      font-size: 1.5em;
+      margin: .5em;
+      color: inherit;
+    }
+    .quotation-wrapper {  
+      @include flex-col();
+      padding: 1em;
+      
+      #quotation-header{
+        @include flex-col(); 
+        @include sliding-effect();          
         padding: 1em;
+        font-size: 1em; 
+        width: 40vw;
+      }  
+      .quotation {
+        @include flex-row();
+        flex-wrap: wrap;
+        padding: .5em;
+        justify-content: flex-end;
+        align-items: baseline;
+        width: 100vw;
+        min-height: 60vh;
+        // border: 1px solid $color_1;
         
-        #quotation-header{
-          @include flex-col(); 
-          @include sliding-effect();          
-          padding: 1em;
-          font-size: 1em; 
-          width: 40vw;
-        }  
-        .quotation {
-          @include flex-row();
+        #quotation-content{
+          @include flex-row(); 
           flex-wrap: wrap;
-          padding: .5em;
-          align-items: baseline;
-          width: 100vw;
+          margin: 1em;
           
-          #quotation-content{
-            @include flex-row(); 
-            flex-wrap: wrap;
-            // flex-flow: row-reverse;             
-            text-align:left;
+          width: 80%;
+          // border: 1px solid $color_1;
+          // flex-flow: row-reverse;             
+          text-align:left;
+          padding: 1em;
+          font-size: 1em;
+          
+          .q-content{
             padding: 1em;
-            font-size: 1em;
-            
-            .q-content{
-              padding: 1em;
-            }
-            #optional-benefits{
-              @include sliding-effect2s(); 
+          }
+          #optional-benefits{
+            @include sliding-effect2s(); 
+            @include flex-col();
+                        
+            .optional-benefits-listitems{
               @include flex-col();
-                          
-              .optional-benefits-listitems{
-                @include flex-col();
-                .list-item{
-                  @include flex-row();
-                }
-              }  
-              .q-content-sub{
-                padding: 1em;
-                font-weight: 400;
-                p{
-                  display: inline;
-                }
-                p:nth-child(1){
-                  font-size: 1.5em;
-                  font-weight: 600;
-                }
+              .list-item{
+                @include flex-row();
+              }
+            }  
+            .q-content-sub{
+              padding: 1em;
+              font-weight: 400;
+              p{
+                display: inline;
+              }
+              p:nth-child(1){
+                font-size: 1.5em;
+                font-weight: 600;
               }
             }
-           
-          }      
+          }
+          
         }      
-      }
-   
-  }
-
-  @media screen and (min-width: 700px)  {}
+      }      
+    }
   
+}
+
+@media screen and (max-width: 600px)  {
+  .quotation-page-wrapper {
+
+  .quotation-wrapper {  
+    
+    .quotation {
+      justify-content: center;
+      
+      
+      }      
+    }      
+  }
+}
