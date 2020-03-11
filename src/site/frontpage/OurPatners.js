@@ -21,8 +21,8 @@ const Partners =props=>{
     }
    
     const partnersStyle={
-        width: "60%",
-        height: "40vh",
+        // width: "60%",
+        // height: "40vh",
     }
     const imgStyle={
         height: "75px",

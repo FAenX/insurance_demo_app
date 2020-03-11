@@ -1,164 +1,97 @@
-import React from "react"
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
-import ListItemText from "@material-ui/core/ListItemText"
+import React, {useState} from "react"
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import clsx from 'clsx';
-import {AppBar} from "@material-ui/core"
-import Logo from "../../assets/images/img_placeholder.png"
-import {MenuOpen} from "@material-ui/icons"
+import {Divider, Button} from "@material-ui/core"
 import "./MobileNavigation.scss"
-import {LoginButtonMobile} from "../../components/SignInButton";
-import {GetStartedButtonMobile} from "../../components/GetStartedButton"
-import {FreeQuotationButtonMobile} from "../../components/FreeQuotationButton"
-import IconButton from '@material-ui/core/IconButton';
-import {withRouter} from "react-router-dom"
+import {Home, Today, SupervisedUserCircle, VerifiedUser} from "@material-ui/icons"
 
-class SideNavigation extends React.Component {
-    constructor(props){
-        super(props)
-        this.state={
-            open: false
-        }
-    }
-    //redirect to id
-    handleRedirectOnClick = (event)=>{
-        let target; 
-        if (event.target.id) {
-            target = event.target.id
-        }else{
-            target = event.target.parentNode.id
-        }
-       
-        this.props.history.push(`/${target}`)
+const NavButton=props=>{
+    const buttonStyle={
+        textTransform: "capitalize",
+        color: "inherit",
     }
 
-    handleSignOut=(event)=>{
-        this.props.history.push("/home")
+    const navigate=()=>{
+        props.navigate(props.id)
+    }
+
+    return <Button style={buttonStyle} onClick={navigate}>
+                {props.icon}
+                {props.title}
+            </Button>
+}
+
+const MobileNavigation =props=>{
+
+
+    const height=()=>{
+        if(props.open){
+            return "40vh"
+        }
+        return "1px"
+    }
+
+
+    const navStyle ={
+        height: height(),
+        transition: "height .25s",
+        overflow: "hidden",
+        width: "100%",
+    }
+
+    const listStyle ={
+        width: "100%",
     }
     
-    toggleDrawer=()=>{
-        this.setState({open: !this.state.open})
-    }
 
-    render(){
-        return(
-            <div className="mobile-navigation">
-                <FreeQuotationButtonMobile />
-                <GetStartedButtonMobile />
-               <AppBar className={clsx("App-header",{
-                  "appBarShift": true,
-                })}>
-                    <div className="menu-icon" > 
-                    <IconButton onClick={this.toggleDrawer}>
-                        <MenuOpen />
-                    </IconButton>
-                    </div> 
-                    <div className="logo">
-                    <img alt="logo" src={Logo}/>
-                    </div>
+    return(
+        <div className="mobile-navigation" style={navStyle}>
+            <div className="mobile-nav" style={{width: "100%"}}>  
+                <List style={listStyle}>  
                     
-                    <div className="nav-login" onClick={this.redirectToSignin}>
-                    <LoginButtonMobile />
-                    </div>
-                </AppBar>
-                
-                <SwipeableDrawer
-                    open={this.state.open}
-                    onClose={this.toggleDrawer}
-                    onOpen={this.toggleDrawer}
-                >
-                    <div  
-                        className="sidenav" 
-                        role="presentation"  
-                        onClick={this.toggleDrawer} 
-                        onKeyDown={this.toggleDrawer}
-                    >
-                        <AppBar className="close-btn-wrapper" 
-                                onClick={this.toggleDrawer}
-                            >
-                                <div className="close-btn">
-                                    <MenuOpen color="primary" />
-                                </div>
-                                <div className="sliding-effect8s appbar-title">Menu</div>
-                            </AppBar>
-                            <List>   
-                                <hr className="divider"></hr>            
-                                <ListItem 
-                                    button  
-                                    id="home" 
-                                    className="sliding-effect" 
-                                    onClick={this.handleRedirectOnClick}
-                                >                       
-                                    <ListItemText id="home" primary="Home"/>
-                                </ListItem>
-                                <hr className="divider"></hr>
-                                <ListItem 
-                                    button id="covers" 
-                                    onClick={this.handleRedirectOnClick}
-                                    className="sliding-effect" 
-                                >                       
-                                <ListItemText  id="covers" primary="Motor insurance"/>
-                                </ListItem>
-                                <hr className="divider"></hr>
-                                <ListItem 
-                                    button id="claim" 
-                                    onClick={this.handleRedirectOnClick}
-                                    className="sliding-effect" 
-                                >                         
-                                    <ListItemText  id="claim" primary="Make a claim"/>
-                                </ListItem>
-                                <hr className="divider"></hr>
-                                <ListItem 
-                                    button id="about" 
-                                    onClick={this.handleRedirectOnClick}
-                                    className="sliding-effect1s" 
-                                >                   
-                                    <ListItemText  id="about" primary="Who are we"/>
-                                </ListItem>
-                                <hr className="divider"></hr>        
-                                <ListItem 
-                                    button id="signup" 
-                                    onClick={this.handleRedirectOnClick}
-                                    className="sliding-effect1s" 
-                                >                        
-                                    <ListItemText id="signup" primary="Sign up"/>
-                                </ListItem>
-                                <hr className="divider"></hr>
-                                <ListItem 
-                                    button id="signin" 
-                                    onClick={this.handleRedirectOnClick}
-                                    className="sliding-effect2s" 
-                                >                     
-                                    <ListItemText id="signin" primary="Sign in"/>
-                                </ListItem>
-                                <hr className="divider"></hr>
-                                <ListItem 
-                                    button 
-                                    id="dashboard" 
-                                    onClick={this.handleRedirectOnClick}
-                                    className="sliding-effect2s" 
-                                >                          
-                                    <ListItemText id="dashboard" primary="Dashboard"/>
-                                </ListItem>  
-                                <hr className="divider"></hr>                   
-                                <ListItem 
-                                    button id="signout" 
-                                    onClick={this.handleRedirectOnClick}
-                                    className="sliding-effect2s" 
-                                >                            
-                                    <ListItemText id="signout" primary="Sign out" />
-                                </ListItem> 
-                                <hr className="divider"></hr>
-                                </List>
-                            
-                            </div>
-                    
-                        </SwipeableDrawer>
-                    </div>
-            
-        )
-    }
+                    <Divider />    
+                    <ListItem>                       
+                        <NavButton 
+                            id="home" 
+                            title="Home" 
+                            icon={<Home/>}
+                            navigate={props.navigate}
+                        />                       
+                    </ListItem>
+                    <Divider />
+                    <ListItem>                       
+                        <NavButton 
+                            id="quotation" 
+                            title="Request a quotation" 
+                            icon={<Today />}
+                            navigate={props.navigate}
+                        />
+                    </ListItem>
+                    <Divider />
+                    <ListItem>                         
+                        <NavButton 
+                            id="signup" 
+                            title="Create Account" 
+                            icon={<SupervisedUserCircle />}
+                            navigate={props.navigate}
+                        />
+                    </ListItem>
+                    <Divider />
+                    <ListItem>   
+                        <NavButton 
+                            id="signin" 
+                            title="Sign In" 
+                            icon={<VerifiedUser />} 
+                            navigate={props.navigate}
+                        />
+                    </ListItem>
+                </List>
+            </div>
+           
+        </div>
+        
+    )
+
 } 
 
-export default withRouter(SideNavigation);
+export default MobileNavigation;

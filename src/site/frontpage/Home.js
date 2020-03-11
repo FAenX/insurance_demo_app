@@ -7,8 +7,6 @@ const Home =(props)=>{
     const homeStyleWide={
         width: "100vw",
         height: "100vh",
-        position: "relative",
-        top: "10vh"
     }
 
     const homeStyleMin={
@@ -32,7 +30,7 @@ const Home =(props)=>{
 
     return(
         <div style={homeStyle()} className="home">
-            <div style={{height: "80vh", width: "80vw"}} className="headline">
+            <div className="headline">
                 <div style={headlineStyle()} className="headline-text">
                     <div>Name Insurance Brokers </div>
                     <div>Your most trusted name in Insurance</div>

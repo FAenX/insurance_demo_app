@@ -1,18 +1,14 @@
 import React from 'react';
 import {Paper} from "@material-ui/core"
-import Vehicle from "./Vehicle"
+import Vehicle from "./components/Vehicle"
 import {filterByAlias} from "../../helpers/js/dataManipulation"
 import "./Quotation.scss"
 import Provider from "./components/Provider"
-
 
 //should be dynamic
 import Jubilee from "../../assets/images/jubilee.png"
 import Apa from "../../assets/images/apa.png"
 import Heritage from "../../assets/images/partners-heritage.png"
-
-
-
 
 const jp = "(+15yrs Special) Jubilee Motor"
 const ap = "(+15yrs Special) APA Motor"
@@ -46,6 +42,7 @@ const Quotation =props=> {
             user = JSON.parse(sessionStorage.getItem("temp_user"))
     }
 
+
     return(
         <div className="quotation-page-wrapper">                          
         <div className="product-title sliding-effect">
@@ -56,7 +53,7 @@ const Quotation =props=> {
                         Hi {user.last_name}, we have found 1 plan for your {vehicle.vehicleMake} {vehicle.vehicleModel}
                     </Paper>
                 <div className="quotation" >   
-                    <Vehicle 
+                    <Vehicle
                         vehicle={vehicle}
                     />                            
                     

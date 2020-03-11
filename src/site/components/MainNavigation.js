@@ -1,7 +1,11 @@
-import React from 'react';
-import "./DesktopMenu.scss"
+import React, { useState } from 'react';
+import "./MainNavigation.scss"
 import {Toolbar, Button} from "@material-ui/core"
-import {Home, Today, Pages, SupervisedUserCircle, VerifiedUser} from "@material-ui/icons"
+import {Home, Today, SupervisedUserCircle, VerifiedUser} from "@material-ui/icons"
+import IconButton from '@material-ui/core/IconButton';
+import {Menu} from "@material-ui/icons"
+import MobileNavigation from "./MobileNavigation"
+import {Logo} from "../../assets/images/img_placeholder.png"
 
 const NavButton=props=>{
     const buttonStyle={
@@ -19,16 +23,13 @@ const NavButton=props=>{
             </Button>
 }
 
-
 const Navigation=props=>{
     const navStyle={
-        display: "flex",
-        flexFlow: "row",
-        justifyContent: "space-between",
         width: "100%"
     }
 
-    return (<div style={navStyle}>
+    return (
+            <div style={navStyle} className="desktop-navigation">
             <div>
                 <NavButton 
                     id="home" 
@@ -57,36 +58,65 @@ const Navigation=props=>{
                     navigate={props.navigate}
                 />
             </div>
-            </div>
+            
+           
+            
+        </div>
     )
 }
 
-const DesktopMenu =props=> {
+const MainNavigation =props=> {
+    const [open, setOpen] = useState(false)
     const toolbarStyle={
         position: "fixed",
         top: "0",
         right: "0",
         left: "0",
-        height: "7vh",
+        minHeight: "7vh",
         backgroundColor: "white",
-        zIndex: "1300"
+        zIndex: "1300",
+        overflow: "hidden",
+        transition: "height .5s",
     }
     const navigate=(id)=>{
         props.navigate(id)
+        setOpen(false)
     }
+
+    const innerNavStyle={
+        display: "flex", 
+        flexFlow: "row",
+        width: "100%",
+        justifyContent: "space-between"
+    }
+
     return (
-        <div className="desktop-menu">
+        <div className="main-navigation">
             <Toolbar
                 style={toolbarStyle}
                 variant="dense"
                 className="toolbar"
             >
+                <div style={innerNavStyle}>
+                    <IconButton>
+                        <img src={Logo} alt="logo"/>
+                    </IconButton>
+                    <div className="mobilenav-button">                   
+                        <IconButton>
+                            <Menu onClick={()=>{setOpen(!open)}}/>
+                        </IconButton>                
+                    </div>
+                    <Navigation navigate={navigate}/>
+                </div>
+                 
+               
                 
-               <Navigation navigate={navigate}/>                         
+                <MobileNavigation navigate={navigate} open={open}/>      
             </Toolbar>
+            
         </div>
     );
    
 }
 
-export default DesktopMenu;
+export default MainNavigation;

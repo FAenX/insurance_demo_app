@@ -1,0 +1,39 @@
+@import "../../base";
+
+.main-navigation{
+    @include flex-col();
+    width: 100vw;      
+      .toolbar{
+        @include flex-col();
+        align-items: baseline;
+        .mobilenav-button{
+          display: none;
+        }
+       .desktop-navigation{
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+       }
+      }  
+}
+
+//smaller screen display none
+@media screen and (max-width: 600px)  {
+    .main-navigation{
+      .toolbar{
+        
+        .mobilenav-button{
+          display: block;
+         
+        }
+        img{
+        
+        }
+      .desktop-navigation{
+        display: none;
+      }
+    }
+        
+    }
+    
+}

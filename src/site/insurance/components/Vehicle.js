@@ -1,10 +1,20 @@
 import React from "react"
 import {Paper, ListItem} from "@material-ui/core"
+import "./Vehicle.scss"
 
 const Vehicle =props=> {
+    
+    const vehicleStyle={
+        // position: "absolute",
+        // left: "0",
+    }
    
     return(
-        <Paper variant="outlined" className="q-content sliding-effect" id="vehicle-details">
+        <Paper 
+            variant="outlined" 
+            className="vehicle" 
+            style={vehicleStyle}
+        >
             <ListItem button>Vehicle Use:   <b>{props.vehicle.vehicleUse}</b></ListItem>                                        
             <hr className="divider"></hr>
             <ListItem button>Vehicel Make: <b>{props.vehicle.vehicleMake}</b></ListItem>
