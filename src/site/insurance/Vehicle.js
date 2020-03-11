@@ -5,7 +5,7 @@ const Vehicle =props=> {
    
     return(
         <Paper variant="outlined" className="q-content sliding-effect" id="vehicle-details">
-            <ListItem button>Vehicle Use:<b> {props.vehicle.vehicleUse}</b></ListItem>                                        
+            <ListItem button>Vehicle Use:   <b>{props.vehicle.vehicleUse}</b></ListItem>                                        
             <hr className="divider"></hr>
             <ListItem button>Vehicel Make: <b>{props.vehicle.vehicleMake}</b></ListItem>
             <hr className="divider"></hr>

@@ -19,55 +19,15 @@
  font-weight: 400;
  width: 100vw;
  overflow-x: hidden;
- color: $color_1;
- 
- 
+ color: $color_1; 
 }
+
 body {
+  color: inherit;
   .display-none{
     display: none;
   }
   text-align: center;
-  .MuiFab-primary{
-    background-color: $color_3;
-    height: 40px;
-    width: 40px;
-  }
-  .MuiSvgIcon-colorPrimary{
-    color: $color_3;
-    font-size: 1.5em;
-  }
-  .MuiListItemIcon-root{
-    color: $color_3;
-  }
-  .MuiAppBar-colorPrimary{
-    background-color: $color_1;
-  }
-  .MuiButton-outlinedPrimary{
-    color: $color_1;
-  }
-  .MuiButton-outlined{
-    border: 1px  solid $color_3;
-  }
-  .headline-text{
-    font-size: 2em;
-    font-weight: 400;
-  }
-  .MuiButton-textPrimary{
-    color: $color_3;
-  }
-}
-
-.MuiSnackbar-root{
-  .success {
-    background-color: $success_color;
-  }
-  .error{
-    background-color: $error_color;
-  }
-  .warning {
-    background-color: $warning_color;
-  }
 }
 @media screen and (max-width: 600px)  {}
 

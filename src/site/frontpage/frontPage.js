@@ -61,8 +61,6 @@ const MainPage =()=> {
                 </>
         }else if(page === "quotation"){
             return <QuotationForm redirect={redirect}/>
-        }else if(page === "about"){
-            // return 
         }else if(page === "signin"){
             return <SignIn loginListener={loginListener} loginRedirect={redirect}/>
         }else if(page === "signup"){

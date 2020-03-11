@@ -93,8 +93,8 @@ const Provider =props=> {
     return(<div  id="provider-details">
             <Paper style={providerStyle} variant="outlined" className="provider">
                 <div className="">
-                    {props.jp} 
-                    {props.chosenProduct.name}
+                    <div>{props.jp}</div> 
+                    <div>{props.chosenProduct.name}</div>
                 </div>
                 <img alt="" src={props.image} style={providerImage}/>                 
                 <Button 

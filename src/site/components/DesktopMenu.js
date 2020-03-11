@@ -42,12 +42,6 @@ const Navigation=props=>{
                     icon={<Today />}
                     navigate={props.navigate}
                 />
-                <NavButton 
-                    id="about" 
-                    title="About" 
-                    icon={<Pages />}
-                    navigate={props.navigate}
-                />
             </div>
             <div>
                 <NavButton 

@@ -11,6 +11,7 @@ const PersonalDetails =props=>{
         }
         return false
     }
+    
         
     return(
         <Paper variant="outlined" className="quote-form">
@@ -44,7 +45,7 @@ const PersonalDetails =props=>{
                     variant="outlined"
                     value={props.user.phone}
                     onChange={props.userOnChangeListener}
-                    // error={error(this.props.user.phone)}
+                    error={error(props.user.phone)}
                     disabled={props.loggedIn}
                 />
                 </div>
@@ -66,7 +67,7 @@ const PersonalDetails =props=>{
                     variant="outlined"
                     value={props.user.location}
                     onChange={props.userOnChangeListener}
-                    // error={error(this.props.user.location)} 
+                    error={error(props.user.location)} 
                     disabled={props.loggedIn}                       
                 />
                 </div>
