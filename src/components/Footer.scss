@@ -4,8 +4,6 @@
   /* footer */
   .footer-wrapper {
     @include flex-col();
-    position: relative;
-    top: 3em;
     min-height:5vh;
     color: $color_1;
     background-color: $white; 

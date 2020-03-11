@@ -1,55 +1,37 @@
-import React from "react"
-import {withRouter} from "react-router-dom"
-import Drawer from '@material-ui/core/SwipeableDrawer';
-import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import {Button, AppBar} from "@material-ui/core"
-import VehicleDetails from "./VehicleDetails"
-import PersonalDetails from "./PersonalDetails"
+import React, {useState, useEffect} from "react"
+import VehicleDetails from "./quoteFormComponents/VehicleDetails"
+import PersonalDetails from "./quoteFormComponents/PersonalDetails"
 import SnackBar from "./SnackBar"
-import InsuranceDetails from "./InsuranceDetails"
+import InsuranceDetails from "./quoteFormComponents/InsuranceDetails"
 import "./MotorInsuranceQuoteForm.scss"
 
+const MotorInsuranceQuoteForm =props=>{
+    const[snackbar, setSnackbar ] = useState(false)
+    const[vehicle, setVehicle ] = useState({
+                                    cover: "privatethirdpartyonly",
+                                    vehicleUse: "private",
+                                    vehicleMake: "Tesla",
+                                    vehicleModel: "Model Y",
+                                    yearOfManufacture: "2020",
+                                    vehicleValue: "1400000",
+                                    regNo: "kbk 100",
+                                    coverStartDate: "today",
+                                    tonnes: "",})
+    const[user, setUser] = useState({
+                                        first_name:"",
+                                        last_name:"",
+                                        email: "",
+                                        phone: "",
+                                        location: ""
+                                    })
+    const[response, setResponse] = useState({
+                                                premium: "",
+                                                status: "",
+                                                message: ""
+                                            })
 
-
-
-class MotorInsuranceQuoteForm extends React.Component{
-
-    constructor(props){
-        super(props)
-        this.state = {
-            //snackbar
-            showSnackBar: false,
-            //user
-            loggedIn: false,
-            vehicle: {
-                cover: "privatethirdpartyonly",
-                vehicleUse: "private",
-                vehicleMake: "Tesla",
-                vehicleModel: "Model Y",
-                yearOfManufacture: "2020",
-                vehicleValue: "1400000",
-                regNo: "kbk 100",
-                coverStartDate: "today",
-                tonnes: "",
-            },
-            user: {
-                first_name:"",
-                last_name:"",
-                email: "",
-                phone: "",
-                location: ""
-            },
-            res: {
-                premium: "",
-                status: "",
-                message: ""
-            }
-        }
-
-        this.requestQuotation = this.requestQuotation.bind(this)
-    }
-
-    componentDidMount=()=>{
+           
+    useEffect(()=>{
         let user = JSON.parse(sessionStorage.getItem("user"))
         if (
             user !== null&&
@@ -61,179 +43,105 @@ class MotorInsuranceQuoteForm extends React.Component{
                loggedIn: true
            })
         }
-    }
+    })
 
-    //snackbar
-    onCloseSnackBar=()=>{
-        this.setState({
-            showSnackBar: false
-        })
-    }
-
-    async requestQuotation (){
+    const requestQuotation=async()=>{
         const url = "api/v1/quotes/quote/";
-        const request =fetch(url, {
+        const request =await fetch(url, {
             method: 'POST',  
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
               },
-            body: JSON.stringify(this.state.vehicle),
-        }).then(
-            (res)=> res.json()
-        ).catch(
-            (err) => err
-        );        
-        
-        const response = await request
-        
-        if(response.status==="success"){
-            let res = this.state.res
-            res["premium"]=response.data
+            body: JSON.stringify(vehicle),
+        })
+
+        if(request.status===200){
+            const data = await request.json()
+           
+            let res = response
+            res["premium"]=data.data
             res["status"]="success"
             res["message"]="Request was sucessfull"
-            
-            this.setState({
-                res,
-                showSnackBar: true,
-            })
+            sessionStorage.setItem("temp_user", JSON.stringify(user))
+            sessionStorage.setItem("vehicle", JSON.stringify(vehicle))
+            sessionStorage.setItem("response", JSON.stringify(data))
+            setSnackbar(true)
             
             setTimeout(()=>{
-                this.props.history.push("/quotation")
-                this.props.closeDrawer()
+                props.redirect("quotation-response")
             }, 1000)
-            sessionStorage.setItem("temp_user", JSON.stringify(this.state.user))
-            sessionStorage.setItem("vehicle", JSON.stringify(this.state.vehicle))
-            sessionStorage.setItem("response", JSON.stringify(this.state.res))
             
-        }else if(response.status==="error"){
-            let res = this.state.res
+        }else if(response.status!==200){
+            let res = response
             res["premium"]=response.data
             res["status"]="error"
             res["message"]=`error ${response.error}`
-            this.setState({
-                res,
-                showSnackBar: true,
-                BackDrop: false,
-            })
-        }else{
-            let res = this.state.res
-            res["premium"]=response.data
-            res["status"]="error"
-            res["message"]=`error ${response.error}`
-            this.setState({
-                res,
-                showSnackBar: true,
-                BackDrop: true,
-            })
+            setResponse(res)
+            setSnackbar(true)
         }
     }
 
-    vehicleOnChangeListener=(event)=>{
-        const vehicle = this.state.vehicle
-        let name = event.target.id
-        if (name === undefined){
-            name = event.target.name
-        }
-        const value = event.target.value
-        
-        vehicle[name]=value
+    const vehicleOnChangeListener=(event)=>{
+        const newVehicle = vehicle
+        newVehicle[event.target.id]=event.target.value
 
-        this.setState({
-            vehicle,
-        })
+       setVehicle(newVehicle)
         
     }
 
-    insuranceChangeListener=(event)=>{
-        const vehicle = this.state.vehicle
+    const insuranceChangeListener=(event)=>{
+        const newVehicle = vehicle
         let name = event.target.name
         const value = event.target.value
         
-        vehicle[name]=value
+        newVehicle[name]=value
 
-        this.setState({
-            vehicle,
-        })
+        setVehicle(vehicle)
     }
 
-    userOnChangeListener=(event)=>{
-        const user = this.state.user
-        const name = event.target.id
-        const value = event.target.value
-        
-        user[name]=value
-
-        this.setState({
-            user,
-        })
+    const userOnChangeListener=(event)=>{
+        const newUser = user
+        let value = event.target.value
+        let name = event.target.id
+       
+        newUser[name]= value
+        setUser(newUser)
         
     }
-    render(){
+   
         let alert = <SnackBar 
-                        status={this.state.res.status}
-                        message={this.state.res.message}
-                        show={this.state.showSnackBar}
-                        onClose={this.onCloseSnackBar}
+                        status={response.status}
+                        message={response.message}
+                        show={snackbar}
+                        onClose={()=>{setSnackbar(false)}}
                     />
         
         
         return(
-            <Drawer 
-                open={this.props.open}
-                variant="persistent"
-                anchor="top"
-                onClose={this.props.toggleDrawer(false)}
-                onOpen={this.props.toggleDrawer(true)}
-                className="swipable-quoteform-drawer"
-                
-            >
-                <div>{alert}</div>
-                <div  
-                    className="swipeable-quote-form" 
-                >
-                    <AppBar className="close-btn-wrapper" 
-                        onClick={this.props.toggleDrawer(false)}
-                    >
-                        <div className="close-btn">
-                            <MenuOpenIcon color="primary" />
-                        </div>
-                        <div className=" appbar-title">Request Quotation</div>
-                    </AppBar>
+                    <>
+                    {alert}
                     <div className="form">
                     <PersonalDetails 
-                        user={this.state.user}
-                        userOnChangeListener={this.userOnChangeListener}
-                        loggedIn={this.state.loggedIn}
+                        user={user}
+                        userOnChangeListener={userOnChangeListener}
+                        loggedIn={props.loggedIn}
                     />
                     <VehicleDetails 
-                        vehicle={this.state.vehicle}
-                        vehicleOnChangeListener={this.vehicleOnChangeListener}
+                        vehicle={vehicle}
+                        vehicleOnChangeListener={vehicleOnChangeListener}
                     />
                     <InsuranceDetails 
-                        vehicle={this.state.vehicle}
-                        insuranceChangeListener={this.insuranceChangeListener}
+                        vehicle={vehicle}
+                        insuranceChangeListener={insuranceChangeListener}
+                        handleSubmit={requestQuotation}
                     />
-
-                    
-                        <Button 
-                            variant="outlined"
-                            className="request-button"
-                            color="primary"
-                            onClick={this.requestQuotation}
-                        >
-                            Request
-                            
-                        </Button>
-                   
                     </div>
+                    </>
                        
-                </div>
-                
-               
-            </Drawer>
+             
         )
-    }
+   
 }
 
-export default withRouter(MotorInsuranceQuoteForm)
+export default MotorInsuranceQuoteForm

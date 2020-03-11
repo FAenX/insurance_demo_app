@@ -1,141 +1,98 @@
 import React from 'react';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import IconButton from '@material-ui/core/IconButton';
-import ListItem from '@material-ui/core/ListItem';
-import clsx from 'clsx';
 import "./DesktopMenu.scss"
-import ToolBar from "@material-ui/core/Toolbar"
-import AppBar from "@material-ui/core/AppBar"
-import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import ListItemText from "@material-ui/core/ListItemText"
-import {withRouter} from "react-router-dom";
-import {LoginButtonDesktop} from "../../components/SignInButton";
-import {GetStartedButtonDesktop} from "../../components/GetStartedButton"
-import {FreeQuotationButtonDesktop} from "../../components/FreeQuotationButton"
+import {Toolbar, Button} from "@material-ui/core"
+import {Home, Today, Pages, SupervisedUserCircle, VerifiedUser} from "@material-ui/icons"
 
-
-
-
-
-
-class DesktopMenu extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            open: true,
-        }
+const NavButton=props=>{
+    const buttonStyle={
+        textTransform: "capitalize",
+        color: "inherit",
     }
 
-    togglerDrawer=()=>{
-        this.setState({open: !this.state.open})
-    }
-  
-
-    //redirect to id
-    handleRedirectOnClick = (event)=>{
-        let target; 
-        if (event.target.id) {
-            target = event.target.id
-        }else{
-            target = event.target.parentNode.id
-        }
-        this.setState({open: !this.state.open})
-        this.props.history.push(`/${target}`)
+    const navigate=()=>{
+        props.navigate(props.id)
     }
 
-    render(){
-        
-        return (
-           
-            <div className="desktop-menu">
-                <AppBar
-                    className="AppBar"
-                >
-                    <ToolBar
-                        variant="dense"
-                        className="toolbar"
-                    >
-                        <IconButton
-                            color="inherit"
-                            onClick={this.togglerDrawer}
-                            edge="start"
-                        >
-                            <MenuOpenIcon />
-                        </IconButton>
-                        <div className="nav-buttons">
-                            <FreeQuotationButtonDesktop />
-                            <div className="user-buttons"> 
-                                <GetStartedButtonDesktop />
-                                <LoginButtonDesktop />                            
-                            </div>
-                        </div>                        
-                    </ToolBar>
-                </AppBar>
-                
-                <Drawer 
-                open={this.state.open}
-                variant="persistent"
-                className={clsx("drawer", {
-                    "drawerOpen": this.state.open,
-                    "drawerClose": !this.state.open,
-                  })}
-                >
-                    
-                    <List>   
-                        <hr className="divider"></hr>            
-                        <ListItem 
-                            button  
-                            id="home" 
-                            className="sliding-effect" 
-                            onClick={this.handleRedirectOnClick}
-                        >                       
-                            <ListItemText id="home" primary="Home"/>
-                        </ListItem>
-                        <hr className="divider"></hr>
-                        <ListItem 
-                            button id="covers" 
-                            onClick={this.handleRedirectOnClick}
-                            className="sliding-effect" 
-                        >                       
-                        <ListItemText  id="covers" primary="Motor insurance"/>
-                        </ListItem>
-                        <hr className="divider"></hr>
-                        <ListItem 
-                            button id="claim" 
-                            onClick={this.handleRedirectOnClick}
-                            className="sliding-effect" 
-                        >                         
-                            <ListItemText  id="claim" primary="Make a claim"/>
-                        </ListItem>
-                        <hr className="divider"></hr>
-                        <ListItem 
-                            button id="about" 
-                            onClick={this.handleRedirectOnClick}
-                            className="sliding-effect1s" 
-                        >                   
-                            <ListItemText  id="about" primary="Who are we"/>
-                        </ListItem>
-                        <hr className="divider"></hr>        
-                        <ListItem 
-                            button id="covers" 
-                            onClick={this.handleRedirectOnClick}
-                            className="sliding-effect2s" 
-                        >                          
-                            <ListItemText id="dashboard" primary="Dashboard"/>
-                        </ListItem>  
-                        <hr className="divider"></hr>                   
-                        
-                        </List>
-                       
-                    
-                </Drawer>
-            </div>
-            
-            
-            
-        );
-    }
+    return <Button style={buttonStyle} onClick={navigate}>
+                {props.icon}
+                {props.title}
+            </Button>
 }
 
-export default withRouter(DesktopMenu);
+
+const Navigation=props=>{
+    const navStyle={
+        display: "flex",
+        flexFlow: "row",
+        justifyContent: "space-between",
+        width: "100%"
+    }
+
+    return (<div style={navStyle}>
+            <div>
+                <NavButton 
+                    id="home" 
+                    title="Home" 
+                    icon={<Home/>}
+                    navigate={props.navigate}
+                />
+                <NavButton 
+                    id="quotation" 
+                    title="Request a quotation" 
+                    icon={<Today />}
+                    navigate={props.navigate}
+                />
+                <NavButton 
+                    id="about" 
+                    title="About" 
+                    icon={<Pages />}
+                    navigate={props.navigate}
+                />
+            </div>
+            <div>
+                <NavButton 
+                    id="signup" 
+                    title="Create Account" 
+                    icon={<SupervisedUserCircle />}
+                    navigate={props.navigate}
+                />
+                <NavButton 
+                    id="signin" 
+                    title="Sign In" 
+                    icon={<VerifiedUser />} 
+                    navigate={props.navigate}
+                />
+            </div>
+            </div>
+    )
+}
+
+const DesktopMenu =props=> {
+    const toolbarStyle={
+        position: "fixed",
+        top: "0",
+        right: "0",
+        left: "0",
+        height: "7vh",
+        backgroundColor: "white",
+        zIndex: "1300"
+    }
+    const navigate=(id)=>{
+        props.navigate(id)
+    }
+    return (
+        <div className="desktop-menu">
+            <Toolbar
+                style={toolbarStyle}
+                variant="dense"
+                className="toolbar"
+            >
+                
+               <Navigation navigate={navigate}/>                         
+            </Toolbar>
+        </div>
+    );
+   
+}
+
+export default DesktopMenu;

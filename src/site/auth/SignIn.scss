@@ -4,30 +4,26 @@
     @include flex-col();
     width: 100%;
     min-height: 60vh;
-    .free-quotation-button{
-      position: fixed;
-      top: 4em;
-      right: 0;
-    }
+    padding: 1em;
+    
     .headline-text{
+      @include flex-col();
       @include sliding-effect();
       margin: 1em;
+      width: 100%;
     }
     .signin-form-wrapper{
+      @include flex-col();
       @include sliding-effect1s();
-      padding: 1em;
+      padding: 1.5em;
       text-align: left;
-      .signin-button{
-        @include flex-col();
-        align-items: baseline;
-        .signup{
-          @include sliding-effect2s();
-          text-transform: capitalize;
-        }
-        button{
-          margin-top: 1em;
-  
-        }
+      .buttons{
+        @include flex-row();
+        margin: 1em;
+      }
+      .social-auth{
+        @include flex-row();
+        
       }
   
     }

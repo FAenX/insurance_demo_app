@@ -1,0 +1,63 @@
+@import "../../base";
+
+.home-carousel1{
+    @include sliding-effect();
+    
+  }
+  .home-carousel2{
+    @include sliding-effect2s();
+    
+  }
+  
+  .slide{
+    background-color: $color_1;
+    height: 30vh;
+    .home-carousel1-slide1{
+      height: 100%;
+      background-image: url(../../assets/images/img_placeholder.png);
+      background-repeat: no-repeat;
+      background-position-x: 5em;
+      background-position-y: 1em;
+     
+    }   
+    .home-carousel1-slide2{
+      height: 100%;
+      background-image: url(../../assets/images/img_placeholder.png);
+      background-repeat: no-repeat;
+      background-position-x: 5em;
+      background-position-y: 1em;
+     
+    }   
+    .home-carousel1-slide3{
+      height: 100%;
+      background-image: url(../../assets/images/img_placeholder.png);
+      background-repeat: no-repeat;
+      background-position-x: 5em;
+      background-position-y: 1em;
+     
+    }   
+    .home-carousel2-slide1{
+      height: 100%;
+      background-image: url(../../assets/images/img_placeholder.png);
+      background-repeat: no-repeat;
+      background-position-x: 5em;
+      background-position-y: 1em;
+     
+    }   
+    .home-carousel2-slide2{
+      height: 100%;
+      background-image: url(../../assets/images/img_placeholder.png);
+      background-repeat: no-repeat;
+      background-position-x: 5em;
+      background-position-y: 1em;
+     
+    } 
+    .home-carousel2-slide3{
+      height: 100%;
+      background-image: url(../../assets/images/img_placeholder.png);
+      background-repeat: no-repeat;
+      background-position-x: 5em;
+      background-position-y: 1em;
+     
+    }          
+  } 

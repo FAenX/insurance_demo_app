@@ -1,150 +1,66 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.scss';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-
 import dotenv from "dotenv";
-import Site from "./site/Site"
 import "./Components.scss"
 import imgPlaceholder from "./assets/images/img_placeholder.png";
 import clsx from 'clsx';
+import MainPage from "./site/frontpage/frontPage";
+import Footer from "./components/Footer"
 
 dotenv.config()
 
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {  
-      //loader
-       //loader
-      loading: true,   
-      //drawer
-      isOpen: false,
-      isLoggedIn: false,
-    }
-    this.fetchProductsAndSubCategories=this.fetchProductsAndSubCategories.bind(this)
-  }
+const App =()=> {
+    const [loading, setLoading] = useState(false)
 
-  componentDidMount=()=>{
-    
-    this.subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
-    this.products = JSON.parse(sessionStorage.getItem("products"))
-    if (
-      this.subCategories!==null && 
-      this.subCategories !== undefined && 
-      this.subCategories.length > 0 &&
-      this.products!==null && 
-      this.products !== undefined && 
-      this.products.length > 0
-      
-      ){
-        this.setState({
-          loading: false
-        })
-    }else{
-     
-        this.setState({
-          loading: true
-        })
-    
-      this.fetchProductsAndSubCategories()
-    }
-  }
-
-  
-    // init session
-    async fetchProductsAndSubCategories (){
-      const subCategories= fetch("/api/v1/products/sub-categories/", {
-        method: "GET",   
-                      
-        }).then(res=>res)
-        .catch((err)=>{
-            console.log(err)
-        })
-
-      const products = fetch("/api/v1/products/", {
-          method: "GET", 
-          }).then((res)=>res)
-          .catch((err)=>{
-              console.log(err)
-          })  
-
-      const subs = await subCategories.then(data=>{        
-        
-        return data.json()
-      }).catch(err=>err) 
-      const prods = await products.then(data=>{        
-       
-        return data.json()
-      }).catch(err=>err)
-
-      sessionStorage.setItem("sub_categories", JSON.stringify(subs))
-      sessionStorage.setItem("products", JSON.stringify(prods))
-      console.log(prods)
-      
-     
-      this.setState({
-        backdrop:false,
-        loading: false,
-    })
-     
-    }
-
-   
   //handle logout
-  handleLoginLogout =()=>{
-    this.setState({
-      isLoggedIn: false
-    })
-  }
-
-
-  //toggle drawer
-  toggleDrawer = (open) => event => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-        return;
-    }
-    this.setState({ isOpen: open });
-  };
-
-  render(){
+ 
+ useEffect(()=>{
+    
+    const subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
     const products = JSON.parse(sessionStorage.getItem("products"))
-    let site;
+    if (subCategories==null || products==null)
+    {
+      setLoading(true)
+      fetchProductsAndSubCategories()
+    }
+  }, [])
+  // init session
+  const fetchProductsAndSubCategories=async ()=>{
+    const subCategories= await fetch("/api/v1/products/sub-categories/", {method: "GET"})
+    const products = await fetch("/api/v1/products/", {method: "GET"})
+    const subs = await subCategories.json()
+    const prods = await products.json()
+    sessionStorage.setItem("sub_categories", JSON.stringify(subs))
+    sessionStorage.setItem("products", JSON.stringify(prods))    
+    setLoading(false)
+  }
+  const products = JSON.parse(sessionStorage.getItem("products"))
+  
+  const toggleLoading=(props)=>{
     if( products && products.length > 0)
     {
-      site = <div 
-                className="main"
-              >       
-                <Router>
-                  <Switch>
-                      <Route exact path='/*' render = {(props) => <Site {...props} isLoggedIn={this.state.isLoggedIn}/>}/>
-                  </Switch>
-                </Router>
-              </div>
+     return (    
+              <MainPage />
+     )
     }
-    else
-    {
-      site =  <div className={clsx("loader",{
-                  "display-none": false
+    return  (<div className={clsx("loader",{
+                  "display-none": loading
                 })}>
                 <img alt="logo" src={imgPlaceholder}/>
                 <div className="loading-text">Loading....</div>
                 <div className="loading-text">Name Insurance</div>
               </div>
-    } 
+    )
+  }
    
 
     return (
       <div className="App">
-       
-       
-       {site}
-        
-        
-        
-       </div>
+        {toggleLoading()}
+        <Footer />
+      </div>
     );
-  }
 }
 
 export default  App;

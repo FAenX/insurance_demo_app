@@ -5,14 +5,28 @@
     @include flex-col();
     min-height: 60vh;
     width: 100%;
-    .headline-text{
-      @include sliding-effect();
-      margin: 1em;
-    }
+    padding: 1em;
+    
     .signup-form-wrapper{
+      @include flex-col();
       @include sliding-effect2s();
-      padding: 1em;
+      padding: 1.5em;
       text-align: left;
+      .headline-text{
+        @include flex-col();
+        @include sliding-effect();
+        margin: 1em;
+        width: 100%;
+      }
+      .buttons{
+        @include flex-row();
+        margin: 1em;
+      }
+      .social-auth{
+        @include flex-row();
+        
+      }
+      
     }
   }
   

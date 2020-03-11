@@ -1,0 +1,48 @@
+ @import "../../base";
+ //home
+ .home {
+    @include flex-col(); 
+   
+    .headline {
+      @include flex-col();
+      justify-content: space-around;
+      @include sliding-effect();
+      overflow: hidden;
+      .headline-text{
+        font-size: 3em;
+      }
+      
+      .home-carousel{
+        width: 50%; 
+        border: solid .015em $color_3; 
+        
+      }
+      
+    }
+    
+  }
+
+//wide screen
+@media screen and (max-width: 600px)  {
+  //home
+  .home {
+    @include flex-col(); 
+  
+    .headline {
+      text-align: left;
+      .headline-text{
+        font-size: 2em;
+      }
+    
+      .home-carousel{
+        width: 80%; 
+        border: solid .015em $color_3; 
+        
+      }
+      
+    }
+    
+  }
+}
+
+

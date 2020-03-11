@@ -1,5 +1,4 @@
 import React from "react"
-import {withRouter} from "react-router-dom"
 import SocialMedia from "./SocialMedia"
 import imgPlaceholder from "../../assets/images/img_placeholder.png"
 import "./Contacts.scss"
@@ -38,4 +37,4 @@ class Contacts extends React.Component {
     }
 }
 
-export default withRouter(Contacts)
+export default Contacts

@@ -1,5 +1,4 @@
 import React from "react"
-import {withRouter} from "react-router-dom"
 import {WhatsApp, Facebook, Twitter} from "@material-ui/icons"
 
 
@@ -15,4 +14,4 @@ class SocialMedia extends React.Component {
     }
 }
 
-export default withRouter(SocialMedia)
+export default SocialMedia
