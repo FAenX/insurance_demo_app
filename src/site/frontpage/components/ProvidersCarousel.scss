@@ -1,0 +1,88 @@
+@import "../../../base";
+
+/* providers carousel */
+.providers-wrapper{
+    @include flex-col();
+    position: relative;
+    top: 3em;
+    
+
+    .providers-carousel{
+     //height: 250px;
+     .slide{
+       height: 150px;
+       width: 250px;
+      //  
+     }
+     .carousel{
+        .slider-wrapper{
+          .slider{
+              width: 40vw;
+          }
+        }
+    }
+    }
+    
+    .provider{
+      @include flex-col();
+      width: 250px;
+      img{
+        height: 150px;
+        width: 250px;
+      }
+    }
+    
+    .providers-headline {
+      @include flex-col();
+      width: 40vw;
+      margin: 1.5em;
+      font-weight: 600;
+      
+      .providers-heading {
+        @include flex-col();
+        font-size: 2em;
+        text-transform: uppercase;
+      }
+      .providers-sub-heading {
+        @include flex-col();
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px)  {
+    .providers-wrapper{
+     
+      .providers-carousel{
+       //height: 250px;
+       .slide{
+        
+       }
+       .carousel{
+          .slider-wrapper{
+            .slider{
+                width: 100vw;
+            }
+          }
+      }
+      }
+      
+      
+      .providers-headline {
+        @include flex-col();
+        width: 100vw;
+        margin: 1.5em;
+        font-weight: 600;
+        
+        .providers-heading {
+          @include flex-col();
+          font-size: 2em;
+          text-transform: uppercase;
+        }
+        .providers-sub-heading {
+          @include flex-col();
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
