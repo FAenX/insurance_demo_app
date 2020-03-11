@@ -6,7 +6,7 @@ import "./ProvidersCarousel.scss"
 
 
  
-export class ProvidersCarousel extends React.Component {
+export class ProvidersCarousel  extends React.Component {
     render() {
         return (
             <Carousel 
