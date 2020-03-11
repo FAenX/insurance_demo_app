@@ -1,4 +1,8 @@
 @import "../../base";
+@keyframes reveal{
+  0%{opacity: -1;  }
+  100%{opacity: 1;  }
+}
 
 /*why us*/
     .why-us {
@@ -23,17 +27,16 @@
         width: 60vw;
         .why-us-child {
           @include flex-col();
-          width: 70px;
-          height: 80px;
-          background-color: $white;
-          overflow: hidden;
-        }
-        .show{
           width: 350px;
           height: 400px;
           margin: 1em;
           padding: 2em;
           letter-spacing: .02em;
+          background-color: $white;
+          overflow: hidden;
+        }
+        .show{
+          animation: reveal 2s;
         }
       }
 
@@ -45,6 +48,9 @@
        
        .page-header {
         width: 80%;
+       }
+       .why-us-text {
+         width: 90%;
        }
       }
     }

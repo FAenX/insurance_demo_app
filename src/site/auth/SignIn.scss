@@ -9,13 +9,14 @@
     .headline-text{
       @include flex-col();
       @include sliding-effect();
-      margin: 1em;
+      font-size: 2em;
+      font-weight: 600;
       width: 100%;
     }
     .signin-form-wrapper{
       @include flex-col();
       @include sliding-effect1s();
-      padding: 1.5em;
+      padding: 1em;
       text-align: left;
       .buttons{
         @include flex-row();

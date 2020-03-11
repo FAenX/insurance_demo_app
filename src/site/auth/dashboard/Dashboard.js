@@ -1,5 +1,4 @@
 import React from "react"
-import {withRouter} from  "react-router-dom";
 import Profile from "./components/Profile"
 import DashMenu from "./components/DashMenu"
 import PaymentHistory from "./components/PaymentHistory"
@@ -47,4 +46,4 @@ class Dashboard extends React.Component {
     }
 }
 
-export default withRouter(Dashboard)
+export default Dashboard

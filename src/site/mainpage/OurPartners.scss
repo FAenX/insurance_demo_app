@@ -1,0 +1,52 @@
+@import "../../base";
+
+/* providers carousel */
+.providers-wrapper{
+    @include flex-col();
+    margin: 3em;
+  }
+  .providers{
+    @include flex-row();
+    flex-wrap: wrap;
+    width: 250px;
+    width: 80%;
+  }
+  
+  .providers-headline {
+    @include flex-col();
+    width: 40vw;
+    margin: 1.5em;
+    font-weight: 600;
+    
+    .providers-heading {
+      @include flex-col();
+      font-size: 2em;
+      text-transform: uppercase;
+    }
+    .providers-sub-heading {
+      @include flex-col();
+      font-size: 1.2em;
+    }
+  }
+  
+
+  @media screen and (max-width: 700px)  {
+    .providers-wrapper{
+      .providers-headline {
+        @include flex-col();
+        width: 100vw;
+        margin: 1.5em;
+        font-weight: 600;
+        
+        .providers-heading {
+          @include flex-col();
+          font-size: 2em;
+          text-transform: uppercase;
+        }
+        .providers-sub-heading {
+          @include flex-col();
+          font-size: 1.2em;
+        }
+      }
+    }
+  }

@@ -33,7 +33,7 @@ const Home =(props)=>{
             <div className="headline">
                 <div style={headlineStyle()} className="headline-text">
                     <div>Name Insurance Brokers </div>
-                    <div>Your most trusted name in Insurance</div>
+                    <div style={{fontSize: ".5em"}}>Your most trusted name in Insurance</div>
                 </div>
                 
                 <HomeCarousel page={props.page}/> 

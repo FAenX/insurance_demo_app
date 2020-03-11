@@ -72,7 +72,7 @@ const MainNavigation =props=> {
         top: "0",
         right: "0",
         left: "0",
-        minHeight: "7vh",
+        minHeight: "8vh",
         backgroundColor: "white",
         zIndex: "1300",
         overflow: "hidden",
@@ -87,6 +87,7 @@ const MainNavigation =props=> {
         display: "flex", 
         flexFlow: "row",
         width: "100%",
+        alignItems: "center",
         justifyContent: "space-between"
     }
 

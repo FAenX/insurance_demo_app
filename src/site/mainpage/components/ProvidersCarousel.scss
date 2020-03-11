@@ -1,0 +1,45 @@
+@import "../../../base";
+
+/* providers carousel */
+
+    
+
+  .providers-carousel{
+    //height: 250px;
+    .slide{
+      height: 150px;
+      width: 250px;
+    //  
+    }
+    .carousel{
+      .slider-wrapper{
+        .slider{
+            width: 40vw;
+        }
+      }
+  }
+  }
+  
+  
+  
+  
+
+  @media screen and (max-width: 700px)  {
+   
+     
+      .providers-carousel{
+       //height: 250px;
+       .slide{
+        
+       }
+       .carousel{
+          .slider-wrapper{
+            .slider{
+                width: 100vw;
+            }
+          }
+      }
+    }
+  }
+      
+  

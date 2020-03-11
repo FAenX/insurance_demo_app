@@ -5,7 +5,7 @@
     width: 100vw;      
       .toolbar{
         @include flex-col();
-        align-items: baseline;
+        
         .mobilenav-button{
           display: none;
         }

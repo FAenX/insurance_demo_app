@@ -41,4 +41,4 @@ class InsuranceCovers extends React.Component{
     }
 }
 
-export default withRouter(InsuranceCovers)
+export default InsuranceCovers

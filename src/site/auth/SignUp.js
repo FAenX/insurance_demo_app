@@ -206,7 +206,7 @@ const SignUp =props=> {
                 <div>{alert}</div>
                 <BackDrop open={backdrop}/>
                 <AlertDialog loginRedirect={props.signUpRedirect} open={redirectAlert} onClose={()=>setRedirectAlert(false)} />
-                <Paper variant="outlined" className="signup-form-wrapper">
+                <div className="signup-form-wrapper">
                     <div className="headline-text sliding-effect">
                         Sign Up
                     </div>
@@ -224,7 +224,7 @@ const SignUp =props=> {
                         <SocialLogin onClick={submitForm} title={"Google"} icon={<GTranslate />}/>
                         <SocialLogin onClick={submitForm} title={"FaceBook"} icon={<Facebook />}/>
                     </div>
-                </Paper>
+                </div>
             
             </div>
         

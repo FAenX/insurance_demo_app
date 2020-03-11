@@ -18,15 +18,11 @@ const HowItWorksStep =props=>{
         setPositionY(scrolled)
     };
 
-   const transition={
-        transition: "width .25s, height .25s"
-   }
-
    
     return(
-        <div style={transition} className={clsx("step",{"stepMax": positionY>16})}>
-                <div style={transition} className="svg">
-                    <img  style={transition} alt="" src={props.img}/> 
+        <div  className={clsx("step",{"stepMax": positionY>16})}>
+                <div className="svg">
+                    <img  alt="" src={props.img}/> 
                 </div>
                 <div className="step-text-wrapper">
                     <div className="step-header">{props.title}</div>

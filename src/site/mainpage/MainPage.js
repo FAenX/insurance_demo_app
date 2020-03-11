@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Home from "./Home"
 import HowItWorks from './HowItWorks'
-import OurPatners from "./OurPatners"
+import OurPatners from "./OurPartners"
 import WhyUs from "./WhyUs"
-import "./FrontPage.scss"
+import "./MainPage.scss"
 import DesktopMenu from "../components/MainNavigation" 
 import Contacts from "../contacts/Contacts"
 import QuotationForm from "../../components/MotorInsuranceQuoteForm"
@@ -11,6 +11,7 @@ import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import {Snackbar} from "@material-ui/core"
 import Quotation from "../insurance/Quotation"
+import Dashboard from "../auth/dashboard/Dashboard"
 
 
 const MainPage =()=> {
@@ -67,6 +68,8 @@ const MainPage =()=> {
             return <SignUp signUpListener={signUpListener} signUpRedirect={redirect}/>
         }else if(page === "quotation-response"){
             return <Quotation />
+        }else if(page==="dashboard"){
+            return <Dashboard redirect={redirect}/>
         }
     }
 

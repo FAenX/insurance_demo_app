@@ -45,7 +45,7 @@ const PersonalDetails =props=>{
                     variant="outlined"
                     value={props.user.phone}
                     onChange={props.userOnChangeListener}
-                    error={error(props.user.phone)}
+                    // error={error(props.user.phone_number)}
                     disabled={props.loggedIn}
                 />
                 </div>
@@ -67,7 +67,7 @@ const PersonalDetails =props=>{
                     variant="outlined"
                     value={props.user.location}
                     onChange={props.userOnChangeListener}
-                    error={error(props.user.location)} 
+                    // error={error(props.user.location)} 
                     disabled={props.loggedIn}                       
                 />
                 </div>

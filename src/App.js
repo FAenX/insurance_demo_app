@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import "./Components.scss"
 import imgPlaceholder from "./assets/images/img_placeholder.png";
 import clsx from 'clsx';
-import MainPage from "./site/frontpage/frontPage";
+import MainPage from "./site/mainpage/MainPage";
 import Footer from "./components/Footer"
 
 dotenv.config()

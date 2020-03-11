@@ -42,4 +42,4 @@ class PaymentHistory extends React.Component{
     }
 }
 
-export default withRouter(PaymentHistory)
+export default PaymentHistory

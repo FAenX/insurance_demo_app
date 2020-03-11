@@ -166,7 +166,7 @@ const SignIn =props=> {
             {snackbarAlert}
             <AlertDialog loginRedirect={props.loginRedirect} open={redirectAlert} onClose={()=>setRedirectAlert(false)} />
             
-            <Paper variant="outlined" className="signin-form-wrapper">
+            <div className="signin-form-wrapper">
                     <div className="headline-text sliding-effect">
                         Sign In
                     </div>
@@ -186,7 +186,7 @@ const SignIn =props=> {
                         <SocialLogin onClick={submitForm} title={"FaceBook"} icon={<Facebook />}/>
                     </div>
                     
-            </Paper>
+            </div>
         
         </div>
         

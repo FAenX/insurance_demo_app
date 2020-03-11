@@ -38,12 +38,9 @@ const MotorInsuranceQuoteForm =props=>{
             user !== undefined &&
             Object.keys(user).length > 1
             ){
-           this.setState({
-               user,
-               loggedIn: true
-           })
+          setUser(user)
         }
-    })
+    }, [])
 
     const requestQuotation=async()=>{
         const url = "api/v1/quotes/quote/";

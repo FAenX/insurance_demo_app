@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
-import {ProvidersCarousel, ProvidersCarouselLong} from "./components/ProvidersCarousel"
 import apa from "../../assets/images/apa.png";
 import jubilee from "../../assets/images/partners-jubilee.png"
 import heritage from "../../assets/images/partners-heritage.png";
+import "./OurPartners.scss"
 
 //import  from "../assets/images/apa.png";
 
@@ -20,17 +20,14 @@ const Partners =props=>{
         setPositionY(scrollTop)
     }
    
-    const partnersStyle={
-        // width: "60%",
-        // height: "40vh",
-    }
+    
     const imgStyle={
         height: "75px",
         width: "150px",
         margin: ".5em"
     }
     return(
-        <div style={partnersStyle}>
+        <div className="providers">
             <img style={imgStyle} src={apa} alt=""/>
             <img style={imgStyle} src={apa} alt=""/>
             <img style={imgStyle} src={heritage} alt=""/>

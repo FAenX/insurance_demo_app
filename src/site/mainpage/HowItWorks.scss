@@ -5,6 +5,11 @@
   100%{width: 100%; height: 100%; }
 }
 
+@keyframes reveal{
+  0%{opacity: -1;  }
+  100%{opacity: 1;  }
+}
+
 /* how it works */
 .page-wrapper {
     @include flex-col(); 
@@ -38,25 +43,11 @@
 }
   
   .step {
-    width: 150px;
-    height: 225px;
+    width: 300px;
+    height: 400px;
     overflow: hidden;
     @include flex-col();
     margin: 1em;
-    font-size: .5em;
-    .svg {
-      @include flex-col();
-      height: 70px;
-      width: 70px;
-      img{
-        height: 70px;
-        width: 70px;
-      }
-    }
-  }
-  .stepMax{
-    width: 300px;
-    height: 400px;
     font-size: 1em;
     .svg {
       @include flex-col();
@@ -67,6 +58,9 @@
         width: 150px;
       }
     }
+  }
+  .stepMax{
+    animation: reveal 2s;
   }
   
   
