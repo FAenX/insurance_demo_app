@@ -12,11 +12,8 @@ dotenv.config()
 
 const App =()=> {
     const [loading, setLoading] = useState(false)
-
   //handle logout
- 
- useEffect(()=>{
-    
+  useEffect(()=>{
     const subCategories = JSON.parse(sessionStorage.getItem("sub_categories"))
     const products = JSON.parse(sessionStorage.getItem("products"))
     if (subCategories==null || products==null)
@@ -25,6 +22,9 @@ const App =()=> {
       fetchProductsAndSubCategories()
     }
   }, [])
+
+  
+ 
   // init session
   const fetchProductsAndSubCategories=async ()=>{
     const subCategories= await fetch("/api/v1/products/sub-categories/", {method: "GET"})

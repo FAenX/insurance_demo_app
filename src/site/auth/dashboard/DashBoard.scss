@@ -1,17 +1,58 @@
 @import "../../../base";
 
-  /* dashboard */
-  .dashboard {
-    @include flex-col();
-    position: relative;
-    top: 4em;
-    width:100vw;
-    .dashboard-wrapper{
-      @include flex-col();
-      width: 100vw;
-      .display-none{
-        display: none;
-      }
-    }
-  
+/* dashboard */
+.dashboard {
+  @include flex-col();
+  width:100vw;
+  .dashboard-wrapper{
+    @include flex-row();
+    justify-content: space-around;
+    width: 100vw;
   }
+}
+
+.heading{
+  @include flex-row();
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+  font-size: 1.5em;
+  background-color: $color_1;
+  .MuiSvgIcon-root{
+      font-size: 1.5em;
+  }
+}
+.profile{
+  @include flex-col();
+  width: 350px;
+  margin: .5em;
+  .user-details{
+    width: 100%;
+    text-align: left;
+    padding: 1em;
+    
+  }
+}
+  
+.transactions{
+  @include flex-col();
+    width: 350px;
+    margin: .5em;
+  .payment-history{
+      width: 100%;
+      text-align: left;
+      padding: 1em;
+  }
+}
+
+.purchases{
+  @include flex-col();
+  width: 350px;
+  margin: .5em;
+  .insurance-covers{
+    width: 100%;
+    text-align: left;
+    padding: 1em;
+  }
+    
+}

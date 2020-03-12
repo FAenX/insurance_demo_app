@@ -7,6 +7,8 @@ import {Menu} from "@material-ui/icons"
 import MobileNavigation from "./MobileNavigation"
 import {Logo} from "../../assets/images/img_placeholder.png"
 
+
+
 const NavButton=props=>{
     const buttonStyle={
         textTransform: "capitalize",
@@ -23,9 +25,75 @@ const NavButton=props=>{
             </Button>
 }
 
+const SignOutButton=props=>{
+
+    const buttonStyle={
+        textTransform: "capitalize",
+        color: "inherit",
+    }
+
+    const signOut=()=>{
+        sessionStorage.removeItem("user")
+        sessionStorage.removeItem("tokens")
+        props.onSignOut()
+    }
+    return <Button style={buttonStyle} onClick={signOut}>
+                <SupervisedUserCircle />
+                Sign out
+            </Button>
+}
+
+
+
+const UserNavigation=(props)=>{
+        
+        return(
+            <div className="user-navigation-button">
+                <NavButton 
+                    id="dashboard" 
+                    title={`Howdy ${props.user.first_name}`}
+                    icon={<SupervisedUserCircle />}
+                    navigate={props.navigate}
+                />
+                <SignOutButton onSignOut={props.onSignOut}/>
+            </div>
+        )
+    }
+
+const AuthButtons=props=>{
+    return(
+        <>
+            <NavButton 
+                id="signup" 
+                title="Create Account" 
+                icon={<SupervisedUserCircle />}
+                navigate={props.navigate}
+            />
+            <NavButton 
+                id="signin" 
+                title="Sign In" 
+                icon={<VerifiedUser />} 
+                navigate={props.navigate}
+            />
+        </>  
+    )
+}
+
 const Navigation=props=>{
     const navStyle={
         width: "100%"
+    }
+    
+    const chooseUserNav=()=>{
+        console.log(props.user)
+        if(props.user!==null){
+            return <UserNavigation 
+                user={props.user} 
+                navigate={props.navigate} 
+                onSignOut={props.onSignOut}
+            />
+        }
+        return <AuthButtons navigate={props.navigate}/>
     }
 
     return (
@@ -44,23 +112,9 @@ const Navigation=props=>{
                     navigate={props.navigate}
                 />
             </div>
-            <div>
-                <NavButton 
-                    id="signup" 
-                    title="Create Account" 
-                    icon={<SupervisedUserCircle />}
-                    navigate={props.navigate}
-                />
-                <NavButton 
-                    id="signin" 
-                    title="Sign In" 
-                    icon={<VerifiedUser />} 
-                    navigate={props.navigate}
-                />
+            <div className="user-navigation">
+               {chooseUserNav()}
             </div>
-            
-           
-            
         </div>
     )
 }
@@ -107,12 +161,17 @@ const MainNavigation =props=> {
                             <Menu onClick={()=>{setOpen(!open)}}/>
                         </IconButton>                
                     </div>
-                    <Navigation navigate={navigate}/>
+                    <Navigation 
+                        navigate={navigate} 
+                        user={props.user} 
+                        onSignOut={props.onSignOut}
+                    />
                 </div>
-                 
-               
-                
-                <MobileNavigation navigate={navigate} open={open}/>      
+                <MobileNavigation 
+                    navigate={navigate} 
+                    open={open} 
+                    user={props.user}
+                />      
             </Toolbar>
             
         </div>

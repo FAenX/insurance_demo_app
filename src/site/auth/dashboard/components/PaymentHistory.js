@@ -1,29 +1,17 @@
 import React from "react"
-import {withRouter} from "react-router-dom"
 import {Card, ListItem, List, Toolbar} from "@material-ui/core"
-import clsx from 'clsx';
 import PaymentIcon from '@material-ui/icons/Payment';
 
 
-class PaymentHistory extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            display: true
-        }
-    }
-
-    render(){
-        return(
-            <Card variant="outlined" className={clsx("payment-history", {
-                "display-none": !this.state.display,
-            })}>
-                <Toolbar className="heading">
-                    Payment History
-                    <PaymentIcon />
-                </Toolbar>
-                <div className="content">
-                    <List>
+const PaymentHistory =props=>{
+    return(
+        <div  className="transactions">
+            <Toolbar className="heading">
+                Payment History
+                <PaymentIcon />
+            </Toolbar>
+            <Card variant="outlined" className="payment-history">
+                <List>
                     <ListItem>Text</ListItem>
                     <hr className="divider" />
                     <ListItem>text</ListItem>
@@ -32,14 +20,10 @@ class PaymentHistory extends React.Component{
                     <hr className="divider" />
                     <ListItem>text</ListItem>
                     <hr className="divider" />
-                    </List>
-                </div>
-                
-                
-                           
+                </List>
             </Card>
-        )
-    }
+        </div>
+    )
 }
 
 export default PaymentHistory
