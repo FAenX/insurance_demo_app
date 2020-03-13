@@ -1,6 +1,6 @@
 import React from "react"
 import {Paper, Button, FormControl, InputLabel, Select, MenuItem} from "@material-ui/core"
-import {filterBySub} from "../../helpers/js/dataManipulation"
+import {filterBySub} from "../../../helpers/js/dataManipulation"
 import "./Style.scss"
 
 
@@ -10,6 +10,10 @@ const InsuranceDetails =props=>{
             return true
         }
         return false
+    }
+
+    const insuranceChangeListener=event=>{
+        props.insuranceChangeListener(event)
     }
     
     const products=JSON.parse(sessionStorage.getItem("products"))[0].products
@@ -23,7 +27,7 @@ const InsuranceDetails =props=>{
                     <Select
                         name="cover" 
                         value={props.vehicle.cover}
-                        onChange={props.insuranceChangeListener}
+                        onChange={insuranceChangeListener}
                         labelWidth={120}
                         error={error(props.vehicle.cover)}
                     >

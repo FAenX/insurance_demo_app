@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import VehicleDetails from "./quoteFormComponents/VehicleDetails"
 import PersonalDetails from "./quoteFormComponents/PersonalDetails"
-import SnackBar from "./SnackBar"
+import SnackBar from "../../components/SnackBar"
 import InsuranceDetails from "./quoteFormComponents/InsuranceDetails"
 import "./MotorInsuranceQuoteForm.scss"
 
@@ -18,11 +18,11 @@ const MotorInsuranceQuoteForm =props=>{
                                     coverStartDate: "today",
                                     tonnes: "",})
     const[user, setUser] = useState({
-                                        first_name:"",
-                                        last_name:"",
-                                        email: "",
-                                        phone: "",
-                                        location: ""
+                                        first_name:"First Name",
+                                        last_name:"Last Name",
+                                        email: "example@email.com",
+                                        phone: "+*** **** ***",
+                                        location: "location"
                                     })
     const[response, setResponse] = useState({
                                                 premium: "",
@@ -37,7 +37,8 @@ const MotorInsuranceQuoteForm =props=>{
             user !== null&&
             user !== undefined &&
             Object.keys(user).length > 1
-            ){
+            )
+        {
           setUser(user)
         }
     }, [])
@@ -80,29 +81,38 @@ const MotorInsuranceQuoteForm =props=>{
     }
 
     const vehicleOnChangeListener=(event)=>{
-        const newVehicle = vehicle
-        newVehicle[event.target.id]=event.target.value
+        const value=event.target.value
+        const name = event.target.name
 
-       setVehicle(newVehicle)
+        let newVehicle = vehicle
+        newVehicle[name]=value
+        
+        console.log(newVehicle)
+        setVehicle(newVehicle)
         
     }
 
     const insuranceChangeListener=(event)=>{
-        const newVehicle = vehicle
-        let name = event.target.name
-        const value = event.target.value
-        
+        let newVehicle = vehicle
+
+        const value=event.target.value
+        const name = event.target.name
+
         newVehicle[name]=value
+        console.log(newVehicle)
 
         setVehicle(vehicle)
     }
 
     const userOnChangeListener=(event)=>{
-        const newUser = user
-        let value = event.target.value
-        let name = event.target.id
-       
+        let newUser = user
+
+        const value=event.target.value
+        const name = event.target.name
+        
         newUser[name]= value
+        console.log(newUser)
+
         setUser(newUser)
         
     }

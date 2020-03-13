@@ -20,7 +20,7 @@ const HowItWorksStep =props=>{
 
    
     return(
-        <div  className={clsx("step",{"stepMax": positionY>16})}>
+        <div  className={clsx("step",{"step-animation": positionY>16})}>
                 <div className="svg">
                     <img  alt="" src={props.img}/> 
                 </div>

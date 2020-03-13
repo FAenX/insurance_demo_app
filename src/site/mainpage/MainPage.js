@@ -6,7 +6,7 @@ import WhyUs from "./WhyUs"
 import "./MainPage.scss"
 import MainNavigation from "../components/MainNavigation" 
 import Contacts from "../contacts/Contacts"
-import QuotationForm from "../../components/MotorInsuranceQuoteForm"
+import QuotationForm from "../insurance/MotorInsuranceQuoteForm"
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import {Snackbar} from "@material-ui/core"
@@ -79,7 +79,7 @@ const MainPage =()=> {
                     <OurPatners/>
                 </>
         }else if(page === "quotation"){
-            return <QuotationForm redirect={redirect}/>
+            return <QuotationForm user={user} redirect={redirect}/>
         }else if(page === "signin"){
             return <SignIn loginListener={loginListener} loginRedirect={redirect}/>
         }else if(page === "signup"){
