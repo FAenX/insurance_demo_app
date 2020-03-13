@@ -12,7 +12,7 @@ import SignUp from "../auth/SignUp";
 import {Snackbar} from "@material-ui/core"
 import Quotation from "../insurance/Quotation"
 import Dashboard from "../auth/dashboard/Dashboard"
-import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom"
+import {BrowserRouter as Router, useHistory, Switch, Route} from "react-router-dom"
 
 
 const MainPage =()=> {
@@ -96,9 +96,7 @@ const MainPage =()=> {
     }
 
     const Content = props=> {
-        // <Router>
-        //     <Link
-        // </Router>
+        const history = useHistory()
         return(
        
             <Switch>
@@ -109,8 +107,8 @@ const MainPage =()=> {
                     <MainContent />
                 </Route>
                 
-                <Route exact path="/quotation">
-                    <QuotationForm user={user} redirect={redirect}/> 
+                <Route exact path="/quotation-form">
+                    <QuotationForm user={user} history={history}/> 
                 </Route>
                 <Route exact path="/signin">
                     <SignIn loginListener={loginListener} loginRedirect={redirect}/>
@@ -118,7 +116,7 @@ const MainPage =()=> {
                 <Route exact path="/signup">
                     <SignUp signUpListener={signUpListener} signUpRedirect={redirect}/>
                 </Route>
-                <Route exact path="/quotation-result">
+                <Route exact path="/quotation">
                     <Quotation />
                 </Route>
                 <Route exact path="/dashboard">

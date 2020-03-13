@@ -4,6 +4,7 @@ import PersonalDetails from "./quoteFormComponents/PersonalDetails"
 import SnackBar from "../../components/SnackBar"
 import InsuranceDetails from "./quoteFormComponents/InsuranceDetails"
 import "./MotorInsuranceQuoteForm.scss"
+import {useHistory} from "react-router-dom"
 
 const MotorInsuranceQuoteForm =props=>{
     const[snackbar, setSnackbar ] = useState(false)
@@ -65,9 +66,11 @@ const MotorInsuranceQuoteForm =props=>{
             sessionStorage.setItem("vehicle", JSON.stringify(vehicle))
             sessionStorage.setItem("response", JSON.stringify(data))
             setSnackbar(true)
+
+            
             
             setTimeout(()=>{
-                props.redirect("quotation-response")
+                props.history.push("/quotation")
             }, 1000)
             
         }else if(response.status!==200){
@@ -86,7 +89,7 @@ const MotorInsuranceQuoteForm =props=>{
 
         let newVehicle = vehicle
         newVehicle[name]=value
-        
+
         console.log(newVehicle)
         setVehicle(newVehicle)
         
