@@ -12,6 +12,7 @@ import SignUp from "../auth/SignUp";
 import {Snackbar} from "@material-ui/core"
 import Quotation from "../insurance/Quotation"
 import Dashboard from "../auth/dashboard/Dashboard"
+import {BrowserRouter as Router, Link, Switch, Route} from "react-router-dom"
 
 
 const MainPage =()=> {
@@ -23,6 +24,19 @@ const MainPage =()=> {
         const savedUser = JSON.parse(sessionStorage.getItem("user"))
         if(savedUser!==null){
             setUser(savedUser)
+        }
+        const getLocation = (href)=> {
+            var l = document.createElement("a");
+            l.href = href;
+            return l;
+        };
+        const l = getLocation(window.location.href);
+        console.log(l.pathname)
+        if (l.pathname==="/home")
+        {
+            setPage("home")
+        }else{
+            setPage(false)
         }
     }, [])
 
@@ -71,28 +85,48 @@ const MainPage =()=> {
         setPage(args)
     }
 
-    const content = props=> {
-        if(page === "home"){
-        return  <>
-                    <HowItWorks/>  
-                    <WhyUs />
-                    <OurPatners/>
-                </>
-        }else if(page === "quotation"){
-            return <QuotationForm user={user} redirect={redirect}/>
-        }else if(page === "signin"){
-            return <SignIn loginListener={loginListener} loginRedirect={redirect}/>
-        }else if(page === "signup"){
-            return <SignUp signUpListener={signUpListener} signUpRedirect={redirect}/>
-        }else if(page === "quotation-response"){
-            return <Quotation />
-        }else if(page==="dashboard"){
-            return <Dashboard redirect={redirect}/>
-        }
+    const Content = props=> {
+        // <Router>
+        //     <Link
+        // </Router>
+        return(
+       
+            <Switch>
+                <Route exact path="/home">
+                    <>
+                        <HowItWorks/>  
+                        <WhyUs />
+                        <OurPatners/>
+                    </>
+                </Route>
+                
+                <Route exact path="/quotation">
+                    <QuotationForm user={user} redirect={redirect}/> 
+                </Route>
+                <Route exact path="/signin">
+                    <SignIn loginListener={loginListener} loginRedirect={redirect}/>
+                </Route>
+                <Route exact path="/signup">
+                    <SignUp signUpListener={signUpListener} signUpRedirect={redirect}/>
+                </Route>
+                <Route exact path="/quotation-result">
+                    <Quotation />
+                </Route>
+                <Route exact path="/dashboard">
+                    <Dashboard redirect={redirect}/>
+                </Route>
+            </Switch>
+        
+       )
     }
 
     const coverHeight=()=>{
-        if (page==="home"){return "100vh"}
+       
+       
+        if (page==="home")
+        {
+            return "100vh"
+        }
         return "30vh"
     }
 
@@ -118,7 +152,9 @@ const MainPage =()=> {
 
     return(
         <div className="front-page">
+             <Router>
             <div className="cover-page" style={coverStyle}>
+           
                 <MainNavigation  
                     navigate={redirect} 
                     user={user} 
@@ -126,12 +162,12 @@ const MainPage =()=> {
                 />
                    {alert()}    
                 <Home page={page}/>
-               
+                    
             </div>
-                {content()}
+                <Content />
 
                 <Contacts />
-            
+            </Router>
         </div>
     )
 

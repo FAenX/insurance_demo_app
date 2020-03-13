@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import {Menu} from "@material-ui/icons"
 import MobileNavigation from "./MobileNavigation"
 import {Logo} from "../../assets/images/img_placeholder.png"
+import {Link} from "react-router-dom"
 
 
 
@@ -19,10 +20,12 @@ const NavButton=props=>{
         props.navigate(props.id)
     }
 
-    return <Button style={buttonStyle} onClick={navigate}>
-                {props.icon}
-                {props.title}
-            </Button>
+    return  <Link to={props.id}>
+                <Button style={buttonStyle} onClick={navigate}>
+                    {props.icon}
+                    {props.title}
+                </Button>
+            </Link>
 }
 
 const SignOutButton=props=>{
@@ -49,6 +52,7 @@ const UserNavigation=(props)=>{
         
         return(
             <div className="user-navigation-button">
+               
                 <NavButton 
                     id="dashboard" 
                     title={`Howdy ${props.user.first_name}`}
@@ -87,13 +91,9 @@ const Navigation=props=>{
     const chooseUserNav=()=>{
         console.log(props.user)
         if(props.user!==null){
-            return <UserNavigation 
-                user={props.user} 
-                navigate={props.navigate} 
-                onSignOut={props.onSignOut}
-            />
+            return <UserNavigation {...props} />
         }
-        return <AuthButtons navigate={props.navigate}/>
+        return <AuthButtons {...props}/>
     }
 
     return (
