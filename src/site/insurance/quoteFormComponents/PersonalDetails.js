@@ -28,7 +28,7 @@ const PersonalDetails =props=>{
                     name="first_name" 
                     label="First Name"
                     variant="outlined"
-                   
+                    defaultValue={props.user.first_name}
                     onChange={userOnChangeListener}
                     error={error(props.user.first_name)}
                     disabled={props.loggedIn}
@@ -39,7 +39,7 @@ const PersonalDetails =props=>{
                     name="last_name" 
                     label="Last Name"
                     variant="outlined"
-                    
+                    defaultValue={props.user.last_name}
                     onChange={userOnChangeListener}
                     error={error(props.user.last_name)}
                     disabled={props.loggedIn}
@@ -50,7 +50,7 @@ const PersonalDetails =props=>{
                     name="phone" 
                     label="07xx 5xx 6xx"
                     variant="outlined"
-                   
+                    defaultValue={props.user.phone_number}
                     onChange={userOnChangeListener}
                     // error={error(props.user.phone_number)}
                     disabled={props.loggedIn}
@@ -61,7 +61,7 @@ const PersonalDetails =props=>{
                     name="email" 
                     label="email@example.com"
                     variant="outlined"
-                    // value={props.user.email}
+                    defaultValue={props.user.email}
                     onChange={userOnChangeListener}
                     error={error(props.user.email)}
                     disabled={props.loggedIn}
@@ -72,7 +72,7 @@ const PersonalDetails =props=>{
                     name="location" 
                     label="Location"
                     variant="outlined"
-                    // value={props.user.location}
+                    defaultValue={props.user.location}
                     onChange={userOnChangeListener}
                     // error={error(props.user.location)} 
                     disabled={props.loggedIn}                       

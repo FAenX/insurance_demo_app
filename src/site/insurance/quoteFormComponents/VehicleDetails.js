@@ -14,6 +14,7 @@ const VehicleCapacity=props=>{
             <InputLabel>vehicle load capacity</InputLabel>
             <Select
                 name="tonnes"
+                defaultValue={props.vehicle.tonnes}
                 onChange={vehicleOnChangeListener}
                 labelWidth={130}
                 // error={error(props.vehicle.tonnes)}
@@ -73,7 +74,7 @@ const VehicleDetails=props=>{
                         <InputLabel> Vehicle use </InputLabel>
                         <Select
                             name="vehicleUse" 
-                            // value={props.vehicle.vehicleUse}
+                            defaultValue={props.vehicle.vehicleUse}
                             onChange={vehicleOnChangeListener}
                             labelWidth={100}
                             error={error(props.vehicle.vehicleUse)}
@@ -93,7 +94,7 @@ const VehicleDetails=props=>{
                         name="vehicleMake" 
                         label="Vehicle make"
                         variant="outlined"
-                       
+                        defaultValue={props.vehicle.vehicleMake}
                         onChange={vehicleOnChangeListener}
                         error={error(props.vehicle.vehicleMake)}
                     />
@@ -104,7 +105,7 @@ const VehicleDetails=props=>{
                         name="vehicleModel" 
                         label="Crown"
                         variant="outlined"
-                        
+                        defaultValue={props.vehicle.vehicleModel}
                         onChange={vehicleOnChangeListener}
                         error={error(props.vehicle.vehicleModel)}
                     />
@@ -115,7 +116,7 @@ const VehicleDetails=props=>{
                         label="1,400,000"
                         variant="outlined"
                         onChange={vehicleOnChangeListener}
-                       
+                        defaultValue={props.vehicle.vehicleValue}
                         error={error(props.vehicle.vehicleValue)}
                         
                     />
@@ -127,7 +128,7 @@ const VehicleDetails=props=>{
                         </InputLabel>
                         <Select
                             name="yearOfManufacture" 
-                            
+                            defaultValue={props.vehicle.yearOfManufacture}
                             onChange={vehicleOnChangeListener}
                             labelWidth={100}
                             error={error(props.vehicle.yearOfManufacture)}

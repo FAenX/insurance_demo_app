@@ -32,7 +32,7 @@ const MainPage =()=> {
         };
         const l = getLocation(window.location.href);
         console.log(l.pathname)
-        if (l.pathname==="/home")
+        if (l.pathname==="/home" || l.pathname==="/")
         {
             setPage("home")
         }else{
@@ -85,6 +85,16 @@ const MainPage =()=> {
         setPage(args)
     }
 
+    const MainContent=props=>{
+        return(
+            <>
+                <HowItWorks/>  
+                <WhyUs />
+                <OurPatners/>
+            </>
+        )
+    }
+
     const Content = props=> {
         // <Router>
         //     <Link
@@ -92,12 +102,11 @@ const MainPage =()=> {
         return(
        
             <Switch>
+                 <Route exact path="/">
+                    <MainContent />
+                </Route>
                 <Route exact path="/home">
-                    <>
-                        <HowItWorks/>  
-                        <WhyUs />
-                        <OurPatners/>
-                    </>
+                    <MainContent />
                 </Route>
                 
                 <Route exact path="/quotation">
@@ -122,9 +131,14 @@ const MainPage =()=> {
 
     const coverHeight=()=>{
        
-       
-        if (page==="home")
-        {
+        const getLocation = (href)=> {
+            var l = document.createElement("a");
+            l.href = href;
+            return l;
+        };
+        const l = getLocation(window.location.href);
+        console.log(l.pathname)
+        if (l.pathname==="/home" || l.pathname==="/"){
             return "100vh"
         }
         return "30vh"

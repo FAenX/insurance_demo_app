@@ -26,7 +26,7 @@ const InsuranceDetails =props=>{
                     </InputLabel>
                     <Select
                         name="cover" 
-                        value={props.vehicle.cover}
+                        defaultValue={props.vehicle.cover}
                         onChange={insuranceChangeListener}
                         labelWidth={120}
                         error={error(props.vehicle.cover)}
