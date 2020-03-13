@@ -66,7 +66,7 @@ const AlertDialog=props=> {
           onClose={props.handleClose}
         >
           <ActionButton title="Get a quotation for your vehicle" onClick={()=>{props.loginRedirect("quotation")}}/>
-          <ActionButton title="Dashboard" onClick={()=>{props.loginRedirect("dashboard")}} />
+          <ActionButton title="Dashboard" onClick={()=>{props.history.push("/dashboard")}} />
               
         </Dialog>
       

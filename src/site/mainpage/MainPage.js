@@ -81,7 +81,7 @@ const MainPage =()=> {
     }
      
 
-    const redirect=args=>{
+    const setpage=args=>{
         setPage(args)
     }
 
@@ -111,16 +111,16 @@ const MainPage =()=> {
                     <QuotationForm user={user} history={history}/> 
                 </Route>
                 <Route exact path="/signin">
-                    <SignIn loginListener={loginListener} loginRedirect={redirect}/>
+                    <SignIn loginListener={loginListener} loginRedirect={setpage}/>
                 </Route>
                 <Route exact path="/signup">
-                    <SignUp signUpListener={signUpListener} signUpRedirect={redirect}/>
+                    <SignUp signUpListener={signUpListener} signUpRedirect={setpage}/>
                 </Route>
                 <Route exact path="/quotation">
                     <Quotation />
                 </Route>
                 <Route exact path="/dashboard">
-                    <Dashboard redirect={redirect}/>
+                    <Dashboard redirect={setpage}/>
                 </Route>
             </Switch>
         
@@ -136,7 +136,7 @@ const MainPage =()=> {
         };
         const l = getLocation(window.location.href);
         console.log(l.pathname)
-        if (l.pathname==="/home" || l.pathname==="/"){
+        if (l.pathname==="/home" || l.pathname==="/" ){
             return "100vh"
         }
         return "30vh"
@@ -168,7 +168,7 @@ const MainPage =()=> {
             <div className="cover-page" style={coverStyle}>
            
                 <MainNavigation  
-                    navigate={redirect} 
+                    navigate={setpage} 
                     user={user} 
                     onSignOut={()=>{setUser(null)}}
                 />

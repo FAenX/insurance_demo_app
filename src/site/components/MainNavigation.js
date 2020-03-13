@@ -52,6 +52,7 @@ const UserNavigation=(props)=>{
         
         return(
             <div className="user-navigation-button">
+               
                 <NavButton 
                     id="dashboard" 
                     title={`Howdy ${props.user.first_name}`}
